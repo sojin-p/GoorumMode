@@ -15,6 +15,12 @@
 		23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */; };
 		23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A112AC168B200D6BBB5 /* Color.swift */; };
 		23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9A1A2AC2E01300D6BBB5 /* Localizable.strings */; };
+		23DD9A1F2AC2EB6E00D6BBB5 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A1E2AC2EB6E00D6BBB5 /* BaseView.swift */; };
+		23DD9A212AC2EBDA00D6BBB5 /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A202AC2EBDA00D6BBB5 /* MoodView.swift */; };
+		23DD9A242AC2EC8800D6BBB5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A232AC2EC8800D6BBB5 /* SnapKit */; };
+		23DD9A262AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */; };
+		23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */; };
+		23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,11 @@
 		23DD9A152AC2DFB600D6BBB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		23DD9A192AC2E01300D6BBB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		23DD9A1B2AC2E01600D6BBB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		23DD9A1E2AC2EB6E00D6BBB5 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		23DD9A202AC2EBDA00D6BBB5 /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
+		23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionViewCell.swift; sourceTree = "<group>"; };
+		23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DD9A242AC2EC8800D6BBB5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,10 +74,11 @@
 		2380FB1E2AB9E6B200B31754 /* GoorumMode */ = {
 			isa = PBXGroup;
 			children = (
+				23DD9A1D2AC2EB3A00D6BBB5 /* Base */,
+				23DD9A1C2AC2EB1F00D6BBB5 /* Scene */,
 				23DD9A0E2AC15E3900D6BBB5 /* Utility */,
 				2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */,
 				2380FB212AB9E6B200B31754 /* SceneDelegate.swift */,
-				2380FB232AB9E6B200B31754 /* MoodViewController.swift */,
 				2380FB282AB9E6B400B31754 /* Assets.xcassets */,
 				2380FB2A2AB9E6B400B31754 /* LaunchScreen.storyboard */,
 				2380FB2D2AB9E6B400B31754 /* Info.plist */,
@@ -81,6 +94,26 @@
 				23DD9A112AC168B200D6BBB5 /* Color.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		23DD9A1C2AC2EB1F00D6BBB5 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				2380FB232AB9E6B200B31754 /* MoodViewController.swift */,
+				23DD9A202AC2EBDA00D6BBB5 /* MoodView.swift */,
+				23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */,
+				23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		23DD9A1D2AC2EB3A00D6BBB5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A1E2AC2EB6E00D6BBB5 /* BaseView.swift */,
+				23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +132,9 @@
 			dependencies = (
 			);
 			name = GoorumMode;
+			packageProductDependencies = (
+				23DD9A232AC2EC8800D6BBB5 /* SnapKit */,
+			);
 			productName = GoorumMode;
 			productReference = 2380FB1C2AB9E6B100B31754 /* GoorumMode.app */;
 			productType = "com.apple.product-type.application";
@@ -128,6 +164,9 @@
 				ko,
 			);
 			mainGroup = 2380FB132AB9E6B100B31754;
+			packageReferences = (
+				23DD9A222AC2EC8800D6BBB5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 2380FB1D2AB9E6B100B31754 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -155,11 +194,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */,
 				2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */,
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,
+				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
 				2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
 				23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */,
+				23DD9A262AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift in Sources */,
+				23DD9A212AC2EBDA00D6BBB5 /* MoodView.swift in Sources */,
+				23DD9A1F2AC2EB6E00D6BBB5 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		23DD9A222AC2EC8800D6BBB5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		23DD9A232AC2EC8800D6BBB5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23DD9A222AC2EC8800D6BBB5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2380FB142AB9E6B100B31754 /* Project object */;
 }
