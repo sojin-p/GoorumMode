@@ -28,6 +28,8 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     let moodImageView = {
         let view = UIImageView()
         view.backgroundColor = .lightGray
+        view.isAccessibilityElement = true
+        view.accessibilityLabel = "기분"
         return view
     }()
     
@@ -43,7 +45,8 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     
     let timeLabel = {
         let view = UILabel()
-        view.text = "23:00"
+        view.text = "23시 30분"
+        view.accessibilityLabel = "\(view.text!)에 등록했습니다."
         view.backgroundColor = .yellow
         view.textColor = Constants.Color.Text.basicSubTitle
         return view

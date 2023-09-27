@@ -23,8 +23,8 @@ final class MoodViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .yellow
-        title = "test"
         
+        mainView.setupAccessibilityLabel()
         configureDataSource()
         updateSnapshot()
     }

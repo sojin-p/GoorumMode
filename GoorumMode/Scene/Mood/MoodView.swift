@@ -15,18 +15,23 @@ final class MoodView: BaseView {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
         let image = UIImage(systemName: "plus", withConfiguration: imageConfig)
-        view.setImage(image, for: .normal)
-        view.tintColor = Constants.Color.iconTint.basic
         DispatchQueue.main.async {
+            view.setImage(image, for: .normal)
+            view.tintColor = Constants.Color.iconTint.basic
             view.backgroundColor = Constants.Color.Background.basicIcon
             view.layer.cornerRadius = view.frame.width / 2
-            view.layer.shadowColor = UIColor.gray.cgColor
-            view.layer.shadowOffset = .zero
-            view.layer.shadowRadius = 3
-            view.layer.shadowOpacity = 0.5
         }
+        view.accessibilityLabel = "추가 버튼입니다."
+        view.accessibilityTraits = .none
+        view.accessibilityHint = "새로운 기분을 등록하려면 두 번 탭 하세요."
         return view
     }()
+    
+    func setupAccessibilityLabel() {
+        var elements = [Any]()
+        [addMoodButton, collectionView].forEach { elements.append($0) }
+        accessibilityElements = elements
+    }
     
     override func configure() {
         [collectionView, addMoodButton].forEach { addSubview($0) }
