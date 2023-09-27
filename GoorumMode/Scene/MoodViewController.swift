@@ -52,8 +52,8 @@ final class MoodViewController: UIViewController {
     func configureDataSource() {
         
         let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, String>(handler: { cell, indexPath, itemIdentifier in
-            cell.imageView.image = UIImage(systemName: "star")
-            cell.label.text = itemIdentifier
+            cell.moodImageView.image = UIImage(systemName: "star")
+            cell.onelineLabel.text = itemIdentifier
         })
         
         let headerRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: Section.today.header) { supplementaryView, elementKind, indexPath in
@@ -74,11 +74,11 @@ final class MoodViewController: UIViewController {
     func createLayout() -> UICollectionViewLayout {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(1.0))
+                                              heightDimension: .estimated(50))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(300))
+                                               heightDimension: .estimated(50))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
