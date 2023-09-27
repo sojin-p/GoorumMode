@@ -21,6 +21,7 @@
 		23DD9A262AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */; };
 		23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */; };
 		23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */; };
+		23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
+		23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoodSection+Enum.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,6 @@
 		2380FB1E2AB9E6B200B31754 /* GoorumMode */ = {
 			isa = PBXGroup;
 			children = (
-				23DD9A1D2AC2EB3A00D6BBB5 /* Base */,
 				23DD9A1C2AC2EB1F00D6BBB5 /* Scene */,
 				23DD9A0E2AC15E3900D6BBB5 /* Utility */,
 				2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */,
@@ -92,6 +93,7 @@
 			children = (
 				23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */,
 				23DD9A112AC168B200D6BBB5 /* Color.swift */,
+				23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -99,10 +101,9 @@
 		23DD9A1C2AC2EB1F00D6BBB5 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				2380FB232AB9E6B200B31754 /* MoodViewController.swift */,
-				23DD9A202AC2EBDA00D6BBB5 /* MoodView.swift */,
-				23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */,
-				23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */,
+				23DD9A1D2AC2EB3A00D6BBB5 /* Base */,
+				23DD9A2D2AC44A9C00D6BBB5 /* Mood */,
+				23DD9A2E2AC44AAE00D6BBB5 /* Cells and Supplementary Views */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -114,6 +115,24 @@
 				23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		23DD9A2D2AC44A9C00D6BBB5 /* Mood */ = {
+			isa = PBXGroup;
+			children = (
+				2380FB232AB9E6B200B31754 /* MoodViewController.swift */,
+				23DD9A202AC2EBDA00D6BBB5 /* MoodView.swift */,
+			);
+			path = Mood;
+			sourceTree = "<group>";
+		};
+		23DD9A2E2AC44AAE00D6BBB5 /* Cells and Supplementary Views */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */,
+				23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */,
+			);
+			path = "Cells and Supplementary Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +221,7 @@
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
 				23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */,
 				23DD9A262AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift in Sources */,
+				23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */,
 				23DD9A212AC2EBDA00D6BBB5 /* MoodView.swift in Sources */,
 				23DD9A1F2AC2EB6E00D6BBB5 /* BaseView.swift in Sources */,
 			);

@@ -18,14 +18,15 @@ extension Constants {
         
         enum Background {
             static let basic = UIColor(named: "Basic_Background")
+            static let basicIcon = UIColor(named: "Basic_Title")
             
             static let smiling = UIColor(named: "Smiling_Theme")
             
             static let Neutral = UIColor(named: "Neutral_Theme")
         }
         
-        enum Icon {
-            static let basic = UIColor(named: "Basic_Title")
+        enum iconTint {
+            static let basic = UIColor(named: "Basic_Background")
         }
         
     }

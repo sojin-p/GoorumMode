@@ -53,7 +53,11 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         let view = UILabel()
         view.text = "Hi, How are you?"
         view.textColor = Constants.Color.Text.basicTitle
-//        view.isHidden = true
+        if view.text == nil {
+            view.isHidden = true
+        } else {
+            view.isHidden = false
+        }
         return view
     }()
     
@@ -63,7 +67,11 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         view.numberOfLines = 0
         view.backgroundColor = .cyan
         view.textColor = Constants.Color.Text.basicTitle
-//        view.isHidden = true
+        if view.text == nil {
+            view.isHidden = true
+        } else {
+            view.isHidden = false
+        }
         return view
     }()
     
