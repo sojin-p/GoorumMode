@@ -11,7 +11,7 @@ final class MoodViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
-    let list = ["gkgk", "asdasf", "fdnsdgfsdfdsf", "ㄴㅇㄹㅇㄴㄹㄴㅇㅎ", "ㅁㄴㅇㄹㄴㅇㄴ"]
+    let list = ["15자 밖에 못쓰는데....", "너무 쏠려보이나?", "fdnsdgfsdfdsf34", "ㄴㅇㄹㅇㄴㄹㄴㅇㅎ", "ㅁㄴㅇㄹㄴㅇㄴ"]
     
     let mainView = MoodView()
     

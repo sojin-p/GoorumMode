@@ -9,7 +9,11 @@ import UIKit
 
 final class MoodView: BaseView {
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+    lazy var collectionView = {
+        let view =  UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        view.backgroundColor = Constants.Color.Background.basic
+        return view
+    }()
     
     let addMoodButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 65, height: 65))

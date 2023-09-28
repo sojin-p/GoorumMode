@@ -13,7 +13,7 @@ final class TitleSupplementaryView: UICollectionReusableView {
         let view = UILabel()
         view.textAlignment = .center
         view.textColor = Constants.Color.Text.basicSubTitle
-        view.font = .systemFont(ofSize: 20, weight: .bold)
+        view.font = .systemFont(ofSize: 17)
         return view
     }()
 
@@ -31,7 +31,7 @@ final class TitleSupplementaryView: UICollectionReusableView {
         addSubview(label)
         
         label.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(30)
+            make.edges.equalToSuperview().inset(20)
         }
     }
     

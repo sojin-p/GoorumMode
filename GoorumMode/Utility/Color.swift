@@ -14,11 +14,13 @@ extension Constants {
         enum Text {
             static let basicTitle = UIColor(named: "Basic_Title")
             static let basicSubTitle = UIColor(named: "Basic_SubTitle")
+            static let basicPlaceholder = UIColor(named: "Basic_Placeholder")
         }
         
         enum Background {
             static let basic = UIColor(named: "Basic_Background")
-            static let basicIcon = UIColor(named: "Basic_Title")
+            static let basicIcon = UIColor(named: "Basic_IconBackground")
+            static let white = UIColor(named: "Basic_White")
             
             static let smiling = UIColor(named: "Smiling_Theme")
             
@@ -26,7 +28,7 @@ extension Constants {
         }
         
         enum iconTint {
-            static let basicWhite = UIColor(named: "Basic_Background")
+            static let basicWhite = UIColor(named: "Basic_White")
             static let basicBlack = UIColor(named: "Basic_Title")
         }
         

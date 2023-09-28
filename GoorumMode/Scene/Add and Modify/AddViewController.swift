@@ -25,6 +25,7 @@ final class AddViewController: BaseViewController {
         
         sheetPresentationController?.delegate = self
         mainView.oneLineTextField.delegate = self
+        mainView.detailTextView.delegate = self
     }
     
     @objc func extendButtonClicked() {
@@ -46,6 +47,24 @@ final class AddViewController: BaseViewController {
         navigationItem.leftBarButtonItem = close
         navigationItem.rightBarButtonItem = done
         navigationController?.navigationBar.tintColor = Constants.Color.iconTint.basicBlack
+    }
+    
+}
+
+extension AddViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == mainView.detailTextViewPlaceholder {
+            textView.text = nil
+            textView.textColor = Constants.Color.Text.basicTitle
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = mainView.detailTextViewPlaceholder
+            textView.textColor = Constants.Color.Text.basicPlaceholder
+        }
     }
     
 }

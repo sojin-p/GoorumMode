@@ -9,13 +9,14 @@ import UIKit
 
 final class AddView: BaseView {
     
-    let detailTextView = {
+    let detailTextViewPlaceholder = "자세한 내용을 기록해 보세요."
+    lazy var detailTextView = {
         let view = UITextView()
         view.backgroundColor = Constants.Color.Background.basic
         view.font = .systemFont(ofSize: 17)
         view.isHidden = true
-        view.text = "자세한 내용을 기록해 보세요."
-        view.textColor = .lightGray
+        view.text = self.detailTextViewPlaceholder
+        view.textColor = Constants.Color.Text.basicPlaceholder
         view.font = .systemFont(ofSize: 16)
         return view
     }()
@@ -58,7 +59,7 @@ final class AddView: BaseView {
     
     let underLineView = {
         let view = UIView()
-        view.backgroundColor = Constants.Color.Background.basicIcon
+        view.backgroundColor = Constants.Color.iconTint.basicBlack
         return view
     }()
     
@@ -72,7 +73,7 @@ final class AddView: BaseView {
             view.layer.shadowOffset = .zero
             view.layer.shadowRadius = 3
             view.layer.shadowOpacity = 0.5
-            view.backgroundColor = Constants.Color.Background.basic
+            view.backgroundColor = Constants.Color.Background.white
         }
         view.accessibilityLabel = "내용 추가"
         view.accessibilityHint = "자세한 내용 또는 일기를 작성하려면 두 번 탭 하세요."
