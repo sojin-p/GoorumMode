@@ -25,6 +25,8 @@
 		23DD9A312AC4721000D6BBB5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A302AC4721000D6BBB5 /* Realm */; };
 		23DD9A332AC4721000D6BBB5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A322AC4721000D6BBB5 /* RealmSwift */; };
 		23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A352AC4724C00D6BBB5 /* Mood.swift */; };
+		23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A382AC52C7600D6BBB5 /* AddViewController.swift */; };
+		23DD9A3B2AC52CB200D6BBB5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 		23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoodSection+Enum.swift"; sourceTree = "<group>"; };
 		23DD9A352AC4724C00D6BBB5 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
+		23DD9A382AC52C7600D6BBB5 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +114,8 @@
 			children = (
 				23DD9A1D2AC2EB3A00D6BBB5 /* Base */,
 				23DD9A2D2AC44A9C00D6BBB5 /* Mood */,
-				23DD9A2E2AC44AAE00D6BBB5 /* Cells and Supplementary Views */,
+				23DD9A372AC52C2C00D6BBB5 /* Add and Modify */,
+				23DD9A2E2AC44AAE00D6BBB5 /* Cells and SupplementaryViews */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 		23DD9A1D2AC2EB3A00D6BBB5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */,
 				23DD9A1E2AC2EB6E00D6BBB5 /* BaseView.swift */,
 				23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */,
 			);
@@ -133,13 +139,13 @@
 			path = Mood;
 			sourceTree = "<group>";
 		};
-		23DD9A2E2AC44AAE00D6BBB5 /* Cells and Supplementary Views */ = {
+		23DD9A2E2AC44AAE00D6BBB5 /* Cells and SupplementaryViews */ = {
 			isa = PBXGroup;
 			children = (
 				23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */,
 				23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */,
 			);
-			path = "Cells and Supplementary Views";
+			path = "Cells and SupplementaryViews";
 			sourceTree = "<group>";
 		};
 		23DD9A342AC4723800D6BBB5 /* Realm */ = {
@@ -148,6 +154,14 @@
 				23DD9A352AC4724C00D6BBB5 /* Mood.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		23DD9A372AC52C2C00D6BBB5 /* Add and Modify */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A382AC52C7600D6BBB5 /* AddViewController.swift */,
+			);
+			path = "Add and Modify";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,12 +250,14 @@
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
 				23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */,
+				23DD9A3B2AC52CB200D6BBB5 /* BaseViewController.swift in Sources */,
 				2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
 				23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */,
 				23DD9A262AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift in Sources */,
 				23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */,
 				23DD9A212AC2EBDA00D6BBB5 /* MoodView.swift in Sources */,
+				23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */,
 				23DD9A1F2AC2EB6E00D6BBB5 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

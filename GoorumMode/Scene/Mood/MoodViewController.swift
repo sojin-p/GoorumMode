@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MoodViewController: UIViewController {
+final class MoodViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
@@ -22,11 +22,15 @@ final class MoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
-        
         mainView.setupAccessibilityLabel()
         configureDataSource()
         updateSnapshot()
+        
+        mainView.addMoodButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func addButtonClicked() {
+        print("클릭")
     }
 
 }
