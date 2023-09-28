@@ -69,7 +69,8 @@ final class AddView: BaseView {
     override func setConstraints() {
         containerView.snp.makeConstraints { make in
             make.height.equalTo(70)
-            make.top.horizontalEdges.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.top.equalTo(safeAreaLayoutGuide)
         }
         
         pickMoodImageView.snp.makeConstraints { make in
