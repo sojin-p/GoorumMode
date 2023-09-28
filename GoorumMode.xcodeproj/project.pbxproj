@@ -27,6 +27,7 @@
 		23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A352AC4724C00D6BBB5 /* Mood.swift */; };
 		23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A382AC52C7600D6BBB5 /* AddViewController.swift */; };
 		23DD9A3B2AC52CB200D6BBB5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */; };
+		23DD9A3D2AC54A1400D6BBB5 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A3C2AC54A1300D6BBB5 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		23DD9A352AC4724C00D6BBB5 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		23DD9A382AC52C7600D6BBB5 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		23DD9A3C2AC54A1300D6BBB5 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				23DD9A382AC52C7600D6BBB5 /* AddViewController.swift */,
+				23DD9A3C2AC54A1300D6BBB5 /* AddView.swift */,
 			);
 			path = "Add and Modify";
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			files = (
 				23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */,
 				2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */,
+				23DD9A3D2AC54A1400D6BBB5 /* AddView.swift in Sources */,
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
 				23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */,

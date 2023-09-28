@@ -30,7 +30,20 @@ final class MoodViewController: BaseViewController {
     }
     
     @objc func addButtonClicked() {
-        print("클릭")
+        
+        let vc = AddViewController()
+        
+        let smallId = UISheetPresentationController.Detent.Identifier("small")
+        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallId) { context in
+            return 200
+        }
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [smallDetent, .large()]
+            
+            sheet.prefersGrabberVisible = true
+        }
+        
+        present(vc, animated: true)
     }
 
 }
