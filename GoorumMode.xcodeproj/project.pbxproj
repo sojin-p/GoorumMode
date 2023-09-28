@@ -22,6 +22,9 @@
 		23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */; };
 		23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */; };
 		23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */; };
+		23DD9A312AC4721000D6BBB5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A302AC4721000D6BBB5 /* Realm */; };
+		23DD9A332AC4721000D6BBB5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A322AC4721000D6BBB5 /* RealmSwift */; };
+		23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A352AC4724C00D6BBB5 /* Mood.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,7 @@
 		23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 		23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoodSection+Enum.swift"; sourceTree = "<group>"; };
+		23DD9A352AC4724C00D6BBB5 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DD9A332AC4721000D6BBB5 /* RealmSwift in Frameworks */,
+				23DD9A312AC4721000D6BBB5 /* Realm in Frameworks */,
 				23DD9A242AC2EC8800D6BBB5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +82,7 @@
 		2380FB1E2AB9E6B200B31754 /* GoorumMode */ = {
 			isa = PBXGroup;
 			children = (
+				23DD9A342AC4723800D6BBB5 /* Realm */,
 				23DD9A1C2AC2EB1F00D6BBB5 /* Scene */,
 				23DD9A0E2AC15E3900D6BBB5 /* Utility */,
 				2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */,
@@ -135,6 +142,14 @@
 			path = "Cells and Supplementary Views";
 			sourceTree = "<group>";
 		};
+		23DD9A342AC4723800D6BBB5 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A352AC4724C00D6BBB5 /* Mood.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,6 +168,8 @@
 			name = GoorumMode;
 			packageProductDependencies = (
 				23DD9A232AC2EC8800D6BBB5 /* SnapKit */,
+				23DD9A302AC4721000D6BBB5 /* Realm */,
+				23DD9A322AC4721000D6BBB5 /* RealmSwift */,
 			);
 			productName = GoorumMode;
 			productReference = 2380FB1C2AB9E6B100B31754 /* GoorumMode.app */;
@@ -185,6 +202,7 @@
 			mainGroup = 2380FB132AB9E6B100B31754;
 			packageReferences = (
 				23DD9A222AC2EC8800D6BBB5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				23DD9A2F2AC4721000D6BBB5 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 2380FB1D2AB9E6B100B31754 /* Products */;
 			projectDirPath = "";
@@ -217,6 +235,7 @@
 				2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */,
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
+				23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */,
 				2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
 				23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */,
@@ -461,6 +480,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		23DD9A2F2AC4721000D6BBB5 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.42.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -468,6 +495,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 23DD9A222AC2EC8800D6BBB5 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		23DD9A302AC4721000D6BBB5 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23DD9A2F2AC4721000D6BBB5 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		23DD9A322AC4721000D6BBB5 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23DD9A2F2AC4721000D6BBB5 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
