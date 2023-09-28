@@ -26,7 +26,8 @@ extension Constants {
         }
         
         enum iconTint {
-            static let basic = UIColor(named: "Basic_Background")
+            static let basicWhite = UIColor(named: "Basic_Background")
+            static let basicBlack = UIColor(named: "Basic_Title")
         }
         
     }

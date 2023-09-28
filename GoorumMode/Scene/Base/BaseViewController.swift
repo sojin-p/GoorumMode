@@ -17,9 +17,16 @@ class BaseViewController: UIViewController {
     }
     
     func configure() {
-        view.backgroundColor = .white
+        view.backgroundColor = Constants.Color.Background.basic
     }
     
     func setConstraints() { }
+    
+    func showAlert(title: String, massage: String?) {
+        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
     
 }

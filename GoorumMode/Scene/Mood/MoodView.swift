@@ -17,7 +17,7 @@ final class MoodView: BaseView {
         let image = UIImage(systemName: "plus", withConfiguration: imageConfig)
         DispatchQueue.main.async {
             view.setImage(image, for: .normal)
-            view.tintColor = Constants.Color.iconTint.basic
+            view.tintColor = Constants.Color.iconTint.basicWhite
             view.backgroundColor = Constants.Color.Background.basicIcon
             view.layer.cornerRadius = view.frame.width / 2
         }

@@ -22,6 +22,7 @@ final class AddViewController: BaseViewController {
         setBarButtonItem()
         
         mainView.extendButton.addTarget(self, action: #selector(extendButtonClicked), for: .touchUpInside)
+        
         sheetPresentationController?.delegate = self
         mainView.oneLineTextField.delegate = self
     }
@@ -44,12 +45,28 @@ final class AddViewController: BaseViewController {
         
         navigationItem.leftBarButtonItem = close
         navigationItem.rightBarButtonItem = done
+        navigationController?.navigationBar.tintColor = Constants.Color.iconTint.basicBlack
     }
     
 }
 
 extension AddViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
+        guard let text = textField.text, text.count < 15 else {
+            textField.resignFirstResponder()
+            showAlert(title: "15자 이하로 입력해 주세요.", massage: nil)
+            return false
+        }
+        return true
+    }
 }
 
 extension AddViewController: UISheetPresentationControllerDelegate {
