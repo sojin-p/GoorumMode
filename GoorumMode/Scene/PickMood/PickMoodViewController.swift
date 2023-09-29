@@ -33,7 +33,9 @@ extension PickMoodViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PickMoodCollectionViewCell.identifier, for: indexPath) as? PickMoodCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.moodImage.image = UIImage(systemName: "heart")
+        let emojis = MoodEmojis.allCases[indexPath.item]
+        cell.moodImage.image = emojis.image
+        cell.moodImage.accessibilityLabel = emojis.accessLabel
         cell.moodImage.contentMode = .scaleAspectFit
         
         return cell
@@ -45,8 +47,8 @@ extension PickMoodViewController {
     func setupSheet() {
         
         if let sheet = sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.preferredCornerRadius = 20
             sheet.prefersGrabberVisible = true
         }

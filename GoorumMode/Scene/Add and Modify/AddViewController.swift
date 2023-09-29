@@ -30,7 +30,10 @@ final class AddViewController: BaseViewController {
     }
     
     @objc func pickMoodImageClicked() {
-        print("클릭 됨")
+        
+        let vc = UINavigationController(rootViewController: PickMoodViewController())
+        
+        present(vc, animated: true)
     }
     
     @objc func extendButtonClicked() {
@@ -116,7 +119,7 @@ extension AddViewController: UISheetPresentationControllerDelegate {
         
         if let sheet = sheetPresentationController {
             sheet.detents = [smallDetent, .large()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.preferredCornerRadius = 20
             sheet.prefersGrabberVisible = true
         }
