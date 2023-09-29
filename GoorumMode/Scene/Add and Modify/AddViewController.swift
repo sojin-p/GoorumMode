@@ -22,10 +22,15 @@ final class AddViewController: BaseViewController {
         setBarButtonItem()
         
         mainView.extendButton.addTarget(self, action: #selector(extendButtonClicked), for: .touchUpInside)
+        mainView.pickMoodImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickMoodImageClicked)))
         
         sheetPresentationController?.delegate = self
         mainView.oneLineTextField.delegate = self
         mainView.detailTextView.delegate = self
+    }
+    
+    @objc func pickMoodImageClicked() {
+        print("클릭 됨")
     }
     
     @objc func extendButtonClicked() {

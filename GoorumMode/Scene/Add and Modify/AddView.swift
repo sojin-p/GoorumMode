@@ -32,6 +32,7 @@ final class AddView: BaseView {
         view.accessibilityLabel = "기분 선택"
         view.accessibilityTraits = .button
         view.accessibilityHint = "기분을 선택하려면 두 번 탭 하세요."
+        view.isUserInteractionEnabled = true
         return view
     }()
     

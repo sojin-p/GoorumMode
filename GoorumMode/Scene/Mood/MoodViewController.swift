@@ -22,13 +22,6 @@ final class MoodViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for family in UIFont.familyNames {
-            print("패밀리: ",family)
-            for name in UIFont.fontNames(forFamilyName: family) {
-                print("===", name)
-            }
-        }
-        
         mainView.setupAccessibilityLabel()
         configureDataSource()
         updateSnapshot()
