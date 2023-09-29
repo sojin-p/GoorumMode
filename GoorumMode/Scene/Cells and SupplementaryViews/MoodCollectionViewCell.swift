@@ -9,13 +9,6 @@ import UIKit
 
 final class MoodCollectionViewCell: BaseCollectionViewCell {
     
-    private let backView = {
-        let view = UIView()
-        view.backgroundColor = Constants.Color.Background.white
-        view.layer.cornerRadius = 15
-        return view
-    }()
-    
     private let baseStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -71,14 +64,9 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    let detailLabel = {
+    private lazy var detailBackView = {
         let view = UILabel()
-        view.text = "오늘의 일기는 어쩌고 저쩌고해서 이랬다. 그리고 어쩌구군ㅇㄴ아ㅓ룸루했고 ㅁㅈ누이ㅏㅁㄴㄹㅇ여서 ㄴㅇ물니ㅏㅁ두라ㅣ였다.!"
-        view.font = Constants.Font.regular(size: 14)
-        view.numberOfLines = 0
-        view.textColor = Constants.Color.Text.basicTitle
-        view.setLineSpacing(spacing: 4)
-        if view.text == nil {
+        if detailLabel.text == nil {
             view.isHidden = true
         } else {
             view.isHidden = false
@@ -86,38 +74,46 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
+    let detailLabel = {
+        let view = UILabel()
+        view.text = "오늘의 일기는 어쩌고 저쩌고해서 이랬다. 그리고 어쩌구군ㅇㄴ아ㅓ룸루했고 ㅁㅈ누이ㅏㅁㄴㄹㅇ여서 ㄴㅇ물니ㅏㅁ두라ㅣ였다.!"
+        view.font = Constants.Font.regular(size: 14)
+        view.numberOfLines = 0
+        view.textColor = Constants.Color.Text.basicTitle
+        view.setLineSpacing(spacing: 4)
+        return view
+    }()
+    
     override func configure() {
-        contentView.addSubview(backView)
-        backView.addSubview(baseStackView)
-        [containerView, detailLabel].forEach { baseStackView.addArrangedSubview($0) }
+        contentView.backgroundColor = Constants.Color.Background.white
+        contentView.layer.cornerRadius = 15
+        
+        contentView.addSubview(baseStackView)
+        [containerView, detailBackView].forEach { baseStackView.addArrangedSubview($0) }
+        detailBackView.addSubview(detailLabel)
         [moodImageView, timeStackView].forEach { containerView.addSubview($0) }
         [timeLabel, onelineLabel].forEach { timeStackView.addArrangedSubview($0) }
     }
     
     override func setConstraints() {
         
-        backView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
-        }
-        
         baseStackView.snp.makeConstraints { make in
-            make.edges.equalTo(backView).inset(15)
+            make.edges.equalTo(contentView).inset(15)
+        }
+
+        containerView.snp.makeConstraints { make in
+            make.height.equalTo(60)
         }
         
         detailLabel.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalToSuperview().inset(5)
-        }
-        
-        containerView.snp.makeConstraints { make in
-            make.height.equalTo(60)
-            make.horizontalEdges.equalToSuperview()
+            make.edges.equalToSuperview().inset(5)
         }
         
         moodImageView.snp.makeConstraints { make in
             make.size.equalTo(60)
             make.leading.centerY.equalToSuperview()
         }
-        
+
         timeStackView.snp.makeConstraints { make in
             make.leading.equalTo(moodImageView.snp.trailing).offset(12)
             make.centerY.trailing.equalToSuperview()
