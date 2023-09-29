@@ -128,7 +128,8 @@ final class AddView: BaseView {
         
         detailTextView.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.bottom).offset(15)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).inset(20)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            make.bottom.equalTo(keyboardLayoutGuide.snp.top).offset(-15)
         }
     }
     

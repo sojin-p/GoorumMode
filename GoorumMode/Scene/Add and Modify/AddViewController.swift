@@ -59,6 +59,7 @@ final class AddViewController: BaseViewController {
     
 }
 
+// MARK: - detailTextViewDelegate
 extension AddViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -74,9 +75,9 @@ extension AddViewController: UITextViewDelegate {
             textView.textColor = Constants.Color.Text.basicPlaceholder
         }
     }
-    
 }
 
+// MARK: - oneLineTextFieldDelegate
 extension AddViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -96,6 +97,7 @@ extension AddViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - SheetControllerDelegate
 extension AddViewController: UISheetPresentationControllerDelegate {
     
     func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
@@ -112,13 +114,13 @@ extension AddViewController: UISheetPresentationControllerDelegate {
     }
     
     func setupSheet() {
-        let smallId = UISheetPresentationController.Detent.Identifier("small")
-        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallId) { context in
-            return 200
-        }
-        
         if let sheet = sheetPresentationController {
-            sheet.detents = [smallDetent, .large()]
+            sheet.detents = [
+                .custom(identifier: .small) { context in
+                    200
+                },
+                .large()
+            ]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.preferredCornerRadius = 20
             sheet.prefersGrabberVisible = true

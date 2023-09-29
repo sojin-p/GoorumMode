@@ -30,3 +30,7 @@ extension UILabel {
     }
     
 }
+
+extension UISheetPresentationController.Detent.Identifier {
+    static let small = UISheetPresentationController.Detent.Identifier("small")
+}
