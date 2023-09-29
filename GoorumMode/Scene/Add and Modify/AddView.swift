@@ -13,7 +13,7 @@ final class AddView: BaseView {
     lazy var detailTextView = {
         let view = UITextView()
         view.backgroundColor = Constants.Color.Background.basic
-        view.font = Constants.Font.regular(size: 14)
+        view.font = Constants.Font.regular(size: 15)
         view.isHidden = true
         view.text = self.detailTextViewPlaceholder
         view.textColor = Constants.Color.Text.basicPlaceholder
@@ -27,7 +27,8 @@ final class AddView: BaseView {
     
     let pickMoodImageView = {
         let view = UIImageView()
-        view.backgroundColor = .lightGray
+        view.image = UIImage(named: "Mood_Placeholder")
+        view.contentMode = .scaleAspectFit
         view.isAccessibilityElement = true
         view.accessibilityLabel = "기분 선택"
         view.accessibilityTraits = .button
@@ -52,7 +53,7 @@ final class AddView: BaseView {
     let oneLineTextField = {
         let view = UITextField()
         view.placeholder = "기분을 선택한 이유(15자)"
-        view.font = Constants.Font.regular(size: 14)
+        view.font = Constants.Font.regular(size: 15)
         view.addLeftPadding()
         return view
     }()
@@ -88,19 +89,20 @@ final class AddView: BaseView {
     
     override func setConstraints() {
         containerView.snp.makeConstraints { make in
-            make.height.equalTo(70)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(80)
+            make.horizontalEdges.equalToSuperview().inset(15)
             make.top.equalTo(safeAreaLayoutGuide)
         }
         
         pickMoodImageView.snp.makeConstraints { make in
-            make.size.equalTo(70)
+            make.size.equalTo(containerView.snp.height)
             make.leading.centerY.equalToSuperview()
         }
         
         timeBackView.snp.makeConstraints { make in
-            make.leading.equalTo(pickMoodImageView.snp.trailing).offset(15)
-            make.verticalEdges.centerY.trailing.equalToSuperview()
+            make.leading.equalTo(pickMoodImageView.snp.trailing).offset(5)
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-10)
         }
         
         extendButton.snp.makeConstraints { make in
@@ -113,6 +115,7 @@ final class AddView: BaseView {
             make.leading.bottom.equalToSuperview()
             make.trailing.equalTo(extendButton.snp.leading).offset(-5)
             make.height.equalTo(35)
+            make.top.equalTo(timePicker.snp.bottom).offset(4)
         }
         
         underLineView.snp.makeConstraints { make in
@@ -128,7 +131,7 @@ final class AddView: BaseView {
         
         detailTextView.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.bottom).offset(15)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(25)
             make.bottom.equalTo(keyboardLayoutGuide.snp.top).offset(-15)
         }
     }

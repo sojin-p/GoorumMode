@@ -47,7 +47,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         view.text = "23:30"
         view.accessibilityLabel = "\(view.text!)시간에 등록했습니다."
         view.textColor = Constants.Color.Text.basicSubTitle
-        view.font = Constants.Font.extraBold(size: 14)
+        view.font = Constants.Font.extraBold(size: 15)
         return view
     }()
     
@@ -55,7 +55,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         let view = UILabel()
         view.text = "Hi, How are you?"
         view.textColor = Constants.Color.Text.basicTitle
-        view.font = Constants.Font.regular(size: 14)
+        view.font = Constants.Font.regular(size: 15)
         if view.text == nil {
             view.isHidden = true
         } else {
@@ -77,10 +77,10 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     let detailLabel = {
         let view = UILabel()
         view.text = "오늘의 일기는 어쩌고 저쩌고해서 이랬다. 그리고 어쩌구군ㅇㄴ아ㅓ룸루했고 ㅁㅈ누이ㅏㅁㄴㄹㅇ여서 ㄴㅇ물니ㅏㅁ두라ㅣ였다.!"
-        view.font = Constants.Font.regular(size: 14)
+        view.font = Constants.Font.regular(size: 15)
         view.numberOfLines = 0
         view.textColor = Constants.Color.Text.basicTitle
-        view.setLineSpacing(spacing: 4)
+        view.setLineSpacing(spacing: 5)
         return view
     }()
     

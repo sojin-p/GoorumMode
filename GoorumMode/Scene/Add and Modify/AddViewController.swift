@@ -31,9 +31,14 @@ final class AddViewController: BaseViewController {
     
     @objc func pickMoodImageClicked() {
         
-        let vc = UINavigationController(rootViewController: PickMoodViewController())
+        let vc = PickMoodViewController()
+        let nav = UINavigationController(rootViewController: vc)
         
-        present(vc, animated: true)
+        vc.completionHandler = { [weak self] image in
+            self?.mainView.pickMoodImageView.image = image
+        }
+        
+        present(nav, animated: true)
     }
     
     @objc func extendButtonClicked() {
@@ -104,10 +109,8 @@ extension AddViewController: UISheetPresentationControllerDelegate {
         guard let sheetId = sheetPresentationController.selectedDetentIdentifier else { return }
         sheetPresentationController.animateChanges {
             if sheetId.rawValue == "small" {
-                print("작다")
                 mainView.detailTextView.isHidden = true
             } else {
-                print("크다")
                 mainView.detailTextView.isHidden = false
             }
         }
