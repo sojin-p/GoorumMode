@@ -29,6 +29,9 @@
 		23DD9A3B2AC52CB200D6BBB5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */; };
 		23DD9A3D2AC54A1400D6BBB5 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A3C2AC54A1300D6BBB5 /* AddView.swift */; };
 		23DD9A3F2AC5A5D300D6BBB5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A3E2AC5A5D300D6BBB5 /* UIViewController+Extension.swift */; };
+		23DD9A472AC6A87800D6BBB5 /* NanumSquareNeoOTF-Rg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9A452AC6A87700D6BBB5 /* NanumSquareNeoOTF-Rg.otf */; };
+		23DD9A492AC6AC1500D6BBB5 /* NanumSquareNeoOTF-Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9A482AC6AC1500D6BBB5 /* NanumSquareNeoOTF-Bd.otf */; };
+		23DD9A4B2AC6AEE100D6BBB5 /* NanumSquareNeoOTF-Eb.otf in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9A4A2AC6AEE100D6BBB5 /* NanumSquareNeoOTF-Eb.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		23DD9A3C2AC54A1300D6BBB5 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		23DD9A3E2AC5A5D300D6BBB5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		23DD9A452AC6A87700D6BBB5 /* NanumSquareNeoOTF-Rg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Rg.otf"; sourceTree = "<group>"; };
+		23DD9A482AC6AC1500D6BBB5 /* NanumSquareNeoOTF-Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Bd.otf"; sourceTree = "<group>"; };
+		23DD9A4A2AC6AEE100D6BBB5 /* NanumSquareNeoOTF-Eb.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Eb.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +96,10 @@
 		2380FB1E2AB9E6B200B31754 /* GoorumMode */ = {
 			isa = PBXGroup;
 			children = (
+				23DD9A0E2AC15E3900D6BBB5 /* Utility */,
+				23DD9A432AC6A7C500D6BBB5 /* Font */,
 				23DD9A342AC4723800D6BBB5 /* Realm */,
 				23DD9A1C2AC2EB1F00D6BBB5 /* Scene */,
-				23DD9A0E2AC15E3900D6BBB5 /* Utility */,
 				2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */,
 				2380FB212AB9E6B200B31754 /* SceneDelegate.swift */,
 				2380FB282AB9E6B400B31754 /* Assets.xcassets */,
@@ -120,6 +127,7 @@
 				23DD9A1D2AC2EB3A00D6BBB5 /* Base */,
 				23DD9A2D2AC44A9C00D6BBB5 /* Mood */,
 				23DD9A372AC52C2C00D6BBB5 /* Add and Modify */,
+				23DD9A4C2AC6B2A900D6BBB5 /* PickMood */,
 				23DD9A2E2AC44AAE00D6BBB5 /* Cells and SupplementaryViews */,
 			);
 			path = Scene;
@@ -168,6 +176,23 @@
 				23DD9A3C2AC54A1300D6BBB5 /* AddView.swift */,
 			);
 			path = "Add and Modify";
+			sourceTree = "<group>";
+		};
+		23DD9A432AC6A7C500D6BBB5 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A452AC6A87700D6BBB5 /* NanumSquareNeoOTF-Rg.otf */,
+				23DD9A482AC6AC1500D6BBB5 /* NanumSquareNeoOTF-Bd.otf */,
+				23DD9A4A2AC6AEE100D6BBB5 /* NanumSquareNeoOTF-Eb.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		23DD9A4C2AC6B2A900D6BBB5 /* PickMood */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PickMood;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,9 +263,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DD9A4B2AC6AEE100D6BBB5 /* NanumSquareNeoOTF-Eb.otf in Resources */,
 				2380FB2C2AB9E6B400B31754 /* LaunchScreen.storyboard in Resources */,
 				23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */,
 				2380FB292AB9E6B400B31754 /* Assets.xcassets in Resources */,
+				23DD9A492AC6AC1500D6BBB5 /* NanumSquareNeoOTF-Bd.otf in Resources */,
+				23DD9A472AC6A87800D6BBB5 /* NanumSquareNeoOTF-Rg.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

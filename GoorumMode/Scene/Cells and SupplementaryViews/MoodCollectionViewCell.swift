@@ -45,7 +45,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         view.axis = .vertical
         view.alignment = .fill
         view.distribution = .fillEqually
-        view.spacing = 5
+        view.spacing = 8
         return view
     }()
     
@@ -54,7 +54,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         view.text = "23:30"
         view.accessibilityLabel = "\(view.text!)시간에 등록했습니다."
         view.textColor = Constants.Color.Text.basicSubTitle
-        view.font = .systemFont(ofSize: 16, weight: .medium)
+        view.font = Constants.Font.extraBold(size: 14)
         return view
     }()
     
@@ -62,7 +62,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         let view = UILabel()
         view.text = "Hi, How are you?"
         view.textColor = Constants.Color.Text.basicTitle
-        view.font = .systemFont(ofSize: 16)
+        view.font = Constants.Font.regular(size: 14)
         if view.text == nil {
             view.isHidden = true
         } else {
@@ -73,10 +73,11 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     
     let detailLabel = {
         let view = UILabel()
-        view.text = "detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail detail"
-        view.font = .systemFont(ofSize: 16)
+        view.text = "오늘의 일기는 어쩌고 저쩌고해서 이랬다. 그리고 어쩌구군ㅇㄴ아ㅓ룸루했고 ㅁㅈ누이ㅏㅁㄴㄹㅇ여서 ㄴㅇ물니ㅏㅁ두라ㅣ였다.!"
+        view.font = Constants.Font.regular(size: 14)
         view.numberOfLines = 0
         view.textColor = Constants.Color.Text.basicTitle
+        view.setLineSpacing(spacing: 4)
         if view.text == nil {
             view.isHidden = true
         } else {
@@ -101,6 +102,10 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         
         baseStackView.snp.makeConstraints { make in
             make.edges.equalTo(backView).inset(15)
+        }
+        
+        detailLabel.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalToSuperview().inset(5)
         }
         
         containerView.snp.makeConstraints { make in

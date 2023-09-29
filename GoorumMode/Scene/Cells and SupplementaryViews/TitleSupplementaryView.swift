@@ -13,7 +13,7 @@ final class TitleSupplementaryView: UICollectionReusableView {
         let view = UILabel()
         view.textAlignment = .center
         view.textColor = Constants.Color.Text.basicSubTitle
-        view.font = .systemFont(ofSize: 17)
+        view.font = Constants.Font.extraBold(size: 16)
         return view
     }()
 

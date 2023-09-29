@@ -13,11 +13,10 @@ final class AddView: BaseView {
     lazy var detailTextView = {
         let view = UITextView()
         view.backgroundColor = Constants.Color.Background.basic
-        view.font = .systemFont(ofSize: 17)
+        view.font = Constants.Font.regular(size: 14)
         view.isHidden = true
         view.text = self.detailTextViewPlaceholder
         view.textColor = Constants.Color.Text.basicPlaceholder
-        view.font = .systemFont(ofSize: 16)
         return view
     }()
     
@@ -52,7 +51,7 @@ final class AddView: BaseView {
     let oneLineTextField = {
         let view = UITextField()
         view.placeholder = "기분을 선택한 이유(15자)"
-        view.font = .systemFont(ofSize: 16)
+        view.font = Constants.Font.regular(size: 14)
         view.addLeftPadding()
         return view
     }()
