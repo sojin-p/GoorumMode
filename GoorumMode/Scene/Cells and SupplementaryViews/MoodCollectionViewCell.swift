@@ -14,7 +14,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         view.axis = .vertical
         view.alignment = .fill
         view.distribution = .fill
-        view.spacing = 12
+        view.spacing = 0
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -47,7 +47,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         view.text = "23:30"
         view.accessibilityLabel = "\(view.text!)시간에 등록했습니다."
         view.textColor = Constants.Color.Text.basicSubTitle
-        view.font = Constants.Font.extraBold(size: 15)
+        view.font = Constants.Font.bold(size: 15)
         return view
     }()
     
@@ -78,7 +78,6 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         view.font = Constants.Font.regular(size: 15)
         view.numberOfLines = 0
         view.textColor = Constants.Color.Text.basicTitle
-        view.setLineSpacing(spacing: 5)
         return view
     }()
     
@@ -104,7 +103,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         }
         
         detailLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(5)
+            make.edges.equalToSuperview().inset(12)
         }
         
         moodImageView.snp.makeConstraints { make in

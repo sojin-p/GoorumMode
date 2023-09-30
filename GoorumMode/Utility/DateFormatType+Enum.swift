@@ -15,7 +15,7 @@ enum DateFormatType {
     
     var description: String {
         switch self {
-        case .detailedDate: return "yyyy.MM.dd a hh:mm:ss"
+        case .detailedDate: return "yyyy.MM.dd. a hh:mm:ss"
         case .timeWithoutSecond: return "a hh:mm"
         case .yearAndMouth: return "yyyy.MM"
         case .onlyDay: return "dd"

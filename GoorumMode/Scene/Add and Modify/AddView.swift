@@ -76,10 +76,10 @@ final class AddView: BaseView {
             view.layer.cornerRadius = view.frame.width / 2
             view.setImage(UIImage(systemName: "plus"), for: .normal)
             view.tintColor = Constants.Color.iconTint.basicBlack
-            view.layer.shadowColor = UIColor.lightGray.cgColor
-            view.layer.shadowOffset = .zero
-            view.layer.shadowRadius = 3
-            view.layer.shadowOpacity = 0.5
+//            view.layer.shadowColor = UIColor.lightGray.cgColor
+//            view.layer.shadowOffset = .zero
+//            view.layer.shadowRadius = 3
+//            view.layer.shadowOpacity = 0.5
             view.backgroundColor = Constants.Color.Background.white
         }
         view.accessibilityLabel = "내용 추가"
