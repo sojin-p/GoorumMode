@@ -48,6 +48,11 @@ final class AddView: BaseView {
         view.datePickerMode = .time
         view.preferredDatePickerStyle = .compact
         view.contentHorizontalAlignment = .leading
+        let calendar = Calendar(identifier: .gregorian)
+        var components = DateComponents()
+        components.timeZone = TimeZone(identifier: TimeZone.current.identifier)
+        let maxTime = calendar.date(byAdding: components, to: Date())
+        view.maximumDate = maxTime
         return view
     }()
     
