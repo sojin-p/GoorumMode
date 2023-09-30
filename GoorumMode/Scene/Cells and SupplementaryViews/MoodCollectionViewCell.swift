@@ -27,7 +27,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     
     let moodImageView = {
         let view = UIImageView()
-        view.backgroundColor = .lightGray
+        view.contentMode = .scaleAspectFit
         view.isAccessibilityElement = true
         view.accessibilityLabel = "기분"
         return view
@@ -53,10 +53,9 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     
     let onelineLabel = {
         let view = UILabel()
-        view.text = "Hi, How are you?"
         view.textColor = Constants.Color.Text.basicTitle
         view.font = Constants.Font.regular(size: 15)
-        if view.text == nil {
+        if let text = view.text, text.isEmpty {
             view.isHidden = true
         } else {
             view.isHidden = false
@@ -64,9 +63,9 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    private lazy var detailBackView = {
+    lazy var detailBackView = {
         let view = UILabel()
-        if detailLabel.text == nil {
+        if let text = detailLabel.text, text.isEmpty {
             view.isHidden = true
         } else {
             view.isHidden = false
@@ -76,7 +75,6 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     
     let detailLabel = {
         let view = UILabel()
-        view.text = "오늘의 일기는 어쩌고 저쩌고해서 이랬다. 그리고 어쩌구군ㅇㄴ아ㅓ룸루했고 ㅁㅈ누이ㅏㅁㄴㄹㅇ여서 ㄴㅇ물니ㅏㅁ두라ㅣ였다.!"
         view.font = Constants.Font.regular(size: 15)
         view.numberOfLines = 0
         view.textColor = Constants.Color.Text.basicTitle
@@ -102,7 +100,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         }
 
         containerView.snp.makeConstraints { make in
-            make.height.equalTo(60)
+            make.height.equalTo(70)
         }
         
         detailLabel.snp.makeConstraints { make in
@@ -110,7 +108,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         }
         
         moodImageView.snp.makeConstraints { make in
-            make.size.equalTo(60)
+            make.size.equalTo(containerView.snp.height)
             make.leading.centerY.equalToSuperview()
         }
 

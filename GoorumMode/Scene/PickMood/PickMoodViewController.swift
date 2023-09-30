@@ -11,7 +11,7 @@ final class PickMoodViewController: BaseViewController {
     
     private let mainView = PickMoodView()
     
-    var completionHandler: ((UIImage) -> Void)?
+    var completionHandler: ((String) -> Void)?
     
     override func loadView() {
         view = mainView
@@ -44,8 +44,8 @@ extension PickMoodViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let emojiImage = MoodEmojis.allCases[indexPath.item].image
-        completionHandler?(emojiImage)
+        let emojiName = MoodEmojis.allCases[indexPath.item].rawValue
+        completionHandler?(emojiName)
         dismiss(animated: true)
     }
 }

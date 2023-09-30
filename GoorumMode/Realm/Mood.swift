@@ -16,9 +16,12 @@ final class Mood: Object {
     @Persisted var detailText: String?
     @Persisted var image: String?
     
-    convenience init(mood: String, date: Date) {
+    convenience init(mood: String, date: Date, onelineText: String?, detailText: String?, image: String?) {
         self.init()
         self.mood = mood
         self.date = date
+        self.onelineText = onelineText
+        self.detailText = detailText
+        self.image = image
     }
 }

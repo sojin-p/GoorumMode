@@ -13,7 +13,7 @@ enum Section {
     
     var header: String {
         switch self {
-        case .today: return "2023.01.01 월요일"
+        case .today: return Date().toString(of: .dateForTitle)
         }
     }
     

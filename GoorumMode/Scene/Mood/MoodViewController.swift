@@ -9,9 +9,9 @@ import UIKit
 
 final class MoodViewController: BaseViewController {
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, String>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
     
-    let list = ["15자 밖에 못쓰는데....", "너무 쏠려보이나?", "fdnsdgfsdfdsf34", "ㄴㅇㄹㅇㄴㄹㄴㅇㅎ", "ㅁㄴㅇㄹㄴㅇㄴ"]
+    var moods: [Mood] = []
     
     let mainView = MoodView()
     
@@ -31,9 +31,15 @@ final class MoodViewController: BaseViewController {
     
     @objc func addButtonClicked() {
         
-        let vc = UINavigationController(rootViewController: AddViewController())
+        let vc = AddViewController()
+        let nav = UINavigationController(rootViewController: vc)
         
-        present(vc, animated: true)
+        vc.completionHandler = { [weak self] data in
+            self?.moods.append(data)
+            self?.updateSnapshot()
+        }
+        
+        present(nav, animated: true)
     }
 
 }
@@ -42,9 +48,9 @@ final class MoodViewController: BaseViewController {
 extension MoodViewController {
     
     func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Mood>()
         snapshot.appendSections([.today])
-        snapshot.appendItems(list)
+        snapshot.appendItems(moods)
         
         dataSource.apply(snapshot)
         
@@ -52,9 +58,21 @@ extension MoodViewController {
     
     func configureDataSource() {
         
-        let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, String>(handler: { cell, indexPath, itemIdentifier in
-            cell.moodImageView.image = UIImage(systemName: "star")
-            cell.onelineLabel.text = itemIdentifier
+        let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
+            
+            cell.moodImageView.image = UIImage(named: itemIdentifier.mood)
+            cell.timeLabel.text = itemIdentifier.date.toString(of: .timeWithoutSecond)
+            
+            if let onelineText = itemIdentifier.onelineText, onelineText.isEmpty {
+                cell.onelineLabel.isHidden = true
+            }
+            cell.onelineLabel.text = itemIdentifier.onelineText
+            
+            if let detailText = itemIdentifier.detailText, detailText.isEmpty {
+                cell.detailBackView.isHidden = true
+            }
+            
+            cell.detailLabel.text = itemIdentifier.detailText
         })
         
         let headerRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: Section.today.header) { supplementaryView, elementKind, indexPath in

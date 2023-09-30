@@ -21,6 +21,8 @@ enum MoodEmojis: String, CaseIterable {
     case lovely = "10_Basic_Lovely"
     case passionate = "11_Basic_Passionate"
     
+    static let placeholder = "Mood_Placeholder"
+    
     var image: UIImage {
         return UIImage(named: self.rawValue)!
     }

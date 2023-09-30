@@ -10,6 +10,9 @@ import UIKit
 final class AddViewController: BaseViewController {
     
     let mainView = AddView()
+    var time: Date?
+    var completionHandler: ((Mood) -> Void)?
+    var moodImageName: String?
     
     override func loadView() {
         view = mainView
@@ -23,6 +26,7 @@ final class AddViewController: BaseViewController {
         
         mainView.extendButton.addTarget(self, action: #selector(extendButtonClicked), for: .touchUpInside)
         mainView.pickMoodImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickMoodImageClicked)))
+        mainView.timePicker.addTarget(self, action: #selector(timePickerChanged), for: .valueChanged)
         
         sheetPresentationController?.delegate = self
         mainView.oneLineTextField.delegate = self
@@ -34,8 +38,9 @@ final class AddViewController: BaseViewController {
         let vc = PickMoodViewController()
         let nav = UINavigationController(rootViewController: vc)
         
-        vc.completionHandler = { [weak self] image in
-            self?.mainView.pickMoodImageView.image = image
+        vc.completionHandler = { [weak self] imageName in
+            self?.mainView.pickMoodImageView.image = UIImage(named: imageName)
+            self?.moodImageName = imageName
         }
         
         present(nav, animated: true)
@@ -48,13 +53,47 @@ final class AddViewController: BaseViewController {
         }
     }
     
+    @objc func timePickerChanged(_ sender: UIDatePicker) {
+        time = sender.date
+        print("변경됨", sender.date)
+    }
+    
+    func doneButtonClicked() {
+        
+        guard let image = mainView.pickMoodImageView.image, image != mainView.pickMoodPlaceholder else {
+            showAlert(title: "기분을 선택하세요.", massage: nil)
+            return
+        }
+        
+        let unselectedTime = mainView.timePicker.date
+        
+        guard let onelineText = mainView.oneLineTextField.text else {
+            //nil
+            return }
+        
+        if mainView.detailTextView.isHidden {
+            mainView.detailTextView.text = ""
+        }
+        
+        guard let detailText = mainView.detailTextView.text else {
+            //nil
+            return
+        }
+        
+        let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: time ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
+        
+        completionHandler?(data)
+        
+        dismiss(animated: true)
+    }
+    
     func setBarButtonItem() {
         let close = UIBarButtonItem(image: UIImage(systemName: "xmark"), primaryAction: .init(handler: { [weak self] action in
             self?.dismiss(animated: true)
         }))
         
-        let done = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { action in
-            print("doneButtonClicked")
+        let done = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { [weak self] action in
+            self?.doneButtonClicked()
         }))
         
         navigationItem.leftBarButtonItem = close

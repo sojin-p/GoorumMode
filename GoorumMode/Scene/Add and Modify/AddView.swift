@@ -25,9 +25,10 @@ final class AddView: BaseView {
         return view
     }()
     
-    let pickMoodImageView = {
+    let pickMoodPlaceholder = UIImage(named: MoodEmojis.placeholder)
+    lazy var pickMoodImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "Mood_Placeholder")
+        view.image = pickMoodPlaceholder
         view.contentMode = .scaleAspectFit
         view.isAccessibilityElement = true
         view.accessibilityLabel = "기분 선택"
