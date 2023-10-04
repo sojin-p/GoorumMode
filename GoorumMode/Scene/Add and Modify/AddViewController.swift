@@ -94,10 +94,20 @@ final class AddViewController: BaseViewController {
             return
         }
         
-        let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: time ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
-        
-        MoodRepository.shared.createItem(data)
-        completionHandler?(data)
+        if transtion == .add {
+            print("추가 화면")
+            let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: time ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
+
+            MoodRepository.shared.createItem(data)
+            completionHandler?(data)
+            
+        } else if transtion == .modify {
+            print("수정 화면")
+            
+            guard let moods else { return }
+            
+            MoodRepository.shared.updateItem(id: moods._id, mood: moodImageName ?? moods.mood, date: time ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
+        }
         
         dismiss(animated: true)
     }
@@ -172,7 +182,6 @@ extension AddViewController {
     
     func setModifyView() {
         guard let moods else { return }
-        
         mainView.pickMoodImageView.image = UIImage(named: moods.mood)
         mainView.oneLineTextField.text = moods.onelineText
         mainView.timePicker.date = moods.date
