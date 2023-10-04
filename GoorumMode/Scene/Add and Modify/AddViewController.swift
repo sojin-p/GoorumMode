@@ -25,10 +25,11 @@ final class AddViewController: BaseViewController {
         setBarButtonItem()
         
         mainView.extendButton.addTarget(self, action: #selector(extendButtonClicked), for: .touchUpInside)
+        
         mainView.pickMoodImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickMoodImageClicked)))
+        
         mainView.timePicker.addTarget(self, action: #selector(timePickerChanged), for: .valueChanged)
         
-        sheetPresentationController?.delegate = self
         mainView.oneLineTextField.delegate = self
         mainView.detailTextView.delegate = self
     }
@@ -47,15 +48,17 @@ final class AddViewController: BaseViewController {
     }
     
     @objc func extendButtonClicked() {
-        sheetPresentationController?.animateChanges {
-            sheetPresentationController?.selectedDetentIdentifier = .large
-            mainView.detailTextView.isHidden = false
+        if let sheet = sheetPresentationController {
+            sheet.animateChanges {
+                sheet.detents = [.large()]
+            }
         }
+        mainView.detailTextView.isHidden = false
     }
+    
     
     @objc func timePickerChanged(_ sender: UIDatePicker) {
         time = sender.date
-        print("변경됨", sender.date)
     }
     
     func doneButtonClicked() {
@@ -82,23 +85,10 @@ final class AddViewController: BaseViewController {
         
         let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: time ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
         
+        MoodRepository.shared.createItem(data)
         completionHandler?(data)
         
         dismiss(animated: true)
-    }
-    
-    func setBarButtonItem() {
-        let close = UIBarButtonItem(image: UIImage(systemName: "xmark"), primaryAction: .init(handler: { [weak self] action in
-            self?.dismiss(animated: true)
-        }))
-        
-        let done = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { [weak self] action in
-            self?.doneButtonClicked()
-        }))
-        
-        navigationItem.leftBarButtonItem = close
-        navigationItem.rightBarButtonItem = done
-        navigationController?.navigationBar.tintColor = Constants.Color.iconTint.basicBlack
     }
     
 }
@@ -141,32 +131,35 @@ extension AddViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - SheetControllerDelegate
-extension AddViewController: UISheetPresentationControllerDelegate {
-    
-    func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
-        guard let sheetId = sheetPresentationController.selectedDetentIdentifier else { return }
-        sheetPresentationController.animateChanges {
-            if sheetId.rawValue == "small" {
-                mainView.detailTextView.isHidden = true
-            } else {
-                mainView.detailTextView.isHidden = false
-            }
-        }
-    }
+// MARK: - UI
+extension AddViewController {
     
     func setupSheet() {
+        isModalInPresentation = true
+        
         if let sheet = sheetPresentationController {
             sheet.detents = [
                 .custom(identifier: .small) { context in
                     200
-                },
-                .large()
+                }
             ]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.preferredCornerRadius = 20
-            sheet.prefersGrabberVisible = true
         }
         
+    }
+    
+    func setBarButtonItem() {
+        let close = UIBarButtonItem(image: UIImage(systemName: "xmark"), primaryAction: .init(handler: { [weak self] action in
+            self?.dismiss(animated: true)
+        }))
+        
+        let done = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { [weak self] action in
+            self?.doneButtonClicked()
+        }))
+        
+        navigationItem.leftBarButtonItem = close
+        navigationItem.rightBarButtonItem = done
+        navigationController?.navigationBar.tintColor = Constants.Color.iconTint.basicBlack
     }
 }

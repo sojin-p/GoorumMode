@@ -6,15 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class MoodViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
     
-    var moods: [Mood] = [
-        Mood(mood: MoodEmojis.tired.rawValue, date: Date(), onelineText: "코딩함", detailText: "오늘은 무엇무엇을 했다. 어쩌구 저쩌구를 했는데 나쁘지않았다. 오늘 CRUD를 만들었어야 했는데 값 전달이랑, 다른 이슈 등을 해결하다보니 오늘 하루가 다 갔다. 언제쯤 CRUD에 들어갈 수 있을까?", image: ""),
-        Mood(mood: MoodEmojis.neutral.rawValue, date: Date(), onelineText: "", detailText: "", image: "")
-    ]
+    var moodResults: Results<Mood>!
+    lazy var moods = moodResults.toArray()
     
     let mainView = MoodView()
     
@@ -25,11 +24,16 @@ final class MoodViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        moodResults = MoodRepository.shared.fetch()
+        
         mainView.setupAccessibilityLabel()
         configureDataSource()
         updateSnapshot()
         
         mainView.addMoodButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
+        
+        MoodRepository.shared.checkFileURL()
+        
     }
     
     @objc func addButtonClicked() {
@@ -38,7 +42,7 @@ final class MoodViewController: BaseViewController {
         let nav = UINavigationController(rootViewController: vc)
         
         vc.completionHandler = { [weak self] data in
-            self?.moods.append(data)
+            self?.moods.insert(data, at: 0)
             self?.updateSnapshot()
         }
         
