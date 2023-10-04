@@ -14,6 +14,10 @@ final class AddViewController: BaseViewController {
     var completionHandler: ((Mood) -> Void)?
     var moodImageName: String?
     
+    var transtion: TransitionType = .add
+    
+    var moods: Mood?
+    
     override func loadView() {
         view = mainView
     }
@@ -21,7 +25,10 @@ final class AddViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSheet()
+        setupSheet(.custom(resolver: { context in
+            200
+        }))
+        
         setBarButtonItem()
         
         mainView.extendButton.addTarget(self, action: #selector(extendButtonClicked), for: .touchUpInside)
@@ -32,6 +39,10 @@ final class AddViewController: BaseViewController {
         
         mainView.oneLineTextField.delegate = self
         mainView.detailTextView.delegate = self
+        
+        if transtion == .modify {
+            setModifyView()
+        }
     }
     
     @objc func pickMoodImageClicked() {
@@ -134,15 +145,11 @@ extension AddViewController: UITextFieldDelegate {
 // MARK: - UI
 extension AddViewController {
     
-    func setupSheet() {
+    func setupSheet(_ detentsID: UISheetPresentationController.Detent) {
         isModalInPresentation = true
         
         if let sheet = sheetPresentationController {
-            sheet.detents = [
-                .custom(identifier: .small) { context in
-                    200
-                }
-            ]
+            sheet.detents = [detentsID]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.preferredCornerRadius = 20
         }
@@ -161,5 +168,24 @@ extension AddViewController {
         navigationItem.leftBarButtonItem = close
         navigationItem.rightBarButtonItem = done
         navigationController?.navigationBar.tintColor = Constants.Color.iconTint.basicBlack
+    }
+    
+    func setModifyView() {
+        guard let moods else { return }
+        
+        mainView.pickMoodImageView.image = UIImage(named: moods.mood)
+        mainView.oneLineTextField.text = moods.onelineText
+        mainView.timePicker.date = moods.date
+        
+        if let detailText = moods.detailText, !(detailText.isEmpty) {
+            setupSheet(.large())
+            mainView.detailTextView.text = moods.detailText
+            mainView.detailTextView.isHidden = false
+            mainView.detailTextView.textColor = Constants.Color.Text.basicTitle
+        }
+    }
+    
+    enum TransitionType {
+        case add, modify
     }
 }

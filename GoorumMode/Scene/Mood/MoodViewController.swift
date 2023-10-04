@@ -34,6 +34,8 @@ final class MoodViewController: BaseViewController {
         
         MoodRepository.shared.checkFileURL()
         
+        mainView.collectionView.delegate = self
+        
     }
     
     @objc func addButtonClicked() {
@@ -41,6 +43,7 @@ final class MoodViewController: BaseViewController {
         let vc = AddViewController()
         let nav = UINavigationController(rootViewController: vc)
         
+        vc.transtion = .add
         vc.completionHandler = { [weak self] data in
             self?.moods.insert(data, at: 0)
             self?.updateSnapshot()
@@ -72,14 +75,17 @@ extension MoodViewController {
             
             if let onelineText = itemIdentifier.onelineText, onelineText.isEmpty {
                 cell.onelineLabel.isHidden = true
+            } else {
+                cell.onelineLabel.text = itemIdentifier.onelineText
+                cell.onelineLabel.isHidden = false
             }
-            cell.onelineLabel.text = itemIdentifier.onelineText
             
             if let detailText = itemIdentifier.detailText, detailText.isEmpty {
                 cell.detailBackView.isHidden = true
+            } else {
+                cell.detailLabel.text = itemIdentifier.detailText
+                cell.detailBackView.isHidden = false
             }
-            
-            cell.detailLabel.text = itemIdentifier.detailText
             cell.detailLabel.setLineSpacing(spacing: 5)
         })
         
@@ -95,6 +101,20 @@ extension MoodViewController {
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             return self.mainView.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
+        
+    }
+}
+
+extension MoodViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = AddViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        
+        vc.transtion = .modify
+        vc.moods = moods[indexPath.item]
+
+        present(nav, animated: true)
         
     }
 }
