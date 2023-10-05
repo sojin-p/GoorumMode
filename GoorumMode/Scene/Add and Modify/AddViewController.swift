@@ -12,14 +12,12 @@ final class AddViewController: BaseViewController {
     let mainView = AddView()
     var time: Date?
     var completionHandler: ((Mood) -> Void)?
+    var removeData: (() -> Void)?
     var moodImageName: String?
     
     var transtion: TransitionType = .add
     
     var moods: Mood?
-    
-    var removeButton = UIBarButtonItem()
-    var doneButton = UIBarButtonItem()
     
     override func loadView() {
         view = mainView
@@ -27,7 +25,6 @@ final class AddViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupSheet(.custom(resolver: { context in
             200
         }))
@@ -46,7 +43,7 @@ final class AddViewController: BaseViewController {
         if transtion == .modify {
             setModifyView()
         } else {
-            removeButton.isHidden = true
+            mainView.removeBarButton.isHidden = true
         }
     }
     
@@ -101,8 +98,8 @@ final class AddViewController: BaseViewController {
         
         if transtion == .add {
             print("추가 화면")
+            
             let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: time ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
-
             MoodRepository.shared.createItem(data)
             completionHandler?(data)
             
@@ -111,7 +108,11 @@ final class AddViewController: BaseViewController {
             
             guard let moods else { return }
             
+            let data = Mood(mood: moodImageName ?? moods.mood, date: time ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
+            
             MoodRepository.shared.updateItem(id: moods._id, mood: moodImageName ?? moods.mood, date: time ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
+            
+            completionHandler?(data)
         }
         
         dismiss(animated: true)
@@ -119,6 +120,8 @@ final class AddViewController: BaseViewController {
     
     func removeButtonClicked() {
         showAlertWithAction(title: "일기가 삭제됩니다.", message: nil, buttonName: "삭제") { [weak self] in
+            
+            self?.removeData?()
             
             guard let moods = self?.moods else { return }
             MoodRepository.shared.deleteItem(moods)
@@ -152,10 +155,10 @@ extension AddViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if transtion == .modify {
-            doneButton.isHidden = false
+            mainView.doneBarButton.isHidden = false
         } else {
-            removeButton.isHidden = true
-            doneButton.isHidden = false
+            mainView.removeBarButton.isHidden = true
+            mainView.doneBarButton.isHidden = false
         }
     }
     
@@ -191,20 +194,21 @@ extension AddViewController {
     }
     
     func setBarButtonItem() {
-        let close = UIBarButtonItem(image: UIImage(systemName: "xmark"), primaryAction: .init(handler: { [weak self] action in
+        
+        let closeBarButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), primaryAction: .init(handler: { [weak self] action in
             self?.dismiss(animated: true)
         }))
         
-        doneButton = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { [weak self] action in
+        mainView.doneBarButton = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { [weak self] action in
             self?.doneButtonClicked()
         }))
         
-        removeButton = UIBarButtonItem(image: UIImage(systemName: "trash"), primaryAction: .init(handler: { [weak self] action in
+        mainView.removeBarButton = UIBarButtonItem(image: UIImage(systemName: "trash"), primaryAction: .init(handler: { [weak self] action in
             self?.removeButtonClicked()
         }))
         
-        navigationItem.leftBarButtonItem = close
-        navigationItem.rightBarButtonItems = [doneButton, removeButton]
+        navigationItem.leftBarButtonItem = closeBarButton
+        navigationItem.rightBarButtonItems = [mainView.doneBarButton, mainView.removeBarButton]
         navigationController?.navigationBar.tintColor = Constants.Color.iconTint.basicBlack
     }
     
@@ -221,8 +225,8 @@ extension AddViewController {
             mainView.detailTextView.textColor = Constants.Color.Text.basicTitle
         }
         
-        doneButton.isHidden = true
-        removeButton.isHidden = false
+        mainView.doneBarButton.isHidden = true
+        mainView.removeBarButton.isHidden = false
     }
     
     enum TransitionType {

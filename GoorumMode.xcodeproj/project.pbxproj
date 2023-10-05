@@ -39,6 +39,8 @@
 		23DD9A592AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A582AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift */; };
 		23DD9A5B2AC7F85B00D6BBB5 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A5A2AC7F85B00D6BBB5 /* Date+Extension.swift */; };
 		23DD9A5D2ACA80C900D6BBB5 /* MoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A5C2ACA80C900D6BBB5 /* MoodRepository.swift */; };
+		23DD9A942ACECADA00D6BBB5 /* MoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A932ACECADA00D6BBB5 /* MoodViewModel.swift */; };
+		23DD9A962ACECB1900D6BBB5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A952ACECB1900D6BBB5 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		23DD9A582AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatType+Enum.swift"; sourceTree = "<group>"; };
 		23DD9A5A2AC7F85B00D6BBB5 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		23DD9A5C2ACA80C900D6BBB5 /* MoodRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRepository.swift; sourceTree = "<group>"; };
+		23DD9A932ACECADA00D6BBB5 /* MoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewModel.swift; sourceTree = "<group>"; };
+		23DD9A952ACECB1900D6BBB5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 				23DD9A372AC52C2C00D6BBB5 /* Add and Modify */,
 				23DD9A4C2AC6B2A900D6BBB5 /* PickMood */,
 				23DD9A2E2AC44AAE00D6BBB5 /* Cells and SupplementaryViews */,
+				23DD9A952ACECB1900D6BBB5 /* Observable.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			children = (
 				2380FB232AB9E6B200B31754 /* MoodViewController.swift */,
 				23DD9A202AC2EBDA00D6BBB5 /* MoodView.swift */,
+				23DD9A932ACECADA00D6BBB5 /* MoodViewModel.swift */,
 			);
 			path = Mood;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23DD9A3F2AC5A5D300D6BBB5 /* UIViewController+Extension.swift in Sources */,
+				23DD9A942ACECADA00D6BBB5 /* MoodViewModel.swift in Sources */,
 				23DD9A5B2AC7F85B00D6BBB5 /* Date+Extension.swift in Sources */,
 				23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */,
 				2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */,
@@ -310,6 +317,7 @@
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
 				23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */,
 				23DD9A3B2AC52CB200D6BBB5 /* BaseViewController.swift in Sources */,
+				23DD9A962ACECB1900D6BBB5 /* Observable.swift in Sources */,
 				2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
 				23DD9A502AC6B81400D6BBB5 /* PickMoodCollectionViewCell.swift in Sources */,

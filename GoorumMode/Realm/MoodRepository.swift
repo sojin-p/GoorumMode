@@ -24,6 +24,10 @@ class MoodRepository {
         return data
     }
     
+    func fetchToArray() -> [Mood] {
+        return fetch().toArray()
+    }
+    
     func createItem(_ item: Mood) {
         
         do {

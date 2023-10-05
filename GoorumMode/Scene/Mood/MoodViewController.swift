@@ -6,16 +6,14 @@
 //
 
 import UIKit
-import RealmSwift
 
 final class MoodViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
     
-    var moodResults: Results<Mood>!
-    lazy var moods = moodResults.toArray()
-    
     let mainView = MoodView()
+    
+    let viewModel = MoodViewModel()
     
     override func loadView() {
         view = mainView
@@ -24,11 +22,12 @@ final class MoodViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        moodResults = MoodRepository.shared.fetch()
-        
-        mainView.setupAccessibilityLabel()
         configureDataSource()
-        updateSnapshot()
+
+        viewModel.moods.bind { [weak self] moods in
+            print("리스트 바뀜")
+            self?.updateSnapshot()
+        }
         
         mainView.addMoodButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
         
@@ -45,8 +44,7 @@ final class MoodViewController: BaseViewController {
         
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
-            self?.moods.insert(data, at: 0)
-            self?.updateSnapshot()
+            self?.viewModel.moods.value.insert(data, at: 0)
         }
         
         present(nav, animated: true)
@@ -60,7 +58,7 @@ extension MoodViewController {
     func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Mood>()
         snapshot.appendSections([.today])
-        snapshot.appendItems(moods)
+        snapshot.appendItems(viewModel.moods.value)
         
         dataSource.apply(snapshot)
         
@@ -112,7 +110,15 @@ extension MoodViewController: UICollectionViewDelegate {
         let nav = UINavigationController(rootViewController: vc)
         
         vc.transtion = .modify
-        vc.moods = moods[indexPath.item]
+        vc.moods = viewModel.moods.value[indexPath.item]
+
+        vc.completionHandler = { [weak self] data in
+            self?.viewModel.moods.value[indexPath.item] = data
+        }
+        
+        vc.removeData = { [weak self] in
+            self?.viewModel.moods.value.remove(at: indexPath.item)
+        }
 
         present(nav, animated: true)
         

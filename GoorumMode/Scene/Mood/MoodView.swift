@@ -38,6 +38,7 @@ final class MoodView: BaseView {
     }
     
     override func configure() {
+        setupAccessibilityLabel()
         [collectionView, addMoodButton].forEach { addSubview($0) }
     }
     

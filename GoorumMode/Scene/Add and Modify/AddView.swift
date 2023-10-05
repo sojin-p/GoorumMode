@@ -87,6 +87,9 @@ final class AddView: BaseView {
         return view
     }()
     
+    var doneBarButton = UIBarButtonItem()
+    var removeBarButton = UIBarButtonItem()
+    
     override func configure() {
         [containerView, detailTextView].forEach { addSubview($0) }
         [pickMoodImageView, timeBackView].forEach { containerView.addSubview($0) }
