@@ -18,6 +18,9 @@ final class AddViewController: BaseViewController {
     
     var moods: Mood?
     
+    var removeButton = UIBarButtonItem()
+    var doneButton = UIBarButtonItem()
+    
     override func loadView() {
         view = mainView
     }
@@ -42,6 +45,8 @@ final class AddViewController: BaseViewController {
         
         if transtion == .modify {
             setModifyView()
+        } else {
+            removeButton.isHidden = true
         }
     }
     
@@ -112,6 +117,16 @@ final class AddViewController: BaseViewController {
         dismiss(animated: true)
     }
     
+    func removeButtonClicked() {
+        showAlertWithAction(title: "일기가 삭제됩니다.", message: nil, buttonName: "삭제") { [weak self] in
+            
+            guard let moods = self?.moods else { return }
+            MoodRepository.shared.deleteItem(moods)
+       
+            self?.dismiss(animated: true)
+        }
+    }
+    
 }
 
 // MARK: - detailTextViewDelegate
@@ -134,6 +149,15 @@ extension AddViewController: UITextViewDelegate {
 
 // MARK: - oneLineTextFieldDelegate
 extension AddViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if transtion == .modify {
+            doneButton.isHidden = false
+        } else {
+            removeButton.isHidden = true
+            doneButton.isHidden = false
+        }
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
@@ -171,12 +195,16 @@ extension AddViewController {
             self?.dismiss(animated: true)
         }))
         
-        let done = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { [weak self] action in
+        doneButton = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { [weak self] action in
             self?.doneButtonClicked()
         }))
         
+        removeButton = UIBarButtonItem(image: UIImage(systemName: "trash"), primaryAction: .init(handler: { [weak self] action in
+            self?.removeButtonClicked()
+        }))
+        
         navigationItem.leftBarButtonItem = close
-        navigationItem.rightBarButtonItem = done
+        navigationItem.rightBarButtonItems = [doneButton, removeButton]
         navigationController?.navigationBar.tintColor = Constants.Color.iconTint.basicBlack
     }
     
@@ -192,6 +220,9 @@ extension AddViewController {
             mainView.detailTextView.isHidden = false
             mainView.detailTextView.textColor = Constants.Color.Text.basicTitle
         }
+        
+        doneButton.isHidden = true
+        removeButton.isHidden = false
     }
     
     enum TransitionType {

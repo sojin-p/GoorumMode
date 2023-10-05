@@ -29,4 +29,19 @@ class BaseViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    func showAlertWithAction(title: String, message: String?, buttonName: String, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let button = UIAlertAction(title: buttonName, style: .destructive) { action in
+            completion()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(button)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true)
+        
+    }
+
+    
 }

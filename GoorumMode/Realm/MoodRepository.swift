@@ -49,6 +49,17 @@ class MoodRepository {
         }
     }
     
+    func deleteItem(_ item: Mood) {
+        do {
+            try realm.write {
+                realm.delete(item)
+                print("삭제 성공")
+            }
+        } catch {
+            print("")
+        }
+    }
+    
 }
 
 extension Results {
