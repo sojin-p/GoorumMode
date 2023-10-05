@@ -45,7 +45,7 @@ class MoodRepository {
         
         do {
             try realm.write {
-                realm.create(Mood.self, value: ["_id": id, "mood": mood, "date": date, "onelineText": onelineText, "detailText": detailText, "image": image ], update: .modified)
+                realm.create(Mood.self, value: ["_id": id, "mood": mood, "date": date, "onelineText": onelineText, "detailText": detailText, "image": image], update: .modified)
                 print("수정 성공")
             }
         } catch {

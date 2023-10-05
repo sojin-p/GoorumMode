@@ -109,11 +109,14 @@ extension MoodViewController: UICollectionViewDelegate {
         let vc = AddViewController()
         let nav = UINavigationController(rootViewController: vc)
         
+        let item = viewModel.moods.value[indexPath.item]
+        
         vc.transtion = .modify
-        vc.moods = viewModel.moods.value[indexPath.item]
+        vc.moods = item
 
         vc.completionHandler = { [weak self] data in
             self?.viewModel.moods.value[indexPath.item] = data
+            self?.viewModel.moods.value[indexPath.item]._id = item._id
         }
         
         vc.removeData = { [weak self] in
