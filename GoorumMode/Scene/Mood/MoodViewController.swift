@@ -44,7 +44,10 @@ final class MoodViewController: BaseViewController {
         
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
-            self?.viewModel.moods.value.insert(data, at: 0)
+            self?.mainView.collectionView.scroll(to: .top)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                self?.viewModel.moods.value.insert(data, at: 0)
+            }
         }
         
         present(nav, animated: true)

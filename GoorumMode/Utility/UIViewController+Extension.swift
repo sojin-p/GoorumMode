@@ -34,3 +34,34 @@ extension UILabel {
 extension UISheetPresentationController.Detent.Identifier {
     static let small = UISheetPresentationController.Detent.Identifier("small")
 }
+
+extension UIScrollView {
+    
+    enum ScrollDirection {
+        case top
+        case bottom
+    }
+    
+    func scroll(to direction: ScrollDirection) {
+        
+        DispatchQueue.main.async {
+            switch direction {
+            case .top:
+                self.scrollToTop()
+            case .bottom:
+                self.scrollToBottom()
+            }
+        }
+    }
+    
+    private func scrollToTop() {
+        setContentOffset(.zero, animated: true)
+    }
+    
+    private func scrollToBottom() {
+        let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
+        if(bottomOffset.y > 0) {
+            setContentOffset(bottomOffset, animated: true)
+        }
+    }
+}
