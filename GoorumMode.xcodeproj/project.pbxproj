@@ -43,6 +43,7 @@
 		23DD9A962ACECB1900D6BBB5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A952ACECB1900D6BBB5 /* Observable.swift */; };
 		23DD9A992AD160EC00D6BBB5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A982AD160EC00D6BBB5 /* CalendarViewController.swift */; };
 		23DD9A9B2AD1625800D6BBB5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A9A2AD1625800D6BBB5 /* TabBarController.swift */; };
+		23DD9A9D2AD1882200D6BBB5 /* IconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		23DD9A952ACECB1900D6BBB5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		23DD9A982AD160EC00D6BBB5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		23DD9A9A2AD1625800D6BBB5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */,
 				23DD9A112AC168B200D6BBB5 /* Color.swift */,
+				23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */,
 				23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */,
 				23DD9A3E2AC5A5D300D6BBB5 /* UIViewController+Extension.swift */,
 				23DD9A532AC6C87700D6BBB5 /* MoodEmojis+Enum.swift */,
@@ -330,6 +333,7 @@
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,
 				23DD9A542AC6C87700D6BBB5 /* MoodEmojis+Enum.swift in Sources */,
 				23DD9A992AD160EC00D6BBB5 /* CalendarViewController.swift in Sources */,
+				23DD9A9D2AD1882200D6BBB5 /* IconImage.swift in Sources */,
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
 				23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */,
 				23DD9A3B2AC52CB200D6BBB5 /* BaseViewController.swift in Sources */,

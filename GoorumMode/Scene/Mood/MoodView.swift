@@ -50,7 +50,7 @@ final class MoodView: BaseView {
         addMoodButton.snp.makeConstraints { make in
             make.size.equalTo(65)
             make.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(20)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(35)
         }
     }
     

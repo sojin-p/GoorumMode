@@ -189,15 +189,15 @@ extension AddViewController {
     
     func setBarButtonItem() {
         
-        let closeBarButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), primaryAction: .init(handler: { [weak self] action in
+        let closeBarButton = UIBarButtonItem(image: Constants.IconImage.xMark, primaryAction: .init(handler: { [weak self] action in
             self?.dismiss(animated: true)
         }))
         
-        mainView.doneBarButton = UIBarButtonItem(image: UIImage(systemName: "checkmark"), primaryAction: .init(handler: { [weak self] action in
+        mainView.doneBarButton = UIBarButtonItem(image: Constants.IconImage.check, primaryAction: .init(handler: { [weak self] action in
             self?.doneButtonClicked()
         }))
         
-        mainView.removeBarButton = UIBarButtonItem(image: UIImage(systemName: "trash"), primaryAction: .init(handler: { [weak self] action in
+        mainView.removeBarButton = UIBarButtonItem(image: Constants.IconImage.trash, primaryAction: .init(handler: { [weak self] action in
             self?.removeButtonClicked()
         }))
         
