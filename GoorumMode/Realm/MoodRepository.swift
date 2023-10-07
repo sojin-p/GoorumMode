@@ -20,7 +20,12 @@ class MoodRepository {
     }
     
     func fetch() -> Results<Mood> {
-        let data = realm.objects(Mood.self).sorted(byKeyPath: "date", ascending: false)
+        let selectedDate = Date()
+
+        let startDate = Calendar.current.startOfDay(for: selectedDate)
+        let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
+        
+        let data = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate).sorted(byKeyPath: "date", ascending: false)
         return data
     }
     
