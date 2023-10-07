@@ -110,8 +110,11 @@ final class AddViewController: BaseViewController {
             
             let data = Mood(mood: moodImageName ?? moods.mood, date: time ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
             
-            MoodRepository.shared.updateItem(id: moods._id, mood: moodImageName ?? moods.mood, date: time ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
+            data._id = moods._id
+            self.moods = data
             
+            MoodRepository.shared.updateItem(data)
+
             completionHandler?(data)
         }
         
@@ -121,10 +124,11 @@ final class AddViewController: BaseViewController {
     func removeButtonClicked() {
         showAlertWithAction(title: "일기가 삭제됩니다.", message: nil, buttonName: "삭제") { [weak self] in
             
+            guard let moods = self?.moods else { return }
+
             self?.removeData?()
             
-            guard let moods = self?.moods else { return }
-            MoodRepository.shared.deleteItem(moods)
+            MoodRepository.shared.deleteItem(moods._id)
        
             self?.dismiss(animated: true)
         }

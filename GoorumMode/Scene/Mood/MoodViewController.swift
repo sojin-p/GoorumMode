@@ -119,7 +119,6 @@ extension MoodViewController: UICollectionViewDelegate {
 
         vc.completionHandler = { [weak self] data in
             self?.viewModel.moods.value[indexPath.item] = data
-            self?.viewModel.moods.value[indexPath.item]._id = item._id
         }
         
         vc.removeData = { [weak self] in

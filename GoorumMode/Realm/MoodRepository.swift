@@ -41,11 +41,11 @@ class MoodRepository {
         
     }
     
-    func updateItem(id: ObjectId, mood: String, date: Date, onelineText: String?, detailText: String?, image: String?) {
+    func updateItem(_ item: Mood) {
         
         do {
             try realm.write {
-                realm.create(Mood.self, value: ["_id": id, "mood": mood, "date": date, "onelineText": onelineText, "detailText": detailText, "image": image], update: .modified)
+                realm.create(Mood.self, value: ["_id": item._id, "mood": item.mood, "date": item.date, "onelineText": item.onelineText, "detailText": item.detailText, "image": item.image], update: .modified)
                 print("수정 성공")
             }
         } catch {
@@ -53,7 +53,12 @@ class MoodRepository {
         }
     }
     
-    func deleteItem(_ item: Mood) {
+    func deleteItem(_ id: ObjectId) {
+        
+        let item = realm.object(ofType: Mood.self, forPrimaryKey: id)
+        
+        guard let item else { return }
+        
         do {
             try realm.write {
                 realm.delete(item)
