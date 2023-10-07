@@ -85,30 +85,21 @@ final class AddViewController: BaseViewController {
         }
         
         let unselectedTime = mainView.timePicker.date
+        let onelineText = mainView.oneLineTextField.text
+        var detailText = mainView.detailTextView.text
         
-        guard let onelineText = mainView.oneLineTextField.text else {
-            //nil
-            return }
-        
-        if mainView.detailTextView.isHidden {
-            mainView.detailTextView.text = ""
-        }
-        
-        guard let detailText = mainView.detailTextView.text else {
-            //nil
-            return
+        if detailText == mainView.detailTextViewPlaceholder {
+            detailText = ""
         }
         
         if transtion == .add {
             print("추가 화면")
-            
             let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: time ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
             MoodRepository.shared.createItem(data)
             completionHandler?(data)
             
         } else if transtion == .modify {
             print("수정 화면")
-            
             guard let moods else { return }
             
             let data = Mood(mood: moodImageName ?? moods.mood, date: time ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")

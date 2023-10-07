@@ -19,7 +19,7 @@ enum DateFormatType {
         case .timeWithoutSecond: return "a hh:mm"
         case .yearAndMouth: return "yyyy.MM"
         case .onlyDay: return "dd"
-        case .dateForTitle: return "yyyy.MM.dd EEEE"
+        case .dateForTitle: return "yyyy.MM.dd. EEEE"
         }
     }
 }
