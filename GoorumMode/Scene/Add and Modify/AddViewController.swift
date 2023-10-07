@@ -55,6 +55,9 @@ final class AddViewController: BaseViewController {
         vc.completionHandler = { [weak self] imageName in
             self?.mainView.pickMoodImageView.image = UIImage(named: imageName)
             self?.moodImageName = imageName
+            if self?.transtion == .modify {
+                self?.mainView.doneBarButton.isHidden = false
+            }
         }
         
         present(nav, animated: true)
@@ -140,6 +143,7 @@ final class AddViewController: BaseViewController {
 extension AddViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        showDoneBarButton()
         if textView.text == mainView.detailTextViewPlaceholder {
             textView.text = nil
             textView.textColor = Constants.Color.Text.basicTitle
@@ -158,12 +162,7 @@ extension AddViewController: UITextViewDelegate {
 extension AddViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if transtion == .modify {
-            mainView.doneBarButton.isHidden = false
-        } else {
-            mainView.removeBarButton.isHidden = true
-            mainView.doneBarButton.isHidden = false
-        }
+        showDoneBarButton()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -231,6 +230,15 @@ extension AddViewController {
         
         mainView.doneBarButton.isHidden = true
         mainView.removeBarButton.isHidden = false
+    }
+    
+    func showDoneBarButton() {
+        if transtion == .modify {
+            mainView.doneBarButton.isHidden = false
+        } else {
+            mainView.removeBarButton.isHidden = true
+            mainView.doneBarButton.isHidden = false
+        }
     }
     
     enum TransitionType {
