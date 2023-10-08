@@ -21,6 +21,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configure() {
+        calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.identifier)
         view.backgroundColor = Constants.Color.Background.basic
         view.addSubview(calendar)
     }
@@ -36,6 +37,17 @@ final class CalendarViewController: BaseViewController {
 
 extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource {
     
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("현재 페이지", calendar.currentPage)
+    }
+    
+    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+        guard let cell = calendar.dequeueReusableCell(withIdentifier: FSCalendarCustomCell.identifier, for: date, at: position) as? FSCalendarCustomCell else { return FSCalendarCell() }
+
+        cell.moodImageView.image = MoodEmojis.happy.image
+        
+        return cell
+    }
 }
 
 extension CalendarViewController {
@@ -45,7 +57,7 @@ extension CalendarViewController {
         calendar.dataSource = self
 
         calendar.headerHeight = 80
-        calendar.weekdayHeight = 50
+        calendar.weekdayHeight = 45
         
         calendar.appearance.headerTitleFont = Constants.Font.extraBold(size: 21)
         calendar.appearance.headerTitleColor = Constants.Color.Text.basicTitle

@@ -45,6 +45,7 @@
 		23DD9A9B2AD1625800D6BBB5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A9A2AD1625800D6BBB5 /* TabBarController.swift */; };
 		23DD9A9D2AD1882200D6BBB5 /* IconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */; };
 		23DD9AA02AD18CB000D6BBB5 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A9F2AD18CB000D6BBB5 /* FSCalendar */; };
+		23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		23DD9A982AD160EC00D6BBB5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		23DD9A9A2AD1625800D6BBB5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
+		23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */,
 				23DD9A4F2AC6B81400D6BBB5 /* PickMoodCollectionViewCell.swift */,
+				23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */,
 				23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */,
 			);
 			path = "Cells and SupplementaryViews";
@@ -331,6 +334,7 @@
 				23DD9A942ACECADA00D6BBB5 /* MoodViewModel.swift in Sources */,
 				23DD9A5B2AC7F85B00D6BBB5 /* Date+Extension.swift in Sources */,
 				23DD9A9B2AD1625800D6BBB5 /* TabBarController.swift in Sources */,
+				23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */,
 				23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */,
 				2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */,
 				23DD9A3D2AC54A1400D6BBB5 /* AddView.swift in Sources */,
