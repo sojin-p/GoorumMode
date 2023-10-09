@@ -11,7 +11,10 @@ import FSCalendar
 final class CalendarViewController: BaseViewController {
     
     var calendar = {
-        let view = FSCalendar(frame: .zero)
+        let view = BasicFSCalendar()
+        view.headerHeight = 80
+        view.weekdayHeight = 45
+        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 21)
         return view
     }()
     
@@ -22,7 +25,8 @@ final class CalendarViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCalendar()
+        calendar.delegate = self
+        calendar.dataSource = self
     }
     
     override func configure() {
@@ -101,36 +105,4 @@ extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource {
         
         return cell
     }
-}
-
-extension CalendarViewController {
-    
-    func setCalendar() {
-        calendar.delegate = self
-        calendar.dataSource = self
-
-        calendar.headerHeight = 80
-        calendar.weekdayHeight = 45
-        
-        calendar.appearance.headerTitleFont = Constants.Font.extraBold(size: 21)
-        calendar.appearance.headerTitleColor = Constants.Color.Text.basicTitle
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        calendar.appearance.headerDateFormat = DateFormatType.yearAndMouth.description
-        
-        calendar.appearance.weekdayFont = Constants.Font.bold(size: 15)
-        calendar.appearance.weekdayTextColor = Constants.Color.Text.basicSubTitle
-        
-        calendar.placeholderType = .none
-        
-        calendar.appearance.selectionColor = .systemGray4
-        
-        calendar.appearance.titleFont = Constants.Font.bold(size: 15)
-        calendar.appearance.titleWeekendColor = Constants.Color.Text.basicTitle
-        calendar.appearance.titleDefaultColor = Constants.Color.Text.basicTitle
-        calendar.appearance.titleTodayColor = Constants.Color.Text.basicTitle
-        
-        calendar.appearance.todayColor = .systemGray6
-        calendar.appearance.todaySelectionColor = .systemGray6
-    }
-    
 }

@@ -47,6 +47,7 @@
 		23DD9AA02AD18CB000D6BBB5 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A9F2AD18CB000D6BBB5 /* FSCalendar */; };
 		23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */; };
 		23DD9AA62AD3E2CA00D6BBB5 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */; };
+		23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 		23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarCustomCell.swift; sourceTree = "<group>"; };
 		23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFSCalendar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				23DD9A0E2AC15E3900D6BBB5 /* Utility */,
 				23DD9A432AC6A7C500D6BBB5 /* Font */,
 				23DD9A342AC4723800D6BBB5 /* Realm */,
+				23DD9AA92AD3FF8300D6BBB5 /* CustomView */,
 				23DD9A1C2AC2EB1F00D6BBB5 /* Scene */,
 				2380FB282AB9E6B400B31754 /* Assets.xcassets */,
 				2380FB2A2AB9E6B400B31754 /* LaunchScreen.storyboard */,
@@ -247,6 +250,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		23DD9AA92AD3FF8300D6BBB5 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -334,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23DD9AA62AD3E2CA00D6BBB5 /* SelectDateViewController.swift in Sources */,
+				23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */,
 				23DD9A3F2AC5A5D300D6BBB5 /* UIViewController+Extension.swift in Sources */,
 				23DD9A942ACECADA00D6BBB5 /* MoodViewModel.swift in Sources */,
 				23DD9A5B2AC7F85B00D6BBB5 /* Date+Extension.swift in Sources */,

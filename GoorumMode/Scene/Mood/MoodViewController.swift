@@ -54,11 +54,13 @@ final class MoodViewController: BaseViewController {
     }
     
     @objc func titleButtonClicked() {
-        print("클릭")
+        
         let vc = SelectDateViewController()
         
         vc.modalPresentationStyle = .overFullScreen
-        
+        vc.completionHandler = { [weak self] date in
+            self?.viewModel.moods.value = MoodRepository.shared.fetch(selectedDate: date)
+        }
         present(vc, animated: false)
     }
 

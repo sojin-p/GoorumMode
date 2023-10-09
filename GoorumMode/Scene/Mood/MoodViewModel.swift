@@ -7,8 +7,8 @@
 
 import Foundation
 
-class MoodViewModel {
+final class MoodViewModel {
     
-    var moods: Observable<[Mood]> = Observable(MoodRepository.shared.fetchToArray())
+    var moods: Observable<[Mood]> = Observable(MoodRepository.shared.fetch(selectedDate: Date()))
     
 }

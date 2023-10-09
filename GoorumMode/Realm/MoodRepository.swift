@@ -28,18 +28,12 @@ class MoodRepository {
         return moodsForMonth
     }
     
-    func fetch() -> Results<Mood> {
-        let selectedDate = Date()
-
+    func fetch(selectedDate: Date) -> [Mood] {
         let startDate = Calendar.current.startOfDay(for: selectedDate)
         let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
         
         let data = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate).sorted(byKeyPath: "date", ascending: false)
-        return data
-    }
-    
-    func fetchToArray() -> [Mood] {
-        return fetch().toArray()
+        return data.toArray()
     }
     
     func createItem(_ item: Mood) {
