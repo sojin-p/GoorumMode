@@ -52,6 +52,15 @@ final class MoodViewController: BaseViewController {
         
         present(nav, animated: true)
     }
+    
+    @objc func titleButtonClicked() {
+        print("클릭")
+        let vc = SelectDateViewController()
+        
+        vc.modalPresentationStyle = .overFullScreen
+        
+        present(vc, animated: false)
+    }
 
 }
 
@@ -92,6 +101,8 @@ extension MoodViewController {
         
         let headerRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: Section.today.header) { supplementaryView, elementKind, indexPath in
             supplementaryView.label.text = elementKind
+            supplementaryView.label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.titleButtonClicked)))
+            supplementaryView.button.addTarget(self, action: #selector(self.titleButtonClicked), for: .touchUpInside)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in

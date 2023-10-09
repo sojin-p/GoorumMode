@@ -15,9 +15,6 @@ final class FSCalendarCustomCell: FSCalendarCell {
     let moodImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        DispatchQueue.main.async {
-            view.layer.cornerRadius = view.frame.width / 2
-        }
         return view
     }()
     
