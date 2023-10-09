@@ -36,4 +36,9 @@ final class FSCalendarCustomCell: FSCalendarCell {
     required init!(coder aDecoder: NSCoder!) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        moodImageView.image = nil
+    }
 }

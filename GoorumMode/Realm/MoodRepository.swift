@@ -19,6 +19,15 @@ class MoodRepository {
         print("파일 경로: \(realm.configuration.fileURL!)")
     }
     
+    func fetchMonth(year: Int, month: Int) -> Results<Mood> {
+        let components = DateComponents(year: year, month: month)
+        let startDate = Calendar.current.date(from: components)!
+        let endDate = Calendar.current.date(byAdding: .month, value: 1, to: startDate)
+        
+        let moodsForMonth = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate)
+        return moodsForMonth
+    }
+    
     func fetch() -> Results<Mood> {
         let selectedDate = Date()
 
