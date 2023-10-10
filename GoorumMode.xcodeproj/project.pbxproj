@@ -48,6 +48,7 @@
 		23DD9AA62AD3E2CA00D6BBB5 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */; };
 		23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */; };
 		23DD9AAF2AD59EA500D6BBB5 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */; };
+		23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFSCalendar.swift; sourceTree = "<group>"; };
 		23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
+		23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				23DD9A972AD1609C00D6BBB5 /* Calendar */,
 				23DD9A2E2AC44AAE00D6BBB5 /* Cells */,
 				23DD9A952ACECB1900D6BBB5 /* Observable.swift */,
+				23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */,
 				23DD9A212AC2EBDA00D6BBB5 /* MoodView.swift in Sources */,
 				23DD9A522AC6C10100D6BBB5 /* PickMoodView.swift in Sources */,
+				23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */,
 				23DD9A5D2ACA80C900D6BBB5 /* MoodRepository.swift in Sources */,
 				23DD9A592AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift in Sources */,
 				23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */,

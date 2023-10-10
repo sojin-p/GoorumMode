@@ -23,11 +23,18 @@ final class TabBarController: UITabBarController {
         return nav
     }()
     
+    private let settingVC = {
+        let vc = SettingViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.tabBarItem = UITabBarItem(title: nil, image: Constants.IconImage.setting, tag: 2)
+        return nav
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBar.tintColor = Constants.Color.Background.basic
-        setViewControllers([moodVC, calendarVC], animated: true)
+        setViewControllers([moodVC, calendarVC, settingVC], animated: true)
 
     }
     
