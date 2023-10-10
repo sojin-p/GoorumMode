@@ -20,7 +20,7 @@ final class AddView: BaseView {
         return view
     }()
     
-    let containerView = {
+    private let containerView = {
         let view = UIView()
         return view
     }()
@@ -38,7 +38,7 @@ final class AddView: BaseView {
         return view
     }()
     
-    let timeBackView = {
+    private let timeBackView = {
         let view = UIView()
         return view
     }()
@@ -61,10 +61,11 @@ final class AddView: BaseView {
         view.placeholder = "기분을 선택한 이유(15자)"
         view.font = Constants.Font.regular(size: 15)
         view.addLeftPadding()
+        view.clearButtonMode = .whileEditing
         return view
     }()
     
-    let underLineView = {
+    private let underLineView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.iconTint.basicBlack
         return view
@@ -76,11 +77,11 @@ final class AddView: BaseView {
             view.layer.cornerRadius = view.frame.width / 2
             view.setImage(UIImage(systemName: "plus"), for: .normal)
             view.tintColor = Constants.Color.iconTint.basicBlack
-//            view.layer.shadowColor = UIColor.lightGray.cgColor
-//            view.layer.shadowOffset = .zero
-//            view.layer.shadowRadius = 3
-//            view.layer.shadowOpacity = 0.5
             view.backgroundColor = Constants.Color.Background.white
+            view.layer.shadowColor = UIColor.lightGray.cgColor
+            view.layer.shadowOffset = .zero
+            view.layer.shadowRadius = 3
+            view.layer.shadowOpacity = 0.5
         }
         view.accessibilityLabel = "내용 추가"
         view.accessibilityHint = "자세한 내용 또는 일기를 작성하려면 두 번 탭 하세요."

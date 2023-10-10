@@ -132,7 +132,6 @@ final class AddViewController: BaseViewController {
     
     func setTime(date: Date = Date()) {
         let calendar = Calendar.current
-        var components = calendar.dateComponents([.year, .month, .day], from: selectedDate ?? Date())
         
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
