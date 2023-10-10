@@ -47,6 +47,7 @@
 		23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */; };
 		23DD9AA62AD3E2CA00D6BBB5 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */; };
 		23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */; };
+		23DD9AAF2AD59EA500D6BBB5 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarCustomCell.swift; sourceTree = "<group>"; };
 		23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFSCalendar.swift; sourceTree = "<group>"; };
+		23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				23DD9AA92AD3FF8300D6BBB5 /* CustomView */,
 				23DD9A1C2AC2EB1F00D6BBB5 /* Scene */,
 				2380FB282AB9E6B400B31754 /* Assets.xcassets */,
+				23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */,
 				2380FB2A2AB9E6B400B31754 /* LaunchScreen.storyboard */,
 				2380FB2D2AB9E6B400B31754 /* Info.plist */,
 				23DD9A1A2AC2E01300D6BBB5 /* Localizable.strings */,
@@ -329,6 +332,7 @@
 				2380FB2C2AB9E6B400B31754 /* LaunchScreen.storyboard in Resources */,
 				23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */,
 				2380FB292AB9E6B400B31754 /* Assets.xcassets in Resources */,
+				23DD9AAF2AD59EA500D6BBB5 /* LaunchScreen.png in Resources */,
 				23DD9A492AC6AC1500D6BBB5 /* NanumSquareNeoOTF-Bd.otf in Resources */,
 				23DD9A472AC6A87800D6BBB5 /* NanumSquareNeoOTF-Rg.otf in Resources */,
 			);
