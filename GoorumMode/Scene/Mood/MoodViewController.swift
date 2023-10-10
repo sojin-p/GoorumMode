@@ -51,7 +51,6 @@ final class MoodViewController: BaseViewController {
         vc.completionHandler = { [weak self] data in
             self?.mainView.collectionView.scroll(to: .top)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                let test = self?.viewModel.moods.value.first(where: { $0.date < data.date })
                 if let index = self?.viewModel.moods.value.firstIndex(where: { $0.date < data.date }) {
                     self?.viewModel.moods.value.insert(data, at: index)
                 } else {
