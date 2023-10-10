@@ -10,6 +10,7 @@ import UIKit
 final class MoodViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
+    var snapshot: NSDiffableDataSourceSnapshot<Section, Mood>!
     
     let mainView = MoodView()
     
@@ -49,14 +50,18 @@ final class MoodViewController: BaseViewController {
         vc.selectedDate = selectedDate
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
-            self?.mainView.collectionView.scroll(to: .top)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                if let index = self?.viewModel.moods.value.firstIndex(where: { $0.date < data.date }) {
-                    self?.viewModel.moods.value.insert(data, at: index)
-                } else {
-                    self?.viewModel.moods.value.append(data)
-                }
+            
+            if let index = self?.viewModel.moods.value.firstIndex(where: { $0.date < data.date }) {
+                self?.viewModel.moods.value.insert(data, at: index)
+            } else {
+                self?.viewModel.moods.value.append(data)
             }
+            
+            if let item = self?.snapshot.indexOfItem(data) {
+                let indexPath = IndexPath(item: item, section: 0)
+                self?.mainView.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+            }
+            
         }
         
         present(nav, animated: true)
@@ -81,7 +86,7 @@ final class MoodViewController: BaseViewController {
 extension MoodViewController {
     
     func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Mood>()
+        snapshot = NSDiffableDataSourceSnapshot<Section, Mood>()
         snapshot.appendSections([.today])
         snapshot.appendItems(viewModel.moods.value)
         
