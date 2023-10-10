@@ -74,6 +74,7 @@ final class AddViewController: BaseViewController {
     
     
     @objc func timePickerChanged(_ sender: UIDatePicker) {
+        showDoneBarButton()
         time = sender.date
     }
     

@@ -20,7 +20,6 @@
 		23DD9A242AC2EC8800D6BBB5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A232AC2EC8800D6BBB5 /* SnapKit */; };
 		23DD9A262AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */; };
 		23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */; };
-		23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */; };
 		23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */; };
 		23DD9A312AC4721000D6BBB5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A302AC4721000D6BBB5 /* Realm */; };
 		23DD9A332AC4721000D6BBB5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A322AC4721000D6BBB5 /* RealmSwift */; };
@@ -67,7 +66,6 @@
 		23DD9A202AC2EBDA00D6BBB5 /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
 		23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 		23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoodSection+Enum.swift"; sourceTree = "<group>"; };
 		23DD9A352AC4724C00D6BBB5 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		23DD9A382AC52C7600D6BBB5 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +164,7 @@
 				23DD9A372AC52C2C00D6BBB5 /* Add and Modify */,
 				23DD9A4C2AC6B2A900D6BBB5 /* PickMood */,
 				23DD9A972AD1609C00D6BBB5 /* Calendar */,
-				23DD9A2E2AC44AAE00D6BBB5 /* Cells and SupplementaryViews */,
+				23DD9A2E2AC44AAE00D6BBB5 /* Cells */,
 				23DD9A952ACECB1900D6BBB5 /* Observable.swift */,
 			);
 			path = Scene;
@@ -194,15 +192,14 @@
 			path = Mood;
 			sourceTree = "<group>";
 		};
-		23DD9A2E2AC44AAE00D6BBB5 /* Cells and SupplementaryViews */ = {
+		23DD9A2E2AC44AAE00D6BBB5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				23DD9A252AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift */,
 				23DD9A4F2AC6B81400D6BBB5 /* PickMoodCollectionViewCell.swift */,
 				23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */,
-				23DD9A292AC31F6000D6BBB5 /* TitleSupplementaryView.swift */,
 			);
-			path = "Cells and SupplementaryViews";
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		23DD9A342AC4723800D6BBB5 /* Realm */ = {
@@ -351,7 +348,6 @@
 				23DD9A5B2AC7F85B00D6BBB5 /* Date+Extension.swift in Sources */,
 				23DD9A9B2AD1625800D6BBB5 /* TabBarController.swift in Sources */,
 				23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */,
-				23DD9A2A2AC31F6000D6BBB5 /* TitleSupplementaryView.swift in Sources */,
 				2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */,
 				23DD9A3D2AC54A1400D6BBB5 /* AddView.swift in Sources */,
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,

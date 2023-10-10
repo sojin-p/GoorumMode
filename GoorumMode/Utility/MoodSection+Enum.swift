@@ -11,10 +11,4 @@ enum Section {
     
     case today
     
-    var header: String {
-        switch self {
-        case .today: return Date().toString(of: .dateForTitle)
-        }
-    }
-    
 }

@@ -9,6 +9,23 @@ import UIKit
 
 final class MoodView: BaseView {
     
+    let dateLabel = {
+        let view = UILabel()
+        view.text = "2023.10.10. 화요일"
+        view.textAlignment = .center
+        view.textColor = Constants.Color.Text.basicSubTitle
+        view.font = Constants.Font.extraBold(size: 16)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    let selectDateButton = {
+        let view = UIButton()
+        view.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        view.tintColor = Constants.Color.Text.basicSubTitle
+        return view
+    }()
+    
     lazy var collectionView = {
         let view =  UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         view.backgroundColor = Constants.Color.Background.basic
@@ -39,12 +56,25 @@ final class MoodView: BaseView {
     
     override func configure() {
         setupAccessibilityLabel()
-        [collectionView, addMoodButton].forEach { addSubview($0) }
+        [dateLabel, selectDateButton, collectionView, addMoodButton].forEach { addSubview($0) }
     }
     
     override func setConstraints() {
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide).offset(5)
+            make.centerX.equalToSuperview().offset(-10)
+            make.height.equalTo(20)
+        }
+        
+        selectDateButton.snp.makeConstraints { make in
+            make.leading.equalTo(dateLabel.snp.trailing)
+            make.size.equalTo(35)
+            make.centerY.equalTo(dateLabel)
+        }
+        
         collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(dateLabel.snp.bottom).offset(20)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         addMoodButton.snp.makeConstraints { make in
@@ -67,13 +97,6 @@ final class MoodView: BaseView {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20)
         section.interGroupSpacing = 10
-        
-        let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                     heightDimension: .estimated(44))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerFooterSize,
-            elementKind: Section.today.header, alignment: .top)
-        section.boundarySupplementaryItems = [sectionHeader]
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout

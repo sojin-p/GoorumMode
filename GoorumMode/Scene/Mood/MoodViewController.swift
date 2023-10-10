@@ -30,6 +30,8 @@ final class MoodViewController: BaseViewController {
         }
         
         mainView.addMoodButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
+        mainView.dateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(titleClicked)))
+        mainView.selectDateButton.addTarget(self, action: #selector(titleClicked), for: .touchUpInside)
         
         MoodRepository.shared.checkFileURL()
         
@@ -53,13 +55,14 @@ final class MoodViewController: BaseViewController {
         present(nav, animated: true)
     }
     
-    @objc func titleButtonClicked() {
+    @objc func titleClicked() {
         
         let vc = SelectDateViewController()
         
         vc.modalPresentationStyle = .overFullScreen
         vc.completionHandler = { [weak self] date in
             self?.viewModel.moods.value = MoodRepository.shared.fetch(selectedDate: date)
+            self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
         }
         present(vc, animated: false)
     }
@@ -101,20 +104,10 @@ extension MoodViewController {
             cell.detailLabel.setLineSpacing(spacing: 5)
         })
         
-        let headerRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: Section.today.header) { supplementaryView, elementKind, indexPath in
-            supplementaryView.label.text = elementKind
-            supplementaryView.label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.titleButtonClicked)))
-            supplementaryView.button.addTarget(self, action: #selector(self.titleButtonClicked), for: .touchUpInside)
-        }
-        
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
-        
-        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-            return self.mainView.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
-        }
         
     }
 }
