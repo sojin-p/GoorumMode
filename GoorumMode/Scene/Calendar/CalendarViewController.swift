@@ -49,11 +49,10 @@ final class CalendarViewController: BaseViewController {
         
         let groupedMoods = Dictionary(grouping: moodsForMonth) { Calendar.current.startOfDay(for: $0.date) }
         
-        var mostMoods: [Date: String] = [:] //날짜당 최다기분 or 최근 기분
+        var mostMoods: [Date: String] = [:]
         
         for (date, moods) in groupedMoods {
-//            print("그룹된날짜: ", date)
-            var moodCounts: [String: Int] = [:] //기분당 갯수
+            var moodCounts: [String: Int] = [:]
             for mood in moods {
                 let mood = mood.mood
                 if moodCounts.keys.contains(mood) {
@@ -62,9 +61,6 @@ final class CalendarViewController: BaseViewController {
                     moodCounts[mood] = 1
                 }
             }
-//            print("기분갯수 체크: ",moodCounts)
-            
-            //가장 많은 기분을 찾고, 여러개면 최근 값으로
             var maxKeys: [String] = []
             if let maxValue = moodCounts.values.max() {
                 maxKeys = moodCounts.filter({ $0.value == maxValue }).map({ $0.key })
@@ -73,13 +69,12 @@ final class CalendarViewController: BaseViewController {
             if maxKeys.count == 1 {
                 mostMoods[date] = maxKeys.first
             } else {
-                //최근 거 찾기
                 if let recentMood = moods.max(by: { $0.date < $1.date })?.mood {
                     mostMoods[date] = recentMood
                 }
             }
         }
-//        print("최다 기분:",mostMoods)
+        
         return mostMoods
     }
 }
