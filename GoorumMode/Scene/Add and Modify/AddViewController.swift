@@ -10,7 +10,7 @@ import UIKit
 final class AddViewController: BaseViewController {
     
     let mainView = AddView()
-    var time: Date?
+    var selectedDate: Date?
     var completionHandler: ((Mood) -> Void)?
     var removeData: (() -> Void)?
     var moodImageName: String?
@@ -43,6 +43,7 @@ final class AddViewController: BaseViewController {
         if transtion == .modify {
             setModifyView()
         } else {
+            setTime()
             mainView.removeBarButton.isHidden = true
         }
     }
@@ -75,7 +76,7 @@ final class AddViewController: BaseViewController {
     
     @objc func timePickerChanged(_ sender: UIDatePicker) {
         showDoneBarButton()
-        time = sender.date
+        setTime(date: sender.date)
     }
     
     func doneButtonClicked() {
@@ -95,7 +96,7 @@ final class AddViewController: BaseViewController {
         
         if transtion == .add {
             print("추가 화면")
-            let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: time ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
+            let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: selectedDate ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
             MoodRepository.shared.createItem(data)
             completionHandler?(data)
             
@@ -103,7 +104,7 @@ final class AddViewController: BaseViewController {
             print("수정 화면")
             guard let moods else { return }
             
-            let data = Mood(mood: moodImageName ?? moods.mood, date: time ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
+            let data = Mood(mood: moodImageName ?? moods.mood, date: selectedDate ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
             
             data._id = moods._id
             self.moods = data
@@ -126,6 +127,19 @@ final class AddViewController: BaseViewController {
             MoodRepository.shared.deleteItem(moods._id)
        
             self?.dismiss(animated: true)
+        }
+    }
+    
+    func setTime(date: Date = Date()) {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.year, .month, .day], from: selectedDate ?? Date())
+        
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        let second = calendar.component(.second, from: date)
+        
+        if let setTime = calendar.date(bySettingHour: hour, minute: minute, second: second, of: selectedDate ?? Date()) {
+            selectedDate = setTime
         }
     }
     

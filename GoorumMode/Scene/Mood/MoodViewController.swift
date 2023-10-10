@@ -15,6 +15,8 @@ final class MoodViewController: BaseViewController {
     
     let viewModel = MoodViewModel()
     
+    var selectedDate = Date()
+    
     override func loadView() {
         view = mainView
     }
@@ -43,7 +45,8 @@ final class MoodViewController: BaseViewController {
         
         let vc = AddViewController()
         let nav = UINavigationController(rootViewController: vc)
-        
+
+        vc.selectedDate = selectedDate
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
             self?.mainView.collectionView.scroll(to: .top)
@@ -63,6 +66,7 @@ final class MoodViewController: BaseViewController {
         vc.completionHandler = { [weak self] date in
             self?.viewModel.moods.value = MoodRepository.shared.fetch(selectedDate: date)
             self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
+            self?.selectedDate = date
         }
         present(vc, animated: false)
     }
