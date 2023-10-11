@@ -137,7 +137,8 @@ extension MoodViewController: UICollectionViewDelegate {
         
         vc.transtion = .modify
         vc.moods = item
-
+        vc.selectedDate = selectedDate
+        
         vc.completionHandler = { [weak self] data in
             self?.viewModel.moods.value[indexPath.item] = data
         }

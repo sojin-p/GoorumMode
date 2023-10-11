@@ -25,6 +25,9 @@ final class AddViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setMaximumTime()
+        
         setupSheet(.custom(resolver: { context in
             200
         }))
@@ -139,6 +142,14 @@ final class AddViewController: BaseViewController {
         
         if let setTime = calendar.date(bySettingHour: hour, minute: minute, second: second, of: selectedDate ?? Date()) {
             selectedDate = setTime
+        }
+    }
+    
+    func setMaximumTime() {
+        let selectedDate = Calendar.current.startOfDay(for: selectedDate ?? Date() )
+        let currentDate = Calendar.current.startOfDay(for: Date())
+        if selectedDate != currentDate {
+            mainView.timePicker.maximumDate = nil
         }
     }
     
