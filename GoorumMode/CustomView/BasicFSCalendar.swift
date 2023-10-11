@@ -37,6 +37,8 @@ final class BasicFSCalendar: FSCalendar {
         appearance.titleTodayColor = Constants.Color.Text.basicTitle
         appearance.titleSelectionColor = Constants.Color.Text.basicTitle
         
-        appearance.todayColor = .systemGray4
+        appearance.todayColor = .systemGray5
+        
+        allowsMultipleSelection = false
     }
 }

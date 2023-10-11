@@ -19,9 +19,8 @@ final class CalendarViewController: BaseViewController {
     
     var calendar = {
         let view = BasicFSCalendar()
-        view.headerHeight = 70
-        view.weekdayHeight = 45
-        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 20)
+        view.headerHeight = 60
+        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 18)
         return view
     }()
     
@@ -118,5 +117,23 @@ extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         completionHandler?(date)
         dismiss(animated: false)
+    }
+    
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        if date > Date() {
+            return false
+        } else {
+            return true
+        }
+    }
+}
+
+extension CalendarViewController: FSCalendarDelegateAppearance {
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        if date > Date() {
+            return .systemGray4
+        } else {
+            return nil
+        }
     }
 }

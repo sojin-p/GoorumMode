@@ -24,8 +24,9 @@ final class FSCalendarCustomCell: FSCalendarCell {
         addSubview(moodImageView)
         
         moodImageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.size.equalToSuperview().multipliedBy(1.11)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(0.83)
+            make.size.equalToSuperview().multipliedBy(1.2)
         }
     }
     
