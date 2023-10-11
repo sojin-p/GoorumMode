@@ -177,6 +177,12 @@ extension AddViewController: UITextViewDelegate {
 // MARK: - oneLineTextFieldDelegate
 extension AddViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        doneButtonClicked()
+        return true
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         showDoneBarButton()
     }

@@ -37,7 +37,7 @@ final class CalendarViewController: BaseViewController {
         calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.identifier)
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         view.addSubview(backView)
-        backView.addSubview(calendar)
+        [calendar].forEach { backView.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -131,7 +131,7 @@ extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource {
 extension CalendarViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if date > Date() {
-            return .systemGray4
+            return Constants.Color.Text.basicPlaceholder
         } else {
             return nil
         }
