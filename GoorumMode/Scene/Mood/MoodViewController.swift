@@ -25,21 +25,36 @@ final class MoodViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MoodRepository.shared.checkFileURL()
+        
+        setNavigationBar()
         configureDataSource()
 
         viewModel.moods.bind { [weak self] moods in
-            print("리스트 바뀜")
             self?.updateSnapshot()
         }
         
         mainView.addMoodButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
-        mainView.dateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(titleClicked)))
-        mainView.selectDateButton.addTarget(self, action: #selector(titleClicked), for: .touchUpInside)
-        
-        MoodRepository.shared.checkFileURL()
         
         mainView.collectionView.delegate = self
         
+    }
+    
+    @objc func calendarBarbuttonClicked() {
+        let vc = CalendarViewController()
+        
+        vc.modalPresentationStyle = .overFullScreen
+        vc.completionHandler = { [weak self] date in
+            self?.viewModel.moods.value = MoodRepository.shared.fetch(selectedDate: date)
+            self?.title = date.toString(of: .dateForTitle)
+            self?.selectedDate = date
+        }
+        present(vc, animated: false)
+    }
+    
+    @objc func settingBarButtonClicked() {
+        let vc = SettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func addButtonClicked() {
@@ -65,19 +80,6 @@ final class MoodViewController: BaseViewController {
         }
         
         present(nav, animated: true)
-    }
-    
-    @objc func titleClicked() {
-        
-        let vc = SelectDateViewController()
-        
-        vc.modalPresentationStyle = .overFullScreen
-        vc.completionHandler = { [weak self] date in
-            self?.viewModel.moods.value = MoodRepository.shared.fetch(selectedDate: date)
-            self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
-            self?.selectedDate = date
-        }
-        present(vc, animated: false)
     }
 
 }
@@ -146,5 +148,19 @@ extension MoodViewController: UICollectionViewDelegate {
 
         present(nav, animated: true)
         
+    }
+}
+
+extension MoodViewController {
+    
+    func setNavigationBar() {
+        title = Date().toString(of: .dateForTitle)
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: Constants.Color.Text.basicSubTitle ?? .systemGray4,
+            NSAttributedString.Key.font: Constants.Font.extraBold(size: 16)
+        ]
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Constants.IconImage.setting, style: .plain, target: self, action: #selector(settingBarButtonClicked))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
     }
 }

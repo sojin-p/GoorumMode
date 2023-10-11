@@ -10,37 +10,51 @@ import FSCalendar
 
 final class CalendarViewController: BaseViewController {
     
-    var calendar = {
-        let view = BasicFSCalendar()
-        view.headerHeight = 80
-        view.weekdayHeight = 45
-        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 21)
+    let backView = {
+        let view = UIView()
+        view.backgroundColor = Constants.Color.Background.basic
+        view.layer.cornerRadius = 25
         return view
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        calendar.reloadData()
-    }
+    var calendar = {
+        let view = BasicFSCalendar()
+        view.headerHeight = 70
+        view.weekdayHeight = 45
+        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 20)
+        return view
+    }()
+    
+    var completionHandler: ((Date) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.delegate = self
         calendar.dataSource = self
+        calendar.reloadData()
     }
     
     override func configure() {
         calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.identifier)
-        view.backgroundColor = Constants.Color.Background.basic
-        view.addSubview(calendar)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        view.addSubview(backView)
+        backView.addSubview(calendar)
     }
     
     override func setConstraints() {
-        calendar.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().offset(-30)
+        backView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.65)
+            make.centerY.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.5)
         }
+        
+        calendar.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(10)
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        dismiss(animated: false)
     }
     
     func getMostMood(year: Int, month: Int) -> [Date: String] {
@@ -92,12 +106,17 @@ extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource {
         let year = Calendar.current.component(.year, from: currentPage)
         let month = Calendar.current.component(.month, from: currentPage)
         
-        let test = getMostMood(year: year, month: month)
+        let mostMoods: [Date: String] = getMostMood(year: year, month: month)
         
-        if test.keys.contains(date) {
-            cell.moodImageView.image = UIImage(named: test[date] ?? MoodEmojis.placeholder)
+        if mostMoods.keys.contains(date) {
+            cell.moodImageView.image = UIImage(named: mostMoods[date] ?? MoodEmojis.placeholder)
         }
         
         return cell
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        completionHandler?(date)
+        dismiss(animated: false)
     }
 }

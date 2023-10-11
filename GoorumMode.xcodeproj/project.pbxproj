@@ -41,11 +41,9 @@
 		23DD9A942ACECADA00D6BBB5 /* MoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A932ACECADA00D6BBB5 /* MoodViewModel.swift */; };
 		23DD9A962ACECB1900D6BBB5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A952ACECB1900D6BBB5 /* Observable.swift */; };
 		23DD9A992AD160EC00D6BBB5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A982AD160EC00D6BBB5 /* CalendarViewController.swift */; };
-		23DD9A9B2AD1625800D6BBB5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A9A2AD1625800D6BBB5 /* TabBarController.swift */; };
 		23DD9A9D2AD1882200D6BBB5 /* IconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */; };
 		23DD9AA02AD18CB000D6BBB5 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A9F2AD18CB000D6BBB5 /* FSCalendar */; };
 		23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */; };
-		23DD9AA62AD3E2CA00D6BBB5 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */; };
 		23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */; };
 		23DD9AAF2AD59EA500D6BBB5 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */; };
 		23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */; };
@@ -87,10 +85,8 @@
 		23DD9A932ACECADA00D6BBB5 /* MoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewModel.swift; sourceTree = "<group>"; };
 		23DD9A952ACECB1900D6BBB5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		23DD9A982AD160EC00D6BBB5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		23DD9A9A2AD1625800D6BBB5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 		23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarCustomCell.swift; sourceTree = "<group>"; };
-		23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFSCalendar.swift; sourceTree = "<group>"; };
 		23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -182,7 +178,6 @@
 				23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */,
 				23DD9A1E2AC2EB6E00D6BBB5 /* BaseView.swift */,
 				23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */,
-				23DD9A9A2AD1625800D6BBB5 /* TabBarController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -193,7 +188,6 @@
 				2380FB232AB9E6B200B31754 /* MoodViewController.swift */,
 				23DD9A202AC2EBDA00D6BBB5 /* MoodView.swift */,
 				23DD9A932ACECADA00D6BBB5 /* MoodViewModel.swift */,
-				23DD9AA52AD3E2CA00D6BBB5 /* SelectDateViewController.swift */,
 			);
 			path = Mood;
 			sourceTree = "<group>";
@@ -348,12 +342,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23DD9AA62AD3E2CA00D6BBB5 /* SelectDateViewController.swift in Sources */,
 				23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */,
 				23DD9A3F2AC5A5D300D6BBB5 /* UIViewController+Extension.swift in Sources */,
 				23DD9A942ACECADA00D6BBB5 /* MoodViewModel.swift in Sources */,
 				23DD9A5B2AC7F85B00D6BBB5 /* Date+Extension.swift in Sources */,
-				23DD9A9B2AD1625800D6BBB5 /* TabBarController.swift in Sources */,
 				23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */,
 				2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */,
 				23DD9A3D2AC54A1400D6BBB5 /* AddView.swift in Sources */,
