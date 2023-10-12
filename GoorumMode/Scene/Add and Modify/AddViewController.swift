@@ -45,6 +45,7 @@ final class AddViewController: BaseViewController {
         
         if transtion == .modify {
             setModifyView()
+            setTime(date: mainView.timePicker.date)
         } else {
             pickMoodImageClicked()
             setTime()
@@ -111,7 +112,6 @@ final class AddViewController: BaseViewController {
         } else if transtion == .modify {
             print("수정 화면")
             guard let moods else { return }
-            
             let data = Mood(mood: moodImageName ?? moods.mood, date: selectedDate ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
             
             data._id = moods._id
