@@ -65,12 +65,8 @@ final class MoodViewController: BaseViewController {
         vc.selectedDate = selectedDate
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
-            
-            if let index = self?.viewModel.moods.value.firstIndex(where: { $0.date < data.date }) {
-                self?.viewModel.moods.value.insert(data, at: index)
-            } else {
-                self?.viewModel.moods.value.append(data)
-            }
+            self?.viewModel.moods.value.append(data)
+            self?.viewModel.moods.value.sort(by: { $0.date > $1.date })
             
             if let item = self?.snapshot.indexOfItem(data) {
                 let indexPath = IndexPath(item: item, section: 0)
@@ -141,6 +137,7 @@ extension MoodViewController: UICollectionViewDelegate {
         
         vc.completionHandler = { [weak self] data in
             self?.viewModel.moods.value[indexPath.item] = data
+            self?.viewModel.moods.value.sort(by: { $0.date > $1.date })
         }
         
         vc.removeData = { [weak self] in

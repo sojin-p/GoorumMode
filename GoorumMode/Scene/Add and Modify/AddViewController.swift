@@ -46,9 +46,14 @@ final class AddViewController: BaseViewController {
         if transtion == .modify {
             setModifyView()
         } else {
+            pickMoodImageClicked()
             setTime()
             mainView.removeBarButton.isHidden = true
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     @objc func pickMoodImageClicked() {
