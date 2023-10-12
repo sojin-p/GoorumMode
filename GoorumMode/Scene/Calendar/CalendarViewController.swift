@@ -24,6 +24,19 @@ final class CalendarViewController: BaseViewController {
         return view
     }()
     
+    
+    let showDateButton = {
+        let view = BasicBackgroundButton()
+        view.setTitle("날짜 보기", for: .normal)
+        return view
+    }()
+    
+    let todayButton = {
+        let view = BasicBackgroundButton()
+        view.setTitle("오늘", for: .normal)
+        return view
+    }()
+    
     var completionHandler: ((Date) -> Void)?
     
     override func viewDidLoad() {
@@ -31,13 +44,30 @@ final class CalendarViewController: BaseViewController {
         calendar.delegate = self
         calendar.dataSource = self
         calendar.reloadData()
+        
+        showDateButton.addTarget(self, action: #selector(showDateButtonClicked), for: .touchUpInside)
+        todayButton.addTarget(self, action: #selector(todayButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func showDateButtonClicked() {
+        let visibleCells = calendar.visibleCells()
+        
+        visibleCells.forEach { cell in
+            if let cell = cell as? FSCalendarCustomCell {
+                cell.moodImageView.image = nil
+            }
+        }
+    }
+    
+    @objc func todayButtonClicked() {
+        calendar.select(Date())
     }
     
     override func configure() {
         calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.identifier)
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         view.addSubview(backView)
-        [calendar].forEach { backView.addSubview($0) }
+        [calendar, showDateButton, todayButton].forEach { backView.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -50,6 +80,19 @@ final class CalendarViewController: BaseViewController {
         calendar.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(10)
         }
+        
+        showDateButton.snp.makeConstraints { make in
+            make.leading.equalTo(calendar.calendarHeaderView)
+            make.centerY.equalTo(calendar.calendarHeaderView).offset(2)
+            make.height.equalTo(35)
+        }
+        
+        todayButton.snp.makeConstraints { make in
+            make.trailing.equalTo(calendar.calendarHeaderView)
+            make.centerY.equalTo(calendar.calendarHeaderView).offset(2)
+            make.height.equalTo(35)
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

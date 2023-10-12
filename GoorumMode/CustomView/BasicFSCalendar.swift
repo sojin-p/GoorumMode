@@ -29,7 +29,7 @@ final class BasicFSCalendar: FSCalendar {
         
         placeholderType = .none
         
-        appearance.selectionColor = .clear
+        appearance.selectionColor = .systemGray5
         
         appearance.titleFont = Constants.Font.bold(size: 15)
         appearance.titleWeekendColor = Constants.Color.Text.basicTitle
