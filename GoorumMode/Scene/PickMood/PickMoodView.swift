@@ -9,6 +9,15 @@ import UIKit
 
 final class PickMoodView: BaseView {
     
+    private let titleLabel = {
+        let view = UILabel()
+        view.text = "지금 기분이 어떤가요?"
+        view.font = Constants.Font.extraBold(size: 17)
+        view.textAlignment = .center
+        view.textColor = Constants.Color.Text.basicSubTitle
+        return view
+    }()
+    
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         view.register(PickMoodCollectionViewCell.self, forCellWithReuseIdentifier: PickMoodCollectionViewCell.identifier)
@@ -17,12 +26,18 @@ final class PickMoodView: BaseView {
     }()
     
     override func configure() {
-        addSubview(collectionView)
+        [titleLabel, collectionView].forEach { addSubview($0) }
     }
     
     override func setConstraints() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
+        }
+        
         collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(titleLabel.snp.bottom).offset(25)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
