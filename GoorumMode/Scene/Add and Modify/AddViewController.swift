@@ -73,13 +73,19 @@ final class AddViewController: BaseViewController {
         present(nav, animated: true)
     }
     
-    @objc func extendButtonClicked() {
-        if let sheet = sheetPresentationController {
-            sheet.animateChanges {
-                sheet.detents = [.large()]
-            }
+    @objc func extendButtonClicked(_ sender: UIButton) {
+        if !(sender.isSelected) {
+            mainView.extendButton.setImage(UIImage(systemName: "minus"), for: .normal)
+            setupSheet(.large())
+            mainView.detailTextView.isHidden = false
+        } else {
+            mainView.extendButton.setImage(UIImage(systemName: "plus"), for: .normal)
+            setupSheet(.custom(resolver: { context in
+                200
+            }))
+            mainView.detailTextView.isHidden = true
         }
-        mainView.detailTextView.isHidden = false
+        sender.isSelected.toggle()
     }
     
     
@@ -100,6 +106,10 @@ final class AddViewController: BaseViewController {
         var detailText = mainView.detailTextView.text.trimmingCharacters(in: .whitespaces)
         
         if detailText == mainView.detailTextViewPlaceholder {
+            detailText = ""
+        }
+        
+        if mainView.detailTextView.isHidden {
             detailText = ""
         }
         
@@ -216,9 +226,11 @@ extension AddViewController {
         isModalInPresentation = true
         
         if let sheet = sheetPresentationController {
-            sheet.detents = [detentsID]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.preferredCornerRadius = 20
+            sheet.animateChanges {
+                sheet.detents = [detentsID]
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                sheet.preferredCornerRadius = 20
+            }
         }
         
     }
