@@ -20,7 +20,7 @@ final class CalendarViewController: BaseViewController {
     var calendar = {
         let view = BasicFSCalendar()
         view.headerHeight = 60
-        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 18)
+        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 17)
         return view
     }()
     
@@ -135,7 +135,7 @@ final class CalendarViewController: BaseViewController {
     }
 }
 
-extension CalendarViewController: FSCalendarDelegate,FSCalendarDataSource {
+extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendar.reloadData()

@@ -52,11 +52,6 @@ final class MoodViewController: BaseViewController {
         present(vc, animated: false)
     }
     
-    @objc func settingBarButtonClicked() {
-        let vc = SettingViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     @objc func addButtonClicked() {
         
         let vc = AddViewController()
@@ -157,8 +152,7 @@ extension MoodViewController {
             NSAttributedString.Key.foregroundColor: Constants.Color.Text.basicSubTitle ?? .systemGray4,
             NSAttributedString.Key.font: Constants.Font.extraBold(size: 16)
         ]
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Constants.IconImage.setting, style: .plain, target: self, action: #selector(settingBarButtonClicked))
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
     }
 }

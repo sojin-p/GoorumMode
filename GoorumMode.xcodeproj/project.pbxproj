@@ -12,6 +12,8 @@
 		2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2380FB232AB9E6B200B31754 /* MoodViewController.swift */; };
 		2380FB292AB9E6B400B31754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2380FB282AB9E6B400B31754 /* Assets.xcassets */; };
 		2380FB2C2AB9E6B400B31754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2380FB2A2AB9E6B400B31754 /* LaunchScreen.storyboard */; };
+		23BDAD472AD9668B007F5768 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD462AD9668B007F5768 /* ChartView.swift */; };
+		23BDAD492AD97A12007F5768 /* CapsulePaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */; };
 		23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */; };
 		23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A112AC168B200D6BBB5 /* Color.swift */; };
 		23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9A1A2AC2E01300D6BBB5 /* Localizable.strings */; };
@@ -48,6 +50,9 @@
 		23DD9AAF2AD59EA500D6BBB5 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */; };
 		23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */; };
 		23E766592AD81708008AC3A4 /* BasicBackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E766582AD81707008AC3A4 /* BasicBackgroundButton.swift */; };
+		23E7665B2AD819B3008AC3A4 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */; };
+		23E7665D2AD819ED008AC3A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665C2AD819ED008AC3A4 /* TabBarController.swift */; };
+		23E766612AD81F58008AC3A4 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 23E766602AD81F58008AC3A4 /* DGCharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +63,8 @@
 		2380FB282AB9E6B400B31754 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2380FB2B2AB9E6B400B31754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2380FB2D2AB9E6B400B31754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23BDAD462AD9668B007F5768 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChartView.swift; path = GoorumMode/Scene/Calendar/ChartView.swift; sourceTree = SOURCE_ROOT; };
+		23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePaddingButton.swift; sourceTree = "<group>"; };
 		23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		23DD9A112AC168B200D6BBB5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		23DD9A152AC2DFB600D6BBB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -92,6 +99,8 @@
 		23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		23E766582AD81707008AC3A4 /* BasicBackgroundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBackgroundButton.swift; sourceTree = "<group>"; };
+		23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		23E7665C2AD819ED008AC3A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +110,7 @@
 			files = (
 				23DD9A332AC4721000D6BBB5 /* RealmSwift in Frameworks */,
 				23DD9AA02AD18CB000D6BBB5 /* FSCalendar in Frameworks */,
+				23E766612AD81F58008AC3A4 /* DGCharts in Frameworks */,
 				23DD9A312AC4721000D6BBB5 /* Realm in Frameworks */,
 				23DD9A242AC2EC8800D6BBB5 /* SnapKit in Frameworks */,
 			);
@@ -167,8 +177,8 @@
 				23DD9A372AC52C2C00D6BBB5 /* Add and Modify */,
 				23DD9A4C2AC6B2A900D6BBB5 /* PickMood */,
 				23DD9A972AD1609C00D6BBB5 /* Calendar */,
+				23E7665E2AD81DFE008AC3A4 /* Chart */,
 				23DD9A2E2AC44AAE00D6BBB5 /* Cells */,
-				23DD9A952ACECB1900D6BBB5 /* Observable.swift */,
 				23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */,
 			);
 			path = Scene;
@@ -180,6 +190,8 @@
 				23DD9A3A2AC52CB200D6BBB5 /* BaseViewController.swift */,
 				23DD9A1E2AC2EB6E00D6BBB5 /* BaseView.swift */,
 				23DD9A272AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift */,
+				23E7665C2AD819ED008AC3A4 /* TabBarController.swift */,
+				23DD9A952ACECB1900D6BBB5 /* Observable.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -254,8 +266,18 @@
 			children = (
 				23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */,
 				23E766582AD81707008AC3A4 /* BasicBackgroundButton.swift */,
+				23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		23E7665E2AD81DFE008AC3A4 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				23BDAD462AD9668B007F5768 /* ChartView.swift */,
+				23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +301,7 @@
 				23DD9A302AC4721000D6BBB5 /* Realm */,
 				23DD9A322AC4721000D6BBB5 /* RealmSwift */,
 				23DD9A9F2AD18CB000D6BBB5 /* FSCalendar */,
+				23E766602AD81F58008AC3A4 /* DGCharts */,
 			);
 			productName = GoorumMode;
 			productReference = 2380FB1C2AB9E6B100B31754 /* GoorumMode.app */;
@@ -313,6 +336,7 @@
 				23DD9A222AC2EC8800D6BBB5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				23DD9A2F2AC4721000D6BBB5 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				23DD9A9E2AD18CB000D6BBB5 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				23E7665F2AD81F58008AC3A4 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 2380FB1D2AB9E6B100B31754 /* Products */;
 			projectDirPath = "";
@@ -346,7 +370,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */,
+				23E7665D2AD819ED008AC3A4 /* TabBarController.swift in Sources */,
 				23DD9A3F2AC5A5D300D6BBB5 /* UIViewController+Extension.swift in Sources */,
+				23E7665B2AD819B3008AC3A4 /* ChartViewController.swift in Sources */,
 				23DD9A942ACECADA00D6BBB5 /* MoodViewModel.swift in Sources */,
 				23DD9A5B2AC7F85B00D6BBB5 /* Date+Extension.swift in Sources */,
 				23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */,
@@ -372,6 +398,8 @@
 				23DD9A522AC6C10100D6BBB5 /* PickMoodView.swift in Sources */,
 				23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */,
 				23DD9A5D2ACA80C900D6BBB5 /* MoodRepository.swift in Sources */,
+				23BDAD492AD97A12007F5768 /* CapsulePaddingButton.swift in Sources */,
+				23BDAD472AD9668B007F5768 /* ChartView.swift in Sources */,
 				23DD9A592AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift in Sources */,
 				23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */,
 				23DD9A1F2AC2EB6E00D6BBB5 /* BaseView.swift in Sources */,
@@ -628,6 +656,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		23E7665F2AD81F58008AC3A4 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -650,6 +686,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 23DD9A9E2AD18CB000D6BBB5 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		23E766602AD81F58008AC3A4 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23E7665F2AD81F58008AC3A4 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
