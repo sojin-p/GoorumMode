@@ -71,24 +71,24 @@ final class ChartView: BaseView {
         return view
     }()
     
-    let scrollView = {
-        let view = UIScrollView()
-        view.backgroundColor = .cyan
-        return view
-    }()
+//    let scrollView = {
+//        let view = UIScrollView()
+//        view.backgroundColor = .cyan
+//        return view
+//    }()
     
     let pieChartView = {
         let view = PieChartView()
         view.noDataText = "작성된 기분이 없습니다."
-        view.noDataFont = Constants.Font.bold(size: 17)
+        view.noDataFont = Constants.Font.extraBold(size: 16)
         view.noDataTextColor = Constants.Color.Text.basicPlaceholder!
         return view
     }()
     
     override func configure() {
         super.configure()
-        [calendar, headerView, backView, todayChartButton, weekChartButton, monthChartButton, scrollView].forEach { addSubview($0) }
-        scrollView.addSubview(pieChartView)
+        [calendar, headerView, backView, todayChartButton, weekChartButton, monthChartButton, pieChartView].forEach { addSubview($0) }
+//        scrollView.addSubview(pieChartView)
         [headerLabel, nextButton, previousButton].forEach { headerView.addSubview($0) }
     }
     
@@ -144,15 +144,17 @@ final class ChartView: BaseView {
             make.leading.equalTo(weekChartButton.snp.trailing).offset(8)
         }
         
-        scrollView.snp.makeConstraints { make in
-            make.top.equalTo(weekChartButton.snp.bottom).offset(20)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
-        }
+//        scrollView.snp.makeConstraints { make in
+//            make.top.equalTo(weekChartButton.snp.bottom).offset(20)
+//            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+//        }
         
-        pieChartView.backgroundColor = .systemYellow
         pieChartView.snp.makeConstraints { make in
-            make.top.width.equalToSuperview()
-            make.height.equalTo(1500)
+            make.top.equalTo(weekChartButton.snp.bottom).offset(20)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).inset(20)
         }
+//        pieChartView.snp.makeConstraints { make in
+//            make.edges.width.equalToSuperview()
+//        }
     }
 }
