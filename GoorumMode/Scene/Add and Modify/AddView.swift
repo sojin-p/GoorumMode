@@ -78,7 +78,7 @@ final class AddView: BaseView {
             view.setImage(UIImage(systemName: "plus"), for: .normal)
             view.tintColor = Constants.Color.iconTint.basicBlack
             view.backgroundColor = Constants.Color.Background.white
-            view.layer.shadowColor = UIColor.lightGray.cgColor
+            view.layer.shadowColor = UIColor.systemGray3.cgColor
             view.layer.shadowOffset = .zero
             view.layer.shadowRadius = 3
             view.layer.shadowOpacity = 0.5

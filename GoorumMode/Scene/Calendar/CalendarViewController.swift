@@ -63,7 +63,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configure() {
-        calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.identifier)
+        calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.reuseIdentifier)
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         view.addSubview(backView)
         [calendar, showDateButton, todayButton].forEach { backView.addSubview($0) }
@@ -141,7 +141,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-        guard let cell = calendar.dequeueReusableCell(withIdentifier: FSCalendarCustomCell.identifier, for: date, at: position) as? FSCalendarCustomCell else { return FSCalendarCell() }
+        guard let cell = calendar.dequeueReusableCell(withIdentifier: FSCalendarCustomCell.reuseIdentifier, for: date, at: position) as? FSCalendarCustomCell else { return FSCalendarCell() }
         
         let currentPage = calendar.currentPage
         let year = Calendar.current.component(.year, from: currentPage)

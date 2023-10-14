@@ -10,8 +10,6 @@ import FSCalendar
 
 final class FSCalendarCustomCell: FSCalendarCell {
     
-    static let identifier = "FSCalendarCustomCell"
-    
     let moodImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit

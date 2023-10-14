@@ -11,28 +11,28 @@ extension Constants {
     
     enum IconImage {
         static let list = UIImage(named: "iconList")?
-            .withRenderingMode(.alwaysOriginal)
+            .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
         static let calendar = UIImage(named: "iconCalendar")?
             .withRenderingMode(.alwaysOriginal)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
         static let setting = UIImage(named: "iconSetting")?
-            .withRenderingMode(.alwaysOriginal)
+            .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
         static let stats = UIImage(named: "iconStats")?
-            .withRenderingMode(.alwaysOriginal)
+            .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
         static let search = UIImage(named: "iconSearch")?
             .withRenderingMode(.alwaysOriginal)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
         static let check = UIImage(named: "iconCheck")?
-            .withRenderingMode(.alwaysOriginal)
+            .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
         static let trash = UIImage(named: "iconTrash")?
-            .withRenderingMode(.alwaysOriginal)
+            .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
         static let xMark = UIImage(named: "iconXmark")?
-            .withRenderingMode(.alwaysOriginal)
+            .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
     }
     

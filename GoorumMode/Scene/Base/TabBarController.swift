@@ -32,8 +32,8 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabBar.tintColor = Constants.Color.Background.basic
-        tabBar.unselectedItemTintColor = Constants.Color.Background.basic
+        tabBar.tintColor = Constants.Color.iconTint.basicBlack
+        tabBar.unselectedItemTintColor = Constants.Color.iconTint.unselected
         setViewControllers([moodVC, chartVC, settingVC], animated: true)
 
     }

@@ -7,48 +7,57 @@
 
 import UIKit
 import FSCalendar
-import DGCharts
 
 final class ChartView: BaseView {
     
     let calendar = {
         let view = BasicFSCalendar()
         view.scope = .week
-        view.headerHeight = 45
+        view.headerHeight = 50
         view.weekdayHeight = 40
-        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 17)
+        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 18)
         return view
     }()
     
+    //MARK: - Calendar Header
     private let headerView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.Background.basic
         return view
     }()
     
-    private let headerLabel = {
+    let headerLabel = {
         let view = UILabel()
-        view.text = "2023년 10월"
+        view.text = Date().toString(of: .yearAndMouth)
         view.textColor = Constants.Color.Text.basicTitle
         view.font = Constants.Font.extraBold(size: 18)
         return view
     }()
     
-    let previousButton = {
-        let view = UIButton()
-        view.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        view.tintColor = Constants.Color.iconTint.basicBlack
-        return view
-    }()
-    
-    let nextButton = {
+    private lazy var showMonthButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        view.tintColor = Constants.Color.iconTint.basicBlack
+        view.tintColor = Constants.Color.iconTint.unselected
+        view.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
         return view
     }()
     
-    let backView = {
+    lazy var backTodayButton = {
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 28), title: "오늘")
+        view.tintColor = Constants.Color.iconTint.basicBlack
+        view.isSelected = true
+        view.backgroundColor = Constants.Color.Background.white
+        view.layer.shadowColor = UIColor.systemGray3.cgColor
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 3
+        view.layer.shadowOpacity = 0.5
+        view.clipsToBounds = false
+        view.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
+        return view
+    }()
+    
+    //MARK: - Main Contents(Buttons, ChartTable)
+    private let backView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.Background.white
         view.roundCorners(cornerRadius: 70, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
@@ -58,6 +67,7 @@ final class ChartView: BaseView {
     let todayChartButton = {
         let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "일간")
         view.isSelected = true
+        view.backgroundColor = Constants.Color.Background.basic
         return view
     }()
     
@@ -71,30 +81,30 @@ final class ChartView: BaseView {
         return view
     }()
     
-    let pieChartView = {
-        let view = PieChartView()
-        view.noDataText = "작성된 기분이 없습니다."
-        view.noDataFont = Constants.Font.extraBold(size: 16)
-        view.noDataTextColor = Constants.Color.Text.basicPlaceholder!
-        view.drawHoleEnabled = false
-        view.legend.enabled = false
-        view.usePercentValuesEnabled = true
+    lazy var chartTableView = {
+        let view = UITableView()
+        view.rowHeight = 350
+        view.register(ChartTableViewCell.self, forCellReuseIdentifier: ChartTableViewCell.reuseIdentifier)
+        view.bounces = false
+        view.separatorColor = .clear
+        view.backgroundColor = Constants.Color.Background.white
         return view
     }()
     
-    lazy var swipeUp = {
+    //MARK: - Calendar Swipe
+    private lazy var swipeUp = {
         let view = UISwipeGestureRecognizer(target: self, action: #selector(swipedUpAndDown))
         view.direction = .up
         return view
     }()
     
-    lazy var swipeDown = {
+    private lazy var swipeDown = {
         let view = UISwipeGestureRecognizer(target: self, action: #selector(swipedUpAndDown))
         view.direction = .down
         return view
     }()
     
-    @objc func swipedUpAndDown(_ sender: UISwipeGestureRecognizer) {
+    @objc private func swipedUpAndDown(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == .up {
             calendar.setScope(.week, animated: true)
         } else if sender.direction == .down {
@@ -102,10 +112,19 @@ final class ChartView: BaseView {
         }
     }
     
+    @objc private func showMonthButtonClicked() {
+        calendar.setScope(.month, animated: true)
+    }
+    
+    @objc private func backTodayButtonClicked() {
+        calendar.select(Date())
+    }
+    
+    //MARK: - hierarchies & Constraints
     override func configure() {
         super.configure()
-        [calendar, headerView, backView, todayChartButton, weekChartButton, monthChartButton, pieChartView].forEach { addSubview($0) }
-        [headerLabel, nextButton, previousButton].forEach { headerView.addSubview($0) }
+        [calendar, headerView, backView, todayChartButton, weekChartButton, monthChartButton, chartTableView].forEach { addSubview($0) }
+        [headerLabel, backTodayButton, showMonthButton].forEach { headerView.addSubview($0) }
         [swipeUp, swipeDown].forEach { calendar.addGestureRecognizer($0) }
     }
     
@@ -128,16 +147,16 @@ final class ChartView: BaseView {
             make.height.equalTo(40)
         }
         
-        previousButton.snp.makeConstraints { make in
+        showMonthButton.snp.makeConstraints { make in
             make.centerY.equalTo(headerLabel)
-            make.trailing.equalTo(nextButton.snp.leading)
+            make.leading.equalTo(headerLabel.snp.trailing)
             make.size.equalTo(40)
         }
 
-        nextButton.snp.makeConstraints { make in
+        backTodayButton.snp.makeConstraints { make in
             make.centerY.equalTo(headerLabel)
-            make.trailing.equalToSuperview().offset(-7)
-            make.size.equalTo(40)
+            make.trailing.equalToSuperview().offset(-10)
+            make.height.equalTo(28)
         }
         
         backView.snp.makeConstraints { make in
@@ -161,9 +180,10 @@ final class ChartView: BaseView {
             make.leading.equalTo(weekChartButton.snp.trailing).offset(8)
         }
         
-        pieChartView.snp.makeConstraints { make in
+        chartTableView.snp.makeConstraints { make in
             make.top.equalTo(weekChartButton.snp.bottom).offset(20)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).inset(25)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
+
     }
 }
