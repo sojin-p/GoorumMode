@@ -22,11 +22,13 @@ final class ChartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainView.calendar.delegate = self
         mainView.calendar.dataSource = self
         mainView.chartTableView.delegate = self
         mainView.chartTableView.dataSource = self
         mainView.chartButtons.forEach { $0.addTarget(self, action: #selector(chartButtonClicked), for: .touchUpInside) }
+        mainView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,15 +40,31 @@ final class ChartViewController: BaseViewController {
         }
     }
     
+    @objc private func backTodayButtonClicked() {
+        mainView.calendar.select(Date())
+        selectedDate = Date()
+        for button in mainView.chartButtons {
+            if button.isSelected {
+                chartButtonClicked(button)
+            }
+        }
+    }
+    
     @objc func chartButtonClicked(_ sender: UIButton) {
         
         switch DateRange(rawValue: sender.tag) {
         case .daliy:
-            data = MoodRepository.shared.fetch(dateRange: .daliy, selectedDate: selectedDate)
+            data = MoodRepository.shared.fetch(dateRange: .daliy, selectedDate: selectedDate, completionHandler: { startDate, endDate in
+                self.mainView.dateRangeLabel.text = startDate.toString(of: .dateForChart)
+            })
         case .weekly:
-            data = MoodRepository.shared.fetch(dateRange: .weekly, selectedDate: selectedDate)
+            data = MoodRepository.shared.fetch(dateRange: .weekly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
+                self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) - \(endDate.toString(of: .dateForChart))"
+            })
         case .monthly:
-            data = MoodRepository.shared.fetch(dateRange: .monthly, selectedDate: selectedDate)
+            data = MoodRepository.shared.fetch(dateRange: .monthly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
+                self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) - \(endDate.toString(of: .dateForChart))"
+            })
         default: print("")
         }
         
@@ -77,7 +95,7 @@ final class ChartViewController: BaseViewController {
         dataSet.iconsOffset = CGPoint(x: 0, y: 30)
         dataSet.valueTextColor = .darkGray
         dataSet.valueFont = Constants.Font.extraBold(size: 14)
-        dataSet.selectionShift = 5
+        dataSet.selectionShift = 10
         
         return PieChartData(dataSet: dataSet)
     }

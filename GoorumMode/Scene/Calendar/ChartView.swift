@@ -52,7 +52,6 @@ final class ChartView: BaseView {
         view.layer.shadowRadius = 3
         view.layer.shadowOpacity = 0.5
         view.clipsToBounds = false
-        view.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
         return view
     }()
     
@@ -67,7 +66,7 @@ final class ChartView: BaseView {
     lazy var chartButtons = [dailyButton, weeklyButton, monthlyButton]
     
     private let dailyButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "일간")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "일간")
         view.tag = DateRange.daliy.rawValue
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.basic
@@ -75,20 +74,30 @@ final class ChartView: BaseView {
     }()
     
     private let weeklyButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "주간")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "주간")
         view.tag = DateRange.weekly.rawValue
         return view
     }()
     
     private let monthlyButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "월간")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "월간")
         view.tag = DateRange.monthly.rawValue
+        return view
+    }()
+    
+    var dateRangeLabel = {
+        let view = UILabel()
+        view.text = "\(Date().toString(of: .dateForChart)) - \(Date().toString(of: .dateForChart))"
+        view.font = Constants.Font.extraBold(size: 15)
+        view.textColor = Constants.Color.Text.basicSubTitle
+        view.textAlignment = .center
+        view.numberOfLines = 3
         return view
     }()
     
     lazy var chartTableView = {
         let view = UITableView()
-        view.rowHeight = 400
+        view.rowHeight = 350
         view.register(ChartTableViewCell.self, forCellReuseIdentifier: ChartTableViewCell.reuseIdentifier)
         view.bounces = false
         view.separatorColor = .clear
@@ -109,6 +118,7 @@ final class ChartView: BaseView {
         return view
     }()
     
+    //MARK: - @objc func
     @objc private func swipedUpAndDown(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == .up {
             calendar.setScope(.week, animated: true)
@@ -119,10 +129,6 @@ final class ChartView: BaseView {
     
     @objc private func showMonthButtonClicked() {
         calendar.setScope(.month, animated: true)
-    }
-    
-    @objc private func backTodayButtonClicked() {
-        calendar.select(Date())
     }
     
     @objc private func setChartButtons(_ sender: UIButton) {
@@ -141,7 +147,7 @@ final class ChartView: BaseView {
     override func configure() {
         super.configure()
         chartButtons.forEach { $0.addTarget(self, action: #selector(setChartButtons), for: .touchUpInside) }
-        [calendar, headerView, backView, dailyButton, weeklyButton, monthlyButton, chartTableView].forEach { addSubview($0) }
+        [calendar, headerView, backView, dailyButton, weeklyButton, monthlyButton, dateRangeLabel, chartTableView].forEach { addSubview($0) }
         [headerLabel, backTodayButton, showMonthButton].forEach { headerView.addSubview($0) }
         [swipeUp, swipeDown].forEach { calendar.addGestureRecognizer($0) }
     }
@@ -151,7 +157,7 @@ final class ChartView: BaseView {
         calendar.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(10)
             make.horizontalEdges.equalToSuperview().inset(10)
-            make.height.equalTo(350)
+            make.height.equalTo(400)
         }
         
         headerView.snp.makeConstraints { make in
@@ -183,9 +189,9 @@ final class ChartView: BaseView {
         }
         
         weeklyButton.snp.makeConstraints { make in
-            make.top.equalTo(backView).offset(20)
+            make.top.equalTo(backView).offset(25)
             make.centerX.equalTo(backView)
-            make.height.equalTo(30)
+            make.height.equalTo(32)
         }
         
         dailyButton.snp.makeConstraints { make in
@@ -198,8 +204,13 @@ final class ChartView: BaseView {
             make.leading.equalTo(weeklyButton.snp.trailing).offset(8)
         }
         
+        dateRangeLabel.snp.makeConstraints { make in
+            make.top.equalTo(weeklyButton.snp.bottom).offset(25)
+            make.horizontalEdges.equalToSuperview().inset(15)
+        }
+        
         chartTableView.snp.makeConstraints { make in
-            make.top.equalTo(weeklyButton.snp.bottom).offset(20)
+            make.top.equalTo(dateRangeLabel.snp.bottom).offset(25)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
 

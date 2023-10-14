@@ -40,7 +40,7 @@ class MoodRepository {
         return moodCounts
     }
     
-    func fetch(dateRange: DateRange, selectedDate: Date = Date()) -> [Mood] {
+    func fetch(dateRange: DateRange, selectedDate: Date = Date(), completionHandler: ((Date, Date) -> Void)? = nil) -> [Mood] {
         let calendar = Calendar.current
         var selectedDate = calendar.startOfDay(for: selectedDate)
         var startDate: Date = selectedDate
@@ -58,8 +58,8 @@ class MoodRepository {
             startDate = calendar.date(byAdding: .month, value: -1, to: selectedDate) ?? Date()
             endDate = calendar.date(byAdding: .day, value: 1, to: selectedDate) ?? Date()
         }
-        
-        let moodsForMonth = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate)
+        completionHandler?(startDate, endDate)
+        let moodsForMonth = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate).sorted(byKeyPath: "date", ascending: false)
         return moodsForMonth.toArray()
     }
     

@@ -17,7 +17,7 @@ enum MoodEmojis: String, CaseIterable {
     case lol = "6_Basic_LOL"
     case embarrassed = "7_Basic_Embarrassed"
     case sad = "8_Basic_Sad"
-    case smirking = "9_Basic_smirking"
+    case smirking = "9_Basic_Smirking"
     case lovely = "10_Basic_Lovely"
     case passionate = "11_Basic_Passionate"
     

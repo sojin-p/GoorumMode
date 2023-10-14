@@ -64,7 +64,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     }()
     
     lazy var detailBackView = {
-        let view = UILabel()
+        let view = UIView()
         if let text = detailLabel.text, text.isEmpty {
             view.isHidden = true
         } else {
@@ -76,7 +76,8 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     let detailLabel = {
         let view = UILabel()
         view.font = Constants.Font.regular(size: 15)
-        view.numberOfLines = 0
+        view.numberOfLines = 3
+        view.lineBreakMode = .byTruncatingTail
         view.textColor = Constants.Color.Text.basicTitle
         return view
     }()
@@ -96,12 +97,13 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         
         baseStackView.snp.makeConstraints { make in
             make.edges.equalTo(contentView).inset(15)
+            make.centerY.equalTo(contentView)
         }
 
         containerView.snp.makeConstraints { make in
             make.height.equalTo(70)
         }
-        
+
         detailLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(12)
         }
