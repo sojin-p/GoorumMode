@@ -12,6 +12,9 @@ import DGCharts
 final class ChartViewController: BaseViewController {
     
     let mainView = ChartView()
+    var pieData: PieChartData?
+    var selectedDate: Date = Calendar.current.startOfDay(for: Date())
+    var data: [Mood] = []
     
     override func loadView() {
         view = mainView
@@ -23,25 +26,37 @@ final class ChartViewController: BaseViewController {
         mainView.calendar.dataSource = self
         mainView.chartTableView.delegate = self
         mainView.chartTableView.dataSource = self
+        mainView.chartButtons.forEach { $0.addTarget(self, action: #selector(chartButtonClicked), for: .touchUpInside) }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mainView.chartTableView.reloadData()
-    }
-    
-    func setChartData() -> PieChartData {
-        let data = MoodRepository.shared.fetch(selectedDate: Date())
-        
-        var moodCounts: [String: Int] = [:]
-        for mood in data {
-            let mood = mood.mood
-            if moodCounts.keys.contains(mood) {
-                moodCounts[mood] = (moodCounts[mood] ?? 0) + 1
-            } else {
-                moodCounts[mood] = 1
+        for button in mainView.chartButtons {
+            if button.isSelected {
+                chartButtonClicked(button)
             }
         }
+    }
+    
+    @objc func chartButtonClicked(_ sender: UIButton) {
+        
+        switch DateRange(rawValue: sender.tag) {
+        case .daliy:
+            data = MoodRepository.shared.fetch(dateRange: .daliy, selectedDate: selectedDate)
+        case .weekly:
+            data = MoodRepository.shared.fetch(dateRange: .weekly, selectedDate: selectedDate)
+        case .monthly:
+            data = MoodRepository.shared.fetch(dateRange: .monthly, selectedDate: selectedDate)
+        default: print("")
+        }
+        
+        pieData = setChartData(data: data)
+        mainView.chartTableView.reloadData()
+        
+    }
+    
+    func setChartData(data: [Mood]) -> PieChartData {
+        let moodCounts = MoodRepository.shared.countMoods(moods: data)
         
         var moodStatsResults: [String : Double] = [:]
         let allCount = data.count
@@ -64,8 +79,7 @@ final class ChartViewController: BaseViewController {
         dataSet.valueFont = Constants.Font.extraBold(size: 14)
         dataSet.selectionShift = 5
         
-        let test = PieChartData(dataSet: dataSet)
-        return test
+        return PieChartData(dataSet: dataSet)
     }
     
 }
@@ -78,7 +92,7 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.reuseIdentifier) as? ChartTableViewCell else { return UITableViewCell() }
-        cell.pieChartView.data = setChartData()
+        cell.pieChartView.data = pieData
         cell.selectionStyle = .none
         return cell
     }
@@ -96,6 +110,18 @@ extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalen
             make.height.equalTo(bounds.height)
         }
         self.view.layoutIfNeeded()
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDate = date
+        if date != Calendar.current.startOfDay(for: Date()) {
+            calendar.appearance.todayColor = .clear
+        }
+        for button in mainView.chartButtons {
+            if button.isSelected {
+                chartButtonClicked(button)
+            }
+        }
     }
     
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {

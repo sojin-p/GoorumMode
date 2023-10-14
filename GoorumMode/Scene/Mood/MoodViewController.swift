@@ -45,7 +45,7 @@ final class MoodViewController: BaseViewController {
         
         vc.modalPresentationStyle = .overFullScreen
         vc.completionHandler = { [weak self] date in
-            self?.viewModel.moods.value = MoodRepository.shared.fetch(selectedDate: date)
+            self?.viewModel.moods.value = MoodRepository.shared.fetch(dateRange: .daliy, selectedDate: date)
             self?.title = date.toString(of: .dateForTitle)
             self?.selectedDate = date
         }

@@ -107,15 +107,8 @@ final class CalendarViewController: BaseViewController {
         var mostMoods: [Date: String] = [:]
         
         for (date, moods) in groupedMoods {
-            var moodCounts: [String: Int] = [:]
-            for mood in moods {
-                let mood = mood.mood
-                if moodCounts.keys.contains(mood) {
-                    moodCounts[mood] = (moodCounts[mood] ?? 0) + 1
-                } else {
-                    moodCounts[mood] = 1
-                }
-            }
+            let moodCounts = MoodRepository.shared.countMoods(moods: moods)
+            
             var maxKeys: [String] = []
             if let maxValue = moodCounts.values.max() {
                 maxKeys = moodCounts.filter({ $0.value == maxValue }).map({ $0.key })

@@ -18,12 +18,6 @@ final class CapsulePaddingButton: UIButton {
         DispatchQueue.main.async {
             self.layer.cornerRadius = frame.height / 2
         }
-        isSelected = false
-        if isSelected {
-            backgroundColor = Constants.Color.Background.basic
-        } else {
-            backgroundColor = Constants.Color.Background.white
-        }
     }
     
     @available(*, unavailable)

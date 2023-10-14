@@ -8,6 +8,12 @@
 import Foundation
 import RealmSwift
 
+enum DateRange: Int {
+    case daliy
+    case weekly
+    case monthly
+}
+
 class MoodRepository {
     
     static let shared = MoodRepository()
@@ -20,6 +26,43 @@ class MoodRepository {
         print("파일 경로: \(realm.configuration.fileURL!)")
     }
     
+    func countMoods(moods: [Mood]) -> [String: Int] {
+        var moodCounts: [String: Int] = [:]
+        for mood in moods {
+            let mood = mood.mood
+            if moodCounts.keys.contains(mood) {
+                moodCounts[mood] = (moodCounts[mood] ?? 0) + 1
+            } else {
+                moodCounts[mood] = 1
+            }
+        }
+        
+        return moodCounts
+    }
+    
+    func fetch(dateRange: DateRange, selectedDate: Date = Date()) -> [Mood] {
+        let calendar = Calendar.current
+        var selectedDate = calendar.startOfDay(for: selectedDate)
+        var startDate: Date = selectedDate
+        var endDate: Date
+        
+        switch dateRange {
+        case .daliy:
+            endDate = calendar.date(byAdding: .day, value: 1, to: selectedDate) ?? Date()
+            
+        case .weekly:
+            startDate = calendar.date(byAdding: .day, value: -7, to: selectedDate) ?? Date()
+            endDate = calendar.date(byAdding: .day, value: 1, to: selectedDate) ?? Date()
+            
+        case .monthly:
+            startDate = calendar.date(byAdding: .month, value: -1, to: selectedDate) ?? Date()
+            endDate = calendar.date(byAdding: .day, value: 1, to: selectedDate) ?? Date()
+        }
+        
+        let moodsForMonth = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate)
+        return moodsForMonth.toArray()
+    }
+    
     func fetchMonth(year: Int, month: Int) -> Results<Mood> {
         let components = DateComponents(year: year, month: month)
         let startDate = Calendar.current.date(from: components)!
@@ -27,14 +70,6 @@ class MoodRepository {
         
         let moodsForMonth = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate)
         return moodsForMonth
-    }
-    
-    func fetch(selectedDate: Date) -> [Mood] {
-        let startDate = Calendar.current.startOfDay(for: selectedDate)
-        guard let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate) else { return basicFetch.toArray() }
-        
-        let data = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate).sorted(byKeyPath: "date", ascending: false)
-        return data.toArray()
     }
     
     func createItem(_ item: Mood) {

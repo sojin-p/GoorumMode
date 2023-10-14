@@ -64,20 +64,25 @@ final class ChartView: BaseView {
         return view
     }()
     
-    let todayChartButton = {
+    lazy var chartButtons = [dailyButton, weeklyButton, monthlyButton]
+    
+    private let dailyButton = {
         let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "일간")
+        view.tag = DateRange.daliy.rawValue
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.basic
         return view
     }()
     
-    let weekChartButton = {
+    private let weeklyButton = {
         let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "주간")
+        view.tag = DateRange.weekly.rawValue
         return view
     }()
     
-    let monthChartButton = {
+    private let monthlyButton = {
         let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "월간")
+        view.tag = DateRange.monthly.rawValue
         return view
     }()
     
@@ -120,10 +125,23 @@ final class ChartView: BaseView {
         calendar.select(Date())
     }
     
+    @objc private func setChartButtons(_ sender: UIButton) {
+        chartButtons.forEach { button in
+            if sender == button {
+                button.isSelected = true
+                button.backgroundColor = Constants.Color.Background.basic
+            } else {
+                button.isSelected = false
+                button.backgroundColor = Constants.Color.Background.white
+            }
+        }
+    }
+    
     //MARK: - hierarchies & Constraints
     override func configure() {
         super.configure()
-        [calendar, headerView, backView, todayChartButton, weekChartButton, monthChartButton, chartTableView].forEach { addSubview($0) }
+        chartButtons.forEach { $0.addTarget(self, action: #selector(setChartButtons), for: .touchUpInside) }
+        [calendar, headerView, backView, dailyButton, weeklyButton, monthlyButton, chartTableView].forEach { addSubview($0) }
         [headerLabel, backTodayButton, showMonthButton].forEach { headerView.addSubview($0) }
         [swipeUp, swipeDown].forEach { calendar.addGestureRecognizer($0) }
     }
@@ -164,24 +182,24 @@ final class ChartView: BaseView {
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
         
-        weekChartButton.snp.makeConstraints { make in
+        weeklyButton.snp.makeConstraints { make in
             make.top.equalTo(backView).offset(20)
             make.centerX.equalTo(backView)
             make.height.equalTo(30)
         }
         
-        todayChartButton.snp.makeConstraints { make in
-            make.centerY.size.equalTo(weekChartButton)
-            make.trailing.equalTo(weekChartButton.snp.leading).offset(-8)
+        dailyButton.snp.makeConstraints { make in
+            make.centerY.size.equalTo(weeklyButton)
+            make.trailing.equalTo(weeklyButton.snp.leading).offset(-8)
         }
         
-        monthChartButton.snp.makeConstraints { make in
-            make.centerY.size.equalTo(weekChartButton)
-            make.leading.equalTo(weekChartButton.snp.trailing).offset(8)
+        monthlyButton.snp.makeConstraints { make in
+            make.centerY.size.equalTo(weeklyButton)
+            make.leading.equalTo(weeklyButton.snp.trailing).offset(8)
         }
         
         chartTableView.snp.makeConstraints { make in
-            make.top.equalTo(weekChartButton.snp.bottom).offset(20)
+            make.top.equalTo(weeklyButton.snp.bottom).offset(20)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
 
