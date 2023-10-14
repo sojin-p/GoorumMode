@@ -47,16 +47,22 @@ final class ChartViewController: BaseViewController {
         let allCount = data.count
         
         var moodEntries: [PieChartDataEntry] = []
+        var colorSet: [UIColor] = []
         
         for (mood, count) in moodCounts {
             moodStatsResults[mood] = (Double(count) / Double(allCount)) * 100
             let icon = NSUIImage(named: mood)?.downSample(scale: view, size: CGSize(width: 10, height: 10))
             moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, icon: icon))
+            colorSet.append(UIColor(named: mood + "_Background") ?? .blue)
         }
         
         let dataSet = PieChartDataSet(entries: moodEntries)
-        dataSet.colors = ChartColorTemplates.vordiplom()
-        dataSet.entryLabelColor = .black
+        dataSet.colors = colorSet
+        dataSet.drawIconsEnabled = true
+        dataSet.iconsOffset = CGPoint(x: 0, y: 30)
+        dataSet.valueTextColor = .darkGray
+        dataSet.valueFont = Constants.Font.extraBold(size: 14)
+        dataSet.selectionShift = 5
         
         let test = PieChartData(dataSet: dataSet)
         return test

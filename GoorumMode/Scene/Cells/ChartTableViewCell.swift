@@ -15,9 +15,11 @@ final class ChartTableViewCell: BaseTableViewCell {
         view.noDataText = "작성된 기분이 없습니다."
         view.noDataFont = Constants.Font.extraBold(size: 16)
         view.noDataTextColor = Constants.Color.Text.basicPlaceholder!
-        view.drawHoleEnabled = false
+        view.holeRadiusPercent = 0.3
+        view.transparentCircleRadiusPercent = 0.35
         view.legend.enabled = false
         view.usePercentValuesEnabled = true
+        view.animate(yAxisDuration: 0.7)
         return view
     }()
     
@@ -28,7 +30,7 @@ final class ChartTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         pieChartView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(20)
         }
     }
 }

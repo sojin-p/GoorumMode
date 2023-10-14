@@ -83,7 +83,7 @@ final class ChartView: BaseView {
     
     lazy var chartTableView = {
         let view = UITableView()
-        view.rowHeight = 350
+        view.rowHeight = 400
         view.register(ChartTableViewCell.self, forCellReuseIdentifier: ChartTableViewCell.reuseIdentifier)
         view.bounces = false
         view.separatorColor = .clear
