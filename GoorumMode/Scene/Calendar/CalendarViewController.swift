@@ -24,7 +24,6 @@ final class CalendarViewController: BaseViewController {
         return view
     }()
     
-    
     let showDateButton = {
         let view = BasicBackgroundButton()
         view.setTitle("날짜 보기", for: .normal)

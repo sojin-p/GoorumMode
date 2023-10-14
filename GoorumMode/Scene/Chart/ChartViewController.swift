@@ -23,7 +23,10 @@ final class ChartViewController: BaseViewController {
         mainView.calendar.dataSource = self
         mainView.previousButton.addTarget(self, action: #selector(previousButtonClicked), for: .touchUpInside)
         mainView.nextButton.addTarget(self, action: #selector(nextButtonClicked), for: .touchUpInside)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let data = MoodRepository.shared.fetch(selectedDate: Date())
         
         var moodCounts: [String: Int] = [:]
@@ -42,13 +45,15 @@ final class ChartViewController: BaseViewController {
         var moodEntries: [PieChartDataEntry] = []
         
         for (mood, count) in moodCounts {
-            moodStatsResults[mood] = round((Double(count) / Double(allCount) * 100))
-            moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0.0, label: mood))
+            moodStatsResults[mood] = (Double(count) / Double(allCount)) * 100
+            let icon = NSUIImage(named: mood)?.downSample(scale: view, size: CGSize(width: 400, height: 400))
+            moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, icon: icon))
         }
         
-        print("====",moodStatsResults)
-        
         let dataSet = PieChartDataSet(entries: moodEntries)
+        dataSet.colors = ChartColorTemplates.vordiplom()
+        dataSet.entryLabelColor = .black
+        
         let test = PieChartData(dataSet: dataSet)
         mainView.pieChartView.data = test
     }

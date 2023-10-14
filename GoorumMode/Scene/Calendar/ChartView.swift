@@ -51,7 +51,7 @@ final class ChartView: BaseView {
     let backView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.Background.white
-        view.roundCorners(cornerRadius: 60, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        view.roundCorners(cornerRadius: 70, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         return view
     }()
     
@@ -71,25 +71,42 @@ final class ChartView: BaseView {
         return view
     }()
     
-//    let scrollView = {
-//        let view = UIScrollView()
-//        view.backgroundColor = .cyan
-//        return view
-//    }()
-    
     let pieChartView = {
         let view = PieChartView()
         view.noDataText = "작성된 기분이 없습니다."
         view.noDataFont = Constants.Font.extraBold(size: 16)
         view.noDataTextColor = Constants.Color.Text.basicPlaceholder!
+        view.drawHoleEnabled = false
+        view.legend.enabled = false
+        view.usePercentValuesEnabled = true
         return view
     }()
+    
+    lazy var swipeUp = {
+        let view = UISwipeGestureRecognizer(target: self, action: #selector(swipedUpAndDown))
+        view.direction = .up
+        return view
+    }()
+    
+    lazy var swipeDown = {
+        let view = UISwipeGestureRecognizer(target: self, action: #selector(swipedUpAndDown))
+        view.direction = .down
+        return view
+    }()
+    
+    @objc func swipedUpAndDown(_ sender: UISwipeGestureRecognizer) {
+        if sender.direction == .up {
+            calendar.setScope(.week, animated: true)
+        } else if sender.direction == .down {
+            calendar.setScope(.month, animated: true)
+        }
+    }
     
     override func configure() {
         super.configure()
         [calendar, headerView, backView, todayChartButton, weekChartButton, monthChartButton, pieChartView].forEach { addSubview($0) }
-//        scrollView.addSubview(pieChartView)
         [headerLabel, nextButton, previousButton].forEach { headerView.addSubview($0) }
+        [swipeUp, swipeDown].forEach { calendar.addGestureRecognizer($0) }
     }
     
     override func setConstraints() {
@@ -97,7 +114,7 @@ final class ChartView: BaseView {
         calendar.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(10)
             make.horizontalEdges.equalToSuperview().inset(10)
-            make.height.equalTo(300)
+            make.height.equalTo(350)
         }
         
         headerView.snp.makeConstraints { make in
@@ -144,17 +161,9 @@ final class ChartView: BaseView {
             make.leading.equalTo(weekChartButton.snp.trailing).offset(8)
         }
         
-//        scrollView.snp.makeConstraints { make in
-//            make.top.equalTo(weekChartButton.snp.bottom).offset(20)
-//            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
-//        }
-        
         pieChartView.snp.makeConstraints { make in
             make.top.equalTo(weekChartButton.snp.bottom).offset(20)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).inset(20)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).inset(25)
         }
-//        pieChartView.snp.makeConstraints { make in
-//            make.edges.width.equalToSuperview()
-//        }
     }
 }

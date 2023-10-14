@@ -35,41 +35,32 @@ extension UISheetPresentationController.Detent.Identifier {
     static let small = UISheetPresentationController.Detent.Identifier("small")
 }
 
-extension UIScrollView {
-    
-    enum ScrollDirection {
-        case top
-        case bottom
-    }
-    
-    func scroll(to direction: ScrollDirection) {
-        
-        DispatchQueue.main.async {
-            switch direction {
-            case .top:
-                self.scrollToTop()
-            case .bottom:
-                self.scrollToBottom()
-            }
-        }
-    }
-    
-    private func scrollToTop() {
-        setContentOffset(.zero, animated: true)
-    }
-    
-    private func scrollToBottom() {
-        let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
-        if(bottomOffset.y > 0) {
-            setContentOffset(bottomOffset, animated: true)
-        }
-    }
-}
-
 extension UIView {
     func roundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
         clipsToBounds = true
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+    }
+}
+
+extension UIImage {
+    
+    func downSample(scale view: UIView, size: CGSize) -> UIImage {
+        let imageSourceOption = [kCGImageSourceShouldCache: false] as CFDictionary
+        let data = self.pngData()! as CFData
+        let imageSource = CGImageSourceCreateWithData(data, nil)!
+        let scale = view.window?.windowScene?.screen.scale ?? 0.1
+        let maxPixel = max(size.width, size.height) * scale
+        let downSampleOptions = [
+            kCGImageSourceCreateThumbnailFromImageAlways: true,
+            kCGImageSourceShouldCacheImmediately: true,
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceThumbnailMaxPixelSize: maxPixel
+        ] as CFDictionary
+
+        guard let downSampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downSampleOptions) else { return UIImage() }
+
+        let newImage = UIImage(cgImage: downSampledImage)
+        return newImage
     }
 }

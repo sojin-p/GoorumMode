@@ -62,17 +62,18 @@ final class MoodViewController: BaseViewController {
         vc.completionHandler = { [weak self] data in
             self?.viewModel.moods.value.append(data)
             self?.viewModel.moods.value.sort(by: { $0.date > $1.date })
-            
-            if let item = self?.snapshot.indexOfItem(data) {
-                let indexPath = IndexPath(item: item, section: 0)
-                self?.mainView.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
-            }
-            
+            self?.scrollToItem(data: data)
         }
         
         present(nav, animated: true)
     }
-
+    
+    func scrollToItem(data: Mood) {
+        if let item = snapshot.indexOfItem(data) {
+            let indexPath = IndexPath(item: item, section: 0)
+            mainView.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+        }
+    }
 }
 
 // MARK: - DataSource, Snapshot
@@ -90,7 +91,6 @@ extension MoodViewController {
     func configureDataSource() {
         
         let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
-            
             cell.moodImageView.image = UIImage(named: itemIdentifier.mood)
             cell.timeLabel.text = itemIdentifier.date.toString(of: .timeWithoutSecond)
             
@@ -133,6 +133,7 @@ extension MoodViewController: UICollectionViewDelegate {
         vc.completionHandler = { [weak self] data in
             self?.viewModel.moods.value[indexPath.item] = data
             self?.viewModel.moods.value.sort(by: { $0.date > $1.date })
+            self?.scrollToItem(data: data)
         }
         
         vc.removeData = { [weak self] in
