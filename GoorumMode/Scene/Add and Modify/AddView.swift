@@ -75,7 +75,6 @@ final class AddView: BaseView {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
         DispatchQueue.main.async {
             view.layer.cornerRadius = view.frame.width / 2
-            view.setImage(UIImage(systemName: "plus"), for: .normal)
             view.tintColor = Constants.Color.iconTint.basicBlack
             view.backgroundColor = Constants.Color.Background.white
             view.layer.shadowColor = UIColor.systemGray3.cgColor

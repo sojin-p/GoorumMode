@@ -47,6 +47,7 @@ final class AddViewController: BaseViewController {
             setModifyView()
             setTime(date: mainView.timePicker.date)
         } else {
+            mainView.extendButton.setImage(UIImage(systemName: "plus"), for: .normal)
             pickMoodImageClicked()
             setTime()
             mainView.removeBarButton.isHidden = true
@@ -86,6 +87,7 @@ final class AddViewController: BaseViewController {
             mainView.detailTextView.isHidden = true
         }
         sender.isSelected.toggle()
+        mainView.doneBarButton.isHidden = false
     }
     
     
@@ -265,6 +267,11 @@ extension AddViewController {
             mainView.detailTextView.text = moods.detailText
             mainView.detailTextView.isHidden = false
             mainView.detailTextView.textColor = Constants.Color.Text.basicTitle
+            mainView.extendButton.isSelected = true
+            mainView.extendButton.setImage(UIImage(systemName: "minus"), for: .normal)
+        } else {
+            mainView.extendButton.isSelected = false
+            mainView.extendButton.setImage(UIImage(systemName: "plus"), for: .normal)
         }
         
         mainView.doneBarButton.isHidden = true
