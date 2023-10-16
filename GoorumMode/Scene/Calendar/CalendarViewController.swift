@@ -35,6 +35,9 @@ final class CalendarViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationBar()
+        
         calendar.delegate = self
         calendar.dataSource = self
         calendar.reloadData()
@@ -173,4 +176,16 @@ extension CalendarViewController: FSCalendarDelegateAppearance {
             return nil
         }
     }
+}
+
+extension CalendarViewController: UIGestureRecognizerDelegate {
+    func setNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backBarbuttonClicked))
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    @objc func backBarbuttonClicked() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
