@@ -28,7 +28,7 @@ final class ChartViewController: BaseViewController {
         mainView.chartTableView.delegate = self
         mainView.chartTableView.dataSource = self
         mainView.chartButtons.forEach { $0.addTarget(self, action: #selector(chartButtonClicked), for: .touchUpInside) }
-        mainView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
+        mainView.headerView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,7 +120,7 @@ extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalen
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         let currentDate = calendar.currentPage
-        mainView.headerLabel.text = currentDate.toString(of: .yearAndMouth)
+        mainView.headerView.headerLabel.text = currentDate.toString(of: .yearAndMouth)
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {

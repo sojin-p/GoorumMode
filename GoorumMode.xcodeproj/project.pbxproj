@@ -17,6 +17,7 @@
 		23BDAD4B2ADA4729007F5768 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD4A2ADA4728007F5768 /* ChartTableViewCell.swift */; };
 		23BDAD502ADA482D007F5768 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD4F2ADA482D007F5768 /* BaseTableViewCell.swift */; };
 		23BDAD522ADA4C3C007F5768 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD512ADA4C3C007F5768 /* ReusableViewProtocol.swift */; };
+		23BDAD5E2ADD6180007F5768 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD5D2ADD6180007F5768 /* CalendarHeaderView.swift */; };
 		23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */; };
 		23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A112AC168B200D6BBB5 /* Color.swift */; };
 		23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9A1A2AC2E01300D6BBB5 /* Localizable.strings */; };
@@ -71,6 +72,7 @@
 		23BDAD4A2ADA4728007F5768 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		23BDAD4F2ADA482D007F5768 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		23BDAD512ADA4C3C007F5768 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
+		23BDAD5D2ADD6180007F5768 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		23DD9A112AC168B200D6BBB5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		23DD9A152AC2DFB600D6BBB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */,
 				23E766582AD81707008AC3A4 /* BasicBackgroundButton.swift */,
 				23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */,
+				23BDAD5D2ADD6180007F5768 /* CalendarHeaderView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */,
 				23BDAD4B2ADA4729007F5768 /* ChartTableViewCell.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
+				23BDAD5E2ADD6180007F5768 /* CalendarHeaderView.swift in Sources */,
 				23BDAD522ADA4C3C007F5768 /* ReusableViewProtocol.swift in Sources */,
 				23DD9A502AC6B81400D6BBB5 /* PickMoodCollectionViewCell.swift in Sources */,
 				23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */,

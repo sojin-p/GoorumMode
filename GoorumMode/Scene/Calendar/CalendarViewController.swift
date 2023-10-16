@@ -10,29 +10,24 @@ import FSCalendar
 
 final class CalendarViewController: BaseViewController {
     
-    let backView = {
-        let view = UIView()
-        view.backgroundColor = Constants.Color.Background.basic
-        view.layer.cornerRadius = 25
-        return view
-    }()
-    
     var calendar = {
         let view = BasicFSCalendar()
         view.headerHeight = 60
-        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 17)
+        view.appearance.headerTitleFont = Constants.Font.extraBold(size: 18)
+        return view
+    }()
+    
+    private let headerView = {
+        let view = CalendarHeaderView()
         return view
     }()
     
     let showDateButton = {
-        let view = BasicBackgroundButton()
-        view.setTitle("날짜 보기", for: .normal)
-        return view
-    }()
-    
-    let todayButton = {
-        let view = BasicBackgroundButton()
-        view.setTitle("오늘", for: .normal)
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "날짜만 보기")
+        view.tintColor = Constants.Color.iconTint.basicBlack
+        view.isSelected = true
+        view.backgroundColor = Constants.Color.Background.white
+        view.buttonShadow(radius: 3, opacity: 0.5)
         return view
     }()
     
@@ -45,7 +40,12 @@ final class CalendarViewController: BaseViewController {
         calendar.reloadData()
         
         showDateButton.addTarget(self, action: #selector(showDateButtonClicked), for: .touchUpInside)
-        todayButton.addTarget(self, action: #selector(todayButtonClicked), for: .touchUpInside)
+        headerView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
+        headerView.showMonthButton.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc private func showMonthButtonClicked() {
+        print("클릭")
     }
     
     @objc func showDateButtonClicked() {
@@ -58,38 +58,33 @@ final class CalendarViewController: BaseViewController {
         }
     }
     
-    @objc func todayButtonClicked() {
+    @objc private func backTodayButtonClicked() {
         calendar.select(Date())
     }
     
     override func configure() {
         calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.reuseIdentifier)
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
-        view.addSubview(backView)
-        [calendar, showDateButton, todayButton].forEach { backView.addSubview($0) }
+        view.backgroundColor = Constants.Color.Background.basic
+        [calendar, headerView, showDateButton].forEach { view.addSubview($0) }
     }
     
     override func setConstraints() {
-        backView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(20)
-            make.centerY.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.5)
-        }
         
         calendar.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.centerY.equalToSuperview().offset(-30)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.6)
+        }
+        
+        headerView.snp.makeConstraints { make in
+            make.height.equalTo(calendar.calendarHeaderView)
+            make.top.horizontalEdges.equalTo(calendar)
         }
         
         showDateButton.snp.makeConstraints { make in
-            make.leading.equalTo(calendar.calendarHeaderView)
-            make.centerY.equalTo(calendar.calendarHeaderView).offset(2)
-            make.height.equalTo(35)
-        }
-        
-        todayButton.snp.makeConstraints { make in
-            make.trailing.equalTo(calendar.calendarHeaderView)
-            make.centerY.equalTo(calendar.calendarHeaderView).offset(2)
-            make.height.equalTo(35)
+            make.top.equalTo(calendar.snp.bottom).offset(10)
+            make.centerX.equalTo(calendar)
+            make.height.equalTo(30)
         }
         
     }
@@ -151,7 +146,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         completionHandler?(date)
-        dismiss(animated: false)
+        navigationController?.popViewController(animated: true)
     }
     
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
@@ -160,6 +155,13 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         } else {
             return true
         }
+    }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        calendar.snp.updateConstraints { make in
+            make.height.equalTo(bounds.height)
+        }
+        self.view.layoutIfNeeded()
     }
 }
 

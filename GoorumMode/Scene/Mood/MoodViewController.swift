@@ -43,13 +43,14 @@ final class MoodViewController: BaseViewController {
     @objc func calendarBarbuttonClicked() {
         let vc = CalendarViewController()
         
-        vc.modalPresentationStyle = .overFullScreen
         vc.completionHandler = { [weak self] date in
             self?.viewModel.moods.value = MoodRepository.shared.fetch(dateRange: .daliy, selectedDate: date)
-            self?.title = date.toString(of: .dateForTitle)
+            self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
+            self?.mainView.dateLabel.sizeToFit()
             self?.selectedDate = date
         }
-        present(vc, animated: false)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func addButtonClicked() {
@@ -148,12 +149,7 @@ extension MoodViewController: UICollectionViewDelegate {
 extension MoodViewController {
     
     func setNavigationBar() {
-        title = Date().toString(of: .dateForTitle)
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: Constants.Color.Text.basicSubTitle ?? .systemGray4,
-            NSAttributedString.Key.font: Constants.Font.extraBold(size: 16)
-        ]
-
+        navigationItem.titleView = mainView.dateLabel
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
     }
 }

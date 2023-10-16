@@ -41,6 +41,14 @@ extension UIView {
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
     }
+    
+    func buttonShadow(radius: CGFloat, opacity: Float) {
+        layer.shadowColor = UIColor.systemGray3.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        clipsToBounds = false
+    }
 }
 
 extension UIImage {

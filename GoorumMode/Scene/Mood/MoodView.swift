@@ -9,6 +9,17 @@ import UIKit
 
 final class MoodView: BaseView {
     
+    let dateLabel = {
+        let view = UILabel()
+        view.text = Date().toString(of: .dateForTitle)
+        view.textAlignment = .center
+        view.textColor = Constants.Color.Text.basicSubTitle
+        view.font = Constants.Font.extraBold(size: 16)
+        view.sizeToFit()
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
     lazy var collectionView = {
         let view =  UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         view.backgroundColor = Constants.Color.Background.basic

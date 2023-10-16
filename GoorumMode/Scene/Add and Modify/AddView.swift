@@ -77,10 +77,7 @@ final class AddView: BaseView {
             view.layer.cornerRadius = view.frame.width / 2
             view.tintColor = Constants.Color.iconTint.basicBlack
             view.backgroundColor = Constants.Color.Background.white
-            view.layer.shadowColor = UIColor.systemGray3.cgColor
-            view.layer.shadowOffset = .zero
-            view.layer.shadowRadius = 3
-            view.layer.shadowOpacity = 0.5
+            view.buttonShadow(radius: 3, opacity: 0.5)
         }
         view.accessibilityLabel = "내용 추가"
         view.accessibilityHint = "자세한 내용 또는 일기를 작성하려면 두 번 탭 하세요."
