@@ -28,6 +28,7 @@ final class MoodViewController: BaseViewController {
         MoodRepository.shared.checkFileURL()
         
         setNavigationBar()
+        setPlaceholder()
         configureDataSource()
 
         viewModel.moods.bind { [weak self] moods in
@@ -48,6 +49,7 @@ final class MoodViewController: BaseViewController {
             self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
             self?.mainView.dateLabel.sizeToFit()
             self?.selectedDate = date
+            self?.setPlaceholder()
         }
         
         navigationController?.pushViewController(vc, animated: true)
@@ -151,5 +153,13 @@ extension MoodViewController {
     func setNavigationBar() {
         navigationItem.titleView = mainView.dateLabel
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
+    }
+    
+    func setPlaceholder() {
+        if viewModel.moods.value.isEmpty {
+            mainView.collectionViewPlaceholder.isHidden = false
+        } else {
+            mainView.collectionViewPlaceholder.isHidden = true
+        }
     }
 }

@@ -26,6 +26,8 @@ final class MoodView: BaseView {
         return view
     }()
     
+    let collectionViewPlaceholder = PlaceholderView()
+    
     let addMoodButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
@@ -50,13 +52,18 @@ final class MoodView: BaseView {
     
     override func configure() {
         setupAccessibilityLabel()
-        [collectionView, addMoodButton].forEach { addSubview($0) }
+        [collectionView, collectionViewPlaceholder, addMoodButton].forEach { addSubview($0) }
     }
     
     override func setConstraints() {
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
+        }
+        
+        collectionViewPlaceholder.snp.makeConstraints { make in
+            make.center.equalTo(collectionView)
+            make.horizontalEdges.equalTo(collectionView)
         }
         
         addMoodButton.snp.makeConstraints { make in
