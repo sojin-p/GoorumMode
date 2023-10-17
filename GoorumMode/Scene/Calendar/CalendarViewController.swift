@@ -23,7 +23,7 @@ final class CalendarViewController: BaseViewController {
     }()
     
     let showDateButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "날짜만 보기")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "날짜 보기")
         view.tintColor = Constants.Color.iconTint.basicBlack
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.white
@@ -34,6 +34,7 @@ final class CalendarViewController: BaseViewController {
     var completionHandler: ((Date) -> Void)?
     var selectedDate: Date?
     lazy var currentDate = calendar.currentPage
+    var isShowed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,13 +73,16 @@ final class CalendarViewController: BaseViewController {
     }
     
     @objc func showDateButtonClicked() {
-        let visibleCells = calendar.visibleCells()
-        
-        visibleCells.forEach { cell in
-            if let cell = cell as? FSCalendarCustomCell {
-                cell.moodImageView.image = nil
+        isShowed.toggle()
+        if isShowed {
+            if selectedDate != Calendar.current.startOfDay(for: Date()) {
+                calendar.appearance.todayColor = .clear
             }
+            showDateButton.setTitle("기분 보기", for: .normal)
+        } else {
+            showDateButton.setTitle("날짜 보기", for: .normal)
         }
+        calendar.reloadData()
     }
     
     @objc private func backTodayButtonClicked() {
@@ -156,13 +160,15 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         guard let cell = calendar.dequeueReusableCell(withIdentifier: FSCalendarCustomCell.reuseIdentifier, for: date, at: position) as? FSCalendarCustomCell else { return FSCalendarCell() }
         
-        let year = Calendar.current.component(.year, from: currentDate)
-        let month = Calendar.current.component(.month, from: currentDate)
-        
-        let mostMoods: [Date: String] = getMostMood(year: year, month: month)
-        
-        if mostMoods.keys.contains(date) {
-            cell.moodImageView.image = UIImage(named: mostMoods[date] ?? MoodEmojis.placeholder)
+        if !isShowed {
+            let year = Calendar.current.component(.year, from: currentDate)
+            let month = Calendar.current.component(.month, from: currentDate)
+            
+            let mostMoods: [Date: String] = getMostMood(year: year, month: month)
+            
+            if mostMoods.keys.contains(date) {
+                cell.moodImageView.image = UIImage(named: mostMoods[date] ?? MoodEmojis.placeholder)
+            }
         }
         
         return cell
