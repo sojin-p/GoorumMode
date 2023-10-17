@@ -28,9 +28,9 @@ final class AddViewController: BaseViewController {
         
         setMaximumTime()
         
-        setupSheet(.custom(resolver: { context in
+        setupSheet([.custom(resolver: { context in
             200
-        }))
+        })], isModal: true)
         
         setBarButtonItem()
         
@@ -77,13 +77,13 @@ final class AddViewController: BaseViewController {
     @objc func extendButtonClicked(_ sender: UIButton) {
         if !(sender.isSelected) {
             mainView.extendButton.setImage(UIImage(systemName: "minus"), for: .normal)
-            setupSheet(.large())
+            setupSheet([.large()], isModal: true)
             mainView.detailTextView.isHidden = false
         } else {
             mainView.extendButton.setImage(UIImage(systemName: "plus"), for: .normal)
-            setupSheet(.custom(resolver: { context in
+            setupSheet([.custom(resolver: { context in
                 200
-            }))
+            })], isModal: true)
             mainView.detailTextView.isHidden = true
         }
         sender.isSelected.toggle()
@@ -224,19 +224,6 @@ extension AddViewController: UITextFieldDelegate {
 // MARK: - UI
 extension AddViewController {
     
-    func setupSheet(_ detentsID: UISheetPresentationController.Detent) {
-        isModalInPresentation = true
-        
-        if let sheet = sheetPresentationController {
-            sheet.animateChanges {
-                sheet.detents = [detentsID]
-                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-                sheet.preferredCornerRadius = 20
-            }
-        }
-        
-    }
-    
     func setBarButtonItem() {
         
         let closeBarButton = UIBarButtonItem(image: Constants.IconImage.xMark, primaryAction: .init(handler: { [weak self] action in
@@ -263,7 +250,7 @@ extension AddViewController {
         mainView.timePicker.date = moods.date
         
         if let detailText = moods.detailText, !(detailText.isEmpty) {
-            setupSheet(.large())
+            setupSheet([.large()], isModal: true)
             mainView.detailTextView.text = moods.detailText
             mainView.detailTextView.isHidden = false
             mainView.detailTextView.textColor = Constants.Color.Text.basicTitle

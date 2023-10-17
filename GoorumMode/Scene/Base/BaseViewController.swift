@@ -43,4 +43,16 @@ class BaseViewController: UIViewController {
         
     }
     
+    func setupSheet(_ detentsID: [UISheetPresentationController.Detent], isModal: Bool) {
+        isModalInPresentation = isModal
+        
+        if let sheet = sheetPresentationController {
+            sheet.animateChanges {
+                sheet.detents = detentsID
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                sheet.preferredCornerRadius = 20
+            }
+        }
+        
+    }
 }

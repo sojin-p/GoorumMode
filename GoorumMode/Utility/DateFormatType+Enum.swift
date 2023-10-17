@@ -18,8 +18,8 @@ enum DateFormatType {
         switch self {
         case .detailedDate: return "yyyy.MM.dd. a hh:mm:ss"
         case .timeWithoutSecond: return "a hh:mm"
-        case .yearAndMouth: return "yyyy년 MM월"
-        case .dateForTitle: return "yyyy.MM.dd. EEEE"
+        case .yearAndMouth: return "yyyy년 M월"
+        case .dateForTitle: return "M월 dd일 (EE)"
         case .dateForChart: return "yyyy.MM.dd."
         }
     }

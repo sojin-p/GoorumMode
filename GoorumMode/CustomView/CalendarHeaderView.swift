@@ -14,6 +14,7 @@ final class CalendarHeaderView: BaseView {
         view.text = Date().toString(of: .yearAndMouth)
         view.textColor = Constants.Color.Text.basicTitle
         view.font = Constants.Font.extraBold(size: 18)
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -48,7 +49,7 @@ final class CalendarHeaderView: BaseView {
         showMonthButton.snp.makeConstraints { make in
             make.centerY.equalTo(headerLabel)
             make.leading.equalTo(headerLabel.snp.trailing)
-            make.size.equalTo(40)
+            make.size.equalTo(headerLabel.snp.height)
         }
 
         backTodayButton.snp.makeConstraints { make in

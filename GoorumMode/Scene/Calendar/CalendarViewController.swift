@@ -33,6 +33,7 @@ final class CalendarViewController: BaseViewController {
     
     var completionHandler: ((Date) -> Void)?
     var selectedDate: Date?
+    lazy var currentDate = calendar.currentPage
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +50,25 @@ final class CalendarViewController: BaseViewController {
         showDateButton.addTarget(self, action: #selector(showDateButtonClicked), for: .touchUpInside)
         headerView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
         headerView.showMonthButton.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
+        headerView.headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonthButtonClicked)))
+        
     }
     
     @objc private func showMonthButtonClicked() {
-        print("클릭")
+        let vc = SelectDatePickerViewController()
+        let selectedDay = Calendar.current.component(.day, from: selectedDate ?? Date())
+        var dateComponents = DateComponents()
+        dateComponents.day = selectedDay - 1
+        
+        if let willPassDate = Calendar.current.date(byAdding: dateComponents, to: currentDate) {
+            vc.selectedDate = willPassDate
+        }
+        
+        vc.completionHandler = { [weak self] date in
+            self?.calendar.select(date)
+        }
+        
+        present(vc, animated: true)
     }
     
     @objc func showDateButtonClicked() {
@@ -133,16 +149,15 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendar.reloadData()
-        let currentDate = calendar.currentPage
+        currentDate = calendar.currentPage
         headerView.headerLabel.text = currentDate.toString(of: .yearAndMouth)
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         guard let cell = calendar.dequeueReusableCell(withIdentifier: FSCalendarCustomCell.reuseIdentifier, for: date, at: position) as? FSCalendarCustomCell else { return FSCalendarCell() }
         
-        let currentPage = calendar.currentPage
-        let year = Calendar.current.component(.year, from: currentPage)
-        let month = Calendar.current.component(.month, from: currentPage)
+        let year = Calendar.current.component(.year, from: currentDate)
+        let month = Calendar.current.component(.month, from: currentDate)
         
         let mostMoods: [Date: String] = getMostMood(year: year, month: month)
         
@@ -154,6 +169,9 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if date != Calendar.current.startOfDay(for: Date()) {
+            calendar.appearance.todayColor = .clear
+        }
         completionHandler?(date)
         navigationController?.popViewController(animated: true)
     }
