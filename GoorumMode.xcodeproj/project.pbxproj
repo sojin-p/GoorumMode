@@ -54,7 +54,6 @@
 		23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */; };
 		23DD9AAF2AD59EA500D6BBB5 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */; };
 		23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */; };
-		23E766592AD81708008AC3A4 /* BasicBackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E766582AD81707008AC3A4 /* BasicBackgroundButton.swift */; };
 		23E7665B2AD819B3008AC3A4 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */; };
 		23E7665D2AD819ED008AC3A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665C2AD819ED008AC3A4 /* TabBarController.swift */; };
 		23E766612AD81F58008AC3A4 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 23E766602AD81F58008AC3A4 /* DGCharts */; };
@@ -108,7 +107,6 @@
 		23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFSCalendar.swift; sourceTree = "<group>"; };
 		23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		23E766582AD81707008AC3A4 /* BasicBackgroundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBackgroundButton.swift; sourceTree = "<group>"; };
 		23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		23E7665C2AD819ED008AC3A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */,
-				23E766582AD81707008AC3A4 /* BasicBackgroundButton.swift */,
 				23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */,
 				23BDAD5D2ADD6180007F5768 /* CalendarHeaderView.swift */,
 				23BDAD5F2ADD7724007F5768 /* PlaceholderView.swift */,
@@ -397,7 +394,6 @@
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,
 				23DD9A542AC6C87700D6BBB5 /* MoodEmojis+Enum.swift in Sources */,
 				23DD9A992AD160EC00D6BBB5 /* CalendarViewController.swift in Sources */,
-				23E766592AD81708008AC3A4 /* BasicBackgroundButton.swift in Sources */,
 				23DD9A9D2AD1882200D6BBB5 /* IconImage.swift in Sources */,
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
 				23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */,

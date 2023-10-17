@@ -51,6 +51,7 @@ final class MoodViewController: BaseViewController {
             self?.selectedDate = date
             self?.setPlaceholder()
         }
+        vc.selectedDate = selectedDate
         
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -32,11 +32,15 @@ final class CalendarViewController: BaseViewController {
     }()
     
     var completionHandler: ((Date) -> Void)?
+    var selectedDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationBar()
+        
+        calendar.select(selectedDate)
+        headerView.headerLabel.text = selectedDate?.toString(of: .yearAndMouth)
         
         calendar.delegate = self
         calendar.dataSource = self
@@ -129,6 +133,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendar.reloadData()
+        let currentDate = calendar.currentPage
+        headerView.headerLabel.text = currentDate.toString(of: .yearAndMouth)
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
