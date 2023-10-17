@@ -67,6 +67,7 @@ final class MoodViewController: BaseViewController {
             self?.viewModel.moods.value.append(data)
             self?.viewModel.moods.value.sort(by: { $0.date > $1.date })
             self?.scrollToItem(data: data)
+            self?.setPlaceholder()
         }
         
         present(nav, animated: true)
@@ -142,6 +143,7 @@ extension MoodViewController: UICollectionViewDelegate {
         
         vc.removeData = { [weak self] in
             self?.viewModel.moods.value.remove(at: indexPath.item)
+            self?.setPlaceholder()
         }
 
         present(nav, animated: true)
