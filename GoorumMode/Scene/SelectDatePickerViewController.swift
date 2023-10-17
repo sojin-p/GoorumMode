@@ -44,8 +44,6 @@ final class SelectDatePickerViewController: BaseViewController {
             300
         })], isModal: false)
         
-        view.backgroundColor = Constants.Color.Background.basic
-        
         pickerView.delegate = self
         pickerView.dataSource = self
         
@@ -60,6 +58,7 @@ final class SelectDatePickerViewController: BaseViewController {
     }
     
     override func configure() {
+        super.configure()
         [doneButton, pickerView].forEach { view.addSubview($0) }
     }
     

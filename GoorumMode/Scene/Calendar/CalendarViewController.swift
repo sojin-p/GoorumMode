@@ -90,8 +90,8 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configure() {
+        super.configure()
         calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.reuseIdentifier)
-        view.backgroundColor = Constants.Color.Background.basic
         [calendar, headerView, showDateButton].forEach { view.addSubview($0) }
     }
     

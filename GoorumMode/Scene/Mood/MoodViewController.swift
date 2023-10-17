@@ -41,6 +41,11 @@ final class MoodViewController: BaseViewController {
         
     }
     
+    @objc func settingBarbuttonClicked() {
+        let vc = SettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc func calendarBarbuttonClicked() {
         let vc = CalendarViewController()
         
@@ -156,6 +161,7 @@ extension MoodViewController {
     func setNavigationBar() {
         navigationItem.titleView = mainView.dateLabel
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Constants.IconImage.setting, style: .plain, target: self, action: #selector(settingBarbuttonClicked))
     }
     
     func setPlaceholder() {
