@@ -122,16 +122,16 @@ extension SelectDatePickerViewController: UIPickerViewDelegate, UIPickerViewData
         
         if selectedYear == currentYear && selectedMonth > currentMonth {
             pickerView.selectRow(currentMonth - 1, inComponent: 1, animated: true)
-        } else {
-            var dateComponents = calendar.dateComponents([.year, .month, .day], from: selectedDate ?? Date())
-            dateComponents.year = selectedYear
-            dateComponents.month = selectedMonth
-            
-            if let date = calendar.date(from: dateComponents) {
-                selectedDate = date
-            }
+            selectedMonth = currentMonth
         }
         
+        var dateComponents = calendar.dateComponents([.year, .month, .day], from: selectedDate ?? Date())
+        dateComponents.year = selectedYear
+        dateComponents.month = selectedMonth
+        
+        if let date = calendar.date(from: dateComponents) {
+            selectedDate = date
+        }
     }
     
 }
