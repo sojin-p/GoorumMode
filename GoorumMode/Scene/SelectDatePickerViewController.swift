@@ -55,7 +55,7 @@ final class SelectDatePickerViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        pickerView.selectRow(selectedYear - (currentYear - 20), inComponent: 0, animated: true)
+        pickerView.selectRow(selectedYear - years[0], inComponent: 0, animated: true)
         pickerView.selectRow(selectedMonth - 1, inComponent: 1, animated: true)
     }
     
@@ -113,18 +113,24 @@ extension SelectDatePickerViewController: UIPickerViewDelegate, UIPickerViewData
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if component == 0 {
-            selectedYear = selectedYear + (row - 20)
+            selectedYear = years[row]
         } else if component == 1 {
-            selectedMonth = row + 1
+            selectedMonth = months[row]
         }
         
         let calendar = Calendar.current
-        var dateComponents = calendar.dateComponents([.year, .month, .day], from: selectedDate ?? Date())
-        dateComponents.year = selectedYear
-        dateComponents.month = selectedMonth
+        let currentMonth = calendar.component(.month, from: Date())
         
-        if let date = calendar.date(from: dateComponents) {
-            selectedDate = date
+        if selectedYear == currentYear && selectedMonth > currentMonth {
+            pickerView.selectRow(currentMonth - 1, inComponent: 1, animated: true)
+        } else {
+            var dateComponents = calendar.dateComponents([.year, .month, .day], from: selectedDate ?? Date())
+            dateComponents.year = selectedYear
+            dateComponents.month = selectedMonth
+            
+            if let date = calendar.date(from: dateComponents) {
+                selectedDate = date
+            }
         }
         
     }
