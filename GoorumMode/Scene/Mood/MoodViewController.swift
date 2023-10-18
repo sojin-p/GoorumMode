@@ -18,6 +18,8 @@ final class MoodViewController: BaseViewController {
     
     var selectedDate = Date()
     
+    let moodRepository = MoodRepository()
+    
     override func loadView() {
         view = mainView
     }
@@ -25,7 +27,7 @@ final class MoodViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MoodRepository.shared.checkFileURL()
+        moodRepository.checkFileURL()
         
         setNavigationBar()
         setPlaceholder()
@@ -50,7 +52,7 @@ final class MoodViewController: BaseViewController {
         let vc = CalendarViewController()
         
         vc.completionHandler = { [weak self] date in
-            self?.viewModel.moods.value = MoodRepository.shared.fetch(dateRange: .daliy, selectedDate: date)
+            self?.viewModel.moods.value = self?.moodRepository.fetch(dateRange: .daliy, selectedDate: date) ?? []
             self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
             self?.mainView.dateLabel.sizeToFit()
             self?.selectedDate = date
@@ -118,6 +120,10 @@ extension MoodViewController {
                 cell.detailBackView.isHidden = false
             }
             cell.detailLabel.setLineSpacing(spacing: 5)
+            
+            let timeAccessibilityLabel = itemIdentifier.date.toString(of: .timeForAccessibility)
+            let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? "기분"
+            cell.accessibilityLabel = "\(timeAccessibilityLabel) 기록함, \(moodAccessibilityLabel) 이미지, 한 줄 내용, \(cell.onelineLabel.text ?? "없음"), 자세한 내용, \(cell.detailLabel.text ?? "없음")"
         })
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -160,8 +166,15 @@ extension MoodViewController {
     
     func setNavigationBar() {
         navigationItem.titleView = mainView.dateLabel
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Constants.IconImage.setting, style: .plain, target: self, action: #selector(settingBarbuttonClicked))
+        let calendarBarButton = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
+        calendarBarButton.accessibilityLabel = "달력"
+        calendarBarButton.accessibilityHint = "다른 날의 기록을 보려면 두 번 탭 하세요."
+        navigationItem.leftBarButtonItem = calendarBarButton
+        
+        let settingBarButton = UIBarButtonItem(image: Constants.IconImage.setting, style: .plain, target: self, action: #selector(settingBarbuttonClicked))
+        settingBarButton.accessibilityLabel = "설정"
+//        settingBarButton.accessibilityHint = "언어, 테마 등을 설정하려면 두 번 탭 하세요."
+        navigationItem.rightBarButtonItem = settingBarButton
     }
     
     func setPlaceholder() {

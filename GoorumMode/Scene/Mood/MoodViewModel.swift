@@ -9,6 +9,7 @@ import Foundation
 
 final class MoodViewModel {
     
-    var moods: Observable<[Mood]> = Observable(MoodRepository.shared.fetch(dateRange: .daliy))
+    let moodRepository = MoodRepository()
+    lazy var moods: Observable<[Mood]> = Observable(moodRepository.fetch(dateRange: .daliy))
     
 }

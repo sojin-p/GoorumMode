@@ -14,7 +14,7 @@ final class AddViewController: BaseViewController {
     var completionHandler: ((Mood) -> Void)?
     var removeData: (() -> Void)?
     var moodImageName: String?
-    
+    let moodRepository = MoodRepository()
     var transtion: TransitionType = .add
     
     var moods: Mood?
@@ -118,7 +118,7 @@ final class AddViewController: BaseViewController {
         if transtion == .add {
             print("추가 화면")
             let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: selectedDate ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
-            MoodRepository.shared.createItem(data)
+            moodRepository.createItem(data)
             completionHandler?(data)
             
         } else if transtion == .modify {
@@ -129,7 +129,7 @@ final class AddViewController: BaseViewController {
             data._id = moods._id
             self.moods = data
             
-            MoodRepository.shared.updateItem(data)
+            moodRepository.updateItem(data)
 
             completionHandler?(data)
         }
@@ -144,7 +144,7 @@ final class AddViewController: BaseViewController {
 
             self?.removeData?()
             
-            MoodRepository.shared.deleteItem(moods._id)
+            self?.moodRepository.deleteItem(moods._id)
        
             self?.dismiss(animated: true)
         }

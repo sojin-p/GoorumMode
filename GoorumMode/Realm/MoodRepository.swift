@@ -16,9 +16,6 @@ enum DateRange: Int {
 
 class MoodRepository {
     
-    static let shared = MoodRepository()
-    private init() { }
-    
     private let realm = try! Realm()
     private lazy var basicFetch = realm.objects(Mood.self).sorted(byKeyPath: "date", ascending: false)
     
@@ -77,7 +74,6 @@ class MoodRepository {
         do {
             try realm.write {
                 realm.add(item)
-                print("Realm Add Succeed")
             }
         } catch {
             print(error)
@@ -90,10 +86,9 @@ class MoodRepository {
         do {
             try realm.write {
                 realm.create(Mood.self, value: ["_id": item._id, "mood": item.mood, "date": item.date, "onelineText": item.onelineText, "detailText": item.detailText, "image": item.image], update: .modified)
-                print("수정 성공")
             }
         } catch {
-            print("???")
+            print("수정 오류 \(error)")
         }
     }
     
@@ -106,10 +101,9 @@ class MoodRepository {
         do {
             try realm.write {
                 realm.delete(item)
-                print("삭제 성공")
             }
         } catch {
-            print("")
+            print("삭제 오류 \(error)")
         }
     }
     

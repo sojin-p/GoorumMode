@@ -35,6 +35,7 @@ final class CalendarViewController: BaseViewController {
     var selectedDate: Date?
     lazy var currentDate = calendar.currentPage
     var isShowed = false
+    let moodRepository = MoodRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,14 +123,14 @@ final class CalendarViewController: BaseViewController {
     
     func getMostMood(year: Int, month: Int) -> [Date: String] {
         
-        let moodsForMonth = MoodRepository.shared.fetchMonth(year: year, month: month)
+        let moodsForMonth = moodRepository.fetchMonth(year: year, month: month)
         
         let groupedMoods = Dictionary(grouping: moodsForMonth) { Calendar.current.startOfDay(for: $0.date) }
         
         var mostMoods: [Date: String] = [:]
         
         for (date, moods) in groupedMoods {
-            let moodCounts = MoodRepository.shared.countMoods(moods: moods)
+            let moodCounts = moodRepository.countMoods(moods: moods)
             
             var maxKeys: [String] = []
             if let maxValue = moodCounts.values.max() {

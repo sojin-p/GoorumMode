@@ -28,8 +28,6 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     let moodImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.isAccessibilityElement = true
-        view.accessibilityLabel = "기분"
         return view
     }()
     
@@ -44,8 +42,6 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     
     let timeLabel = {
         let view = UILabel()
-        view.text = "23:30"
-        view.accessibilityLabel = "\(view.text!)시간에 등록했습니다."
         view.textColor = Constants.Color.Text.basicSubTitle
         view.font = Constants.Font.bold(size: 15)
         return view
@@ -76,13 +72,21 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     let detailLabel = {
         let view = UILabel()
         view.font = Constants.Font.regular(size: 15)
-        view.numberOfLines = 3
-        view.lineBreakMode = .byTruncatingTail
+        view.numberOfLines = 0
+//        view.lineBreakMode = .byTruncatingTail
         view.textColor = Constants.Color.Text.basicTitle
         return view
     }()
     
+    func applyAccessibility() {
+        isAccessibilityElement = true
+        [timeLabel, detailLabel, onelineLabel].forEach { $0.isAccessibilityElement = false }
+        accessibilityHint = "수정하려면 두 번 탭 하세요"
+    }
+    
     override func configure() {
+        applyAccessibility()
+        
         contentView.backgroundColor = Constants.Color.Background.white
         contentView.layer.cornerRadius = 15
         

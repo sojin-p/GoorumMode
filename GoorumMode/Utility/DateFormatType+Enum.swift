@@ -13,6 +13,7 @@ enum DateFormatType {
     case yearAndMouth
     case dateForTitle
     case dateForChart
+    case timeForAccessibility
     
     var description: String {
         switch self {
@@ -21,6 +22,7 @@ enum DateFormatType {
         case .yearAndMouth: return "yyyy년 M월"
         case .dateForTitle: return "M월 dd일 (EE)"
         case .dateForChart: return "yyyy.MM.dd."
+        case .timeForAccessibility: return "a hh시 mm분"
         }
     }
 }

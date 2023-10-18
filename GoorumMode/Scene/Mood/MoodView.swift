@@ -23,6 +23,8 @@ final class MoodView: BaseView {
     lazy var collectionView = {
         let view =  UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         view.backgroundColor = Constants.Color.Background.basic
+        view.isAccessibilityElement = false
+        view.shouldGroupAccessibilityChildren = true
         return view
     }()
     
@@ -38,9 +40,8 @@ final class MoodView: BaseView {
             view.backgroundColor = Constants.Color.Background.basicIcon
             view.layer.cornerRadius = view.frame.width / 2
         }
-        view.accessibilityLabel = "추가 버튼입니다."
-        view.accessibilityTraits = .none
-        view.accessibilityHint = "새로운 기분을 등록하려면 두 번 탭 하세요."
+        view.accessibilityLabel = "기록 추가"
+        view.accessibilityHint = "새로운 기분을 기록하려면 두 번 탭 하세요."
         return view
     }()
     
@@ -76,11 +77,11 @@ final class MoodView: BaseView {
     private func createLayout() -> UICollectionViewLayout {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .estimated(50))
+                                              heightDimension: .estimated(100))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .estimated(50))
+                                               heightDimension: .estimated(100))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)

@@ -15,6 +15,7 @@ final class ChartViewController: BaseViewController {
     var pieData: PieChartData?
     var selectedDate: Date = Calendar.current.startOfDay(for: Date())
     var data: [Mood] = []
+    let moodRepository = MoodRepository()
     
     override func loadView() {
         view = mainView
@@ -54,15 +55,15 @@ final class ChartViewController: BaseViewController {
         
         switch DateRange(rawValue: sender.tag) {
         case .daliy:
-            data = MoodRepository.shared.fetch(dateRange: .daliy, selectedDate: selectedDate, completionHandler: { startDate, endDate in
+            data = moodRepository.fetch(dateRange: .daliy, selectedDate: selectedDate, completionHandler: { startDate, endDate in
                 self.mainView.dateRangeLabel.text = startDate.toString(of: .dateForChart)
             })
         case .weekly:
-            data = MoodRepository.shared.fetch(dateRange: .weekly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
+            data = moodRepository.fetch(dateRange: .weekly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
                 self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) - \(endDate.toString(of: .dateForChart))"
             })
         case .monthly:
-            data = MoodRepository.shared.fetch(dateRange: .monthly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
+            data = moodRepository.fetch(dateRange: .monthly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
                 self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) - \(endDate.toString(of: .dateForChart))"
             })
         default: print("")
@@ -74,7 +75,7 @@ final class ChartViewController: BaseViewController {
     }
     
     func setChartData(data: [Mood]) -> PieChartData {
-        let moodCounts = MoodRepository.shared.countMoods(moods: data)
+        let moodCounts = moodRepository.countMoods(moods: data)
         
         var moodStatsResults: [String : Double] = [:]
         let allCount = data.count

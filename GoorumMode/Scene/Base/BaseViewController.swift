@@ -7,8 +7,16 @@
 
 import UIKit
 import SnapKit
+import Toast
 
 class BaseViewController: UIViewController {
+    
+    var toastStyle = {
+        var view = ToastStyle()
+        view.backgroundColor = .darkGray
+        ToastManager.shared.style = view
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -20,6 +20,7 @@
 		23BDAD5E2ADD6180007F5768 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD5D2ADD6180007F5768 /* CalendarHeaderView.swift */; };
 		23BDAD602ADD7724007F5768 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD5F2ADD7724007F5768 /* PlaceholderView.swift */; };
 		23BDAD652ADE5D23007F5768 /* SelectDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD642ADE5D22007F5768 /* SelectDatePickerViewController.swift */; };
+		23C6E4302ADFFB6E000EC0BF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 23C6E42F2ADFFB6E000EC0BF /* Toast */; };
 		23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */; };
 		23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A112AC168B200D6BBB5 /* Color.swift */; };
 		23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9A1A2AC2E01300D6BBB5 /* Localizable.strings */; };
@@ -118,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C6E4302ADFFB6E000EC0BF /* Toast in Frameworks */,
 				23DD9A332AC4721000D6BBB5 /* RealmSwift in Frameworks */,
 				23DD9AA02AD18CB000D6BBB5 /* FSCalendar in Frameworks */,
 				23E766612AD81F58008AC3A4 /* DGCharts in Frameworks */,
@@ -317,6 +319,7 @@
 				23DD9A322AC4721000D6BBB5 /* RealmSwift */,
 				23DD9A9F2AD18CB000D6BBB5 /* FSCalendar */,
 				23E766602AD81F58008AC3A4 /* DGCharts */,
+				23C6E42F2ADFFB6E000EC0BF /* Toast */,
 			);
 			productName = GoorumMode;
 			productReference = 2380FB1C2AB9E6B100B31754 /* GoorumMode.app */;
@@ -352,6 +355,7 @@
 				23DD9A2F2AC4721000D6BBB5 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				23DD9A9E2AD18CB000D6BBB5 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				23E7665F2AD81F58008AC3A4 /* XCRemoteSwiftPackageReference "Charts" */,
+				23C6E42E2ADFFB6E000EC0BF /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 2380FB1D2AB9E6B100B31754 /* Products */;
 			projectDirPath = "";
@@ -652,6 +656,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		23C6E42E2ADFFB6E000EC0BF /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		23DD9A222AC2EC8800D6BBB5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -687,6 +699,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		23C6E42F2ADFFB6E000EC0BF /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23C6E42E2ADFFB6E000EC0BF /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		23DD9A232AC2EC8800D6BBB5 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 23DD9A222AC2EC8800D6BBB5 /* XCRemoteSwiftPackageReference "SnapKit" */;
