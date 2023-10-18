@@ -182,29 +182,15 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         navigationController?.popViewController(animated: true)
     }
     
-    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        if date > Date() {
-            return false
-        } else {
-            return true
-        }
-    }
-    
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         calendar.snp.updateConstraints { make in
             make.height.equalTo(bounds.height)
         }
         self.view.layoutIfNeeded()
     }
-}
-
-extension CalendarViewController: FSCalendarDelegateAppearance {
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-        if date > Date() {
-            return Constants.Color.Text.basicPlaceholder
-        } else {
-            return nil
-        }
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
     }
 }
 
