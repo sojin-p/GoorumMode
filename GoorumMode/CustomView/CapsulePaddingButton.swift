@@ -37,4 +37,18 @@ final class CapsulePaddingButton: UIButton {
         }
     }
     
+    override var isHighlighted: Bool {
+        didSet { self.animateWhenHighlighted() }
+    }
+    
+    private func animateWhenHighlighted() {
+        let animationElement = self.isHighlighted ? Animation.touchDown.element : Animation.touchUp.element
+        
+        UIView.animate(withDuration: animationElement.duration, delay: animationElement.delay, options: animationElement.options, animations: {
+                self.transform = animationElement.scale
+                self.alpha = animationElement.alpha
+            }
+        )
+    }
+    
 }

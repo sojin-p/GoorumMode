@@ -31,11 +31,12 @@ final class MoodView: BaseView {
     let collectionViewPlaceholder = PlaceholderView()
     
     let addMoodButton = {
-        let view = UIButton(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
+        let view = AnimationButton(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
         let image = UIImage(systemName: "plus", withConfiguration: imageConfig)
         DispatchQueue.main.async {
             view.setImage(image, for: .normal)
+            view.setImage(image, for: [.normal, .highlighted])
             view.tintColor = Constants.Color.iconTint.basicWhite
             view.backgroundColor = Constants.Color.Background.basicIcon
             view.layer.cornerRadius = view.frame.width / 2
