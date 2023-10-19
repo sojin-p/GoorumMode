@@ -5,3 +5,88 @@
   Created by 박소진 on 2023/09/26.
   
 */
+
+//MARK: - MoodCollectionViewCell
+"modify_AccessibilityHint" = "Please tap it twice, if you want to edit.";
+
+//MARK: - MoodViewController
+"cellRegistration_AccessibilityLabel" = "Recorded %@, %@ image, One-line content, %@, Details, %@"; //@@@@@@
+"cellRegistration_AccessibilityLabel_isEmpty" = "None";
+"calendarBarButton_AccessibilityLabel" = "Calendar";
+"calendarBarButton_AccessibilityHint" = "Please tap it twice, if you want to read the record of another day.";
+"settingBarButton_AccessibilityLabel" = "Setting";
+"settingBarButton.accessibilityHint" = "Please tap it twice, if you want to set language, theme, etc.";
+
+//MARK: - MoodView
+"addMoodButton_AccessibilityLabel" = "Add your mood record";
+"addMoodButton_AccessibilityHint" = "Please tap it twice, if you want to record how you feel";
+
+//MARK: - AddView
+"detailTextView_Placeholder" = "Please tap here to record the details.";
+
+"pickMoodImageView_AccessibilityLabel" = "Choose how you feel";
+"pickMoodImageView_AccessibilityHint" = "Please tap it twice, if you want to choose your mood";
+
+"oneLineTextField_Placeholder" = "[Optional] Any reason?";
+
+"extendButton_AccessibilityLabel" = "Add Content";
+"extendButton_AccessibilityHint" = "Please tap it twice, if you want to record the details.";
+
+//MARK: - PickMoodViewController
+"showDateButton_Title" = "Date"; //@@@@@@
+"showDateButton_isSelected_Title" = "Mood"; //@@@@@@
+
+//MARK: - PickMoodCollectionViewCell
+"moodImageView_accessibilityHint" = "Please tap it twice, to choose how you feel";
+
+//MARK: - PickMoodView
+"pickMoodView_TitleLabel" = "How do you feel?";
+
+//MARK: - SelectDatePickerViewController
+"doneButton_Title" = "Done"; //@@@@@@
+"pickerView_Years_Comonent" = "%@"; //@@@@@@
+"pickerView_Months_Comonent" = "%@"; //@@@@@@
+
+//MARK: - ChartView
+"dailyButton_Title" = "Daily";
+"weeklyButton_Title" = "Weekly";
+"monthlyButton_Title" = "Monthly";
+
+//MARK: - ChartTableViewCell
+"pickChartView_noDataText" = "No records founded.";
+
+//MARK: - MoodEmojis+Enum
+"smiling" = "Smiling";
+"neutral" = "Neutral";
+"surprised" = "Surprised";
+"happy" = "Happy";
+"tired" = "Tired";
+"angry" = "Angry";
+"lol" = "LOL";
+"embarrassed" = "Embarrassed";
+"sad" = "Sad";
+"smirking" = "Smirking";
+"lovely" = "Lovely";
+"passionate" = "Passionate";
+
+//MARK: - DateFormatType+Enum
+"timeWithoutSecond" = "hh:mm a";
+"yearAndMouth" = "MMMM, yyyy";
+"dateForTitle" = "EE, MMM dd";
+"timeForAccessibility" = "hh:mm a"; //@@@@@@
+
+//MARK: - CustomView_CalendarHeaderView
+"backTodayButton_Title" = "Today";
+
+//MARK: - CustomView_PlaceholderView
+"moodCollectionView_PlaceholderLabel" = "No records founded.";
+
+//MARK: - Alert
+//BaseVC
+"alert_OKButtonTitle" = "Okay"; //@@@@@@
+"alert_CancelButtonTitle" = "Cancel";
+//AddVC
+"alert_DoneButtonClicked_Title" = "Please choose your emotions.";
+"alert_RemoveButtonClicked_Title" = "This record will be deleted.";
+"alert_RemoveButtonTitle" = "Delete Record";
+"alert_OneLineTextField_isEmpty_Title" = "Please enter no more than 15 characters.";

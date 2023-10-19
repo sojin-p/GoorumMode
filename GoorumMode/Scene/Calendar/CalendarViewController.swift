@@ -54,6 +54,8 @@ final class CalendarViewController: BaseViewController {
         headerView.showMonthButton.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
         headerView.headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonthButtonClicked)))
         
+        calendar.calendarHeaderView.accessibilityElementsHidden = true
+
     }
     
     @objc private func showMonthButtonClicked() {
@@ -99,14 +101,15 @@ final class CalendarViewController: BaseViewController {
     override func setConstraints() {
         
         calendar.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().offset(-30)
+            make.centerY.equalToSuperview().offset(-35)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.6)
         }
         
         headerView.snp.makeConstraints { make in
             make.height.equalTo(calendar.calendarHeaderView)
-            make.top.horizontalEdges.equalTo(calendar)
+            make.top.trailing.equalTo(calendar)
+            make.leading.equalTo(calendar).offset(-7)
         }
         
         showDateButton.snp.makeConstraints { make in

@@ -16,7 +16,7 @@ enum DateFormatType {
     
     var description: String {
         switch self {
-        case .timeWithoutSecond: return "a hh:mm"
+        case .timeWithoutSecond: return "timeWithoutSecond".localized
         case .yearAndMouth: return "yearAndMouth".localized
         case .dateForTitle: return "dateForTitle".localized
         case .dateForChart: return "yyyy.MM.dd."
