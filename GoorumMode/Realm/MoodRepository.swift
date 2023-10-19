@@ -88,7 +88,7 @@ class MoodRepository {
                 realm.create(Mood.self, value: ["_id": item._id, "mood": item.mood, "date": item.date, "onelineText": item.onelineText, "detailText": item.detailText, "image": item.image], update: .modified)
             }
         } catch {
-            print("수정 오류 \(error)")
+            print("수정 오류: \(error)")
         }
     }
     
@@ -103,7 +103,7 @@ class MoodRepository {
                 realm.delete(item)
             }
         } catch {
-            print("삭제 오류 \(error)")
+            print("삭제 오류: \(error)")
         }
     }
     
