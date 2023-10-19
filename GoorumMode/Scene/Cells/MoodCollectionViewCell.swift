@@ -62,7 +62,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     let detailLabel = {
         let view = PaddingLabel()
         view.font = Constants.Font.regular(size: 15)
-        view.numberOfLines = 3
+        view.numberOfLines = 0
         view.textColor = Constants.Color.Text.basicTitle
         return view
     }()

@@ -105,7 +105,7 @@ final class AddViewController: BaseViewController {
         
         let unselectedTime = mainView.timePicker.date
         let onelineText = mainView.oneLineTextField.text?.trimmingCharacters(in: .whitespaces)
-        var detailText = mainView.detailTextView.text.trimmingCharacters(in: .whitespaces)
+        var detailText = mainView.detailTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if detailText == mainView.detailTextViewPlaceholder {
             detailText = ""

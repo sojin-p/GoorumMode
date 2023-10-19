@@ -35,7 +35,6 @@ extension UILabel {
 extension UITextView {
     
     func setLineSpacing(text: String, spacing: CGFloat) {
-//        guard let text = text else { return }
         
         let attributeString = NSMutableAttributedString(string: text)
         let style = NSMutableParagraphStyle()
