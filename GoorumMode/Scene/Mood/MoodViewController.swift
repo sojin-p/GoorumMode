@@ -114,16 +114,17 @@ extension MoodViewController {
             }
             
             if let detailText = itemIdentifier.detailText, detailText.isEmpty {
-                cell.detailBackView.isHidden = true
+                cell.detailLabel.isHidden = true
             } else {
                 cell.detailLabel.text = itemIdentifier.detailText
-                cell.detailBackView.isHidden = false
+                cell.detailLabel.isHidden = false
             }
-            cell.detailLabel.setLineSpacing(spacing: 5)
+//            cell.detailLabel.setLineSpacing(spacing: 5)
             
             let timeAccessibilityLabel = itemIdentifier.date.toString(of: .timeForAccessibility)
             let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? "기분"
             cell.accessibilityLabel = "\(timeAccessibilityLabel) 기록함, \(moodAccessibilityLabel) 이미지, 한 줄 내용, \(cell.onelineLabel.text ?? "없음"), 자세한 내용, \(cell.detailLabel.text ?? "없음")"
+            
         })
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in

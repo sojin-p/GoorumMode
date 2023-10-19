@@ -23,6 +23,7 @@
 		23BDAD602ADD7724007F5768 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD5F2ADD7724007F5768 /* PlaceholderView.swift */; };
 		23BDAD652ADE5D23007F5768 /* SelectDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD642ADE5D22007F5768 /* SelectDatePickerViewController.swift */; };
 		23C6E4302ADFFB6E000EC0BF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 23C6E42F2ADFFB6E000EC0BF /* Toast */; };
+		23C798202AE0EB4F00121D6A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7981F2AE0EB4E00121D6A /* PaddingLabel.swift */; };
 		23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */; };
 		23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9A112AC168B200D6BBB5 /* Color.swift */; };
 		23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9A1A2AC2E01300D6BBB5 /* Localizable.strings */; };
@@ -81,6 +82,7 @@
 		23BDAD5D2ADD6180007F5768 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		23BDAD5F2ADD7724007F5768 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		23BDAD642ADE5D22007F5768 /* SelectDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatePickerViewController.swift; sourceTree = "<group>"; };
+		23C7981F2AE0EB4E00121D6A /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		23DD9A112AC168B200D6BBB5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		23DD9A152AC2DFB600D6BBB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				23BDAD5D2ADD6180007F5768 /* CalendarHeaderView.swift */,
 				23BDAD5F2ADD7724007F5768 /* PlaceholderView.swift */,
 				2391863C2AE027060053A315 /* AnimationButton.swift */,
+				23C7981F2AE0EB4E00121D6A /* PaddingLabel.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */,
 				23DD9A5D2ACA80C900D6BBB5 /* MoodRepository.swift in Sources */,
 				23BDAD492AD97A12007F5768 /* CapsulePaddingButton.swift in Sources */,
+				23C798202AE0EB4F00121D6A /* PaddingLabel.swift in Sources */,
 				23BDAD472AD9668B007F5768 /* ChartView.swift in Sources */,
 				23DD9A592AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift in Sources */,
 				23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */,

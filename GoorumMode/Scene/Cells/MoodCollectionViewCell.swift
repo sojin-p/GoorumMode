@@ -59,21 +59,11 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    lazy var detailBackView = {
-        let view = UIView()
-        if let text = detailLabel.text, text.isEmpty {
-            view.isHidden = true
-        } else {
-            view.isHidden = false
-        }
-        return view
-    }()
-    
     let detailLabel = {
-        let view = UILabel()
+        let view = PaddingLabel()
         view.font = Constants.Font.regular(size: 15)
-        view.numberOfLines = 0
-//        view.lineBreakMode = .byTruncatingTail
+        view.numberOfLines = 3
+        view.lineBreakMode = .byTruncatingTail
         view.textColor = Constants.Color.Text.basicTitle
         return view
     }()
@@ -91,25 +81,22 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         contentView.layer.cornerRadius = 15
         
         contentView.addSubview(baseStackView)
-        [containerView, detailBackView].forEach { baseStackView.addArrangedSubview($0) }
-        detailBackView.addSubview(detailLabel)
+        [containerView, detailLabel].forEach { baseStackView.addArrangedSubview($0) }
         [moodImageView, timeStackView].forEach { containerView.addSubview($0) }
-        [timeLabel, onelineLabel].forEach { timeStackView.addArrangedSubview($0) }
+        [timeLabel, onelineLabel].forEach {
+            timeStackView.addArrangedSubview($0) }
+        containerView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        
     }
     
     override func setConstraints() {
         
         baseStackView.snp.makeConstraints { make in
             make.edges.equalTo(contentView).inset(15)
-            make.centerY.equalTo(contentView)
         }
 
         containerView.snp.makeConstraints { make in
             make.height.equalTo(70)
-        }
-
-        detailLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(12)
         }
         
         moodImageView.snp.makeConstraints { make in

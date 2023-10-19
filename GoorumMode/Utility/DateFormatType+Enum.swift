@@ -8,7 +8,6 @@
 import Foundation
 
 enum DateFormatType {
-    case detailedDate
     case timeWithoutSecond
     case yearAndMouth
     case dateForTitle
@@ -17,10 +16,9 @@ enum DateFormatType {
     
     var description: String {
         switch self {
-        case .detailedDate: return "yyyy.MM.dd. a hh:mm:ss"
         case .timeWithoutSecond: return "a hh:mm"
         case .yearAndMouth: return "yyyy년 M월"
-        case .dateForTitle: return "M월 dd일 (EE)"
+        case .dateForTitle: return "M월 dd일 EEEE"
         case .dateForChart: return "yyyy.MM.dd."
         case .timeForAccessibility: return "a hh시 mm분"
         }
