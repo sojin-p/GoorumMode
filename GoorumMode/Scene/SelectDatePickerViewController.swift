@@ -16,7 +16,7 @@ final class SelectDatePickerViewController: BaseViewController {
     
     let doneButton = {
         let view = UIButton()
-        view.setTitle("완료", for: .normal)
+        view.setTitle("doneButton_Title".localized, for: .normal)
         view.setTitleColor(Constants.Color.iconTint.basicWhite, for: .normal)
         view.setTitleColor(Constants.Color.iconTint.basicWhite, for: [.normal, .highlighted])
         view.backgroundColor = Constants.Color.iconTint.basicBlack
@@ -99,8 +99,8 @@ extension SelectDatePickerViewController: UIPickerViewDelegate, UIPickerViewData
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
-        case 0: return "\(years[row])년"
-        case 1: return "\(months[row])월"
+        case 0: return "pickerView_Years_Comonent".localized(with: "\(years[row])")
+        case 1: return "pickerView_Months_Comonent".localized(with: "\(months[row])")
         default: return ""
         }
     }

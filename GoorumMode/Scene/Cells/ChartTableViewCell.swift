@@ -12,7 +12,7 @@ final class ChartTableViewCell: BaseTableViewCell {
     
     let pieChartView = {
         let view = PieChartView()
-        view.noDataText = "작성된 기분이 없습니다."
+        view.noDataText = "pickChartView_noDataText".localized
         view.noDataFont = Constants.Font.extraBold(size: 16)
         view.noDataTextColor = Constants.Color.Text.basicPlaceholder!
         view.holeRadiusPercent = 0.3

@@ -11,7 +11,7 @@ final class PickMoodView: BaseView {
     
     private let titleLabel = {
         let view = UILabel()
-        view.text = "지금 기분이 어떤가요?"
+        view.text = "pickMoodView_TitleLabel".localized
         view.font = Constants.Font.bold(size: 16)
         view.textAlignment = .center
         view.textColor = Constants.Color.Text.basicSubTitle

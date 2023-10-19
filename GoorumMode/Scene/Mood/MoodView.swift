@@ -41,8 +41,8 @@ final class MoodView: BaseView {
             view.backgroundColor = Constants.Color.Background.basicIcon
             view.layer.cornerRadius = view.frame.width / 2
         }
-        view.accessibilityLabel = "기록 추가"
-        view.accessibilityHint = "새로운 기분을 기록하려면 두 번 탭 하세요."
+        view.accessibilityLabel = "addMoodButton_AccessibilityLabel".localized
+        view.accessibilityHint = "addMoodButton_AccessibilityHint".localized
         return view
     }()
     

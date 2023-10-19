@@ -17,7 +17,7 @@ final class PlaceholderView: BaseView {
     
     let placehoderLabel = {
         let view = UILabel()
-        view.text = "작성된 기록이 없습니다."
+        view.text = "moodCollectionView_PlaceholderLabel".localized
         view.font = Constants.Font.bold(size: 15)
         view.textColor = Constants.Color.Text.basicSubTitle
         view.textAlignment = .center

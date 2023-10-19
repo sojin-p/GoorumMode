@@ -32,7 +32,7 @@ final class ChartView: BaseView {
     lazy var chartButtons = [dailyButton, weeklyButton, monthlyButton]
     
     private let dailyButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "일간")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "dailyButton_Title".localized)
         view.tag = DateRange.daliy.rawValue
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.basic
@@ -40,13 +40,13 @@ final class ChartView: BaseView {
     }()
     
     private let weeklyButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "주간")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "weeklyButton_Title".localized)
         view.tag = DateRange.weekly.rawValue
         return view
     }()
     
     private let monthlyButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "월간")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "monthlyButton_Title".localized)
         view.tag = DateRange.monthly.rawValue
         return view
     }()

@@ -9,14 +9,14 @@ import UIKit
 
 final class AddView: BaseView {
     
-    let detailTextViewPlaceholder = "자세한 내용을 기록해 보세요."
+    let detailTextViewPlaceholder = "detailTextView_Placeholder".localized
     lazy var detailTextView = {
         let view = UITextView()
         view.backgroundColor = Constants.Color.Background.basic
-        view.font = Constants.Font.regular(size: 15)
         view.isHidden = true
-        view.text = self.detailTextViewPlaceholder
+        view.setLineSpacing(text: self.detailTextViewPlaceholder, spacing: 8)
         view.textColor = Constants.Color.Text.basicPlaceholder
+        view.font = Constants.Font.regular(size: 15)
         return view
     }()
     
@@ -31,9 +31,9 @@ final class AddView: BaseView {
         view.image = pickMoodPlaceholder
         view.contentMode = .scaleAspectFit
         view.isAccessibilityElement = true
-        view.accessibilityLabel = "기분 선택"
+        view.accessibilityLabel = "pickMoodImageView_AccessibilityLabel".localized
         view.accessibilityTraits = .button
-        view.accessibilityHint = "기분을 선택하려면 두 번 탭 하세요."
+        view.accessibilityHint = "pickMoodImageView_AccessibilityHint".localized
         view.isUserInteractionEnabled = true
         return view
     }()
@@ -58,7 +58,7 @@ final class AddView: BaseView {
     
     let oneLineTextField = {
         let view = UITextField()
-        view.placeholder = "기분을 선택한 이유(15자)"
+        view.placeholder = "oneLineTextField_Placeholder".localized
         view.font = Constants.Font.regular(size: 15)
         view.addLeftPadding()
         view.clearButtonMode = .whileEditing
@@ -79,8 +79,8 @@ final class AddView: BaseView {
             view.backgroundColor = Constants.Color.Background.white
             view.buttonShadow(radius: 3, opacity: 0.5)
         }
-        view.accessibilityLabel = "내용 추가"
-        view.accessibilityHint = "자세한 내용 또는 일기를 작성하려면 두 번 탭 하세요."
+        view.accessibilityLabel = "extendButton_AccessibilityLabel".localized
+        view.accessibilityHint = "extendButton_AccessibilityHint".localized
         return view
     }()
     

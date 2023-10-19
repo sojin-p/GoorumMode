@@ -17,10 +17,10 @@ enum DateFormatType {
     var description: String {
         switch self {
         case .timeWithoutSecond: return "a hh:mm"
-        case .yearAndMouth: return "yyyy년 M월"
-        case .dateForTitle: return "M월 dd일 EEEE"
+        case .yearAndMouth: return "yearAndMouth".localized
+        case .dateForTitle: return "dateForTitle".localized
         case .dateForChart: return "yyyy.MM.dd."
-        case .timeForAccessibility: return "a hh시 mm분"
+        case .timeForAccessibility: return "timeForAccessibility".localized
         }
     }
 }

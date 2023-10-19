@@ -32,7 +32,7 @@ class BaseViewController: UIViewController {
     
     func showAlert(title: String, massage: String?) {
         let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .default)
+        let ok = UIAlertAction(title: "alert_OKButtonTitle".localized, style: .default)
         alert.addAction(ok)
         present(alert, animated: true)
     }
@@ -42,7 +42,7 @@ class BaseViewController: UIViewController {
         let button = UIAlertAction(title: buttonName, style: .destructive) { action in
             completion()
         }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let cancel = UIAlertAction(title: "alert_CancelButtonTitle".localized, style: .cancel)
         
         alert.addAction(button)
         alert.addAction(cancel)

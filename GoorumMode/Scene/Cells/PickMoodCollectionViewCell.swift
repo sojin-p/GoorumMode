@@ -14,7 +14,7 @@ class PickMoodCollectionViewCell: BaseCollectionViewCell {
     let moodImage = {
         let view = UIImageView()
         view.isAccessibilityElement = true
-        view.accessibilityHint = "기분을 선택하려면 두 번 탭 하세요."
+        view.accessibilityHint = "moodImageView_accessibilityHint".localized
         return view
     }()
     

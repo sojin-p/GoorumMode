@@ -23,7 +23,7 @@ final class CalendarViewController: BaseViewController {
     }()
     
     let showDateButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "날짜 보기")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "showDateButton_Title".localized)
         view.tintColor = Constants.Color.iconTint.basicBlack
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.white
@@ -79,9 +79,9 @@ final class CalendarViewController: BaseViewController {
             if selectedDate != Calendar.current.startOfDay(for: Date()) {
                 calendar.appearance.todayColor = .clear
             }
-            showDateButton.setTitle("기분 보기", for: .normal)
+            showDateButton.setTitle("showDateButton_isSelected_Title".localized, for: .normal)
         } else {
-            showDateButton.setTitle("날짜 보기", for: .normal)
+            showDateButton.setTitle("showDateButton_Title".localized, for: .normal)
         }
         calendar.reloadData()
     }

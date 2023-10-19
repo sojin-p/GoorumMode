@@ -119,11 +119,15 @@ extension MoodViewController {
                 cell.detailLabel.text = itemIdentifier.detailText
                 cell.detailLabel.isHidden = false
             }
-//            cell.detailLabel.setLineSpacing(spacing: 5)
+            
+            cell.detailLabel.setLineSpacing(spacing: 5)
             
             let timeAccessibilityLabel = itemIdentifier.date.toString(of: .timeForAccessibility)
             let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? "기분"
-            cell.accessibilityLabel = "\(timeAccessibilityLabel) 기록함, \(moodAccessibilityLabel) 이미지, 한 줄 내용, \(cell.onelineLabel.text ?? "없음"), 자세한 내용, \(cell.detailLabel.text ?? "없음")"
+            
+            let value = NSLocalizedString("cellRegistration_AccessibilityLabel", comment: "")
+            let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
+            cell.accessibilityLabel = String(format: value, "\(timeAccessibilityLabel)", "\(moodAccessibilityLabel)", "\(cell.onelineLabel.text ?? isEmptyString)", "\(cell.detailLabel.text ?? isEmptyString)")
             
         })
         
@@ -168,13 +172,13 @@ extension MoodViewController {
     func setNavigationBar() {
         navigationItem.titleView = mainView.dateLabel
         let calendarBarButton = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
-        calendarBarButton.accessibilityLabel = "달력"
-        calendarBarButton.accessibilityHint = "다른 날의 기록을 보려면 두 번 탭 하세요."
+        calendarBarButton.accessibilityLabel = "calendarBarButton_AccessibilityLabel".localized
+        calendarBarButton.accessibilityHint = "calendarBarButton_AccessibilityHint".localized
         navigationItem.leftBarButtonItem = calendarBarButton
         
         let settingBarButton = UIBarButtonItem(image: Constants.IconImage.setting, style: .plain, target: self, action: #selector(settingBarbuttonClicked))
-        settingBarButton.accessibilityLabel = "설정"
-//        settingBarButton.accessibilityHint = "언어, 테마 등을 설정하려면 두 번 탭 하세요."
+        settingBarButton.accessibilityLabel = "settingBarButton_AccessibilityLabel".localized
+//        settingBarButton.AccessibilityHint = "settingBarButton.accessibilityHint".localized
         navigationItem.rightBarButtonItem = settingBarButton
     }
     

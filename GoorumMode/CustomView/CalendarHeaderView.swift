@@ -26,7 +26,7 @@ final class CalendarHeaderView: BaseView {
     }()
     
     let backTodayButton = {
-        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 28), title: "오늘")
+        let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 28), title: "backTodayButton_Title".localized)
         view.tintColor = Constants.Color.iconTint.basicBlack
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.white

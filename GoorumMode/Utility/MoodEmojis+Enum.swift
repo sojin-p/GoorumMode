@@ -29,18 +29,18 @@ enum MoodEmojis: String, CaseIterable {
     
     var accessLabel: String {
         switch self {
-        case .smiling: return "미소 짓는"
-        case .neutral: return "무표정"
-        case .surprised: return "놀란"
-        case .happy: return "행복한"
-        case .tired: return "피곤한"
-        case .angry: return "화난"
-        case .lol: return "매우 신난"
-        case .embarrassed: return "당황스러운"
-        case .sad: return "슬픈"
-        case .smirking: return "능글맞은"
-        case .lovely: return "사랑스러운"
-        case .passionate: return "열정적인"
+        case .smiling: return "smiling".localized
+        case .neutral: return "neutral".localized
+        case .surprised: return "surprised".localized
+        case .happy: return "happy".localized
+        case .tired: return "tired".localized
+        case .angry: return "angry".localized
+        case .lol: return "lol".localized
+        case .embarrassed: return "embarrassed".localized
+        case .sad: return "sad".localized
+        case .smirking: return "smirking".localized
+        case .lovely: return "lovely".localized
+        case .passionate: return "passionate".localized
         }
     }
 }

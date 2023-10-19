@@ -99,7 +99,7 @@ final class AddViewController: BaseViewController {
     func doneButtonClicked() {
         
         guard let image = mainView.pickMoodImageView.image, image != mainView.pickMoodPlaceholder else {
-            showAlert(title: "기분을 선택하세요.", massage: nil)
+            showAlert(title: "alert_DoneButtonClicked_Title".localized, massage: nil)
             return
         }
         
@@ -116,13 +116,11 @@ final class AddViewController: BaseViewController {
         }
         
         if transtion == .add {
-            print("추가 화면")
             let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: selectedDate ?? unselectedTime, onelineText: onelineText, detailText: detailText, image: "")
             moodRepository.createItem(data)
             completionHandler?(data)
             
         } else if transtion == .modify {
-            print("수정 화면")
             guard let moods else { return }
             let data = Mood(mood: moodImageName ?? moods.mood, date: selectedDate ?? moods.date, onelineText: onelineText, detailText: detailText, image: "")
             
@@ -138,7 +136,7 @@ final class AddViewController: BaseViewController {
     }
     
     func removeButtonClicked() {
-        showAlertWithAction(title: "일기가 삭제됩니다.", message: nil, buttonName: "삭제") { [weak self] in
+        showAlertWithAction(title: "alert_RemoveButtonClicked_Title".localized, message: nil, buttonName: "alert_RemoveButtonTitle".localized) { [weak self] in
             
             guard let moods = self?.moods else { return }
 
@@ -214,7 +212,7 @@ extension AddViewController: UITextFieldDelegate {
         }
         guard let text = textField.text, text.count < 15 else {
             textField.resignFirstResponder()
-            showAlert(title: "15자 이하로 입력해 주세요.", massage: nil)
+            showAlert(title: "alert_OneLineTextField_isEmpty_Title".localized, massage: nil)
             return false
         }
         return true

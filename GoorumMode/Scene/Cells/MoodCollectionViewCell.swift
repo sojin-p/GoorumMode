@@ -63,7 +63,6 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         let view = PaddingLabel()
         view.font = Constants.Font.regular(size: 15)
         view.numberOfLines = 3
-        view.lineBreakMode = .byTruncatingTail
         view.textColor = Constants.Color.Text.basicTitle
         return view
     }()
@@ -71,7 +70,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
     func applyAccessibility() {
         isAccessibilityElement = true
         [timeLabel, detailLabel, onelineLabel].forEach { $0.isAccessibilityElement = false }
-        accessibilityHint = "수정하려면 두 번 탭 하세요"
+        accessibilityHint = "modify_AccessibilityHint".localized
     }
     
     override func configure() {
