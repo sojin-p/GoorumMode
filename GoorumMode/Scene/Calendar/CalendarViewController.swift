@@ -8,12 +8,13 @@
 import UIKit
 import FSCalendar
 
-final class CalendarViewController: BaseViewController {
+final class CalendarViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     var calendar = {
         let view = BasicFSCalendar()
         view.headerHeight = 60
         view.appearance.headerTitleFont = Constants.Font.extraBold(size: 18)
+        view.accessibilityElementsHidden = true
         return view
     }()
     
@@ -28,6 +29,7 @@ final class CalendarViewController: BaseViewController {
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.white
         view.buttonShadow(radius: 3, opacity: 0.5)
+        view.accessibilityElementsHidden = true
         return view
     }()
     
@@ -39,8 +41,6 @@ final class CalendarViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setNavigationBar()
         
         calendar.select(selectedDate)
         headerView.headerLabel.text = selectedDate?.toString(of: .yearAndMouth)
@@ -55,11 +55,15 @@ final class CalendarViewController: BaseViewController {
         headerView.headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonthButtonClicked)))
         
         calendar.calendarHeaderView.accessibilityElementsHidden = true
+        
+        setNavigationBackBarButton()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
 
     }
-    
+
     @objc private func showMonthButtonClicked() {
-        let vc = SelectDatePickerViewController()
+        let vc = SelectDateViewController()
+        
         let selectedDay = Calendar.current.component(.day, from: selectedDate ?? Date())
         var dateComponents = DateComponents()
         dateComponents.day = selectedDay - 1
@@ -70,6 +74,7 @@ final class CalendarViewController: BaseViewController {
         
         vc.completionHandler = { [weak self] date in
             self?.calendar.select(date)
+            self?.selectedDate = date
         }
         
         present(vc, animated: true)
@@ -90,6 +95,7 @@ final class CalendarViewController: BaseViewController {
     
     @objc private func backTodayButtonClicked() {
         calendar.select(Date())
+        selectedDate = Date()
     }
     
     override func configure() {
@@ -196,16 +202,4 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
-}
-
-extension CalendarViewController: UIGestureRecognizerDelegate {
-    func setNavigationBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backBarbuttonClicked))
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-    }
-    
-    @objc func backBarbuttonClicked() {
-        navigationController?.popViewController(animated: true)
-    }
-    
 }

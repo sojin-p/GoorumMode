@@ -22,6 +22,7 @@ final class CalendarHeaderView: BaseView {
         let view = UIButton()
         view.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         view.tintColor = Constants.Color.iconTint.unselected
+        view.accessibilityElementsHidden = true
         return view
     }()
     

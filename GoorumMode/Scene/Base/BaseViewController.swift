@@ -63,4 +63,13 @@ class BaseViewController: UIViewController {
         }
         
     }
+    
+    func setNavigationBackBarButton() {
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "", image: UIImage(systemName: "chevron.left"), target: self, action: #selector(backBarbuttonClicked))
+    }
+    
+    @objc private func backBarbuttonClicked() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
