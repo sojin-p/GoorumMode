@@ -10,12 +10,12 @@
 "modify_AccessibilityHint" = "Please tap it twice, if you want to edit.";
 
 //MARK: - MoodViewController
-"cellRegistration_AccessibilityLabel" = "Recorded %@, %@ image, One-line content, %@, Details, %@"; //@@@@@@
+"cellRegistration_AccessibilityLabel" = "Recorded %@, %@ image, One-line content, %@, Details, %@";
 "cellRegistration_AccessibilityLabel_isEmpty" = "None";
 "calendarBarButton_AccessibilityLabel" = "Calendar";
-"calendarBarButton_AccessibilityHint" = "Please tap it twice, if you want to read the record of another day.";
+"calendarBarButton_AccessibilityHint" = "Please tap it twice, if you want to check previous days' records";
 "settingBarButton_AccessibilityLabel" = "Setting";
-"settingBarButton.accessibilityHint" = "Please tap it twice, if you want to set language, theme, etc.";
+"settingBarButton.accessibilityHint" = "Please tap it twice, if you want to set languages, themes, etc.";
 
 //MARK: - MoodView
 "addMoodButton_AccessibilityLabel" = "Add your mood record";
@@ -24,7 +24,7 @@
 //MARK: - AddView
 "detailTextView_Placeholder" = "Please tap here to record the details.";
 
-"pickMoodImageView_AccessibilityLabel" = "Choose how you feel";
+"pickMoodImageView_AccessibilityLabel" = "Choose your mood";
 "pickMoodImageView_AccessibilityHint" = "Please tap it twice, if you want to choose your mood";
 
 "oneLineTextField_Placeholder" = "[Optional] Any reason?";
@@ -33,19 +33,19 @@
 "extendButton_AccessibilityHint" = "Please tap it twice, if you want to record the details.";
 
 //MARK: - PickMoodViewController
-"showDateButton_Title" = "Date"; //@@@@@@
-"showDateButton_isSelected_Title" = "Mood"; //@@@@@@
+"showDateButton_Title" = "Date";
+"showDateButton_isSelected_Title" = "Mood";
 
 //MARK: - PickMoodCollectionViewCell
 "moodImageView_accessibilityHint" = "Please tap it twice, to choose how you feel";
 
 //MARK: - PickMoodView
-"pickMoodView_TitleLabel" = "How do you feel?";
+"pickMoodView_TitleLabel" = "How do you feel today?";
 
 //MARK: - SelectDatePickerViewController
-"doneButton_Title" = "Done"; //@@@@@@
-"pickerView_Years_Comonent" = "%@"; //@@@@@@
-"pickerView_Months_Comonent" = "%@"; //@@@@@@
+"doneButton_Title" = "Done";
+"pickerView_Years_Comonent" = "%@";
+"pickerView_Months_Comonent" = "%@";
 
 //MARK: - ChartView
 "dailyButton_Title" = "Daily";
@@ -57,12 +57,12 @@
 
 //MARK: - MoodEmojis+Enum
 "smiling" = "Smiling";
-"neutral" = "Neutral";
+"neutral" = "indiffrence";
 "surprised" = "Surprised";
 "happy" = "Happy";
 "tired" = "Tired";
 "angry" = "Angry";
-"lol" = "LOL";
+"lol" = "Excited";
 "embarrassed" = "Embarrassed";
 "sad" = "Sad";
 "smirking" = "Smirking";
@@ -73,7 +73,7 @@
 "timeWithoutSecond" = "hh:mm a";
 "yearAndMouth" = "MMMM, yyyy";
 "dateForTitle" = "EE, MMM dd";
-"timeForAccessibility" = "hh:mm a"; //@@@@@@
+"timeForAccessibility" = "hh:mm a";
 
 //MARK: - CustomView_CalendarHeaderView
 "backTodayButton_Title" = "Today";
@@ -83,10 +83,10 @@
 
 //MARK: - Alert
 //BaseVC
-"alert_OKButtonTitle" = "Okay"; //@@@@@@
+"alert_OKButtonTitle" = "Okay";
 "alert_CancelButtonTitle" = "Cancel";
 //AddVC
-"alert_DoneButtonClicked_Title" = "Please choose your emotions.";
+"alert_DoneButtonClicked_Title" = "Please choose your emotion.";
 "alert_RemoveButtonClicked_Title" = "This record will be deleted.";
-"alert_RemoveButtonTitle" = "Delete Record";
+"alert_RemoveButtonTitle" = "Delete the Record";
 "alert_OneLineTextField_isEmpty_Title" = "Please enter no more than 15 characters.";
