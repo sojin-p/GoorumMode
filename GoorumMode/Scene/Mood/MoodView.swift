@@ -28,7 +28,13 @@ final class MoodView: BaseView {
         return view
     }()
     
-    let collectionViewPlaceholder = PlaceholderView()
+    let collectionViewPlaceholder = {
+        let view = PlaceholderView()
+        view.isAccessibilityElement = true
+        view.accessibilityLabel = "pickChartView_noDataText".localized
+        view.accessibilityTraits = .none
+        return view
+    }()
     
     let addMoodButton = {
         let view = AnimationButton(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
@@ -48,7 +54,7 @@ final class MoodView: BaseView {
     
     func setupAccessibilityLabel() {
         var elements = [Any]()
-        [addMoodButton, collectionView].forEach { elements.append($0) }
+        [addMoodButton, collectionView, collectionViewPlaceholder].forEach { elements.append($0) }
         accessibilityElements = elements
     }
     

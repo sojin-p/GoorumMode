@@ -53,7 +53,7 @@
 "monthlyButton_Title" = "월간";
 
 //MARK: - ChartTableViewCell
-"pickChartView_noDataText" = "작성된 기분이 없습니다.";
+"pickChartView_noDataText" = "작성된 기록이 없습니다.";
 
 //MARK: - MoodEmojis+Enum
 "smiling" = "미소 짓는";
