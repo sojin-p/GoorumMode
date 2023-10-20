@@ -55,9 +55,7 @@ extension PickMoodViewController {
     func setupSheet() {
         
         if let sheet = sheetPresentationController {
-            sheet.detents = [.custom(resolver: { context in
-                self.view.frame.height * 0.7
-            }), .large()]
+            sheet.detents = [.medium(), .large()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.preferredCornerRadius = 20
             sheet.prefersGrabberVisible = true
