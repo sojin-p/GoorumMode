@@ -33,25 +33,29 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
         return view
     }()
     
+    let viewModel = CalendarViewModel()
+    
     var completionHandler: ((Date) -> Void)?
     var selectedDate: Date?
-    lazy var currentDate = calendar.currentPage
+    
     var isShowed = false
     let moodRepository = MoodRepository()
     
-    deinit {
-        print("캘린더 사라짐")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+        
+        viewModel.currentDate.value = calendar.currentPage
+        
+        viewModel.currentDate.bind { [weak self] date in
+            DispatchQueue.main.async {
+                self?.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
+                self?.calendar.reloadData()
+            }
+        }
         
         setAccessibility(selectedDate)
         
         calendar.select(selectedDate)
-        headerView.headerLabel.text = selectedDate?.toString(of: .yearAndMouth)
-        
         calendar.delegate = self
         calendar.dataSource = self
         
@@ -90,13 +94,14 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
         var dateComponents = DateComponents()
         dateComponents.day = selectedDay - 1
         
-        if let willPassDate = Calendar.current.date(byAdding: dateComponents, to: currentDate) {
+        if let willPassDate = Calendar.current.date(byAdding: dateComponents, to: viewModel.currentDate.value) {
             vc.selectedDate = willPassDate
         }
         
         vc.completionHandler = { [weak self] date in
             self?.calendar.select(date)
             self?.selectedDate = date
+            self?.completionHandler?(date)
             self?.setAccessibility(date)
         }
         
@@ -119,6 +124,7 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     @objc private func backTodayButtonClicked() {
         calendar.select(Date())
         selectedDate = Date()
+        completionHandler?(Date())
     }
     
     override func configure() {
@@ -187,9 +193,7 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        calendar.reloadData()
-        currentDate = calendar.currentPage
-        headerView.headerLabel.text = currentDate.toString(of: .yearAndMouth)
+        viewModel.currentDate.value = calendar.currentPage
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {

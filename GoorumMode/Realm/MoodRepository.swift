@@ -38,7 +38,7 @@ class MoodRepository {
     
     func fetch(dateRange: DateRange, selectedDate: Date = Date(), completionHandler: ((Date, Date) -> Void)? = nil) -> [Mood] {
         let calendar = Calendar.current
-        var selectedDate = calendar.startOfDay(for: selectedDate)
+        let selectedDate = calendar.startOfDay(for: selectedDate)
         var startDate: Date = selectedDate
         var endDate: Date
         

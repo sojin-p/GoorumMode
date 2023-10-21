@@ -27,7 +27,6 @@ final class MoodViewController: BaseViewController {
         
         setNavigationBar()
         configureDataSource()
-
         setBind()
         
         mainView.addMoodButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
@@ -44,12 +43,11 @@ final class MoodViewController: BaseViewController {
     @objc func calendarBarbuttonClicked() {
         let vc = CalendarViewController()
         
+        vc.selectedDate = viewModel.selectedDate.value
         vc.completionHandler = { [weak self] date in
             self?.viewModel.moods.value = self?.moodRepository.fetch(dateRange: .daliy, selectedDate: date) ?? []
             self?.viewModel.selectedDate.value = date
         }
-        
-        vc.selectedDate = viewModel.selectedDate.value
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -113,11 +111,11 @@ extension MoodViewController {
             
             cell.detailLabel.setLineSpacing(spacing: 5)
             
+            let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
             let timeAccessibilityLabel = itemIdentifier.date.toString(of: .timeForAccessibility)
-            let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? "기분"
+            let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? isEmptyString
             
             let value = NSLocalizedString("cellRegistration_AccessibilityLabel", comment: "")
-            let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
             cell.accessibilityLabel = String(format: value, "\(timeAccessibilityLabel)", "\(moodAccessibilityLabel)", "\(cell.onelineLabel.text ?? isEmptyString)", "\(cell.detailLabel.text ?? isEmptyString)")
             
         })
@@ -183,13 +181,17 @@ extension MoodViewController {
     
     func setBind() {
         viewModel.moods.bind { [weak self] moods in
-            self?.updateSnapshot()
-            self?.setPlaceholder()
+            DispatchQueue.main.async {
+                self?.updateSnapshot()
+                self?.setPlaceholder()
+            }
         }
         
         viewModel.selectedDate.bind { [weak self] date in
-            self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
-            self?.mainView.dateLabel.sizeToFit()
+            DispatchQueue.main.async {
+                self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
+                self?.mainView.dateLabel.sizeToFit()
+            }
         }
     }
 }

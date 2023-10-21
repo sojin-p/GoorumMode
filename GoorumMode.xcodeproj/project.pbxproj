@@ -16,6 +16,7 @@
 		237B046A2AE2CE54006C40CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 237B04692AE2CE54006C40CA /* GoogleService-Info.plist */; };
 		237B046D2AE2CF36006C40CA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 237B046C2AE2CF36006C40CA /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		237B046F2AE2CF36006C40CA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 237B046E2AE2CF36006C40CA /* FirebaseCrashlytics */; };
+		237B047A2AE3B06B006C40CA /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04792AE3B06B006C40CA /* CalendarViewModel.swift */; };
 		2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */; };
 		2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2380FB212AB9E6B200B31754 /* SceneDelegate.swift */; };
 		2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2380FB232AB9E6B200B31754 /* MoodViewController.swift */; };
@@ -81,6 +82,7 @@
 		237B04632AE261B9006C40CA /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		237B04672AE2CC57006C40CA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		237B04692AE2CE54006C40CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		237B04792AE3B06B006C40CA /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		2380FB1C2AB9E6B100B31754 /* GoorumMode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoorumMode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2380FB212AB9E6B200B31754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				23DD9A982AD160EC00D6BBB5 /* CalendarViewController.swift */,
+				237B04792AE3B06B006C40CA /* CalendarViewModel.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				23DD9A962ACECB1900D6BBB5 /* Observable.swift in Sources */,
 				2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */,
 				237B04592AE21315006C40CA /* SettingView.swift in Sources */,
+				237B047A2AE3B06B006C40CA /* CalendarViewModel.swift in Sources */,
 				23BDAD4B2ADA4729007F5768 /* ChartTableViewCell.swift in Sources */,
 				23C798222AE10FC100121D6A /* LocalizedString+Extension.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
