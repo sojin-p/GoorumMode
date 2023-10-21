@@ -12,4 +12,6 @@ final class MoodViewModel {
     let moodRepository = MoodRepository()
     lazy var moods: Observable<[Mood]> = Observable(moodRepository.fetch(dateRange: .daliy))
     
+    var selectedDate: Observable<Date> = Observable(Date())
+    
 }

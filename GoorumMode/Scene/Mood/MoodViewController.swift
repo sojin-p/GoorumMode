@@ -13,11 +13,7 @@ final class MoodViewController: BaseViewController {
     var snapshot: NSDiffableDataSourceSnapshot<Section, Mood>!
     
     let mainView = MoodView()
-    
     let viewModel = MoodViewModel()
-    
-    var selectedDate = Date()
-    
     let moodRepository = MoodRepository()
     
     override func loadView() {
@@ -30,12 +26,9 @@ final class MoodViewController: BaseViewController {
         moodRepository.checkFileURL()
         
         setNavigationBar()
-        setPlaceholder()
         configureDataSource()
 
-        viewModel.moods.bind { [weak self] moods in
-            self?.updateSnapshot()
-        }
+        setBind()
         
         mainView.addMoodButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
         
@@ -53,12 +46,10 @@ final class MoodViewController: BaseViewController {
         
         vc.completionHandler = { [weak self] date in
             self?.viewModel.moods.value = self?.moodRepository.fetch(dateRange: .daliy, selectedDate: date) ?? []
-            self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
-            self?.mainView.dateLabel.sizeToFit()
-            self?.selectedDate = date
-            self?.setPlaceholder()
+            self?.viewModel.selectedDate.value = date
         }
-        vc.selectedDate = selectedDate
+        
+        vc.selectedDate = viewModel.selectedDate.value
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -68,13 +59,12 @@ final class MoodViewController: BaseViewController {
         let vc = AddViewController()
         let nav = UINavigationController(rootViewController: vc)
 
-        vc.selectedDate = selectedDate
+        vc.selectedDate = viewModel.selectedDate.value
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
             self?.viewModel.moods.value.append(data)
             self?.viewModel.moods.value.sort(by: { $0.date > $1.date })
             self?.scrollToItem(data: data)
-            self?.setPlaceholder()
         }
         
         present(nav, animated: true)
@@ -103,6 +93,7 @@ extension MoodViewController {
     func configureDataSource() {
         
         let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
+            
             cell.moodImageView.image = UIImage(named: itemIdentifier.mood)
             cell.timeLabel.text = itemIdentifier.date.toString(of: .timeWithoutSecond)
             
@@ -149,7 +140,7 @@ extension MoodViewController: UICollectionViewDelegate {
         
         vc.transtion = .modify
         vc.moods = item
-        vc.selectedDate = selectedDate
+        vc.selectedDate = viewModel.selectedDate.value
         
         vc.completionHandler = { [weak self] data in
             self?.viewModel.moods.value[indexPath.item] = data
@@ -159,7 +150,6 @@ extension MoodViewController: UICollectionViewDelegate {
         
         vc.removeData = { [weak self] in
             self?.viewModel.moods.value.remove(at: indexPath.item)
-            self?.setPlaceholder()
         }
 
         present(nav, animated: true)
@@ -171,6 +161,7 @@ extension MoodViewController {
     
     func setNavigationBar() {
         navigationItem.titleView = mainView.dateLabel
+        
         let calendarBarButton = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
         calendarBarButton.accessibilityLabel = "calendarBarButton_AccessibilityLabel".localized
         calendarBarButton.accessibilityHint = "calendarBarButton_AccessibilityHint".localized
@@ -187,6 +178,18 @@ extension MoodViewController {
             mainView.collectionViewPlaceholder.isHidden = false
         } else {
             mainView.collectionViewPlaceholder.isHidden = true
+        }
+    }
+    
+    func setBind() {
+        viewModel.moods.bind { [weak self] moods in
+            self?.updateSnapshot()
+            self?.setPlaceholder()
+        }
+        
+        viewModel.selectedDate.bind { [weak self] date in
+            self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
+            self?.mainView.dateLabel.sizeToFit()
         }
     }
 }
