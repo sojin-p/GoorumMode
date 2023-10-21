@@ -52,6 +52,11 @@
 "doneButton_Title" = "Select";
 "doneButton_AccessibilityHint" = "Please tap it twice, if you want to select that date. And then double tap the back button, you can add a record to that date.";
 
+//MARK: - SettingViewController
+"settingVC_Title" = "Setting";
+"setting_PrivacyPolicy" = "Privacy Policy";
+"setting_Inquiry" = "Inquiry";
+
 //MARK: - ChartView
 "dailyButton_Title" = "Daily";
 "weeklyButton_Title" = "Weekly";

@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		237B04572AE2128F006C40CA /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04562AE2128F006C40CA /* ThemeViewController.swift */; };
 		237B04592AE21315006C40CA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04582AE21315006C40CA /* SettingView.swift */; };
-		237B045B2AE21404006C40CA /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B045A2AE21404006C40CA /* LanguageViewController.swift */; };
-		237B045D2AE21466006C40CA /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B045C2AE21466006C40CA /* AppInfoViewController.swift */; };
 		237B04642AE261B9006C40CA /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04632AE261B9006C40CA /* SelectDateViewController.swift */; };
 		237B04682AE2CC57006C40CA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 237B04672AE2CC57006C40CA /* .gitignore */; };
 		237B046A2AE2CE54006C40CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 237B04692AE2CE54006C40CA /* GoogleService-Info.plist */; };
@@ -76,10 +73,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		237B04562AE2128F006C40CA /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		237B04582AE21315006C40CA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		237B045A2AE21404006C40CA /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
-		237B045C2AE21466006C40CA /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		237B04632AE261B9006C40CA /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		237B04672AE2CC57006C40CA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		237B04692AE2CE54006C40CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -165,9 +159,6 @@
 			children = (
 				237B04582AE21315006C40CA /* SettingView.swift */,
 				23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */,
-				237B04562AE2128F006C40CA /* ThemeViewController.swift */,
-				237B045A2AE21404006C40CA /* LanguageViewController.swift */,
-				237B045C2AE21466006C40CA /* AppInfoViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -516,9 +507,7 @@
 				2391863D2AE027060053A315 /* AnimationButton.swift in Sources */,
 				23BDAD502ADA482D007F5768 /* BaseTableViewCell.swift in Sources */,
 				237B04642AE261B9006C40CA /* SelectDateViewController.swift in Sources */,
-				237B04572AE2128F006C40CA /* ThemeViewController.swift in Sources */,
 				23DD9A942ACECADA00D6BBB5 /* MoodViewModel.swift in Sources */,
-				237B045B2AE21404006C40CA /* LanguageViewController.swift in Sources */,
 				23DD9A5B2AC7F85B00D6BBB5 /* Date+Extension.swift in Sources */,
 				23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */,
 				2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */,
@@ -537,7 +526,6 @@
 				23BDAD4B2ADA4729007F5768 /* ChartTableViewCell.swift in Sources */,
 				23C798222AE10FC100121D6A /* LocalizedString+Extension.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
-				237B045D2AE21466006C40CA /* AppInfoViewController.swift in Sources */,
 				23BDAD5E2ADD6180007F5768 /* CalendarHeaderView.swift in Sources */,
 				23BDAD522ADA4C3C007F5768 /* ReusableViewProtocol.swift in Sources */,
 				23DD9A502AC6B81400D6BBB5 /* PickMoodCollectionViewCell.swift in Sources */,
