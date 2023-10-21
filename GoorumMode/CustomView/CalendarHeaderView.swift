@@ -15,6 +15,7 @@ final class CalendarHeaderView: BaseView {
         view.textColor = Constants.Color.Text.basicTitle
         view.font = Constants.Font.extraBold(size: 18)
         view.isUserInteractionEnabled = true
+        view.accessibilityTraits = .none
         return view
     }()
     
@@ -32,6 +33,7 @@ final class CalendarHeaderView: BaseView {
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.white
         view.buttonShadow(radius: 3, opacity: 0.5)
+        view.accessibilityElementsHidden = true
         return view
     }()
     

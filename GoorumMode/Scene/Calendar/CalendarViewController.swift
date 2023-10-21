@@ -39,15 +39,21 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     var isShowed = false
     let moodRepository = MoodRepository()
     
+    deinit {
+        print("캘린더 사라짐")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
+        
+        setAccessibility(selectedDate)
         
         calendar.select(selectedDate)
         headerView.headerLabel.text = selectedDate?.toString(of: .yearAndMouth)
         
         calendar.delegate = self
         calendar.dataSource = self
-        calendar.reloadData()
         
         showDateButton.addTarget(self, action: #selector(showDateButtonClicked), for: .touchUpInside)
         headerView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
@@ -59,6 +65,22 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
         setNavigationBackBarButton()
         navigationController?.interactivePopGestureRecognizer?.delegate = self
 
+    }
+    
+    func setAccessibility(_ selectedDate: Date?) {
+        guard let selectedDate = selectedDate else { return }
+        let date = Calendar.current.startOfDay(for: selectedDate)
+        let mostMoods = getMostMood(date: date)
+        
+        let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
+        
+        let moodName = mostMoods[date] ?? isEmptyString
+        let selectedMood = MoodEmojis(rawValue: moodName)?.accessLabel ?? isEmptyString
+        let selectedDateAccessLabel = date.toString(of: .dateForTitle)
+        
+        let value = NSLocalizedString("mostMood_AccessibilityLabel", comment: "")
+        headerView.headerLabel.accessibilityLabel = String(format: value, "\(selectedDateAccessLabel)", "\(selectedMood)")
+        headerView.headerLabel.accessibilityHint = "headerLabel_AccessibilityHint".localized
     }
 
     @objc private func showMonthButtonClicked() {
@@ -75,6 +97,7 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
         vc.completionHandler = { [weak self] date in
             self?.calendar.select(date)
             self?.selectedDate = date
+            self?.setAccessibility(date)
         }
         
         present(vc, animated: true)
@@ -129,9 +152,11 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismiss(animated: false)
     }
-    
-    func getMostMood(year: Int, month: Int) -> [Date: String] {
+
+    func getMostMood(date: Date) -> [Date: String] {
         
+        let year = Calendar.current.component(.year, from: date)
+        let month = Calendar.current.component(.month, from: date)
         let moodsForMonth = moodRepository.fetchMonth(year: year, month: month)
         
         let groupedMoods = Dictionary(grouping: moodsForMonth) { Calendar.current.startOfDay(for: $0.date) }
@@ -171,14 +196,13 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         guard let cell = calendar.dequeueReusableCell(withIdentifier: FSCalendarCustomCell.reuseIdentifier, for: date, at: position) as? FSCalendarCustomCell else { return FSCalendarCell() }
         
         if !isShowed {
-            let year = Calendar.current.component(.year, from: currentDate)
-            let month = Calendar.current.component(.month, from: currentDate)
             
-            let mostMoods: [Date: String] = getMostMood(year: year, month: month)
+            let mostMoods: [Date: String] = getMostMood(date: date)
             
             if mostMoods.keys.contains(date) {
                 cell.moodImageView.image = UIImage(named: mostMoods[date] ?? MoodEmojis.placeholder)
             }
+            
         }
         
         return cell
