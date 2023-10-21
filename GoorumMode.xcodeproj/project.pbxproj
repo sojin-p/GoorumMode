@@ -175,6 +175,45 @@
 			path = SelectPicker;
 			sourceTree = "<group>";
 		};
+		237B04752AE3A50D006C40CA /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */,
+				23DD9A112AC168B200D6BBB5 /* Color.swift */,
+				23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		237B04762AE3A524006C40CA /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */,
+				23DD9A532AC6C87700D6BBB5 /* MoodEmojis+Enum.swift */,
+				23DD9A582AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift */,
+				239186412AE036760053A315 /* Animation+Enum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		237B04772AE3A53B006C40CA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A5A2AC7F85B00D6BBB5 /* Date+Extension.swift */,
+				23DD9A3E2AC5A5D300D6BBB5 /* UIViewController+Extension.swift */,
+				23C798212AE10FC100121D6A /* LocalizedString+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		237B04782AE3A552006C40CA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				23BDAD512ADA4C3C007F5768 /* ReusableViewProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		2380FB132AB9E6B100B31754 = {
 			isa = PBXGroup;
 			children = (
@@ -215,17 +254,10 @@
 		23DD9A0E2AC15E3900D6BBB5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */,
-				23DD9A112AC168B200D6BBB5 /* Color.swift */,
-				23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */,
-				23DD9A2B2AC449E700D6BBB5 /* MoodSection+Enum.swift */,
-				23DD9A532AC6C87700D6BBB5 /* MoodEmojis+Enum.swift */,
-				23DD9A582AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift */,
-				23DD9A5A2AC7F85B00D6BBB5 /* Date+Extension.swift */,
-				23DD9A3E2AC5A5D300D6BBB5 /* UIViewController+Extension.swift */,
-				23BDAD512ADA4C3C007F5768 /* ReusableViewProtocol.swift */,
-				239186412AE036760053A315 /* Animation+Enum.swift */,
-				23C798212AE10FC100121D6A /* LocalizedString+Extension.swift */,
+				237B04752AE3A50D006C40CA /* Constants */,
+				237B04762AE3A524006C40CA /* Enum */,
+				237B04772AE3A53B006C40CA /* Extension */,
+				237B04782AE3A552006C40CA /* Protocol */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
