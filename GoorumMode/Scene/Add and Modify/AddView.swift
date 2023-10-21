@@ -71,18 +71,7 @@ final class AddView: BaseView {
         return view
     }()
     
-    let extendButton = {
-        let view = UIButton(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
-        DispatchQueue.main.async {
-            view.layer.cornerRadius = view.frame.width / 2
-            view.tintColor = Constants.Color.iconTint.basicBlack
-            view.backgroundColor = Constants.Color.Background.white
-            view.buttonShadow(radius: 3, opacity: 0.5)
-        }
-        view.accessibilityLabel = "extendButton_AccessibilityLabel".localized
-        view.accessibilityHint = "extendButton_AccessibilityHint".localized
-        return view
-    }()
+    let extendButton = ExtendButton()
     
     var doneBarButton = {
         let view = UIBarButtonItem()

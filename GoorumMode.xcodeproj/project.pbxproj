@@ -15,6 +15,7 @@
 		237B046F2AE2CF36006C40CA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 237B046E2AE2CF36006C40CA /* FirebaseCrashlytics */; };
 		237B047A2AE3B06B006C40CA /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04792AE3B06B006C40CA /* CalendarViewModel.swift */; };
 		237B047D2AE3C4EA006C40CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 237B047F2AE3C4EA006C40CA /* InfoPlist.strings */; };
+		237B04822AE3E991006C40CA /* ExtendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04812AE3E991006C40CA /* ExtendButton.swift */; };
 		2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */; };
 		2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2380FB212AB9E6B200B31754 /* SceneDelegate.swift */; };
 		2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2380FB232AB9E6B200B31754 /* MoodViewController.swift */; };
@@ -80,6 +81,7 @@
 		237B04792AE3B06B006C40CA /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		237B047E2AE3C4EA006C40CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		237B04802AE3C4EC006C40CA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		237B04812AE3E991006C40CA /* ExtendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendButton.swift; sourceTree = "<group>"; };
 		2380FB1C2AB9E6B100B31754 /* GoorumMode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoorumMode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2380FB212AB9E6B200B31754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				23BDAD5F2ADD7724007F5768 /* PlaceholderView.swift */,
 				2391863C2AE027060053A315 /* AnimationButton.swift */,
 				23C7981F2AE0EB4E00121D6A /* PaddingLabel.swift */,
+				237B04812AE3E991006C40CA /* ExtendButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				23BDAD492AD97A12007F5768 /* CapsulePaddingButton.swift in Sources */,
 				23C798202AE0EB4F00121D6A /* PaddingLabel.swift in Sources */,
 				23BDAD472AD9668B007F5768 /* ChartView.swift in Sources */,
+				237B04822AE3E991006C40CA /* ExtendButton.swift in Sources */,
 				23DD9A592AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift in Sources */,
 				23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */,
 				239186422AE036760053A315 /* Animation+Enum.swift in Sources */,
