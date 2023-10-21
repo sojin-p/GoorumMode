@@ -37,15 +37,20 @@
 "showDateButton_isSelected_Title" = "Mood";
 
 //MARK: - PickMoodCollectionViewCell
-"moodImageView_accessibilityHint" = "Please tap it twice, to choose how you feel";
+"moodImageView_accessibilityHint" = "Please tap it twice, if you want to choose your mood";
 
 //MARK: - PickMoodView
 "pickMoodView_TitleLabel" = "How do you feel today?";
 
-//MARK: - SelectDatePickerViewController
-"doneButton_Title" = "Done";
-"pickerView_Years_Comonent" = "%@";
-"pickerView_Months_Comonent" = "%@";
+//MARK: - CalendarViewController @@@@@@@
+"mostMood_AccessibilityLabel" = "%@, The most recorded emotion is,  %@";
+"headerLabel_AccessibilityHint" = "Please tap it twice, if you want to change the date";
+
+//MARK: - SelectDateViewController
+"backTodayButton_AccessibilityLabel" = "Change to today's date";
+"backTodayButton_AccessibilityHint" = "Please tap it twice, if you want to adjust picker items to today's date";
+"doneButton_Title" = "Select";
+"doneButton_AccessibilityHint" = "Please tap it twice, if you want to select that date. And then double tap the back button, you can add a record to that date.";
 
 //MARK: - ChartView
 "dailyButton_Title" = "Daily";
@@ -90,3 +95,8 @@
 "alert_RemoveButtonClicked_Title" = "This record will be deleted.";
 "alert_RemoveButtonTitle" = "Delete the Record";
 "alert_OneLineTextField_isEmpty_Title" = "Please enter no more than 15 characters.";
+
+//MARK: - NavigationBarButton_Accessbility
+//BaseVC
+"backBarButton" = "Back";
+
