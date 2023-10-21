@@ -61,7 +61,6 @@ final class AddViewController: BaseViewController {
     @objc func pickMoodImageClicked() {
         
         let vc = PickMoodViewController()
-        let nav = UINavigationController(rootViewController: vc)
         
         vc.completionHandler = { [weak self] imageName in
             self?.mainView.pickMoodImageView.image = UIImage(named: imageName)
@@ -71,7 +70,7 @@ final class AddViewController: BaseViewController {
             }
         }
         
-        present(nav, animated: true)
+        present(vc, animated: true)
     }
     
     @objc func extendButtonClicked(_ sender: UIButton) {

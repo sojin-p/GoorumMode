@@ -31,12 +31,12 @@ final class PickMoodView: BaseView {
     
     override func setConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(35)
             make.horizontalEdges.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(25)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
