@@ -14,7 +14,7 @@ final class AddView: BaseView {
         let view = UITextView()
         view.backgroundColor = Constants.Color.Background.basic
         view.isHidden = true
-        view.setLineSpacing(text: self.detailTextViewPlaceholder, spacing: 8)
+        view.setLineSpacing(text: self.detailTextViewPlaceholder, spacing: 6)
         view.textColor = Constants.Color.Text.basicPlaceholder
         view.font = Constants.Font.regular(size: 15)
         return view
