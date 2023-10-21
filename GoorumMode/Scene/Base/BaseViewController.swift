@@ -65,7 +65,9 @@ class BaseViewController: UIViewController {
     }
     
     func setNavigationBackBarButton() {
-        navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "", image: UIImage(systemName: "chevron.left"), target: self, action: #selector(backBarbuttonClicked))
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backBarbuttonClicked))
+        backButton.accessibilityLabel = "backBarButton".localized
+        navigationItem.leftBarButtonItem =  backButton
     }
     
     @objc private func backBarbuttonClicked() {
