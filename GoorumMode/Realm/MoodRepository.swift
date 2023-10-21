@@ -17,7 +17,6 @@ enum DateRange: Int {
 class MoodRepository {
     
     private let realm = try! Realm()
-    private lazy var basicFetch = realm.objects(Mood.self).sorted(byKeyPath: "date", ascending: false)
     
     func checkFileURL() {
         print("파일 경로: \(realm.configuration.fileURL!)")
@@ -60,13 +59,13 @@ class MoodRepository {
         return moodsForMonth.toArray()
     }
     
-    func fetchMonth(year: Int, month: Int) -> Results<Mood> {
+    func fetchMonth(year: Int, month: Int) -> [Mood] {
         let components = DateComponents(year: year, month: month)
-        let startDate = Calendar.current.date(from: components)!
-        guard let endDate = Calendar.current.date(byAdding: .month, value: 1, to: startDate) else { return basicFetch }
+        guard let startDate = Calendar.current.date(from: components) else { return [] }
+        guard let endDate = Calendar.current.date(byAdding: .month, value: 1, to: startDate) else { return [] }
         
         let moodsForMonth = realm.objects(Mood.self).filter("date >= %@ AND date < %@", startDate, endDate)
-        return moodsForMonth
+        return moodsForMonth.toArray()
     }
     
     func createItem(_ item: Mood) {
