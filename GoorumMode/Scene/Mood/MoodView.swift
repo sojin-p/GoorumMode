@@ -38,8 +38,7 @@ final class MoodView: BaseView {
     
     let addMoodButton = {
         let view = AnimationButton(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
-        let image = UIImage(systemName: "plus", withConfiguration: imageConfig)
+        let image = Constants.IconImage.edit
         DispatchQueue.main.async {
             view.setImage(image, for: .normal)
             view.setImage(image, for: [.normal, .highlighted])

@@ -34,6 +34,9 @@ extension Constants {
         static let xMark = UIImage(named: "iconXmark")?
             .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack!)
+        static let edit = UIImage(named: "iconEdit")?
+            .withRenderingMode(.alwaysTemplate)
+            .withTintColor(Constants.Color.iconTint.basicBlack!)
     }
     
 }
