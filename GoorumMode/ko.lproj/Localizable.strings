@@ -32,6 +32,14 @@
 "extendButton_AccessibilityLabel" = "내용 추가";
 "extendButton_AccessibilityHint" = "자세한 내용을 작성하려면 두 번 탭 하세요.";
 
+"doneBarButton_AccessibilityLabel" = "저장";
+"doneBarButton_AccessibilityHint" = "내용을 저장하려면 두 번 탭 하세요.";
+
+"removeBarButton_AccessibilityLabel" = "삭제";
+"removeBarButton_AccessibilityHint" = "내용을 삭제하려면 두 번 탭 하세요.";
+
+"closeBarButton_AccessibilityLabel" = "닫기";
+
 //MARK: - PickMoodViewController
 "showDateButton_Title" = "날짜 보기";
 "showDateButton_isSelected_Title" = "기분 보기";

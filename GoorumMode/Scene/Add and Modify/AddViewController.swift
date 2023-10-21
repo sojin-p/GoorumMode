@@ -227,6 +227,8 @@ extension AddViewController {
             self?.dismiss(animated: true)
         }))
         
+        closeBarButton.accessibilityLabel = "closeBarButton_AccessibilityLabel".localized
+        
         mainView.doneBarButton = UIBarButtonItem(image: Constants.IconImage.check, primaryAction: .init(handler: { [weak self] action in
             self?.doneButtonClicked()
         }))

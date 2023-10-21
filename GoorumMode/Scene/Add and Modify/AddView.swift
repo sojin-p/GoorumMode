@@ -84,8 +84,18 @@ final class AddView: BaseView {
         return view
     }()
     
-    var doneBarButton = UIBarButtonItem()
-    var removeBarButton = UIBarButtonItem()
+    var doneBarButton = {
+        let view = UIBarButtonItem()
+        view.accessibilityLabel = "doneBarButton_AccessibilityLabel".localized
+        view.accessibilityHint = "doneBarButton_AccessibilityHint".localized
+        return view
+    }()
+    var removeBarButton = {
+        let view = UIBarButtonItem()
+        view.accessibilityLabel = "removeBarButton_AccessibilityLabel".localized
+        view.accessibilityHint = "removeBarButton_AccessibilityHint".localized
+        return view
+    }()
     
     override func configure() {
         [containerView, detailTextView].forEach { addSubview($0) }

@@ -32,6 +32,14 @@
 "extendButton_AccessibilityLabel" = "Add Content";
 "extendButton_AccessibilityHint" = "Please tap it twice, if you want to record the details.";
 
+"doneBarButton_AccessibilityLabel" = "Save";
+"doneBarButton_AccessibilityHint" = "Please tap it twice, if you want to save";
+
+"removeBarButton_AccessibilityLabel" = "Remove";
+"removeBarButton_AccessibilityHint" = "Please tap it twice, if you want to remove";
+
+"closeBarButton_AccessibilityLabel" = "Close";
+
 //MARK: - PickMoodViewController
 "showDateButton_Title" = "Date";
 "showDateButton_isSelected_Title" = "Mood";
