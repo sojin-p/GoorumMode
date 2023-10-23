@@ -84,8 +84,8 @@ extension MoodViewController {
         snapshot.appendSections([.today])
         snapshot.appendItems(viewModel.moods.value)
         
-        dataSource.apply(snapshot)
-        
+        dataSource.applySnapshotUsingReloadData(snapshot)
+
     }
     
     func configureDataSource() {
