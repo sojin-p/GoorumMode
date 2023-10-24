@@ -38,53 +38,16 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     var completionHandler: ((Date) -> Void)?
     var selectedDate: Date?
     
-    var isShowed = false
     let moodRepository = MoodRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.currentDate.value = calendar.currentPage
-        
-        viewModel.currentDate.bind { [weak self] date in
-            DispatchQueue.main.async {
-                self?.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
-                self?.calendar.reloadData()
-            }
-        }
-        
+        setbind()
+        setUI()
         setAccessibility(selectedDate)
-        
-        calendar.select(selectedDate)
-        calendar.delegate = self
-        calendar.dataSource = self
-        
-        showDateButton.addTarget(self, action: #selector(showDateButtonClicked), for: .touchUpInside)
-        headerView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
-        headerView.showMonthButton.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
-        headerView.headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonthButtonClicked)))
-        
-        calendar.calendarHeaderView.accessibilityElementsHidden = true
-        
         setNavigationBackBarButton()
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
 
-    }
-    
-    func setAccessibility(_ selectedDate: Date?) {
-        guard let selectedDate = selectedDate else { return }
-        let date = Calendar.current.startOfDay(for: selectedDate)
-        let mostMoods = getMostMood(date: date)
-        
-        let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
-        
-        let moodName = mostMoods[date] ?? isEmptyString
-        let selectedMood = MoodEmojis(rawValue: moodName)?.accessLabel ?? isEmptyString
-        let selectedDateAccessLabel = date.toString(of: .dateForTitle)
-        
-        let value = NSLocalizedString("mostMood_AccessibilityLabel", comment: "")
-        headerView.headerLabel.accessibilityLabel = String(format: value, "\(selectedDateAccessLabel)", "\(selectedMood)")
-        headerView.headerLabel.accessibilityHint = "headerLabel_AccessibilityHint".localized
     }
 
     @objc private func showMonthButtonClicked() {
@@ -109,16 +72,7 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     }
     
     @objc func showDateButtonClicked() {
-        isShowed.toggle()
-        if isShowed {
-            if selectedDate != Calendar.current.startOfDay(for: Date()) {
-                calendar.appearance.todayColor = .clear
-            }
-            showDateButton.setTitle("showDateButton_isSelected_Title".localized, for: .normal)
-        } else {
-            showDateButton.setTitle("showDateButton_Title".localized, for: .normal)
-        }
-        calendar.reloadData()
+        viewModel.showDateButtonClicked(selectedDate: selectedDate ?? Date(), calendar: calendar)
     }
     
     @objc private func backTodayButtonClicked() {
@@ -158,36 +112,6 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismiss(animated: false)
     }
-
-    func getMostMood(date: Date) -> [Date: String] {
-        
-        let year = Calendar.current.component(.year, from: date)
-        let month = Calendar.current.component(.month, from: date)
-        let moodsForMonth = moodRepository.fetchMonth(year: year, month: month)
-        
-        let groupedMoods = Dictionary(grouping: moodsForMonth) { Calendar.current.startOfDay(for: $0.date) }
-        
-        var mostMoods: [Date: String] = [:]
-        
-        for (date, moods) in groupedMoods {
-            let moodCounts = moodRepository.countMoods(moods: moods)
-            
-            var maxKeys: [String] = []
-            if let maxValue = moodCounts.values.max() {
-                maxKeys = moodCounts.filter({ $0.value == maxValue }).map({ $0.key })
-            }
-            
-            if maxKeys.count == 1 {
-                mostMoods[date] = maxKeys.first
-            } else {
-                if let recentMood = moods.max(by: { $0.date < $1.date })?.mood {
-                    mostMoods[date] = recentMood
-                }
-            }
-        }
-        
-        return mostMoods
-    }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
@@ -199,14 +123,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         guard let cell = calendar.dequeueReusableCell(withIdentifier: FSCalendarCustomCell.reuseIdentifier, for: date, at: position) as? FSCalendarCustomCell else { return FSCalendarCell() }
         
-        if !isShowed {
-            
-            let mostMoods: [Date: String] = getMostMood(date: date)
-            
-            if mostMoods.keys.contains(date) {
-                cell.moodImageView.image = UIImage(named: mostMoods[date] ?? MoodEmojis.placeholder)
-            }
-            
+        viewModel.showMoodImagesOnCell(date: date) { moodName in
+            cell.moodImageView.image = UIImage(named: moodName)
         }
         
         return cell
@@ -229,5 +147,56 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
+    }
+}
+
+extension CalendarViewController {
+    
+    func setUI() {
+        viewModel.currentDate.value = calendar.currentPage
+        calendar.select(selectedDate)
+        calendar.delegate = self
+        calendar.dataSource = self
+        
+        showDateButton.addTarget(self, action: #selector(showDateButtonClicked), for: .touchUpInside)
+        headerView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
+        headerView.showMonthButton.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
+        headerView.headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonthButtonClicked)))
+        
+        calendar.calendarHeaderView.accessibilityElementsHidden = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+        
+    func setbind() {
+        viewModel.currentDate.bind { [weak self] date in
+            DispatchQueue.main.async {
+                self?.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
+                self?.calendar.reloadData()
+            }
+        }
+        
+        viewModel.isShowed.bind { [weak self] bool in
+            if bool {
+                self?.showDateButton.setTitle("showDateButton_isSelected_Title".localized, for: .normal)
+            } else {
+                self?.showDateButton.setTitle("showDateButton_Title".localized, for: .normal)
+            }
+        }
+    }
+    
+    func setAccessibility(_ selectedDate: Date?) {
+        guard let selectedDate = selectedDate else { return }
+        let date = Calendar.current.startOfDay(for: selectedDate)
+        let mostMoods = viewModel.getMostMood(date: date)
+        
+        let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
+        
+        let moodName = mostMoods[date] ?? isEmptyString
+        let selectedMood = MoodEmojis(rawValue: moodName)?.accessLabel ?? isEmptyString
+        let selectedDateAccessLabel = date.toString(of: .dateForTitle)
+        
+        let value = NSLocalizedString("mostMood_AccessibilityLabel", comment: "")
+        headerView.headerLabel.accessibilityLabel = String(format: value, "\(selectedDateAccessLabel)", "\(selectedMood)")
+        headerView.headerLabel.accessibilityHint = "headerLabel_AccessibilityHint".localized
     }
 }
