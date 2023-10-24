@@ -235,9 +235,15 @@ extension AddViewController {
             self?.doneButtonClicked()
         }))
         
+        mainView.doneBarButton.accessibilityLabel = "doneBarButton_AccessibilityLabel".localized
+        mainView.doneBarButton.accessibilityHint = "doneBarButton_AccessibilityHint".localized
+        
         mainView.removeBarButton = UIBarButtonItem(image: Constants.IconImage.trash, primaryAction: .init(handler: { [weak self] action in
             self?.removeButtonClicked()
         }))
+        
+        mainView.removeBarButton.accessibilityLabel = "removeBarButton_AccessibilityLabel".localized
+        mainView.removeBarButton.accessibilityHint = "removeBarButton_AccessibilityHint".localized
         
         navigationItem.leftBarButtonItem = closeBarButton
         navigationItem.rightBarButtonItems = [mainView.doneBarButton, mainView.removeBarButton]
