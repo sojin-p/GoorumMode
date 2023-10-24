@@ -45,8 +45,7 @@ final class MoodViewController: BaseViewController {
         
         vc.selectedDate = viewModel.selectedDate.value
         vc.completionHandler = { [weak self] date in
-            self?.viewModel.moods.value = self?.moodRepository.fetch(dateRange: .daliy, selectedDate: date) ?? []
-            self?.viewModel.selectedDate.value = date
+            self?.viewModel.fetchSelectedDate(date)
         }
         
         navigationController?.pushViewController(vc, animated: true)
@@ -60,8 +59,7 @@ final class MoodViewController: BaseViewController {
         vc.selectedDate = viewModel.selectedDate.value
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
-            self?.viewModel.moods.value.append(data)
-            self?.viewModel.moods.value.sort(by: { $0.date > $1.date })
+            self?.viewModel.append(data)
             self?.scrollToItem(data: data)
         }
         
@@ -141,13 +139,12 @@ extension MoodViewController: UICollectionViewDelegate {
         vc.selectedDate = viewModel.selectedDate.value
         
         vc.completionHandler = { [weak self] data in
-            self?.viewModel.moods.value[indexPath.item] = data
-            self?.viewModel.moods.value.sort(by: { $0.date > $1.date })
+            self?.viewModel.update(idx: indexPath.item, data: data)
             self?.scrollToItem(data: data)
         }
         
         vc.removeData = { [weak self] in
-            self?.viewModel.moods.value.remove(at: indexPath.item)
+            self?.viewModel.remove(idx: indexPath.item)
         }
 
         present(nav, animated: true)
