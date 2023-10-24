@@ -21,6 +21,7 @@ extension Constants {
             static let basic = UIColor(named: "Basic_Background")
             static let basicIcon = UIColor(named: "Basic_IconBackground")
             static let white = UIColor(named: "Basic_White")
+            static let calendar = UIColor(named: "Basic_CalendarBackground")
             
             static let smiling = UIColor(named: "Smiling_Theme")
             

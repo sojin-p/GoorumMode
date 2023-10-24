@@ -64,7 +64,7 @@ final class SelectDateViewController: BaseViewController {
     }
     
     override func configure() {
-        super.configure()
+        view.backgroundColor = Constants.Color.Background.calendar
         [doneButton, datePicker, backTodayButton].forEach { view.addSubview($0) }
     }
     

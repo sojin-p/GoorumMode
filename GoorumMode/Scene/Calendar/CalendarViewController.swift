@@ -128,7 +128,7 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     }
     
     override func configure() {
-        super.configure()
+        view.backgroundColor = Constants.Color.Background.calendar
         calendar.register(FSCalendarCustomCell.self, forCellReuseIdentifier: FSCalendarCustomCell.reuseIdentifier)
         [calendar, headerView, showDateButton].forEach { view.addSubview($0) }
     }
