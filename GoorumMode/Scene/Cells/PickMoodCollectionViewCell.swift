@@ -15,6 +15,7 @@ class PickMoodCollectionViewCell: BaseCollectionViewCell {
         let view = UIImageView()
         view.isAccessibilityElement = true
         view.accessibilityHint = "moodImageView_accessibilityHint".localized
+        view.contentMode = .scaleAspectFit
         return view
     }()
     

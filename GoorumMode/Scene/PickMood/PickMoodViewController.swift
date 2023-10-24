@@ -38,7 +38,6 @@ extension PickMoodViewController: UICollectionViewDelegate, UICollectionViewData
         let emojis = MoodEmojis.allCases[indexPath.item]
         cell.moodImage.image = emojis.image
         cell.moodImage.accessibilityLabel = emojis.accessLabel
-        cell.moodImage.contentMode = .scaleAspectFit
         
         return cell
     }
