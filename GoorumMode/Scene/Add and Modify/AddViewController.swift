@@ -46,6 +46,8 @@ final class AddViewController: BaseViewController {
         if transtion == .modify {
             setModifyView()
             setTime(date: mainView.timePicker.date)
+            guard let text = mainView.oneLineTextField.text else { return }
+            mainView.countLabel.text = "\(text.count)/15"
         } else {
             pickMoodImageClicked()
             setTime()
@@ -199,18 +201,21 @@ extension AddViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        if let char = string.cString(using: String.Encoding.utf8) {
-            let isBackSpace = strcmp(char, "\\b")
-            if isBackSpace == -92 {
-                return true
-            }
-        }
-        guard let text = textField.text, text.count < 15 else {
+        
+        guard let oldString = textField.text, let newRange = Range(range, in: oldString) else { return true }
+        
+        let inputString = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        let newString = oldString.replacingCharacters(in: newRange, with: inputString)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard newString.count < 16 else {
             textField.resignFirstResponder()
             showAlert(title: "alert_OneLineTextField_isEmpty_Title".localized, massage: nil)
             return false
         }
+        
+        mainView.countLabel.text = "\(newString.count)/15"
+        
         return true
     }
 }

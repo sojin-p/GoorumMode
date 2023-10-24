@@ -27,7 +27,7 @@
 "pickMoodImageView_AccessibilityLabel" = "기분 선택";
 "pickMoodImageView_AccessibilityHint" = "기분을 선택하려면 두 번 탭 하세요.";
 
-"oneLineTextField_Placeholder" = "[선택] 이유는 무엇인가요?(15자)";
+"oneLineTextField_Placeholder" = "[선택] 이유는 무엇인가요?";
 
 "extendButton_AccessibilityLabel" = "내용 추가";
 "extendButton_AccessibilityHint" = "자세한 내용을 작성하려면 두 번 탭 하세요.";

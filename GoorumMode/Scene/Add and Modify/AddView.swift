@@ -71,6 +71,15 @@ final class AddView: BaseView {
         return view
     }()
     
+    let countLabel = {
+        let view = UILabel()
+        view.text = "0/15"
+        view.textColor = Constants.Color.Text.basicSubTitle
+        view.font = Constants.Font.bold(size: 11)
+        view.accessibilityElementsHidden = true
+        return view
+    }()
+    
     let extendButton = ExtendButton()
     
     var doneBarButton = {
@@ -89,7 +98,7 @@ final class AddView: BaseView {
     override func configure() {
         [containerView, detailTextView].forEach { addSubview($0) }
         [pickMoodImageView, timeBackView].forEach { containerView.addSubview($0) }
-        [timePicker, oneLineTextField, underLineView, extendButton].forEach { timeBackView.addSubview($0) }
+        [timePicker, oneLineTextField, underLineView, extendButton, countLabel].forEach { timeBackView.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -127,6 +136,11 @@ final class AddView: BaseView {
             make.top.equalTo(oneLineTextField.snp.bottom)
             make.height.equalTo(1.2)
             make.horizontalEdges.equalTo(oneLineTextField)
+        }
+        
+        countLabel.snp.makeConstraints { make in
+            make.top.equalTo(underLineView.snp.bottom).offset(2)
+            make.trailing.equalTo(underLineView)
         }
         
         timePicker.snp.makeConstraints { make in
