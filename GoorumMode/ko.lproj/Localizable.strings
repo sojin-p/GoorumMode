@@ -65,6 +65,9 @@
 "setting_PrivacyPolicy" = "개인정보 정책";
 "setting_Inquiry" = "문의하기";
 
+//MARK: - SearchViewController
+"search_placeholder" = "기록한 내용을 검색해 보세요.";
+
 //MARK: - ChartView
 "dailyButton_Title" = "일간";
 "weeklyButton_Title" = "주간";
@@ -91,7 +94,9 @@
 "timeWithoutSecond" = "a hh:mm";
 "yearAndMouth" = "yyyy년 M월";
 "dateForTitle" = "M월 dd일 EEEE";
+"dateForChart" = "yyyy.MM.dd.";
 "timeForAccessibility" = "a hh시 mm분";
+"detailedDate" = "yy.MM.dd. a hh:mm";
 
 //MARK: - CustomView_CalendarHeaderView
 "backTodayButton_Title" = "오늘";

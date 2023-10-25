@@ -20,9 +20,9 @@ enum DateFormatType {
         case .timeWithoutSecond: return "timeWithoutSecond".localized
         case .yearAndMouth: return "yearAndMouth".localized
         case .dateForTitle: return "dateForTitle".localized
-        case .dateForChart: return "yyyy.MM.dd."
+        case .dateForChart: return "dateForChart".localized
         case .timeForAccessibility: return "timeForAccessibility".localized
-        case .detailedDate: return "yy.MM.dd. a hh:mm"
+        case .detailedDate: return "detailedDate".localized
         }
     }
 }

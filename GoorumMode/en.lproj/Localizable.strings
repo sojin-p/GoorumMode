@@ -65,6 +65,9 @@
 "setting_PrivacyPolicy" = "Privacy Policy";
 "setting_Inquiry" = "Inquiry";
 
+//MARK: - SearchViewController
+"search_placeholder" = "Search your records.";
+
 //MARK: - ChartView
 "dailyButton_Title" = "Daily";
 "weeklyButton_Title" = "Weekly";
@@ -91,7 +94,9 @@
 "timeWithoutSecond" = "hh:mm a";
 "yearAndMouth" = "MMMM, yyyy";
 "dateForTitle" = "EE, MMM dd";
+"dateForChart" = "yyyy.MM.dd.";
 "timeForAccessibility" = "hh:mm a";
+"detailedDate" = "MM/dd/yy hh:mm a";
 
 //MARK: - CustomView_CalendarHeaderView
 "backTodayButton_Title" = "Today";
