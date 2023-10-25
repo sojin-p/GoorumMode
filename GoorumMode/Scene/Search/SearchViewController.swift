@@ -25,9 +25,13 @@ final class SearchViewController: BaseViewController {
     var snapshot: NSDiffableDataSourceSnapshot<Section, Mood>!
     
     var results: [Mood] = []
+    var completionHandler: ((Mood) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let attributes = [NSAttributedString.Key.font: Constants.Font.regular(size: 15)]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = attributes
         
         moodView.collectionView.keyboardDismissMode = .onDrag
         moodView.collectionView.delegate = self
@@ -67,9 +71,11 @@ extension SearchViewController: UISearchBarDelegate, UIGestureRecognizerDelegate
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("알림 띄우고 확인누르면 dismiss 후 해당 날짜로")
-        let selectedData = dataSource.itemIdentifier(for: indexPath)
-        print("========", selectedData)
+        guard let selectedData = dataSource.itemIdentifier(for: indexPath) else { return }
+        showAlertWithAction(title: "해당 날짜로 이동합니다.", message: nil, buttonName: "확인") {
+            self.completionHandler?(selectedData)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 

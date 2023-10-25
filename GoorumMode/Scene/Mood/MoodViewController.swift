@@ -37,7 +37,13 @@ final class MoodViewController: BaseViewController {
     
     @objc func searchBarButtonClicked() {
         let vc = SearchViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        
+        vc.completionHandler = { [weak self] data in
+            self?.viewModel.fetchSelectedDate(data.date)
+            self?.scrollToItem(data: data)
+        }
+        
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     @objc func settingBarbuttonClicked() {
