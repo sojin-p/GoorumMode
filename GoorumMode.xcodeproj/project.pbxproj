@@ -23,6 +23,7 @@
 		2380FB2C2AB9E6B400B31754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2380FB2A2AB9E6B400B31754 /* LaunchScreen.storyboard */; };
 		2391863D2AE027060053A315 /* AnimationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2391863C2AE027060053A315 /* AnimationButton.swift */; };
 		239186422AE036760053A315 /* Animation+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239186412AE036760053A315 /* Animation+Enum.swift */; };
+		23B860FC2AE7FCFE007DA341 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B860FB2AE7FCFE007DA341 /* SearchViewController.swift */; };
 		23BDAD472AD9668B007F5768 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD462AD9668B007F5768 /* ChartView.swift */; };
 		23BDAD492AD97A12007F5768 /* CapsulePaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */; };
 		23BDAD4B2ADA4729007F5768 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD4A2ADA4728007F5768 /* ChartTableViewCell.swift */; };
@@ -91,6 +92,7 @@
 		2380FB2D2AB9E6B400B31754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2391863C2AE027060053A315 /* AnimationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationButton.swift; sourceTree = "<group>"; };
 		239186412AE036760053A315 /* Animation+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Enum.swift"; sourceTree = "<group>"; };
+		23B860FB2AE7FCFE007DA341 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		23BDAD462AD9668B007F5768 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChartView.swift; path = GoorumMode/Scene/Calendar/ChartView.swift; sourceTree = SOURCE_ROOT; };
 		23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePaddingButton.swift; sourceTree = "<group>"; };
 		23BDAD4A2ADA4728007F5768 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -250,6 +252,14 @@
 			path = GoorumMode;
 			sourceTree = "<group>";
 		};
+		23B860F82AE7FBFC007DA341 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				23B860FB2AE7FCFE007DA341 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		23DD9A0E2AC15E3900D6BBB5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +280,7 @@
 				23DD9A4C2AC6B2A900D6BBB5 /* PickMood */,
 				23DD9A972AD1609C00D6BBB5 /* Calendar */,
 				237B04622AE26184006C40CA /* SelectPicker */,
+				23B860F82AE7FBFC007DA341 /* Search */,
 				237B04552AE20CE1006C40CA /* Setting */,
 				23E7665E2AD81DFE008AC3A4 /* Chart */,
 				23DD9A2E2AC44AAE00D6BBB5 /* Cells */,
@@ -544,6 +555,7 @@
 				23BDAD492AD97A12007F5768 /* CapsulePaddingButton.swift in Sources */,
 				23C798202AE0EB4F00121D6A /* PaddingLabel.swift in Sources */,
 				23BDAD472AD9668B007F5768 /* ChartView.swift in Sources */,
+				23B860FC2AE7FCFE007DA341 /* SearchViewController.swift in Sources */,
 				237B04822AE3E991006C40CA /* ExtendButton.swift in Sources */,
 				23DD9A592AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift in Sources */,
 				23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */,

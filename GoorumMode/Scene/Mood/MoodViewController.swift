@@ -35,6 +35,11 @@ final class MoodViewController: BaseViewController {
         
     }
     
+    @objc func searchBarButtonClicked() {
+        let vc = SearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc func settingBarbuttonClicked() {
         let vc = SettingViewController()
         navigationController?.pushViewController(vc, animated: true)
@@ -162,10 +167,23 @@ extension MoodViewController {
         calendarBarButton.accessibilityHint = "calendarBarButton_AccessibilityHint".localized
         navigationItem.leftBarButtonItem = calendarBarButton
         
-        let settingBarButton = UIBarButtonItem(image: Constants.IconImage.setting, style: .plain, target: self, action: #selector(settingBarbuttonClicked))
-        settingBarButton.accessibilityLabel = "settingBarButton_AccessibilityLabel".localized
-//        settingBarButton.AccessibilityHint = "settingBarButton.accessibilityHint".localized
-        navigationItem.rightBarButtonItem = settingBarButton
+        guard let settingImage = Constants.IconImage.setting else { return }
+        let settingButton = UIButton(frame: CGRect(x: 0, y: 0, width: settingImage.size.width, height: settingImage.size.height))
+        settingButton.tintColor = Constants.Color.iconTint.basicBlack
+        settingButton.setImage(settingImage, for: .normal)
+        settingButton.addTarget(self, action: #selector(settingBarbuttonClicked), for: .touchUpInside)
+        settingButton.accessibilityLabel = "settingBarButton_AccessibilityLabel".localized
+//        settingButton.AccessibilityHint = "settingBarButton.accessibilityHint".localized
+        
+        guard let searchImage = Constants.IconImage.search else { return }
+        let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: searchImage.size.width, height: searchImage.size.height))
+        searchButton.tintColor = Constants.Color.iconTint.basicBlack
+        searchButton.setImage(searchImage, for: .normal)
+        searchButton.addTarget(self, action: #selector(searchBarButtonClicked), for: .touchUpInside)
+        
+        let settingBarButton = UIBarButtonItem(customView: settingButton)
+        let searchBarButton = UIBarButtonItem(customView: searchButton)
+        navigationItem.rightBarButtonItems = [settingBarButton, searchBarButton]
     }
     
     func setPlaceholder() {

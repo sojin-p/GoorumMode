@@ -36,6 +36,11 @@ class MoodRepository {
         return moodCounts
     }
     
+    func search(text: String) -> [Mood] {
+        let data = realm.objects(Mood.self).filter(NSPredicate(format: "onelineText CONTAINS[c] %@ OR detailText CONTAINS[c] %@", text, text)).sorted(byKeyPath: "date", ascending: false)
+        return data.toArray()
+    }
+    
     func fetch(dateRange: DateRange, selectedDate: Date = Date(), completionHandler: ((Date, Date) -> Void)? = nil) -> [Mood] {
         let calendar = Calendar.current
         let selectedDate = calendar.startOfDay(for: selectedDate)

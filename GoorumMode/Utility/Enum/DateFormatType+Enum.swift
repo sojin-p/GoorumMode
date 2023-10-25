@@ -13,6 +13,7 @@ enum DateFormatType {
     case dateForTitle
     case dateForChart
     case timeForAccessibility
+    case detailedDate
     
     var description: String {
         switch self {
@@ -21,6 +22,7 @@ enum DateFormatType {
         case .dateForTitle: return "dateForTitle".localized
         case .dateForChart: return "yyyy.MM.dd."
         case .timeForAccessibility: return "timeForAccessibility".localized
+        case .detailedDate: return "yy.MM.dd. a hh:mm"
         }
     }
 }
