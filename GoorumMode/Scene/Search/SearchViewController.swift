@@ -106,9 +106,9 @@ extension SearchViewController {
     func configureDataSource() {
         
         let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
-            
             cell.configureCell(itemIdentifier, dateType: .detailedDate)
-            
+            cell.setCellAccessibility(itemIdentifier, accessibilityDateType: .dateForAccessibility)
+            cell.accessibilityHint = "search_AccessibilityHint".localized
         })
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: moodView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in

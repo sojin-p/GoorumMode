@@ -55,11 +55,11 @@ final class MoodViewController: BaseViewController {
     
     @objc func calendarBarbuttonClicked() {
         let vc = CalendarViewController()
-        
         vc.selectedDate = viewModel.selectedDate.value
         vc.completionHandler = { [weak self] date in
             self?.viewModel.fetchSelectedDate(date)
         }
+        
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -106,6 +106,8 @@ extension MoodViewController {
         let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
             
             cell.configureCell(itemIdentifier, dateType: .timeWithoutSecond)
+            cell.setCellAccessibility(itemIdentifier, accessibilityDateType: .timeForAccessibility)
+            cell.accessibilityHint = "modify_AccessibilityHint".localized
             
         })
         
@@ -168,6 +170,7 @@ extension MoodViewController {
         searchButton.tintColor = Constants.Color.iconTint.basicBlack
         searchButton.setImage(searchImage, for: .normal)
         searchButton.addTarget(self, action: #selector(searchBarButtonClicked), for: .touchUpInside)
+        searchButton.accessibilityLabel = "searchBarButton_AccessibilityLabel".localized
         
         let settingBarButton = UIBarButtonItem(customView: settingButton)
         let searchBarButton = UIBarButtonItem(customView: searchButton)

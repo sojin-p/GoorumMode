@@ -7,15 +7,19 @@
 */
 
 //MARK: - MoodCollectionViewCell
+//MoodVC
 "modify_AccessibilityHint" = "Please tap it twice, if you want to edit.";
+//SearchVC
+"search_AccessibilityHint" = "Please tap it twice, if you want to Go to the selected date.";
 
 //MARK: - MoodViewController
-"cellRegistration_AccessibilityLabel" = "Recorded %@, %@ image, One-line content, %@, Details, %@";
+"cellRegistration_AccessibilityLabel" = "Recorded %@. %@ image. One-line content, %@. Details, %@.";
 "cellRegistration_AccessibilityLabel_isEmpty" = "None";
 "calendarBarButton_AccessibilityLabel" = "Calendar";
 "calendarBarButton_AccessibilityHint" = "Please tap it twice, if you want to check previous days' records";
 "settingBarButton_AccessibilityLabel" = "Setting";
 "settingBarButton.accessibilityHint" = "Please tap it twice, if you want to set languages, themes, etc.";
+"searchBarButton_AccessibilityLabel" = "Search";
 
 //MARK: - MoodView
 "addMoodButton_AccessibilityLabel" = "Add your mood record";
@@ -94,9 +98,10 @@
 "timeWithoutSecond" = "hh:mm a";
 "yearAndMouth" = "MMMM, yyyy";
 "dateForTitle" = "EE, MMM dd";
-"dateForChart" = "yyyy.MM.dd.";
+"dateForChart" = "MM/dd/yy";
 "timeForAccessibility" = "hh:mm a";
 "detailedDate" = "MM/dd/yy hh:mm a";
+"dateForAccessibility" = "MMM dd, yy. hh:mm a";
 
 //MARK: - CustomView_CalendarHeaderView
 "backTodayButton_Title" = "Today";

@@ -67,10 +67,9 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    func applyAccessibility() {
+    private func applyAccessibility() {
         isAccessibilityElement = true
         [timeLabel, detailLabel, onelineLabel].forEach { $0.isAccessibilityElement = false }
-        accessibilityHint = "modify_AccessibilityHint".localized
     }
     
     func configureCell(_ itemIdentifier: Mood, dateType: DateFormatType) {
@@ -92,9 +91,12 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         }
         
         detailLabel.setLineSpacing(spacing: 5)
-        
+    }
+    
+    func setCellAccessibility(_ itemIdentifier: Mood, accessibilityDateType: DateFormatType) {
+
         let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
-        let timeAccessibilityLabel = itemIdentifier.date.toString(of: .timeForAccessibility)
+        let timeAccessibilityLabel = itemIdentifier.date.toString(of: accessibilityDateType)
         let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? isEmptyString
         
         let value = NSLocalizedString("cellRegistration_AccessibilityLabel", comment: "")

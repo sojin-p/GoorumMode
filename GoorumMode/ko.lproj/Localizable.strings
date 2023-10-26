@@ -7,15 +7,19 @@
 */
 
 //MARK: - MoodCollectionViewCell
+//MoodVC
 "modify_AccessibilityHint" = "수정하려면 두 번 탭 하세요";
+//SearchVC
+"search_AccessibilityHint" = "해당 날짜로 이동하려면 두 번 탭 하세요.";
 
 //MARK: - MoodViewController
-"cellRegistration_AccessibilityLabel" = "%@ 기록함, %@ 이미지, 한 줄 내용, %@, 자세한 내용, %@";
+"cellRegistration_AccessibilityLabel" = "%@ 기록됨. %@ 이미지. 한 줄 내용, %@. 자세한 내용, %@.";
 "cellRegistration_AccessibilityLabel_isEmpty" = "없음";
 "calendarBarButton_AccessibilityLabel" = "달력";
 "calendarBarButton_AccessibilityHint" = "다른 날의 기록을 보려면 두 번 탭 하세요.";
 "settingBarButton_AccessibilityLabel" = "설정";
 "settingBarButton.accessibilityHint" = "언어, 테마 등을 설정하려면 두 번 탭 하세요.";
+"searchBarButton_AccessibilityLabel" = "검색";
 
 //MARK: - MoodView
 "addMoodButton_AccessibilityLabel" = "기록 추가";
@@ -97,6 +101,7 @@
 "dateForChart" = "yyyy.MM.dd.";
 "timeForAccessibility" = "a hh시 mm분";
 "detailedDate" = "yy/MM/dd a hh:mm";
+"dateForAccessibility" = "yy년 M월 dd일 a hh시 mm분";
 
 //MARK: - CustomView_CalendarHeaderView
 "backTodayButton_Title" = "오늘";
