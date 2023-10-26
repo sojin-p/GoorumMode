@@ -40,7 +40,9 @@ final class MoodViewController: BaseViewController {
         
         vc.completionHandler = { [weak self] data in
             self?.viewModel.fetchSelectedDate(data.date)
-            self?.scrollToItem(data: data)
+            DispatchQueue.main.async {
+                self?.scrollToItem(data: data)
+            }
         }
         
         navigationController?.pushViewController(vc, animated: false)
@@ -71,7 +73,9 @@ final class MoodViewController: BaseViewController {
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
             self?.viewModel.append(data)
-            self?.scrollToItem(data: data)
+            DispatchQueue.main.async {
+                self?.scrollToItem(data: data)
+            }
         }
         
         present(nav, animated: true)
@@ -127,7 +131,9 @@ extension MoodViewController: UICollectionViewDelegate {
         
         vc.completionHandler = { [weak self] data in
             self?.viewModel.update(idx: indexPath.item, data: data)
-            self?.scrollToItem(data: data)
+            DispatchQueue.main.async {
+                self?.scrollToItem(data: data)
+            }
         }
         
         vc.removeData = { [weak self] in
