@@ -123,8 +123,14 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         guard let cell = calendar.dequeueReusableCell(withIdentifier: FSCalendarCustomCell.reuseIdentifier, for: date, at: position) as? FSCalendarCustomCell else { return FSCalendarCell() }
         
-        viewModel.showMoodImagesOnCell(date: date) { moodName in
-            cell.moodImageView.image = UIImage(named: moodName)
+        if !viewModel.isShowed.value {
+            
+            let mostMoods: [Date: String] = viewModel.getMostMood(date: date)
+            
+            if mostMoods.keys.contains(date) {
+                cell.moodImageView.image = UIImage(named: mostMoods[date] ?? MoodEmojis.placeholder)
+            }
+            
         }
         
         return cell
@@ -153,7 +159,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 extension CalendarViewController {
     
     func setUI() {
-        viewModel.currentDate.value = calendar.currentPage
+        
+        viewModel.currentDate.value = selectedDate ?? Date()
         calendar.select(selectedDate)
         calendar.delegate = self
         calendar.dataSource = self

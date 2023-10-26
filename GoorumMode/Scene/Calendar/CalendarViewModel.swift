@@ -24,18 +24,6 @@ final class CalendarViewModel {
         calendar.reloadData()
     }
     
-    func showMoodImagesOnCell(date: Date, completionHanlder: @escaping (String) -> Void) {
-        if !isShowed.value {
-            
-            let mostMoods: [Date: String] = getMostMood(date: date)
-            
-            if mostMoods.keys.contains(date) {
-                completionHanlder(mostMoods[date] ?? MoodEmojis.placeholder)
-            }
-            
-        }
-    }
-    
     func getMostMood(date: Date) -> [Date: String] {
         
         let year = Calendar.current.component(.year, from: date)
