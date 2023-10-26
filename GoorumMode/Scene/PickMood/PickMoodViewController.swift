@@ -51,7 +51,7 @@ extension PickMoodViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension PickMoodViewController {
     
-    func setupSheet() {
+    private func setupSheet() {
         if let sheet = sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false

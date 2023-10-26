@@ -9,7 +9,7 @@ import UIKit
 
 final class SelectDateViewController: BaseViewController {
     
-    let backTodayButton = {
+    private let backTodayButton = {
         let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 30), title: "backTodayButton_Title".localized)
         view.tintColor = Constants.Color.iconTint.basicBlack
         view.isSelected = true
@@ -21,7 +21,7 @@ final class SelectDateViewController: BaseViewController {
         return view
     }()
     
-    lazy var datePicker = {
+    private lazy var datePicker = {
         let view = UIDatePicker()
         view.datePickerMode = .date
         view.preferredDatePickerStyle = .wheels
@@ -36,7 +36,7 @@ final class SelectDateViewController: BaseViewController {
         return view
     }()
     
-    let doneButton = {
+    private let doneButton = {
         let view = UIButton()
         view.setTitle("doneButton_Title".localized, for: .normal)
         view.setTitleColor(Constants.Color.iconTint.basicWhite, for: .normal)
@@ -88,17 +88,17 @@ final class SelectDateViewController: BaseViewController {
         }
     }
     
-    @objc func backTodayButtonTapped() {
+    @objc private func backTodayButtonTapped() {
         datePicker.date = Date()
         selectedDate = Date()
     }
     
-    @objc func doneButtonClicked() {
+    @objc private func doneButtonClicked() {
         completionHandler?(selectedDate ?? Date())
         dismiss(animated: true)
     }
     
-    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
         selectedDate = sender.date
     }
 }

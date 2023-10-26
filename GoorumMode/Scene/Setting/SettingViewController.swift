@@ -10,8 +10,8 @@ import SafariServices
 
 final class SettingViewController: BaseViewController, UIGestureRecognizerDelegate {
     
-    let mainView = SettingView()
-    let settingList = ["setting_PrivacyPolicy".localized, "setting_Inquiry".localized]
+    private let mainView = SettingView()
+    private let settingList = ["setting_PrivacyPolicy".localized, "setting_Inquiry".localized]
     
     override func loadView() {
         view = mainView

@@ -9,12 +9,12 @@ import UIKit
 
 final class MoodViewController: BaseViewController {
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
-    var snapshot: NSDiffableDataSourceSnapshot<Section, Mood>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
+    private var snapshot: NSDiffableDataSourceSnapshot<Section, Mood>!
     
-    let mainView = MoodView()
-    let viewModel = MoodViewModel()
-    let moodRepository = MoodRepository()
+    private let mainView = MoodView()
+    private let viewModel = MoodViewModel()
+    private let moodRepository = MoodRepository()
     
     override func loadView() {
         view = mainView
@@ -35,7 +35,7 @@ final class MoodViewController: BaseViewController {
         
     }
     
-    @objc func searchBarButtonClicked() {
+    @objc private func searchBarButtonClicked() {
         let vc = SearchViewController()
         
         vc.completionHandler = { [weak self] data in
@@ -48,12 +48,12 @@ final class MoodViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    @objc func settingBarbuttonClicked() {
+    @objc private func settingBarbuttonClicked() {
         let vc = SettingViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func calendarBarbuttonClicked() {
+    @objc private func calendarBarbuttonClicked() {
         let vc = CalendarViewController()
         vc.selectedDate = viewModel.selectedDate.value
         vc.completionHandler = { [weak self] date in
@@ -64,7 +64,7 @@ final class MoodViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func addButtonClicked() {
+    @objc private func addButtonClicked() {
         
         let vc = AddViewController()
         let nav = UINavigationController(rootViewController: vc)
@@ -81,7 +81,7 @@ final class MoodViewController: BaseViewController {
         present(nav, animated: true)
     }
     
-    func scrollToItem(data: Mood) {
+    private func scrollToItem(data: Mood) {
         if let item = snapshot.indexOfItem(data) {
             let indexPath = IndexPath(item: item, section: 0)
             mainView.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
@@ -92,7 +92,7 @@ final class MoodViewController: BaseViewController {
 // MARK: - DataSource, Snapshot
 extension MoodViewController {
     
-    func updateSnapshot() {
+    private func updateSnapshot() {
         snapshot = NSDiffableDataSourceSnapshot<Section, Mood>()
         snapshot.appendSections([.today])
         snapshot.appendItems(viewModel.moods.value)
@@ -101,7 +101,7 @@ extension MoodViewController {
 
     }
     
-    func configureDataSource() {
+    private func configureDataSource() {
         
         let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
             
@@ -149,7 +149,7 @@ extension MoodViewController: UICollectionViewDelegate {
 
 extension MoodViewController {
     
-    func setNavigationBar() {
+    private func setNavigationBar() {
         navigationItem.titleView = mainView.dateLabel
         
         let calendarBarButton = UIBarButtonItem(image: Constants.IconImage.calendar, style: .plain, target: self, action: #selector(calendarBarbuttonClicked))
@@ -177,7 +177,7 @@ extension MoodViewController {
         navigationItem.rightBarButtonItems = [settingBarButton, searchBarButton]
     }
     
-    func setPlaceholder() {
+    private func setPlaceholder() {
         if viewModel.moods.value.isEmpty {
             mainView.collectionViewPlaceholder.isHidden = false
         } else {
@@ -185,7 +185,7 @@ extension MoodViewController {
         }
     }
     
-    func setBind() {
+    private func setBind() {
         viewModel.moods.bind { [weak self] moods in
             DispatchQueue.main.async {
                 self?.updateSnapshot()

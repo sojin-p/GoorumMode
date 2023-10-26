@@ -9,12 +9,12 @@ import UIKit
 
 final class AddViewController: BaseViewController {
     
-    let mainView = AddView()
+    private let mainView = AddView()
     var selectedDate: Date?
     var completionHandler: ((Mood) -> Void)?
     var removeData: (() -> Void)?
     var moodImageName: String?
-    let moodRepository = MoodRepository()
+    private let moodRepository = MoodRepository()
     var transtion: TransitionType = .add
     
     var moods: Mood?
@@ -59,7 +59,7 @@ final class AddViewController: BaseViewController {
         view.endEditing(true)
     }
     
-    @objc func pickMoodImageClicked() {
+    @objc private func pickMoodImageClicked() {
         
         let vc = PickMoodViewController()
         
@@ -74,7 +74,7 @@ final class AddViewController: BaseViewController {
         present(vc, animated: true)
     }
     
-    @objc func extendButtonClicked(_ sender: UIButton) {
+    @objc private func extendButtonClicked(_ sender: UIButton) {
         if !(sender.isSelected) {
             setupSheet([.large()], isModal: true)
             mainView.detailTextView.isHidden = false
@@ -89,12 +89,12 @@ final class AddViewController: BaseViewController {
     }
     
     
-    @objc func timePickerChanged(_ sender: UIDatePicker) {
+    @objc private func timePickerChanged(_ sender: UIDatePicker) {
         showDoneBarButton()
         setTime(date: sender.date)
     }
     
-    func doneButtonClicked() {
+    private func doneButtonClicked() {
         
         guard let image = mainView.pickMoodImageView.image, image != mainView.pickMoodPlaceholder else {
             showAlert(title: "alert_DoneButtonClicked_Title".localized, massage: nil)
@@ -133,7 +133,7 @@ final class AddViewController: BaseViewController {
         dismiss(animated: true)
     }
     
-    func removeButtonClicked() {
+    private func removeButtonClicked() {
         
         showAlertWithAction(
             title: "alert_RemoveButtonClicked_Title".localized, message: nil,
@@ -149,7 +149,7 @@ final class AddViewController: BaseViewController {
             }
     }
     
-    func setTime(date: Date = Date()) {
+    private func setTime(date: Date = Date()) {
         let calendar = Calendar.current
         
         let hour = calendar.component(.hour, from: date)
@@ -161,7 +161,7 @@ final class AddViewController: BaseViewController {
         }
     }
     
-    func setMaximumTime() {
+    private func setMaximumTime() {
         let selectedDate = Calendar.current.startOfDay(for: selectedDate ?? Date() )
         let currentDate = Calendar.current.startOfDay(for: Date())
         if selectedDate != currentDate {
@@ -231,7 +231,7 @@ extension AddViewController: UITextFieldDelegate {
 // MARK: - UI
 extension AddViewController {
     
-    func setBarButtonItem() {
+    private func setBarButtonItem() {
         
         let closeBarButton = UIBarButtonItem(image: Constants.IconImage.xMark, primaryAction: .init(handler: { [weak self] action in
             self?.dismiss(animated: true)
@@ -258,7 +258,7 @@ extension AddViewController {
         navigationController?.navigationBar.tintColor = Constants.Color.iconTint.basicBlack
     }
     
-    func setModifyView() {
+    private func setModifyView() {
         guard let moods else { return }
         mainView.pickMoodImageView.image = UIImage(named: moods.mood)
         mainView.oneLineTextField.text = moods.onelineText
@@ -278,7 +278,7 @@ extension AddViewController {
         mainView.removeBarButton.isHidden = false
     }
     
-    func showDoneBarButton() {
+    private func showDoneBarButton() {
         if transtion == .modify {
             mainView.doneBarButton.isHidden = false
         } else {

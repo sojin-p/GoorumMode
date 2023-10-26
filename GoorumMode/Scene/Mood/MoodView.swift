@@ -51,7 +51,7 @@ final class MoodView: BaseView {
         return view
     }()
     
-    func setupAccessibilityLabel() {
+    private func setupAccessibilityLabel() {
         var elements = [Any]()
         [addMoodButton, collectionView, collectionViewPlaceholder].forEach { elements.append($0) }
         accessibilityElements = elements

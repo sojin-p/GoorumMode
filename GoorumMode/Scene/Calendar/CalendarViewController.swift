@@ -10,7 +10,7 @@ import FSCalendar
 
 final class CalendarViewController: BaseViewController, UIGestureRecognizerDelegate {
     
-    var calendar = {
+    private var calendar = {
         let view = BasicFSCalendar()
         view.headerHeight = 60
         view.appearance.headerTitleFont = Constants.Font.extraBold(size: 18)
@@ -33,12 +33,12 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
         return view
     }()
     
-    let viewModel = CalendarViewModel()
+    private let viewModel = CalendarViewModel()
     
     var completionHandler: ((Date) -> Void)?
     var selectedDate: Date?
     
-    let moodRepository = MoodRepository()
+    private let moodRepository = MoodRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +71,7 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
         present(vc, animated: true)
     }
     
-    @objc func showDateButtonClicked() {
+    @objc private func showDateButtonClicked() {
         viewModel.showDateButtonClicked(selectedDate: selectedDate ?? Date(), calendar: calendar)
     }
     
@@ -155,7 +155,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 
 extension CalendarViewController {
     
-    func setUI() {
+    private func setUI() {
         
         viewModel.currentDate.value = selectedDate ?? Date()
         calendar.select(selectedDate)
@@ -176,7 +176,7 @@ extension CalendarViewController {
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
         
-    func setbind() {
+    private func setbind() {
         viewModel.currentDate.bind { [weak self] date in
             DispatchQueue.main.async {
                 self?.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
@@ -193,7 +193,7 @@ extension CalendarViewController {
         }
     }
     
-    func setAccessibility(_ selectedDate: Date?) {
+    private func setAccessibility(_ selectedDate: Date?) {
         guard let selectedDate = selectedDate else { return }
         let date = Calendar.current.startOfDay(for: selectedDate)
         let mostMoods = viewModel.getMostMood(date: date)

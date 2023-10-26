@@ -9,7 +9,7 @@ import UIKit
 
 final class SearchViewController: BaseViewController {
     
-    let searchBar = {
+    private let searchBar = {
         let view = UISearchBar()
         view.searchTextField.placeholder = "search_placeholder".localized
         view.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
@@ -17,13 +17,13 @@ final class SearchViewController: BaseViewController {
         return view
     }()
     
-    let moodView = MoodView()
-    let moodRepository = MoodRepository()
+    private let moodView = MoodView()
+    private let moodRepository = MoodRepository()
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
-    var snapshot: NSDiffableDataSourceSnapshot<Section, Mood>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
+    private var snapshot: NSDiffableDataSourceSnapshot<Section, Mood>!
     
-    var results: [Mood] = []
+    private var results: [Mood] = []
     var completionHandler: ((Mood) -> Void)?
     
     override func viewDidLoad() {
@@ -94,7 +94,7 @@ extension SearchViewController: UICollectionViewDelegate {
 
 extension SearchViewController {
     
-    func updateSnapshot() {
+    private func updateSnapshot() {
         snapshot = NSDiffableDataSourceSnapshot<Section, Mood>()
         snapshot.appendSections([.today])
         snapshot.appendItems(results)
@@ -103,7 +103,7 @@ extension SearchViewController {
 
     }
     
-    func configureDataSource() {
+    private func configureDataSource() {
         
         let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
             cell.configureCell(itemIdentifier, dateType: .detailedDate)
