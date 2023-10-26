@@ -221,6 +221,11 @@ extension AddViewController: UITextFieldDelegate {
         
         return true
     }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        mainView.countLabel.text = "0/15"
+        return true
+    }
 }
 
 // MARK: - UI
