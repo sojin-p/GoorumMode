@@ -52,12 +52,10 @@ final class CalendarViewModel {
             var maxKeys: [String] = []
             if let maxValue = moodCounts.values.max() {
                 maxKeys = moodCounts.filter({ $0.value == maxValue }).map({ $0.key })
-            }
-            
-            if maxKeys.count == 1 {
-                mostMoods[date] = maxKeys.first
-            } else {
-                if let recentMood = moods.max(by: { $0.date < $1.date })?.mood {
+                
+                let recent = moods.sorted { $0.date > $1.date }.map { $0.mood }
+                
+                if let recentMood = recent.first(where: { maxKeys.contains($0) }) {
                     mostMoods[date] = recentMood
                 }
             }
