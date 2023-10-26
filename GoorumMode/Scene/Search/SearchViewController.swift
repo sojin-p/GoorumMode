@@ -62,6 +62,16 @@ final class SearchViewController: BaseViewController {
 }
 
 extension SearchViewController: UISearchBarDelegate, UIGestureRecognizerDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text, text.isEmpty {
+            showAlert(title: "alert_searchTextIsEmpty".localized, massage: nil)
+        } else if results.isEmpty {
+            showAlert(title: "alert_searchResultsIsEmpty".localized, massage: nil)
+        }
+        searchBar.resignFirstResponder()
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         results = moodRepository.search(text: searchText)
         updateSnapshot()
