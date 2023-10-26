@@ -107,31 +107,7 @@ extension SearchViewController {
         
         let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
             
-            cell.moodImageView.image = UIImage(named: itemIdentifier.mood)
-            cell.timeLabel.text = itemIdentifier.date.toString(of: .detailedDate)
-            
-            if let onelineText = itemIdentifier.onelineText, onelineText.isEmpty {
-                cell.onelineLabel.isHidden = true
-            } else {
-                cell.onelineLabel.text = itemIdentifier.onelineText
-                cell.onelineLabel.isHidden = false
-            }
-            
-            if let detailText = itemIdentifier.detailText, detailText.isEmpty {
-                cell.detailLabel.isHidden = true
-            } else {
-                cell.detailLabel.text = itemIdentifier.detailText
-                cell.detailLabel.isHidden = false
-            }
-            
-            cell.detailLabel.setLineSpacing(spacing: 5)
-            
-            let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
-            let timeAccessibilityLabel = itemIdentifier.date.toString(of: .timeForAccessibility)
-            let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? isEmptyString
-            
-            let value = NSLocalizedString("cellRegistration_AccessibilityLabel", comment: "")
-            cell.accessibilityLabel = String(format: value, "\(timeAccessibilityLabel)", "\(moodAccessibilityLabel)", "\(cell.onelineLabel.text ?? isEmptyString)", "\(cell.detailLabel.text ?? isEmptyString)")
+            cell.configureCell(itemIdentifier, dateType: .detailedDate)
             
         })
         

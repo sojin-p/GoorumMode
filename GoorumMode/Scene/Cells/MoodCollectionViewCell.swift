@@ -73,6 +73,34 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         accessibilityHint = "modify_AccessibilityHint".localized
     }
     
+    func configureCell(_ itemIdentifier: Mood, dateType: DateFormatType) {
+        moodImageView.image = UIImage(named: itemIdentifier.mood)
+        timeLabel.text = itemIdentifier.date.toString(of: dateType)
+        
+        if let onelineText = itemIdentifier.onelineText, onelineText.isEmpty {
+            onelineLabel.isHidden = true
+        } else {
+            onelineLabel.text = itemIdentifier.onelineText
+            onelineLabel.isHidden = false
+        }
+        
+        if let detailText = itemIdentifier.detailText, detailText.isEmpty {
+            detailLabel.isHidden = true
+        } else {
+            detailLabel.text = itemIdentifier.detailText
+            detailLabel.isHidden = false
+        }
+        
+        detailLabel.setLineSpacing(spacing: 5)
+        
+        let isEmptyString = "cellRegistration_AccessibilityLabel_isEmpty".localized
+        let timeAccessibilityLabel = itemIdentifier.date.toString(of: .timeForAccessibility)
+        let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? isEmptyString
+        
+        let value = NSLocalizedString("cellRegistration_AccessibilityLabel", comment: "")
+        accessibilityLabel = String(format: value, "\(timeAccessibilityLabel)", "\(moodAccessibilityLabel)", "\(onelineLabel.text ?? isEmptyString)", "\(detailLabel.text ?? isEmptyString)")
+    }
+    
     override func configure() {
         applyAccessibility()
         
