@@ -37,9 +37,9 @@ class BaseViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func showAlertWithAction(title: String, message: String?, buttonName: String, completion: @escaping () -> Void) {
+    func showAlertWithAction(title: String, message: String?, buttonName: String, buttonStyle: UIAlertAction.Style, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let button = UIAlertAction(title: buttonName, style: .destructive) { action in
+        let button = UIAlertAction(title: buttonName, style: buttonStyle) { action in
             completion()
         }
         let cancel = UIAlertAction(title: "alert_CancelButtonTitle".localized, style: .cancel)

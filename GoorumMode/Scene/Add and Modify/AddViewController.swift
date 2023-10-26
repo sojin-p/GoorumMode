@@ -134,16 +134,19 @@ final class AddViewController: BaseViewController {
     }
     
     func removeButtonClicked() {
-        showAlertWithAction(title: "alert_RemoveButtonClicked_Title".localized, message: nil, buttonName: "alert_RemoveButtonTitle".localized) { [weak self] in
-            
-            guard let moods = self?.moods else { return }
+        
+        showAlertWithAction(
+            title: "alert_RemoveButtonClicked_Title".localized, message: nil,
+            buttonName: "alert_RemoveButtonTitle".localized,
+            buttonStyle: .destructive) { [weak self] in
+                guard let moods = self?.moods else { return }
 
-            self?.removeData?()
-            
-            self?.moodRepository.deleteItem(moods._id)
-       
-            self?.dismiss(animated: true)
-        }
+                self?.removeData?()
+                
+                self?.moodRepository.deleteItem(moods._id)
+           
+                self?.dismiss(animated: true)
+            }
     }
     
     func setTime(date: Date = Date()) {
