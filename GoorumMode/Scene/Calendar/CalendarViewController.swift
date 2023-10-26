@@ -137,9 +137,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if date != Calendar.current.startOfDay(for: Date()) {
-            calendar.appearance.todayColor = .clear
-        }
         completionHandler?(date)
         navigationController?.popViewController(animated: true)
     }
@@ -162,6 +159,11 @@ extension CalendarViewController {
         
         viewModel.currentDate.value = selectedDate ?? Date()
         calendar.select(selectedDate)
+        
+        if selectedDate != Calendar.current.startOfDay(for: Date()) {
+            calendar.appearance.todayColor = .clear
+        }
+        
         calendar.delegate = self
         calendar.dataSource = self
         

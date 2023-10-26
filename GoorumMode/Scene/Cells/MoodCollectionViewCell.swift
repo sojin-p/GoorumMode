@@ -101,6 +101,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         
         let value = NSLocalizedString("cellRegistration_AccessibilityLabel", comment: "")
         accessibilityLabel = String(format: value, "\(timeAccessibilityLabel)", "\(moodAccessibilityLabel)", "\(onelineLabel.text ?? isEmptyString)", "\(detailLabel.text ?? isEmptyString)")
+        print("accessibilityLabel : ", accessibilityLabel)
     }
     
     override func configure() {
