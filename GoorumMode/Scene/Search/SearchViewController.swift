@@ -11,7 +11,6 @@ final class SearchViewController: BaseViewController {
     
     let searchBar = {
         let view = UISearchBar()
-//        view.searchTextField.font = Constants.Font.regular(size: 15)
         view.searchTextField.placeholder = "search_placeholder".localized
         view.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
         view.searchTextField.backgroundColor = UIColor.clear
