@@ -82,10 +82,14 @@ extension SearchViewController: UISearchBarDelegate, UIGestureRecognizerDelegate
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedData = dataSource.itemIdentifier(for: indexPath) else { return }
-        showAlertWithAction(title: "해당 날짜로 이동합니다.", message: nil, buttonName: "확인") {
-            self.completionHandler?(selectedData)
-            self.navigationController?.popViewController(animated: true)
-        }
+        
+        showAlertWithAction(
+            title: "alert_MoveSelectedDate".localized, message: nil,
+            buttonName: "alert_OKButtonTitle".localized,
+            buttonStyle: .default) {
+                self.completionHandler?(selectedData)
+                self.navigationController?.popViewController(animated: true)
+            }
     }
 }
 

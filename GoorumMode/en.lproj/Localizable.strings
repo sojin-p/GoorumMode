@@ -113,6 +113,9 @@
 "alert_RemoveButtonClicked_Title" = "This record will be deleted.";
 "alert_RemoveButtonTitle" = "Delete the Record";
 "alert_OneLineTextField_isEmpty_Title" = "Please enter no more than 15 characters.";
+"alert_MoveSelectedDate" = "Go to the selected date.";
+"alert_searchTextIsEmpty" = "Please enter a search word.";
+"alert_searchResultsIsEmpty" = "There are no search results.";
 
 //MARK: - NavigationBarButton_Accessbility
 //BaseVC
