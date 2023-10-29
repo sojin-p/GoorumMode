@@ -37,6 +37,7 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     
     var completionHandler: ((Date) -> Void)?
     var selectedDate: Date?
+    var updatedDate: Date?
     
     private let moodRepository = MoodRepository()
     
@@ -53,14 +54,7 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
     @objc private func showMonthButtonClicked() {
         let vc = SelectDateViewController()
         
-        let selectedDay = Calendar.current.component(.day, from: selectedDate ?? Date())
-        var dateComponents = DateComponents()
-        dateComponents.day = selectedDay - 1
-        
-        if let willPassDate = Calendar.current.date(byAdding: dateComponents, to: viewModel.currentDate.value) {
-            vc.selectedDate = willPassDate
-        }
-        
+        vc.selectedDate = updatedDate
         vc.completionHandler = { [weak self] date in
             self?.calendar.select(date)
             self?.selectedDate = date
@@ -79,6 +73,16 @@ final class CalendarViewController: BaseViewController, UIGestureRecognizerDeleg
         calendar.select(Date())
         selectedDate = Date()
         completionHandler?(Date())
+    }
+    
+    private func updateDate(date: Date) {
+        var dateComponents = Calendar.current.dateComponents([.year, .month], from: date)
+        let selectedDay = Calendar.current.component(.day, from: selectedDate ?? Date())
+        dateComponents.day = selectedDay
+
+        if let updateDate = Calendar.current.date(from: dateComponents) {
+            updatedDate = updateDate
+        }
     }
     
     override func configure() {
@@ -181,6 +185,7 @@ extension CalendarViewController {
             DispatchQueue.main.async {
                 self?.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
                 self?.calendar.reloadData()
+                self?.updateDate(date: date)
             }
         }
         
