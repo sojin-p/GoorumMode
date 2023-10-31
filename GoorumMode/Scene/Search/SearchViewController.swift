@@ -62,6 +62,10 @@ final class SearchViewController: BaseViewController {
 
 extension SearchViewController: UISearchBarDelegate, UIGestureRecognizerDelegate {
     
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigationController?.viewControllers.count ?? 0 > 1
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text, text.isEmpty {
             showAlert(title: "alert_searchTextIsEmpty".localized, massage: nil)

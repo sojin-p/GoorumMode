@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-final class CalendarViewController: BaseViewController, UIGestureRecognizerDelegate {
+final class CalendarViewController: BaseViewController {
     
     private var calendar = {
         let view = BasicFSCalendar()
@@ -157,7 +157,11 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
 }
 
-extension CalendarViewController {
+extension CalendarViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigationController?.viewControllers.count ?? 0 > 1
+    }
     
     private func setUI() {
         

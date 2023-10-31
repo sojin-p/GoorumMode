@@ -60,7 +60,6 @@ final class MoodViewController: BaseViewController {
             self?.viewModel.fetchSelectedDate(date)
         }
         
-        
         navigationController?.pushViewController(vc, animated: true)
     }
     

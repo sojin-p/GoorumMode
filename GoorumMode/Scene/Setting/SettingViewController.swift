@@ -27,6 +27,10 @@ final class SettingViewController: BaseViewController, UIGestureRecognizerDelega
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigationController?.viewControllers.count ?? 0 > 1
+    }
+    
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
