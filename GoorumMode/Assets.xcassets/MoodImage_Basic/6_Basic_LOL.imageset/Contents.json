@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "LOL.png",
+      "filename" : "6_Basic_LOL.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "6_Basic_LOL@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "6_Basic_LOL@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

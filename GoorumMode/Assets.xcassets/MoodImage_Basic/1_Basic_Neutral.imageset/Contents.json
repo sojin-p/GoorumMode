@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "neutral.png",
+      "filename" : "1_Basic_Neutral.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "1_Basic_Neutral@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "1_Basic_Neutral@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
