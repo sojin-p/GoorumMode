@@ -97,8 +97,8 @@
 //MARK: - DateFormatType+Enum
 "timeWithoutSecond" = "a hh:mm";
 "yearAndMouth" = "yyyy년 M월";
-"dateForTitle" = "M월 dd일 EEEE";
-"dateForChart" = "yyyy.MM.dd.";
+"dateForTitle" = "M월 d일 EEEE";
+"dateForChart" = "M월 d일 (EE)";
 "timeForAccessibility" = "a hh시 mm분";
 "detailedDate" = "yy/MM/dd a hh:mm";
 "dateForAccessibility" = "yy년 M월 dd일 a hh시 mm분";
