@@ -16,6 +16,7 @@ final class ChartViewController: BaseViewController {
     var selectedDate: Date = Calendar.current.startOfDay(for: Date())
     var data: [Mood] = []
     let moodRepository = MoodRepository()
+    var chartDataCount = 0
     
     override func loadView() {
         view = mainView
@@ -60,16 +61,17 @@ final class ChartViewController: BaseViewController {
             })
         case .weekly:
             data = moodRepository.fetch(dateRange: .weekly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
-                self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) - \(endDate.toString(of: .dateForChart))"
+                self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ \(endDate.toString(of: .dateForChart))"
             })
         case .monthly:
             data = moodRepository.fetch(dateRange: .monthly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
-                self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) - \(endDate.toString(of: .dateForChart))"
+                self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ \(endDate.toString(of: .dateForChart))"
             })
         default: print("")
         }
         
         pieData = setChartData(data: data)
+        chartDataCount = data.count
         mainView.chartTableView.reloadData()
         
     }
@@ -85,17 +87,20 @@ final class ChartViewController: BaseViewController {
         
         for (mood, count) in moodCounts {
             moodStatsResults[mood] = (Double(count) / Double(allCount)) * 100
-            let icon = NSUIImage(named: mood)?.downSample(scale: view, size: CGSize(width: 10, height: 10))
-            moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, icon: icon))
+//            let icon = NSUIImage(named: mood)?.downSample(scale: view, size: CGSize(width: 10, height: 10))
+            let label = String(format: "%.1f", moodStatsResults[mood] ?? 0) + "%"
+            moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, label: label))
+//            moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, icon: icon))
             colorSet.append(UIColor(named: mood + "_Background") ?? .lightGray)
         }
         
         let dataSet = PieChartDataSet(entries: moodEntries)
         dataSet.colors = colorSet
-        dataSet.drawIconsEnabled = true
-        dataSet.iconsOffset = CGPoint(x: 0, y: 30)
+//        dataSet.drawIconsEnabled = true
+//        dataSet.iconsOffset = CGPoint(x: 0, y: 30)
         dataSet.valueTextColor = .darkGray
         dataSet.valueFont = Constants.Font.extraBold(size: 14)
+        dataSet.drawValuesEnabled = false
         dataSet.selectionShift = 10
         
         return PieChartData(dataSet: dataSet)
@@ -105,16 +110,55 @@ final class ChartViewController: BaseViewController {
 
 extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.reuseIdentifier) as? ChartTableViewCell else { return UITableViewCell() }
-        cell.pieChartView.data = pieData
-        cell.selectionStyle = .none
+        switch indexPath.section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.reuseIdentifier) as? ChartTableViewCell else { return UITableViewCell() }
+            
+            cell.pieChartView.data = pieData
+            cell.selectionStyle = .none
+            
+            return cell
+            
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartListTableViewCell.reuseIdentifier) as? ChartListTableViewCell else { return UITableViewCell() }
+            
+            cell.collectionView.delegate = self
+            cell.collectionView.dataSource = self
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0: return 270
+        default: return 160
+        }
+    }
+}
+
+extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartListCollectionViewCell.reuseIdentifier, for: indexPath) as? ChartListCollectionViewCell else { return UICollectionViewCell() }
+        
         return cell
     }
+    
 }
 
 extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
