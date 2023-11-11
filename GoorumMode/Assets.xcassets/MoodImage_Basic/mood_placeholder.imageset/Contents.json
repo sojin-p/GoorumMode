@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "mood_placeholer.png",
+      "filename" : "Mood_Placeholder.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mood_placeholer@2x.png",
+      "filename" : "Mood_Placeholder@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "mood_placeholer@3x.png",
+      "filename" : "Mood_Placeholder@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
