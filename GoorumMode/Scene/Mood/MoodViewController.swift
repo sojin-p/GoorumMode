@@ -156,7 +156,7 @@ extension MoodViewController {
         calendarBarButton.accessibilityHint = "calendarBarButton_AccessibilityHint".localized
         navigationItem.leftBarButtonItem = calendarBarButton
         
-        guard let settingImage = Constants.IconImage.setting else { return }
+        let settingImage = Constants.IconImage.setting
         let settingButton = UIButton(frame: CGRect(x: 0, y: 0, width: settingImage.size.width, height: settingImage.size.height))
         settingButton.tintColor = Constants.Color.iconTint.basicBlack
         settingButton.setImage(settingImage, for: .normal)
@@ -164,7 +164,7 @@ extension MoodViewController {
         settingButton.accessibilityLabel = "settingBarButton_AccessibilityLabel".localized
 //        settingButton.AccessibilityHint = "settingBarButton.accessibilityHint".localized
         
-        guard let searchImage = Constants.IconImage.search else { return }
+        let searchImage = Constants.IconImage.search
         let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: searchImage.size.width, height: searchImage.size.height))
         searchButton.tintColor = Constants.Color.iconTint.basicBlack
         searchButton.setImage(searchImage, for: .normal)

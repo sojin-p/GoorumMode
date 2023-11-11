@@ -10,33 +10,41 @@ import UIKit
 extension Constants {
     
     enum IconImage {
-        static let list = UIImage(named: "iconList")?
+        static let list = UIImage(resource: .iconList)
             .withRenderingMode(.alwaysTemplate)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
-        static let calendar = UIImage(named: "iconCalendar")?
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let calendar = UIImage(resource: .iconCalendar)
             .withRenderingMode(.alwaysOriginal)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
-        static let setting = UIImage(named: "iconSetting")?
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let setting = UIImage(resource: .iconSetting)
             .withRenderingMode(.alwaysTemplate)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
-        static let stats = UIImage(named: "iconStats")?
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let stats = UIImage(resource: .iconStats)
             .withRenderingMode(.alwaysTemplate)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
-        static let search = UIImage(named: "iconSearch")?
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let search = UIImage(resource: .iconSearch)
             .withRenderingMode(.alwaysOriginal)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
-        static let check = UIImage(named: "iconCheck")?
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let check = UIImage(resource: .iconCheck)
             .withRenderingMode(.alwaysTemplate)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
-        static let trash = UIImage(named: "iconTrash")?
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let trash = UIImage(resource: .iconTrash)
             .withRenderingMode(.alwaysTemplate)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
-        static let xMark = UIImage(named: "iconXmark")?
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let xMark = UIImage(resource: .iconXmark)
             .withRenderingMode(.alwaysTemplate)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
-        static let edit = UIImage(named: "iconEdit")?
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let edit = UIImage(resource: .iconEdit)
             .withRenderingMode(.alwaysTemplate)
-            .withTintColor(Constants.Color.iconTint.basicBlack!)
+            .withTintColor(Constants.Color.iconTint.basicBlack)
     }
     
 }

@@ -14,7 +14,7 @@ final class ChartTableViewCell: BaseTableViewCell {
         let view = PieChartView()
         view.noDataText = "pickChartView_noDataText".localized
         view.noDataFont = Constants.Font.extraBold(size: 16)
-        view.noDataTextColor = Constants.Color.Text.basicPlaceholder!
+        view.noDataTextColor = Constants.Color.Text.basicPlaceholder
         view.holeRadiusPercent = 0.3
         view.transparentCircleRadiusPercent = 0.35
         view.legend.enabled = false

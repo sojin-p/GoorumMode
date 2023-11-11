@@ -12,26 +12,22 @@ extension Constants {
     enum Color {
         
         enum Text {
-            static let basicTitle = UIColor(named: "Basic_Title")
-            static let basicSubTitle = UIColor(named: "Basic_SubTitle")
-            static let basicPlaceholder = UIColor(named: "Basic_Placeholder")
+            static let basicTitle = UIColor(resource: .basicTitle)
+            static let basicSubTitle = UIColor(resource: .basicSubTitle)
+            static let basicPlaceholder = UIColor(resource: .basicPlaceholder)
         }
         
         enum Background {
-            static let basic = UIColor(named: "Basic_Background")
-            static let basicIcon = UIColor(named: "Basic_IconBackground")
-            static let white = UIColor(named: "Basic_White")
-            static let calendar = UIColor(named: "Basic_CalendarBackground")
-            
-            static let smiling = UIColor(named: "Smiling_Theme")
-            
-            static let Neutral = UIColor(named: "Neutral_Theme")
+            static let basic = UIColor(resource: .basicBackground)
+            static let basicIcon = UIColor(resource: .basicIconBackground)
+            static let white = UIColor(resource: .basicWhite)
+            static let calendar = UIColor(resource: .basicCalendarBackground)
         }
         
         enum iconTint {
-            static let basicWhite = UIColor(named: "Basic_White")
-            static let basicBlack = UIColor(named: "Basic_Title")
-            static let unselected = UIColor(named: "Basic_SubTitle")
+            static let basicWhite = UIColor(resource: .basicWhite)
+            static let basicBlack = UIColor(resource: .basicTitle)
+            static let unselected = UIColor(resource: .basicSubTitle)
         }
         
     }
