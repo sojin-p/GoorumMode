@@ -111,7 +111,8 @@ final class ChartView: BaseView {
     
     //MARK: - hierarchies & Constraints
     override func configure() {
-        super.configure()
+        headerView.backgroundColor = Constants.Color.Background.basic
+        
         chartButtons.forEach { $0.addTarget(self, action: #selector(setChartButtons), for: .touchUpInside) }
         headerView.showMonthButton.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
         [calendar, headerView, backView, dailyButton, weeklyButton, monthlyButton, dateRangeLabel, chartTableView].forEach { addSubview($0) }
@@ -121,7 +122,7 @@ final class ChartView: BaseView {
     override func setConstraints() {
         
         calendar.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(10)
+            make.top.equalTo(safeAreaLayoutGuide)
             make.horizontalEdges.equalToSuperview().inset(10)
             make.height.equalTo(350)
         }
@@ -132,7 +133,7 @@ final class ChartView: BaseView {
         }
         
         backView.snp.makeConstraints { make in
-            make.top.equalTo(calendar.snp.bottom).offset(10)
+            make.top.equalTo(calendar.snp.bottom).offset(5)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
         
@@ -159,7 +160,7 @@ final class ChartView: BaseView {
         
         chartTableView.snp.makeConstraints { make in
             make.top.equalTo(dateRangeLabel.snp.bottom).offset(25)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).offset(-5)
         }
 
     }
