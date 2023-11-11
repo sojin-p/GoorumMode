@@ -63,9 +63,8 @@ final class ChartView: BaseView {
     
     lazy var chartTableView = {
         let view = UITableView()
-        view.rowHeight = 350
         view.register(ChartTableViewCell.self, forCellReuseIdentifier: ChartTableViewCell.reuseIdentifier)
-        view.bounces = false
+        view.register(ChartListTableViewCell.self, forCellReuseIdentifier: ChartListTableViewCell.reuseIdentifier)
         view.separatorColor = .clear
         view.backgroundColor = Constants.Color.Background.white
         return view
@@ -160,7 +159,7 @@ final class ChartView: BaseView {
         
         chartTableView.snp.makeConstraints { make in
             make.top.equalTo(dateRangeLabel.snp.bottom).offset(25)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).offset(-5)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
 
     }
