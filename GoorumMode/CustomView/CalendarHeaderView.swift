@@ -38,7 +38,6 @@ final class CalendarHeaderView: BaseView {
     }()
     
     override func configure() {
-        backgroundColor = Constants.Color.Background.calendar
         [headerLabel, backTodayButton, showMonthButton].forEach { addSubview($0) }
     }
     

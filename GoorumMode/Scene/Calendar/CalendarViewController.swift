@@ -20,6 +20,7 @@ final class CalendarViewController: BaseViewController {
     
     private let headerView = {
         let view = CalendarHeaderView()
+        view.backgroundColor = Constants.Color.Background.calendar
         return view
     }()
     
