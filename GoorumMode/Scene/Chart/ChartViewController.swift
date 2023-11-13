@@ -56,16 +56,16 @@ final class ChartViewController: BaseViewController {
         
         switch DateRange(rawValue: sender.tag) {
         case .daliy:
-            data = moodRepository.fetch(dateRange: .daliy, selectedDate: selectedDate, completionHandler: { startDate, endDate in
-                self.mainView.dateRangeLabel.text = startDate.toString(of: .dateForChart)
+            data = moodRepository.fetch(dateRange: .daliy, selectedDate: selectedDate, completionHandler: { [weak self] startDate, endDate in
+                self?.mainView.dateRangeLabel.text = startDate.toString(of: .dateForChart)
             })
         case .weekly:
-            data = moodRepository.fetch(dateRange: .weekly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
-                self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ \(endDate.toString(of: .dateForChart))"
+            data = moodRepository.fetch(dateRange: .weekly, selectedDate: selectedDate, completionHandler: { [weak self] startDate, endDate in
+                self?.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ \(endDate.toString(of: .dateForChart))"
             })
         case .monthly:
-            data = moodRepository.fetch(dateRange: .monthly, selectedDate: selectedDate, completionHandler: { startDate, endDate in
-                self.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ \(endDate.toString(of: .dateForChart))"
+            data = moodRepository.fetch(dateRange: .monthly, selectedDate: selectedDate, completionHandler: { [weak self] startDate, endDate in
+                self?.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ \(endDate.toString(of: .dateForChart))"
             })
         default: print("")
         }
