@@ -14,7 +14,7 @@ final class ChartViewController: BaseViewController {
     let mainView = ChartView()
     var pieData: PieChartData?
     var selectedDate: Date = Calendar.current.startOfDay(for: Date())
-    var data: [Mood] = []
+    var data: [Mood]?
     let moodRepository = MoodRepository()
     var chartDataCount = 0
     
@@ -70,10 +70,15 @@ final class ChartViewController: BaseViewController {
         default: print("")
         }
         
-        pieData = setChartData(data: data)
-        chartDataCount = data.count
-        mainView.chartTableView.reloadData()
+        if data == [] {
+            pieData = nil
+            pieData?.notifyDataChanged()
+        } else {
+            pieData = setChartData(data: data ?? [])
+            chartDataCount = data?.count ?? 0
+        }
         
+        mainView.chartTableView.reloadData()
     }
     
     func setChartData(data: [Mood]) -> PieChartData {
@@ -122,7 +127,8 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.reuseIdentifier) as? ChartTableViewCell else { return UITableViewCell() }
-            
+
+            cell.pieChartView.notifyDataSetChanged()
             cell.pieChartView.data = pieData
             cell.selectionStyle = .none
             
