@@ -93,7 +93,7 @@ final class ChartViewController: BaseViewController {
         for (mood, count) in moodCounts {
             moodStatsResults[mood] = (Double(count) / Double(allCount)) * 100
 //            let icon = NSUIImage(named: mood)?.downSample(scale: view, size: CGSize(width: 10, height: 10))
-            let label = String(format: "%.1f", moodStatsResults[mood] ?? 0) + "%"
+            let label: String? = (moodStatsResults[mood]! > 8) ? String(format: "%.1f", moodStatsResults[mood] ?? 0) + "%" : nil
             moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, label: label))
 //            moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, icon: icon))
             colorSet.append(UIColor(named: mood + "_Background") ?? .lightGray)
