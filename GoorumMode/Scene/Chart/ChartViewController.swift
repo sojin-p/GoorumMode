@@ -9,6 +9,12 @@ import UIKit
 import FSCalendar
 import DGCharts
 
+struct MoodData {
+    var moodCount: [String: Int]
+    var sortedMoodName: [String]
+    var sortedPercent: [Double]
+}
+
 final class ChartViewController: BaseViewController {
     
     let mainView = ChartView()
@@ -17,6 +23,8 @@ final class ChartViewController: BaseViewController {
     var data: [Mood]?
     let moodRepository = MoodRepository()
     var chartDataCount = 0
+    
+    var moodData = MoodData(moodCount: [:], sortedMoodName: [], sortedPercent: [])
     
     override func loadView() {
         view = mainView
@@ -73,6 +81,7 @@ final class ChartViewController: BaseViewController {
         if data == [] {
             pieData = nil
             pieData?.notifyDataChanged()
+            moodData = MoodData(moodCount: [:], sortedMoodName: [], sortedPercent: [])
         } else {
             pieData = setChartData(data: data ?? [])
             chartDataCount = data?.count ?? 0
@@ -84,6 +93,8 @@ final class ChartViewController: BaseViewController {
     func setChartData(data: [Mood]) -> PieChartData {
         let moodCounts = moodRepository.countMoods(moods: data)
         
+        moodData.moodCount = moodCounts
+        
         var moodStatsResults: [String : Double] = [:]
         let allCount = data.count
         
@@ -91,18 +102,23 @@ final class ChartViewController: BaseViewController {
         var colorSet: [UIColor] = []
         
         for (mood, count) in moodCounts {
+            
             moodStatsResults[mood] = (Double(count) / Double(allCount)) * 100
-//            let icon = NSUIImage(named: mood)?.downSample(scale: view, size: CGSize(width: 10, height: 10))
-            let label: String? = (moodStatsResults[mood]! > 8) ? String(format: "%.1f", moodStatsResults[mood] ?? 0) + "%" : nil
-            moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, label: label))
-//            moodEntries.append(PieChartDataEntry(value: moodStatsResults[mood] ?? 0, icon: icon))
-            colorSet.append(UIColor(named: mood + "_Background") ?? .lightGray)
+            
+            let resultsSorted = moodStatsResults.sorted { $0.value > $1.value }
+            moodData.sortedPercent = resultsSorted.map { $0.value }
+            moodData.sortedMoodName = resultsSorted.map { $0.key }
         }
+        
+        moodData.sortedPercent.forEach {
+            let label: String? = $0 > 8 ? String(format: "%.1f", $0) + "%" : nil
+            moodEntries.append(PieChartDataEntry(value: $0, label: label))
+        }
+        
+        moodData.sortedMoodName.forEach { colorSet.append(UIColor(named: $0 + "_Background") ?? .lightGray) }
         
         let dataSet = PieChartDataSet(entries: moodEntries)
         dataSet.colors = colorSet
-//        dataSet.drawIconsEnabled = true
-//        dataSet.iconsOffset = CGPoint(x: 0, y: 30)
         dataSet.valueTextColor = .darkGray
         dataSet.valueFont = Constants.Font.extraBold(size: 14)
         dataSet.drawValuesEnabled = false
@@ -120,7 +136,10 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0: return 1
+        default: return moodData.sortedMoodName.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,6 +156,20 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartListTableViewCell.reuseIdentifier) as? ChartListTableViewCell else { return UITableViewCell() }
             
+            let item = moodData.sortedMoodName[indexPath.item]
+            
+            cell.iconImageView.image = UIImage(named: item)
+//            cell.label.text = "\(Int(moodData.sortedPercent[indexPath.item]))% / \(moodData.moodCount[item] ?? 0)개"
+            let count = moodData.moodCount[item] ?? 0
+            cell.label.text = "\(count)개"
+            let allCount = moodData.moodCount.map { $0.value }.reduce(0) { partialResult, num in
+                partialResult + num
+            }
+
+            cell.progressView.progress = Float(Double(count) / Double(allCount))
+            cell.selectionStyle = .none
+            
+            cell.progressView.progressTintColor = UIColor(named: moodData.sortedMoodName[indexPath.item] + "_Background")
             
             return cell
         }
