@@ -9,33 +9,58 @@ import UIKit
 
 final class ChartListTableViewCell: BaseTableViewCell {
     
-    let collectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout())
-        view.register(ChartListCollectionViewCell.self, forCellWithReuseIdentifier: ChartListCollectionViewCell.reuseIdentifier)
-        view.showsHorizontalScrollIndicator = false
+    let iconImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
+    let progressView = {
+        let view = UIProgressView()
+        view.progressTintColor = .systemPink
+        view.trackTintColor = Constants.Color.Background.calendar
+        view.progress = 0.5
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
+        view.layer.sublayers![1].cornerRadius = 5
+        view.subviews[1].clipsToBounds = true
+        return view
+    }()
+    
+    let label = {
+        let view = UILabel()
+        view.text = "999개"
+        view.textAlignment = .right
+        view.font = Constants.Font.regular(size: 14)
+        view.textColor = Constants.Color.Text.basicTitle
+        return view
+    }()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImageView.image = nil
+        label.text = nil
+    }
     override func configure() {
-        [collectionView].forEach { contentView.addSubview($0) }
+        [progressView, iconImageView, label].forEach { contentView.addSubview($0) }
     }
     
     override func setConstraints() {
-        collectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
-            make.horizontalEdges.bottom.equalToSuperview()
+        iconImageView.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(30)
         }
-    }
-    
-    private static func layout() -> UICollectionViewFlowLayout {
         
-        let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 20
+        label.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-35)
+            make.centerY.equalTo(iconImageView)
+        }
         
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 80, height: 120)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
-        
-        return layout
+        progressView.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.5)
+            make.height.equalTo(10)
+            make.center.equalToSuperview()
+        }
     }
 }
