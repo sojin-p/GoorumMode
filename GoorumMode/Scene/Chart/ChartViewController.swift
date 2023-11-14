@@ -137,8 +137,6 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartListTableViewCell.reuseIdentifier) as? ChartListTableViewCell else { return UITableViewCell() }
             
-            cell.collectionView.delegate = self
-            cell.collectionView.dataSource = self
             
             return cell
         }
@@ -150,21 +148,6 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
         default: return 160
         }
     }
-}
-
-extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartListCollectionViewCell.reuseIdentifier, for: indexPath) as? ChartListCollectionViewCell else { return UICollectionViewCell() }
-        
-        return cell
-    }
-    
 }
 
 extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
