@@ -132,7 +132,7 @@ final class ChartView: BaseView {
         }
         
         backView.snp.makeConstraints { make in
-            make.top.equalTo(calendar.snp.bottom).offset(5)
+            make.top.equalTo(calendar.snp.bottom).offset(10)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
         
