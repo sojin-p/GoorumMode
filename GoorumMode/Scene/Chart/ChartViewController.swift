@@ -208,4 +208,22 @@ extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalen
             return nil
         }
     }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dateFromRealm = moodRepository.fetchAllDate()
+        
+        if dateFromRealm.contains(date) {
+            return 1
+        } else {
+            return 0
+        }
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+        [Constants.Color.iconTint.unselected]
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
+        [Constants.Color.iconTint.unselected]
+    }
 }
