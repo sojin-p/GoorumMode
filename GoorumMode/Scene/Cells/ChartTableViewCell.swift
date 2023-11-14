@@ -30,7 +30,8 @@ final class ChartTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         pieChartView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-25)
         }
     }
 }
