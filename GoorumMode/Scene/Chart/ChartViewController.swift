@@ -92,30 +92,49 @@ final class ChartViewController: BaseViewController {
     
     func setChartData(data: [Mood]) -> PieChartData {
         let moodCounts = moodRepository.countMoods(moods: data)
-        
-        moodData.moodCount = moodCounts
-        
-        var moodStatsResults: [String : Double] = [:]
         let allCount = data.count
         
         var moodEntries: [PieChartDataEntry] = []
         var colorSet: [UIColor] = []
         
-        for (mood, count) in moodCounts {
-            
-            moodStatsResults[mood] = (Double(count) / Double(allCount)) * 100
-            
-            let resultsSorted = moodStatsResults.sorted { $0.value > $1.value }
-            moodData.sortedPercent = resultsSorted.map { $0.value }
-            moodData.sortedMoodName = resultsSorted.map { $0.key }
-        }
+        let sortedMoodCount = moodCounts.sorted { $0.value > $1.value }
+        let count = sortedMoodCount.map { $0.value }
+        let name = sortedMoodCount.map { $0.key }
         
-        moodData.sortedPercent.forEach {
-            let label: String? = $0 > 8 ? String(format: "%.1f", $0) + "%" : nil
-            moodEntries.append(PieChartDataEntry(value: $0, label: label))
-        }
+        moodData.moodCount = moodCounts
+        moodData.sortedPercent = count.map { Double($0) / Double(allCount) * 100 }
+        moodData.sortedMoodName = name
         
-        moodData.sortedMoodName.forEach { colorSet.append(UIColor(named: $0 + "_Background") ?? .lightGray) }
+        if count.count > 6 { //8개부터 기타 표시
+            let getFourCount = Array(count.prefix(5))
+            let getFourName = Array(name.prefix(5))
+            let etcCount = allCount - (getFourCount.reduce(0) { $0 + $1 })
+            
+            getFourCount.forEach {
+                let value = (Double($0) / Double(allCount)) * 100
+                let label = String(format: "%.1f", value) + "%"
+                moodEntries.append(PieChartDataEntry(value: value, label: label))
+            }
+            
+            let etc = (getFourCount.last ?? 1) - 1
+            let etcResult = (Double(etc) / Double(allCount)) * 100
+//            let etcResult = (Double(etcCount) / Double(allCount)) * 100
+            
+            moodEntries.append(PieChartDataEntry(value: etcResult, label: "기타")) //"기타\(String(format: "%.1f", etcResult))%"
+            
+            getFourName.forEach { colorSet.append(UIColor(named: $0 + "_Background") ?? .lightGray) }
+            colorSet.append(Constants.Color.Background.basic)
+            
+        } else {
+            
+            let value = count.map { Double($0) / Double(allCount) * 100 }
+            value.forEach {
+                let label = String(format: "%.1f", $0) + "%"
+                moodEntries.append(PieChartDataEntry(value: $0, label: label))
+            }
+            
+            name.forEach { colorSet.append(UIColor(named: $0 + "_Background") ?? .lightGray) }
+        }
         
         let dataSet = PieChartDataSet(entries: moodEntries)
         dataSet.colors = colorSet
