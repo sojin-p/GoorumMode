@@ -33,11 +33,27 @@ final class ChartListTableViewCell: BaseTableViewCell {
         return view
     }()
     
+    func configureCell(item: String, moodData: MoodData) {
+        iconImageView.image = UIImage(named: item)
+//            cell.label.text = "\(Int(moodData.sortedPercent[indexPath.item]))% / \(moodData.moodCount[item] ?? 0)개"
+        let count = moodData.moodCount[item] ?? 0
+        label.text = "\(count)개"
+        
+        let maxCount = moodData.moodCount.values.max() ?? 0
+        let progress = Float(Double(count) / Double(maxCount))
+//        progressView.setProgress(progress, animated: true)
+        progressView.progress = progress
+        progressView.progressTintColor = UIColor(named: item + "_Background")
+        
+        selectionStyle = .none
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
         label.text = nil
     }
+    
     override func configure() {
         super.configure()
         

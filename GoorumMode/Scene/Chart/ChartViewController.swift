@@ -158,18 +158,7 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
             
             let item = moodData.sortedMoodName[indexPath.item]
             
-            cell.iconImageView.image = UIImage(named: item)
-//            cell.label.text = "\(Int(moodData.sortedPercent[indexPath.item]))% / \(moodData.moodCount[item] ?? 0)개"
-            let count = moodData.moodCount[item] ?? 0
-            cell.label.text = "\(count)개"
-            let allCount = moodData.moodCount.map { $0.value }.reduce(0) { partialResult, num in
-                partialResult + num
-            }
-
-            cell.progressView.progress = Float(Double(count) / Double(allCount))
-            cell.selectionStyle = .none
-            
-            cell.progressView.progressTintColor = UIColor(named: moodData.sortedMoodName[indexPath.item] + "_Background")
+            cell.configureCell(item: item, moodData: moodData)
             
             return cell
         }
