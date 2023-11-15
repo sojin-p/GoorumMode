@@ -17,19 +17,16 @@ final class ChartListTableViewCell: BaseTableViewCell {
     
     let progressView = {
         let view = UIProgressView()
-        view.progressTintColor = .systemPink
-        view.trackTintColor = Constants.Color.Background.calendar
-        view.progress = 0.5
+        view.trackTintColor = Constants.Color.Background.progressTrack
         view.layer.cornerRadius = 5
         view.clipsToBounds = true
-        view.layer.sublayers![1].cornerRadius = 5
+        view.layer.sublayers?[1].cornerRadius = 5
         view.subviews[1].clipsToBounds = true
         return view
     }()
     
     let label = {
         let view = UILabel()
-        view.text = "999개"
         view.textAlignment = .right
         view.font = Constants.Font.regular(size: 14)
         view.textColor = Constants.Color.Text.basicTitle
@@ -55,7 +52,8 @@ final class ChartListTableViewCell: BaseTableViewCell {
         }
         
         label.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-35)
+            make.trailing.equalToSuperview().offset(-40)
+            make.leading.equalTo(progressView.snp.trailing).offset(8)
             make.centerY.equalTo(iconImageView)
         }
         
