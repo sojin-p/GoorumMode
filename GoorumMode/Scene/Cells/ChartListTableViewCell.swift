@@ -42,6 +42,8 @@ final class ChartListTableViewCell: BaseTableViewCell {
         label.text = nil
     }
     override func configure() {
+        super.configure()
+        
         [progressView, iconImageView, label].forEach { contentView.addSubview($0) }
     }
     

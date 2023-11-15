@@ -24,7 +24,8 @@ final class ChartTableViewCell: BaseTableViewCell {
     }()
     
     override func configure() {
-        contentView.backgroundColor = Constants.Color.Background.white
+        super.configure()
+        
         contentView.addSubview(pieChartView)
     }
     
