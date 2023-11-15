@@ -22,6 +22,7 @@ extension Constants {
             static let basicIcon = UIColor(resource: .basicIconBackground)
             static let white = UIColor(resource: .basicWhite)
             static let calendar = UIColor(resource: .basicCalendarBackground)
+            static let progressTrack = UIColor(resource: .basicProgressBackground)
         }
         
         enum iconTint {
