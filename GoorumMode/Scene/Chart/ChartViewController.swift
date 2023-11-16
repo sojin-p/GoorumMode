@@ -105,24 +105,24 @@ final class ChartViewController: BaseViewController {
         moodData.sortedPercent = count.map { Double($0) / Double(allCount) * 100 }
         moodData.sortedMoodName = name
         
-        if count.count > 6 { //8개부터 기타 표시
-            let getFourCount = Array(count.prefix(5))
-            let getFourName = Array(name.prefix(5))
-            let etcCount = allCount - (getFourCount.reduce(0) { $0 + $1 })
+        if count.count > 6 {
+            let getFiveCount = Array(count.prefix(5))
+            let getFiveName = Array(name.prefix(5))
+            let etcCount = allCount - (getFiveCount.reduce(0) { $0 + $1 })
             
-            getFourCount.forEach {
+            getFiveCount.forEach {
                 let value = (Double($0) / Double(allCount)) * 100
                 let label = String(format: "%.1f", value) + "%"
                 moodEntries.append(PieChartDataEntry(value: value, label: label))
             }
             
-            let etc = (getFourCount.last ?? 1) - 1
+            let etc = getFiveCount.last ?? 1
             let etcResult = (Double(etc) / Double(allCount)) * 100
 //            let etcResult = (Double(etcCount) / Double(allCount)) * 100
             
             moodEntries.append(PieChartDataEntry(value: etcResult, label: "기타")) //"기타\(String(format: "%.1f", etcResult))%"
             
-            getFourName.forEach { colorSet.append(UIColor(named: $0 + "_Background") ?? .lightGray) }
+            getFiveName.forEach { colorSet.append(UIColor(named: $0 + "_Background") ?? .lightGray) }
             colorSet.append(Constants.Color.Background.basic)
             
         } else {
