@@ -62,6 +62,8 @@ final class ChartViewController: BaseViewController {
     
     @objc func chartButtonClicked(_ sender: UIButton) {
         
+        let selectDate = selectedDate.toString(of: .dateForChart)
+        
         switch DateRange(rawValue: sender.tag) {
         case .daliy:
             data = moodRepository.fetch(dateRange: .daliy, selectedDate: selectedDate, completionHandler: { [weak self] startDate, endDate in
@@ -69,11 +71,11 @@ final class ChartViewController: BaseViewController {
             })
         case .weekly:
             data = moodRepository.fetch(dateRange: .weekly, selectedDate: selectedDate, completionHandler: { [weak self] startDate, endDate in
-                self?.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ \(endDate.toString(of: .dateForChart))"
+                self?.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ " + selectDate
             })
         case .monthly:
             data = moodRepository.fetch(dateRange: .monthly, selectedDate: selectedDate, completionHandler: { [weak self] startDate, endDate in
-                self?.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ \(endDate.toString(of: .dateForChart))"
+                self?.mainView.dateRangeLabel.text = "\(startDate.toString(of: .dateForChart)) ~ " + selectDate
             })
         default: print("")
         }
