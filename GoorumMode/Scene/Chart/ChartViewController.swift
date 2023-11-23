@@ -39,6 +39,8 @@ final class ChartViewController: BaseViewController {
         mainView.chartTableView.dataSource = self
         mainView.chartButtons.forEach { $0.addTarget(self, action: #selector(chartButtonClicked), for: .touchUpInside) }
         mainView.headerView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
+        mainView.headerView.headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonthButtonClicked)))
+        mainView.headerView.showMonthButton.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +50,11 @@ final class ChartViewController: BaseViewController {
                 chartButtonClicked(button)
             }
         }
+    }
+    
+    @objc private func showMonthButtonClicked() {
+        let vc = SelectDateViewController()
+        present(vc, animated: true)
     }
     
     @objc private func backTodayButtonClicked() {
