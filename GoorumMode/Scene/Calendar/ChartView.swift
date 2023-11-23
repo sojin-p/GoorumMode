@@ -92,10 +92,6 @@ final class ChartView: BaseView {
         }
     }
     
-    @objc private func showMonthButtonClicked() {
-        calendar.setScope(.month, animated: true)
-    }
-    
     @objc private func setChartButtons(_ sender: UIButton) {
         chartButtons.forEach { button in
             if sender == button {
@@ -113,7 +109,7 @@ final class ChartView: BaseView {
         headerView.backgroundColor = Constants.Color.Background.basic
         
         chartButtons.forEach { $0.addTarget(self, action: #selector(setChartButtons), for: .touchUpInside) }
-        headerView.showMonthButton.addTarget(self, action: #selector(showMonthButtonClicked), for: .touchUpInside)
+
         [calendar, headerView, backView, dailyButton, weeklyButton, monthlyButton, dateRangeLabel, chartTableView].forEach { addSubview($0) }
         [swipeUp, swipeDown].forEach { calendar.addGestureRecognizer($0) }
     }
