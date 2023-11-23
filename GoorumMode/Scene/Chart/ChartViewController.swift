@@ -80,16 +80,16 @@ final class ChartViewController: BaseViewController {
         default: print("")
         }
         
-        if data == [] {
-            pieData = nil
-            pieData?.notifyDataChanged()
-            moodData = MoodData(moodCount: [:], sortedMoodName: [], sortedPercent: [])
+        if let data = data, !data.isEmpty {
+            pieData = setChartData(data: data)
+            chartDataCount = data.count
         } else {
-            pieData = setChartData(data: data ?? [])
-            chartDataCount = data?.count ?? 0
+            pieData = nil
+            moodData = MoodData(moodCount: [:], sortedMoodName: [], sortedPercent: [])
         }
         
         mainView.chartTableView.reloadData()
+        
     }
     
     func setChartData(data: [Mood]) -> PieChartData {
