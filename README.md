@@ -2,7 +2,7 @@
 
 # 구름모드 - 감정 기록 일기
 ![iPhone Screenshot](https://github.com/sojin-p/GoorumMode/assets/140357450/94d6f43f-6e82-47c0-b0f8-87751f1026f4)
-:link: [구름모드 앱스토어](apps.apple.com/app/id6470123259)  
+:link: [구름모드 앱스토어](https://apps.apple.com/app/id6470123259)  
 
 <Br>
 
