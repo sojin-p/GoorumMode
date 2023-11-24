@@ -6,6 +6,11 @@
   
 */
 
+//MARK: - TabBarController
+"record" = "기록";
+"chart" = "차트";
+"setting" = "설정";
+
 //MARK: - MoodCollectionViewCell
 //MoodVC
 "modify_AccessibilityHint" = "수정하려면 두 번 탭 하세요";
@@ -73,6 +78,9 @@
 //MARK: - SearchViewController
 "search_placeholder" = "기록한 내용을 검색해 보세요.";
 
+//MARK: - ChartViewController
+"pieChartDataLabel_Etc" = "기타";
+
 //MARK: - ChartView
 "dailyButton_Title" = "일간";
 "weeklyButton_Title" = "주간";
@@ -94,6 +102,7 @@
 
 //MARK: - ChartListTableViewCell
 "setChartCellAccessibility_AccessibilityLabel" = "%@ 이미지. %@ 퍼센트. %@ 개.";
+"moodCount" = "%@개";
 
 //MARK: - MoodEmojis+Enum
 "smiling" = "미소 짓는";

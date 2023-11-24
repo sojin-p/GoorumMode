@@ -6,6 +6,11 @@
   
 */
 
+//MARK: - TabBarController
+"record" = "Record";
+"chart" = "Chart";
+"setting" = "Setting";
+
 //MARK: - MoodCollectionViewCell
 //MoodVC
 "modify_AccessibilityHint" = "Please tap it twice, if you want to edit.";
@@ -73,6 +78,9 @@
 //MARK: - SearchViewController
 "search_placeholder" = "Search your records.";
 
+//MARK: - ChartViewController
+"pieChartDataLabel_Etc" = "etc.";
+
 //MARK: - ChartView
 "dailyButton_Title" = "Daily";
 "weeklyButton_Title" = "Weekly";
@@ -94,6 +102,7 @@
 
 //MARK: - ChartListTableViewCell
 "setChartCellAccessibility_AccessibilityLabel" = "%@ image. %@ percent. The number is %@.";
+"moodCount" = "%@";
 
 //MARK: - MoodEmojis+Enum
 "smiling" = "Smiling";
