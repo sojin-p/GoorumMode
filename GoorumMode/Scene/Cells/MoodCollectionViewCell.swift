@@ -100,7 +100,7 @@ final class MoodCollectionViewCell: BaseCollectionViewCell {
         let moodAccessibilityLabel = MoodEmojis(rawValue: itemIdentifier.mood)?.accessLabel ?? isEmptyString
         
         let value = NSLocalizedString("cellRegistration_AccessibilityLabel", comment: "")
-        accessibilityLabel = String(format: value, "\(timeAccessibilityLabel)", "\(moodAccessibilityLabel)", "\(onelineLabel.text ?? isEmptyString)", "\(detailLabel.text ?? isEmptyString)")
+        accessibilityLabel = String(format: value, timeAccessibilityLabel, moodAccessibilityLabel, (onelineLabel.text ?? isEmptyString), (detailLabel.text ?? isEmptyString))
     }
     
     override func configure() {
