@@ -1,0 +1,152 @@
+/* 
+  Localizable.strings
+  GoorumMode
+
+  Created by 박소진 on 2023/09/26.
+  
+*/
+
+//MARK: - TabBarController
+"record" = "記録";
+"chart" = "チャート";
+"setting" = "設定";
+
+//MARK: - MoodCollectionViewCell
+//MoodVC
+"modify_AccessibilityHint" = "修正するには2回タップしてください";
+//SearchVC
+"search_AccessibilityHint" = "その日に移動するには、2回タップしてください";
+
+//MARK: - MoodViewController
+"cellRegistration_AccessibilityLabel" = "%@に記録された。%@イメージ。 一行の内容、%@。詳細、%@。";
+"cellRegistration_AccessibilityLabel_isEmpty" = "なし";
+"calendarBarButton_AccessibilityLabel" = "カレンダー";
+"calendarBarButton_AccessibilityHint" = "他の日の記録を見るには2回タップしてください。";
+"settingBarButton_AccessibilityLabel" = "設定";
+"settingBarButton.accessibilityHint" = "言語、テーマなどを設定するには、2回タップしてください。";
+"searchBarButton_AccessibilityLabel" = "検索";
+"searchBarButton.accessibilityHint" = "記録した内容を検索するには、2回タップしてください。";
+
+//MARK: - MoodView
+"addMoodButton_AccessibilityLabel" = "記録追加";
+"addMoodButton_AccessibilityHint" = "新しい気分を記録するには、2回タップしてください。";
+
+//MARK: - AddView
+"detailTextView_Placeholder" = "詳しい内容を記録してみてください。";
+
+"pickMoodImageView_AccessibilityLabel" = "気分選択";
+"pickMoodImageView_AccessibilityHint" = "気分を選択するには2回タップしてください。";
+
+"oneLineTextField_Placeholder" = "[選択] 理由は何ですか?";
+
+"extendButton_AccessibilityLabel" = "内容追加";
+"extendButton_AccessibilityHint" = "詳しい記録内容を書くには、2回タップしてください。";
+
+"doneBarButton_AccessibilityLabel" = "保存";
+"doneBarButton_AccessibilityHint" = "内容を保存するには2回タップしてください。";
+
+"removeBarButton_AccessibilityLabel" = "削除";
+"removeBarButton_AccessibilityHint" = "内容を削除するには、2回タップしてください。";
+
+"closeBarButton_AccessibilityLabel" = "閉じる";
+
+//MARK: - PickMoodViewController
+"showDateButton_Title" = "日付を見る";
+"showDateButton_isSelected_Title" = "気分を見る";
+
+//MARK: - PickMoodCollectionViewCell
+"moodImageView_accessibilityHint" = "気分を選択するには2回タップしてください。";
+
+//MARK: - PickMoodView
+"pickMoodView_TitleLabel" = "今の気分はどうですか?";
+
+//MARK: - CalendarViewController
+"mostMood_AccessibilityLabel" = "%@、最も多く記録された気分、%@";
+"headerLabel_AccessibilityHint" = "日付を変更するには、2回タップしてください。";
+
+//MARK: - SelectDateViewController
+"backTodayButton_AccessibilityLabel" = "今日へ移動";
+"backTodayButton_AccessibilityHint" = "ピッカー項目を今日の日付に調整するには、2回タップしてください。";
+"doneButton_Title" = "選択";
+"doneButton_AccessibilityHint" = "二度タップした後、後ろにボタンを押すと、その日付に記録を追加することができます。";
+
+//MARK: - SettingViewController
+"settingVC_Title" = "設定";
+"setting_PrivacyPolicy" = "個人情報ポリシー";
+"setting_Inquiry" = "問い合わせ";
+
+//MARK: - SearchViewController
+"search_placeholder" = "記録した内容を検索してみてください。";
+
+//MARK: - ChartViewController
+"pieChartDataLabel_Etc" = "その他";
+
+//MARK: - ChartView
+"dailyButton_Title" = "日刊";
+"weeklyButton_Title" = "週間";
+"monthlyButton_Title" = "月刊";
+
+"dailyButton_AccessibilityLabel" = "日刊チャート";
+"dailyButton_AccessibilityHint" = "日刊チャートを確認するには、2回タップしてください。";
+
+"weeklyButton_AccessibilityLabel" = "週間チャート";
+"weeklyButton_AccessibilityHint" = "週間チャートを確認するには、2回タップしてください。";
+
+"monthlyButton_AccessibilityLabel" = "月間チャート」";
+"monthlyButton_AccessibilityHint" = "月間チャートを確認するには、2回タップしてください。";
+
+"dateRangeLabel_AccessibilityHint" = "該当する日付範囲に設定されました。";
+
+//MARK: - ChartTableViewCell
+"pickChartView_noDataText" = "作成された記録がありません。";
+
+//MARK: - ChartListTableViewCell
+"setChartCellAccessibility_AccessibilityLabel" = "%@イメージ。%@パーセント。%@ つ。";
+"moodCount" = "%@つ";
+
+//MARK: - MoodEmojis+Enum
+"smiling" = "微笑む";
+"neutral" = "無表情";
+"surprised" = "驚いた";
+"happy" = "幸せな";
+"tired" = "疲れた";
+"angry" = "怒った";
+"lol" = "とても楽しそうな";
+"embarrassed" = "戸惑う";
+"sad" = "悲しい";
+"smirking" = "ずうずうしい";
+"lovely" = "愛しい";
+"passionate" = "情熱的な";
+
+//MARK: - DateFormatType+Enum
+"timeWithoutSecond" = "ahh:mm";
+"yearAndMouth" = "yyyy年M月";
+"dateForTitle" = "M月d日EEEE";
+"dateForChart" = "M月d日(EE)";
+"timeForAccessibility" = "ahh時mm分";
+"detailedDate" = "yy/MM/dd a hh:mm";
+"dateForAccessibility" = "yy年M月dd日ahh時mm分";
+"basicDate" = "yyyy年M月d日";
+
+//MARK: - CustomView_CalendarHeaderView
+"backTodayButton_Title" = "今日";
+
+//MARK: - CustomView_PlaceholderView
+"moodCollectionView_PlaceholderLabel" = "気分を記録してみてください。";
+
+//MARK: - Alert
+//BaseVC
+"alert_OKButtonTitle" = "確認";
+"alert_CancelButtonTitle" = "取り消し";
+//AddVC
+"alert_DoneButtonClicked_Title" = "気分を選んでください。";
+"alert_RemoveButtonClicked_Title" = "日記が削除されます。";
+"alert_RemoveButtonTitle" = "削除」";
+"alert_OneLineTextField_isEmpty_Title" = "15文字以下で入力してください。";
+"alert_MoveSelectedDate" = "その日に移動します。";
+"alert_searchTextIsEmpty" = "検索ワードを入力してください。";
+"alert_searchResultsIsEmpty" = "検索結果がありません。";
+
+//MARK: - NavigationBarButton_Accessbility
+//BaseVC
+"backBarButton" = "後ろへ";
