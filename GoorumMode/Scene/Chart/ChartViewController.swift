@@ -172,7 +172,8 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.reuseIdentifier) as? ChartTableViewCell else { return UITableViewCell() }
-
+            
+            cell.accessibilityElementsHidden = true
             cell.pieChartView.notifyDataSetChanged()
             cell.pieChartView.data = pieData
             cell.selectionStyle = .none
@@ -182,9 +183,10 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartListTableViewCell.reuseIdentifier) as? ChartListTableViewCell else { return UITableViewCell() }
             
-            let item = moodData.sortedMoodName[indexPath.item]
+            let row = moodData.sortedMoodName[indexPath.row]
             
-            cell.configureCell(item: item, moodData: moodData)
+            cell.configureCell(item: row, moodData: moodData)
+            cell.setChartCellAccessibility(row, moodData: moodData, row: indexPath.row)
             
             return cell
         }
@@ -261,7 +263,7 @@ extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalen
 
 extension ChartViewController {
     
-    func setButtons() {
+    private func setButtons() {
         for button in mainView.chartButtons {
             if button.isSelected {
                 chartButtonClicked(button)
@@ -269,7 +271,12 @@ extension ChartViewController {
         }
     }
     
-    func setBind() {
+    private func setAccessibility(_ date: Date) {
+        mainView.headerView.headerLabel.accessibilityLabel = date.toString(of: .basicDate)
+        mainView.headerView.headerLabel.accessibilityHint = "headerLabel_AccessibilityHint".localized
+    }
+    
+    private func setBind() {
         DateManager.shared.selectedDate.bind { [weak self] date in
             print("===ChartVC bind: ", date)
             self?.mainView.calendar.select(date)
@@ -278,6 +285,7 @@ extension ChartViewController {
             if self?.selectedDate != Calendar.current.startOfDay(for: Date()) {
                 self?.mainView.calendar.appearance.todayColor = .clear
             }
+            self?.setAccessibility(date)
         }
     }
     
