@@ -32,7 +32,7 @@ final class SelectDateViewController: BaseViewController {
         let miniDate = calendar.date(byAdding: .year, value: -20, to: Date())
         view.maximumDate = maxDate
         view.minimumDate = miniDate
-        view.date = selectedDate ?? Date()
+        view.date = DateManager.shared.selectedDate.value
         return view
     }()
     
@@ -48,7 +48,7 @@ final class SelectDateViewController: BaseViewController {
         return view
     }()
     
-    var selectedDate: Date?
+    var selectedDate = DateManager.shared.selectedDate.value
     var completionHandler: ((Date) -> Void)?
     
     override func viewDidLoad() {
@@ -90,11 +90,11 @@ final class SelectDateViewController: BaseViewController {
     
     @objc private func backTodayButtonTapped() {
         datePicker.date = Date()
-        selectedDate = Date()
     }
     
     @objc private func doneButtonClicked() {
-        completionHandler?(selectedDate ?? Date())
+        selectedDate = datePicker.date
+        completionHandler?(selectedDate)
         dismiss(animated: true)
     }
     

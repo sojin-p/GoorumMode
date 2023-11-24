@@ -27,7 +27,7 @@ final class MoodViewController: BaseViewController {
         
         setNavigationBar()
         configureDataSource()
-        setBind()
+        setMoodBind()
         
         mainView.addMoodButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
         
@@ -35,10 +35,16 @@ final class MoodViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setBind()
+    }
+    
     @objc private func searchBarButtonClicked() {
         let vc = SearchViewController()
         
         vc.completionHandler = { [weak self] data in
+            DateManager.shared.selectedDate.value = data.date
             self?.viewModel.fetchSelectedDate(data.date)
             DispatchQueue.main.async {
                 self?.scrollToItem(data: data)
@@ -55,11 +61,6 @@ final class MoodViewController: BaseViewController {
     
     @objc private func calendarBarbuttonClicked() {
         let vc = CalendarViewController()
-        vc.selectedDate = viewModel.selectedDate.value
-        vc.completionHandler = { [weak self] date in
-            self?.viewModel.fetchSelectedDate(date)
-        }
-        
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -68,7 +69,6 @@ final class MoodViewController: BaseViewController {
         let vc = AddViewController()
         let nav = UINavigationController(rootViewController: vc)
 
-        vc.selectedDate = viewModel.selectedDate.value
         vc.transtion = .add
         vc.completionHandler = { [weak self] data in
             self?.viewModel.append(data)
@@ -184,19 +184,25 @@ extension MoodViewController {
         }
     }
     
-    private func setBind() {
+    private func setMoodBind() {
         viewModel.moods.bind { [weak self] moods in
             DispatchQueue.main.async {
                 self?.updateSnapshot()
                 self?.setPlaceholder()
             }
         }
+    }
+    
+    private func setBind() {
         
-        viewModel.selectedDate.bind { [weak self] date in
+        DateManager.shared.selectedDate.bind { [weak self] date in
+            print("===MoodVC date bind: ", date)
+            self?.viewModel.fetchSelectedDate(date)
             DispatchQueue.main.async {
                 self?.mainView.dateLabel.text = date.toString(of: .dateForTitle)
                 self?.mainView.dateLabel.sizeToFit()
             }
         }
+        
     }
 }

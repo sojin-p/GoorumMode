@@ -90,6 +90,7 @@ extension SearchViewController: UICollectionViewDelegate {
             title: "alert_MoveSelectedDate".localized, message: nil,
             buttonName: "alert_OKButtonTitle".localized,
             buttonStyle: .default) {
+                DateManager.shared.selectedDate.value = selectedData.date
                 self.completionHandler?(selectedData)
                 self.navigationController?.popViewController(animated: true)
             }

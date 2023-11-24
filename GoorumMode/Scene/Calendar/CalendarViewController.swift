@@ -36,11 +36,7 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     
-    var completionHandler: ((Date) -> Void)?
-    var selectedDate: Date?
-    var updatedDate: Date?
-    
-    private let moodRepository = MoodRepository()
+    var selectedDate = DateManager.shared.selectedDate.value
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +51,8 @@ final class CalendarViewController: BaseViewController {
     @objc private func showMonthButtonClicked() {
         let vc = SelectDateViewController()
         
-        vc.selectedDate = updatedDate
         vc.completionHandler = { [weak self] date in
-            self?.calendar.select(date)
-            self?.selectedDate = date
-            self?.completionHandler?(date)
+            DateManager.shared.selectedDate.value = date
             self?.setAccessibility(date)
         }
         
@@ -67,23 +60,11 @@ final class CalendarViewController: BaseViewController {
     }
     
     @objc private func showDateButtonClicked() {
-        viewModel.showDateButtonClicked(selectedDate: selectedDate ?? Date(), calendar: calendar)
+        viewModel.showDateButtonClicked(selectedDate: selectedDate, calendar: calendar)
     }
     
     @objc private func backTodayButtonClicked() {
-        calendar.select(Date())
-        selectedDate = Date()
-        completionHandler?(Date())
-    }
-    
-    private func updateDate(date: Date) {
-        var dateComponents = Calendar.current.dateComponents([.year, .month], from: date)
-        let selectedDay = Calendar.current.component(.day, from: selectedDate ?? Date())
-        dateComponents.day = selectedDay
-
-        if let updateDate = Calendar.current.date(from: dateComponents) {
-            updatedDate = updateDate
-        }
+        DateManager.shared.selectedDate.value = Date()
     }
     
     override func configure() {
@@ -122,7 +103,8 @@ final class CalendarViewController: BaseViewController {
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        viewModel.currentDate.value = calendar.currentPage
+        headerView.headerLabel.text = calendar.currentPage.toString(of: .yearAndMouth)
+        
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
@@ -142,7 +124,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        completionHandler?(date)
+        DateManager.shared.selectedDate.value = date
         navigationController?.popViewController(animated: true)
     }
     
@@ -165,8 +147,6 @@ extension CalendarViewController: UIGestureRecognizerDelegate {
     }
     
     private func setUI() {
-        
-        viewModel.currentDate.value = selectedDate ?? Date()
         calendar.select(selectedDate)
         
         if selectedDate != Calendar.current.startOfDay(for: Date()) {
@@ -186,11 +166,13 @@ extension CalendarViewController: UIGestureRecognizerDelegate {
     }
         
     private func setbind() {
-        viewModel.currentDate.bind { [weak self] date in
+        
+        DateManager.shared.selectedDate.bind { [weak self] date in
+            print("===datemanager bind: ", date)
             DispatchQueue.main.async {
                 self?.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
+                self?.calendar.select(date)
                 self?.calendar.reloadData()
-                self?.updateDate(date: date)
             }
         }
         
