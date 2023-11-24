@@ -156,12 +156,12 @@ extension MoodViewController {
         calendarBarButton.accessibilityHint = "calendarBarButton_AccessibilityHint".localized
         navigationItem.leftBarButtonItem = calendarBarButton
         
-        let settingImage = Constants.IconImage.setting
-        let settingButton = UIButton(frame: CGRect(x: 0, y: 0, width: settingImage.size.width, height: settingImage.size.height))
-        settingButton.tintColor = Constants.Color.iconTint.basicBlack
-        settingButton.setImage(settingImage, for: .normal)
-        settingButton.addTarget(self, action: #selector(settingBarbuttonClicked), for: .touchUpInside)
-        settingButton.accessibilityLabel = "settingBarButton_AccessibilityLabel".localized
+//        let settingImage = Constants.IconImage.setting
+//        let settingButton = UIButton(frame: CGRect(x: 0, y: 0, width: settingImage.size.width, height: settingImage.size.height))
+//        settingButton.tintColor = Constants.Color.iconTint.basicBlack
+//        settingButton.setImage(settingImage, for: .normal)
+//        settingButton.addTarget(self, action: #selector(settingBarbuttonClicked), for: .touchUpInside)
+//        settingButton.accessibilityLabel = "settingBarButton_AccessibilityLabel".localized
 //        settingButton.AccessibilityHint = "settingBarButton.accessibilityHint".localized
         
         let searchImage = Constants.IconImage.search
@@ -171,9 +171,9 @@ extension MoodViewController {
         searchButton.addTarget(self, action: #selector(searchBarButtonClicked), for: .touchUpInside)
         searchButton.accessibilityLabel = "searchBarButton_AccessibilityLabel".localized
         
-        let settingBarButton = UIBarButtonItem(customView: settingButton)
+//        let settingBarButton = UIBarButtonItem(customView: settingButton)
         let searchBarButton = UIBarButtonItem(customView: searchButton)
-        navigationItem.rightBarButtonItems = [settingBarButton, searchBarButton]
+        navigationItem.rightBarButtonItems = [searchBarButton]
     }
     
     private func setPlaceholder() {
