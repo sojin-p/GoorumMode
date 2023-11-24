@@ -20,6 +20,7 @@
 "settingBarButton_AccessibilityLabel" = "Setting";
 "settingBarButton.accessibilityHint" = "Please tap it twice, if you want to set languages, themes, etc.";
 "searchBarButton_AccessibilityLabel" = "Search";
+"searchBarButton.accessibilityHint" = "Please tap it twice, if you want to search for your records";
 
 //MARK: - MoodView
 "addMoodButton_AccessibilityLabel" = "Add your mood record";
@@ -77,8 +78,22 @@
 "weeklyButton_Title" = "Weekly";
 "monthlyButton_Title" = "Monthly";
 
+"dailyButton_AccessibilityLabel" = "Daily chart";
+"dailyButton_AccessibilityHint" = "Please tap it twice, if you want to check the daily chart.";
+
+"weeklyButton_AccessibilityLabel" = "Weekly chart";
+"weeklyButton_AccessibilityHint" = "Please tap it twice, if you want to check the weekly chart.";
+
+"monthlyButton_AccessibilityLabel" = "Monthly chart";
+"monthlyButton_AccessibilityHint" = "Please tap it twice, if you want to check the monthly chart.";
+
+"dateRangeLabel_AccessibilityHint" = "It has been set to that date range.";
+
 //MARK: - ChartTableViewCell
 "pickChartView_noDataText" = "No records founded.";
+
+//MARK: - ChartListTableViewCell
+"setChartCellAccessibility_AccessibilityLabel" = "%@ image. %@ percent. The number is %@.";
 
 //MARK: - MoodEmojis+Enum
 "smiling" = "Smiling";
@@ -102,6 +117,7 @@
 "timeForAccessibility" = "hh:mm a";
 "detailedDate" = "MM/dd/yy hh:mm a";
 "dateForAccessibility" = "MMM dd, yy. hh:mm a";
+"basicDate" = "MMMM dd, yyyy";
 
 //MARK: - CustomView_CalendarHeaderView
 "backTodayButton_Title" = "Today";

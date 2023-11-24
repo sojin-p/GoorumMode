@@ -20,6 +20,7 @@
 "settingBarButton_AccessibilityLabel" = "설정";
 "settingBarButton.accessibilityHint" = "언어, 테마 등을 설정하려면 두 번 탭 하세요.";
 "searchBarButton_AccessibilityLabel" = "검색";
+"searchBarButton.accessibilityHint" = "기록 내용을 검색하려면 두 번 탭 하세요.";
 
 //MARK: - MoodView
 "addMoodButton_AccessibilityLabel" = "기록 추가";
@@ -34,7 +35,7 @@
 "oneLineTextField_Placeholder" = "[선택] 이유는 무엇인가요?";
 
 "extendButton_AccessibilityLabel" = "내용 추가";
-"extendButton_AccessibilityHint" = "자세한 내용을 작성하려면 두 번 탭 하세요.";
+"extendButton_AccessibilityHint" = "자세한 내용을 작성하려면 두 번 탭 한 후 오른쪽으로 이동하세요.";
 
 "doneBarButton_AccessibilityLabel" = "저장";
 "doneBarButton_AccessibilityHint" = "내용을 저장하려면 두 번 탭 하세요.";
@@ -55,7 +56,7 @@
 "pickMoodView_TitleLabel" = "지금 기분이 어떤가요?";
 
 //MARK: - CalendarViewController
-"mostMood_AccessibilityLabel" = "%@, 제일 많이 기록된 기분,  %@";
+"mostMood_AccessibilityLabel" = "%@, 가장 많이 기록된 기분,  %@";
 "headerLabel_AccessibilityHint" = "날짜를 변경하려면 두번 탭 하세요.";
 
 //MARK: - SelectDateViewController
@@ -77,8 +78,22 @@
 "weeklyButton_Title" = "주간";
 "monthlyButton_Title" = "월간";
 
+"dailyButton_AccessibilityLabel" = "일간 차트";
+"dailyButton_AccessibilityHint" = "일간 차트를 확인하려면 두 번 탭 하세요.";
+
+"weeklyButton_AccessibilityLabel" = "주간 차트";
+"weeklyButton_AccessibilityHint" = "주간 차트를 확인하려면 두 번 탭 하세요.";
+
+"monthlyButton_AccessibilityLabel" = "월간 차트";
+"monthlyButton_AccessibilityHint" = "월간 차트를 확인하려면 두 번 탭 하세요.";
+
+"dateRangeLabel_AccessibilityHint" = "해당 날짜 범위로 설정되었습니다.";
+
 //MARK: - ChartTableViewCell
 "pickChartView_noDataText" = "작성된 기록이 없습니다.";
+
+//MARK: - ChartListTableViewCell
+"setChartCellAccessibility_AccessibilityLabel" = "%@ 이미지. %@ 퍼센트. %@ 개.";
 
 //MARK: - MoodEmojis+Enum
 "smiling" = "미소 짓는";
@@ -102,6 +117,7 @@
 "timeForAccessibility" = "a hh시 mm분";
 "detailedDate" = "yy/MM/dd a hh:mm";
 "dateForAccessibility" = "yy년 M월 dd일 a hh시 mm분";
+"basicDate" = "yyyy년 M월 d일";
 
 //MARK: - CustomView_CalendarHeaderView
 "backTodayButton_Title" = "오늘";
