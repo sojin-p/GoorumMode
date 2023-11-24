@@ -16,7 +16,6 @@ final class MoodViewModel {
     
     func fetchSelectedDate(_ date: Date) {
         moods.value = moodRepository.fetch(dateRange: .daliy, selectedDate: date)
-        selectedDate.value = date
     }
     
     func append(_ data: Mood) {
