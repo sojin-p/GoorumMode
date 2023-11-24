@@ -22,6 +22,7 @@ final class ChartListTableViewCell: BaseTableViewCell {
         view.clipsToBounds = true
         view.layer.sublayers?[1].cornerRadius = 5
         view.subviews[1].clipsToBounds = true
+        view.accessibilityElementsHidden = true
         return view
     }()
     
@@ -46,6 +47,16 @@ final class ChartListTableViewCell: BaseTableViewCell {
         progressView.progressTintColor = UIColor(named: item + "_Background")
         
         selectionStyle = .none
+    }
+    
+    func setChartCellAccessibility(_ name: String, moodData: MoodData, row: Int) {
+        let emptyString = "pickChartView_noDataText".localized
+        let moodAccessibilityLabel = MoodEmojis(rawValue: name)?.accessLabel ?? emptyString
+        let count = String(moodData.moodCount[name] ?? 0)
+        let percent = String(Int(moodData.sortedPercent[row]))
+        
+        let value = NSLocalizedString("setChartCellAccessibility_AccessibilityLabel", comment: "")
+        accessibilityLabel = String(format: value, moodAccessibilityLabel, percent, count)
     }
     
     override func prepareForReuse() {
