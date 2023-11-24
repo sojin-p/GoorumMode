@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		234A72262B0F7E9A00B8E60B /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A72252B0F7E9A00B8E60B /* DateManager.swift */; };
 		237B04592AE21315006C40CA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04582AE21315006C40CA /* SettingView.swift */; };
 		237B04642AE261B9006C40CA /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04632AE261B9006C40CA /* SelectDateViewController.swift */; };
 		237B04682AE2CC57006C40CA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 237B04672AE2CC57006C40CA /* .gitignore */; };
@@ -77,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Utility/Constants/DateManager.swift; sourceTree = SOURCE_ROOT; };
 		237B04582AE21315006C40CA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		237B04632AE261B9006C40CA /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		237B04672AE2CC57006C40CA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */,
 				23DD9A112AC168B200D6BBB5 /* Color.swift */,
 				23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */,
+				234A72252B0F7E9A00B8E60B /* DateManager.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				23DD9A3B2AC52CB200D6BBB5 /* BaseViewController.swift in Sources */,
 				23CACBFD2AFF9FF2008AC1DD /* ChartListCollectionViewCell.swift in Sources */,
 				23DD9A962ACECB1900D6BBB5 /* Observable.swift in Sources */,
+				234A72262B0F7E9A00B8E60B /* DateManager.swift in Sources */,
 				23CACBFF2AFFA02C008AC1DD /* ChartListTableViewCell.swift in Sources */,
 				2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */,
 				237B04592AE21315006C40CA /* SettingView.swift in Sources */,
