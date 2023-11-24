@@ -47,6 +47,13 @@ final class CalendarViewController: BaseViewController {
         setNavigationBackBarButton()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        dateBind()
+        
+    }
 
     @objc private func showMonthButtonClicked() {
         let vc = SelectDateViewController()
@@ -167,20 +174,22 @@ extension CalendarViewController: UIGestureRecognizerDelegate {
         
     private func setbind() {
         
+        viewModel.isShowed.bind { [weak self] bool in
+            if bool {
+                self?.showDateButton.setTitle("showDateButton_isSelected_Title".localized, for: .normal)
+            } else {
+                self?.showDateButton.setTitle("showDateButton_Title".localized, for: .normal)
+            }
+        }
+    }
+    
+    private func dateBind() {
         DateManager.shared.selectedDate.bind { [weak self] date in
             print("===datemanager bind: ", date)
             DispatchQueue.main.async {
                 self?.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
                 self?.calendar.select(date)
                 self?.calendar.reloadData()
-            }
-        }
-        
-        viewModel.isShowed.bind { [weak self] bool in
-            if bool {
-                self?.showDateButton.setTitle("showDateButton_isSelected_Title".localized, for: .normal)
-            } else {
-                self?.showDateButton.setTitle("showDateButton_Title".localized, for: .normal)
             }
         }
     }
