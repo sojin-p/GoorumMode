@@ -16,6 +16,7 @@ final class ChartView: BaseView {
         view.headerHeight = 50
         view.weekdayHeight = 40
         view.appearance.headerTitleFont = Constants.Font.extraBold(size: 18)
+        view.accessibilityElementsHidden = true
         return view
     }()
     
@@ -33,6 +34,8 @@ final class ChartView: BaseView {
     
     private let dailyButton = {
         let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "dailyButton_Title".localized)
+        view.accessibilityLabel = "dailyButton_AccessibilityLabel".localized
+        view.accessibilityHint = "dailyButton_AccessibilityHint".localized
         view.tag = DateRange.daliy.rawValue
         view.isSelected = true
         view.backgroundColor = Constants.Color.Background.basic
@@ -41,12 +44,16 @@ final class ChartView: BaseView {
     
     private let weeklyButton = {
         let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "weeklyButton_Title".localized)
+        view.accessibilityLabel = "weeklyButton_AccessibilityLabel".localized
+        view.accessibilityHint = "weeklyButton_AccessibilityHint".localized
         view.tag = DateRange.weekly.rawValue
         return view
     }()
     
     private let monthlyButton = {
         let view = CapsulePaddingButton(frame: CGRect(x: 0, y: 0, width: 0, height: 32), title: "monthlyButton_Title".localized)
+        view.accessibilityLabel = "monthlyButton_AccessibilityLabel".localized
+        view.accessibilityHint = "monthlyButton_AccessibilityHint".localized
         view.tag = DateRange.monthly.rawValue
         return view
     }()
@@ -58,6 +65,7 @@ final class ChartView: BaseView {
         view.textColor = Constants.Color.Text.basicSubTitle
         view.textAlignment = .center
         view.numberOfLines = 3
+        view.accessibilityHint = "dateRangeLabel_AccessibilityHint".localized
         return view
     }()
     
@@ -106,6 +114,7 @@ final class ChartView: BaseView {
     
     //MARK: - hierarchies & Constraints
     override func configure() {
+        
         headerView.backgroundColor = Constants.Color.Background.basic
         
         chartButtons.forEach { $0.addTarget(self, action: #selector(setChartButtons), for: .touchUpInside) }
