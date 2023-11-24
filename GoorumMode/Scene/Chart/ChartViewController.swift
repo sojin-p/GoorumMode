@@ -127,7 +127,7 @@ final class ChartViewController: BaseViewController {
             let etcResult = (Double(etc) / Double(allCount)) * 100
 //            let etcResult = (Double(etcCount) / Double(allCount)) * 100
             
-            moodEntries.append(PieChartDataEntry(value: etcResult, label: "기타")) //"기타\(String(format: "%.1f", etcResult))%"
+            moodEntries.append(PieChartDataEntry(value: etcResult, label: "pieChartDataLabel_Etc".localized)) //"기타\(String(format: "%.1f", etcResult))%"
             
             getFiveName.forEach { colorSet.append(UIColor(named: $0 + "_Background") ?? .lightGray) }
             colorSet.append(Constants.Color.Background.chartETC)
