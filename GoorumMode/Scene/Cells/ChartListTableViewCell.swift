@@ -38,7 +38,7 @@ final class ChartListTableViewCell: BaseTableViewCell {
         iconImageView.image = UIImage(named: item)
 //            cell.label.text = "\(Int(moodData.sortedPercent[indexPath.item]))% / \(moodData.moodCount[item] ?? 0)개"
         let count = moodData.moodCount[item] ?? 0
-        label.text = "\(count)개"
+        label.text = "moodCount".localized(with: String(count))
         
         let maxCount = moodData.moodCount.values.max() ?? 0
         let progress = Float(Double(count) / Double(maxCount))
