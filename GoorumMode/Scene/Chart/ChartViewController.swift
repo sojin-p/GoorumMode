@@ -19,7 +19,7 @@ final class ChartViewController: BaseViewController {
     
     let mainView = ChartView()
     var pieData: PieChartData?
-    var selectedDate: Date = Calendar.current.startOfDay(for: Date())
+    var selectedDate = DateManager.shared.selectedDate.value
     var data: [Mood]?
     let moodRepository = MoodRepository()
     var chartDataCount = 0
@@ -37,6 +37,7 @@ final class ChartViewController: BaseViewController {
         mainView.calendar.dataSource = self
         mainView.chartTableView.delegate = self
         mainView.chartTableView.dataSource = self
+        
         mainView.chartButtons.forEach { $0.addTarget(self, action: #selector(chartButtonClicked), for: .touchUpInside) }
         mainView.headerView.backTodayButton.addTarget(self, action: #selector(backTodayButtonClicked), for: .touchUpInside)
         mainView.headerView.headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonthButtonClicked)))
@@ -45,26 +46,23 @@ final class ChartViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        for button in mainView.chartButtons {
-            if button.isSelected {
-                chartButtonClicked(button)
-            }
-        }
+        
+        setBind()
+        
     }
     
     @objc private func showMonthButtonClicked() {
         let vc = SelectDateViewController()
+        
+        vc.completionHandler = { date in
+            DateManager.shared.selectedDate.value = date
+        }
+        
         present(vc, animated: true)
     }
     
     @objc private func backTodayButtonClicked() {
-        mainView.calendar.select(Date())
-        selectedDate = Date()
-        for button in mainView.chartButtons {
-            if button.isSelected {
-                chartButtonClicked(button)
-            }
-        }
+        DateManager.shared.selectedDate.value = Date()
     }
     
     @objc func chartButtonClicked(_ sender: UIButton) {
@@ -117,7 +115,7 @@ final class ChartViewController: BaseViewController {
         if count.count > 6 {
             let getFiveCount = Array(count.prefix(5))
             let getFiveName = Array(name.prefix(5))
-            let etcCount = allCount - (getFiveCount.reduce(0) { $0 + $1 })
+//            let etcCount = allCount - (getFiveCount.reduce(0) { $0 + $1 })
             
             getFiveCount.forEach {
                 let value = (Double($0) / Double(allCount)) * 100
@@ -132,7 +130,7 @@ final class ChartViewController: BaseViewController {
             moodEntries.append(PieChartDataEntry(value: etcResult, label: "기타")) //"기타\(String(format: "%.1f", etcResult))%"
             
             getFiveName.forEach { colorSet.append(UIColor(named: $0 + "_Background") ?? .lightGray) }
-            colorSet.append(Constants.Color.Background.basic)
+            colorSet.append(Constants.Color.Background.chartETC)
             
         } else {
             
@@ -215,7 +213,7 @@ extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalen
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        selectedDate = date
+        DateManager.shared.selectedDate.value = date
         if date != Calendar.current.startOfDay(for: Date()) {
             calendar.appearance.todayColor = .clear
         }
@@ -259,4 +257,28 @@ extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalen
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
         [Constants.Color.iconTint.unselected]
     }
+}
+
+extension ChartViewController {
+    
+    func setButtons() {
+        for button in mainView.chartButtons {
+            if button.isSelected {
+                chartButtonClicked(button)
+            }
+        }
+    }
+    
+    func setBind() {
+        DateManager.shared.selectedDate.bind { [weak self] date in
+            print("===ChartVC bind: ", date)
+            self?.mainView.calendar.select(date)
+            self?.selectedDate = date
+            self?.setButtons()
+            if self?.selectedDate != Calendar.current.startOfDay(for: Date()) {
+                self?.mainView.calendar.appearance.todayColor = .clear
+            }
+        }
+    }
+    
 }
