@@ -79,6 +79,9 @@
 
 /* Begin PBXFileReference section */
 		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Utility/Constants/DateManager.swift; sourceTree = SOURCE_ROOT; };
+		234A722B2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		234A722C2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		234A722D2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		237B04582AE21315006C40CA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		237B04632AE261B9006C40CA /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		237B04672AE2CC57006C40CA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -454,6 +457,7 @@
 				en,
 				Base,
 				ko,
+				ja,
 			);
 			mainGroup = 2380FB132AB9E6B100B31754;
 			packageReferences = (
@@ -584,6 +588,7 @@
 			children = (
 				237B047E2AE3C4EA006C40CA /* en */,
 				237B04802AE3C4EC006C40CA /* ko */,
+				234A722C2B10CFBD00B8E60B /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 			children = (
 				2380FB2B2AB9E6B400B31754 /* Base */,
 				23DD9A152AC2DFB600D6BBB5 /* ko */,
+				234A722B2B10CFBD00B8E60B /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -602,6 +608,7 @@
 			children = (
 				23DD9A192AC2E01300D6BBB5 /* en */,
 				23DD9A1B2AC2E01600D6BBB5 /* ko */,
+				234A722D2B10CFBD00B8E60B /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
