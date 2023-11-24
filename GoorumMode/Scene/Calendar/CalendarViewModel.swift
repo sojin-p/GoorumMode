@@ -9,7 +9,6 @@ import Foundation
 
 final class CalendarViewModel {
     
-    var currentDate: Observable<Date> = Observable(Date())
     let moodRepository = MoodRepository()
     
     var isShowed = Observable(false)
