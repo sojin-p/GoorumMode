@@ -10,7 +10,8 @@ import UIKit
 final class AddViewController: BaseViewController {
     
     private let mainView = AddView()
-    var selectedDate: Date?
+    
+    var selectedDate = DateManager.shared.selectedDate.value
     var completionHandler: ((Mood) -> Void)?
     var removeData: (() -> Void)?
     var moodImageName: String?
@@ -114,13 +115,13 @@ final class AddViewController: BaseViewController {
         }
         
         if transtion == .add {
-            let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: selectedDate ?? unselectedTime, onelineText: onelineText, detailText: detailText, images: [])
+            let data = Mood(mood: moodImageName ?? MoodEmojis.placeholder, date: selectedDate , onelineText: onelineText, detailText: detailText, images: [])
             moodRepository.createItem(data)
             completionHandler?(data)
             
         } else if transtion == .modify {
             guard let moods else { return }
-            let data = Mood(mood: moodImageName ?? moods.mood, date: selectedDate ?? moods.date, onelineText: onelineText, detailText: detailText, images: [])
+            let data = Mood(mood: moodImageName ?? moods.mood, date: selectedDate , onelineText: onelineText, detailText: detailText, images: [])
             
             data._id = moods._id
             self.moods = data
@@ -156,13 +157,13 @@ final class AddViewController: BaseViewController {
         let minute = calendar.component(.minute, from: date)
         let second = calendar.component(.second, from: date)
         
-        if let setTime = calendar.date(bySettingHour: hour, minute: minute, second: second, of: selectedDate ?? Date()) {
+        if let setTime = calendar.date(bySettingHour: hour, minute: minute, second: second, of: selectedDate) {
             selectedDate = setTime
         }
     }
     
     private func setMaximumTime() {
-        let selectedDate = Calendar.current.startOfDay(for: selectedDate ?? Date() )
+        let selectedDate = Calendar.current.startOfDay(for: selectedDate)
         let currentDate = Calendar.current.startOfDay(for: Date())
         if selectedDate != currentDate {
             mainView.timePicker.maximumDate = nil
