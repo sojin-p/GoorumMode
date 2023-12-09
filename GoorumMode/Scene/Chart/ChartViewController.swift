@@ -280,6 +280,7 @@ extension ChartViewController {
         DateManager.shared.selectedDate.bind { [weak self] date in
             print("===ChartVC bind: ", date)
             self?.mainView.calendar.select(date)
+            self?.mainView.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
             self?.selectedDate = date
             self?.setButtons()
             if self?.selectedDate != Calendar.current.startOfDay(for: Date()) {
