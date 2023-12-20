@@ -1,7 +1,7 @@
 <img src="https://github.com/sojin-p/GoorumMode/assets/140357450/b5489f90-5f6f-4f96-a5dc-24fdfa8404ff" width="150" height="150"/>
 
 # 구름모드 - 감정 기록 일기
-![iPhone Screenshot](https://github.com/sojin-p/GoorumMode/assets/140357450/94d6f43f-6e82-47c0-b0f8-87751f1026f4)
+![iPhone Screenshot](https://github.com/sojin-p/GoorumMode/assets/140357450/9162113f-4341-418d-b66c-1b084b594669)
 :link: [구름모드 앱스토어](https://apps.apple.com/app/id6470123259)  
 
 <Br>
@@ -29,7 +29,7 @@
 | 아키텍쳐     | `MVC` `MVVM`                                                     |
 | 프레임워크   | `Foundation` `UIKit` `SafariServices`                             |
 | 데이터베이스 | `Realm`                                                           |
-| 라이브러리   | `RxSwift` `SnapKit` `FSCalendar` `DGCharts` `FirebaseCrashlytics` `FirebaseMessaging` |
+| 라이브러리   | `SnapKit` `FSCalendar` `DGCharts` `FirebaseCrashlytics` `FirebaseMessaging` |
 | 의존성관리   | `Swift Package Manager`                                           |
 | ETC.         | `CodeBasedUI` `DiffableDataSource`                             |  
 
