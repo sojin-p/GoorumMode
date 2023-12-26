@@ -11,7 +11,7 @@ final class PlaceholderView: BaseView {
     
     lazy var imageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "LaunchScreen")
+        view.image = UIImage(resource: .launchScreen)
         return view
     }()
     
