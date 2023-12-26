@@ -73,7 +73,6 @@
 		23DD9AA02AD18CB000D6BBB5 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A9F2AD18CB000D6BBB5 /* FSCalendar */; };
 		23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */; };
 		23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */; };
-		23DD9AAF2AD59EA500D6BBB5 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */; };
 		23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */; };
 		23E7665B2AD819B3008AC3A4 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */; };
 		23E7665D2AD819ED008AC3A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665C2AD819ED008AC3A4 /* TabBarController.swift */; };
@@ -146,7 +145,6 @@
 		23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 		23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarCustomCell.swift; sourceTree = "<group>"; };
 		23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFSCalendar.swift; sourceTree = "<group>"; };
-		23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		23E7665C2AD819ED008AC3A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 				23DD9AA92AD3FF8300D6BBB5 /* CustomView */,
 				23DD9A1C2AC2EB1F00D6BBB5 /* Scene */,
 				2380FB282AB9E6B400B31754 /* Assets.xcassets */,
-				23DD9AAE2AD59EA400D6BBB5 /* LaunchScreen.png */,
 				2380FB2A2AB9E6B400B31754 /* LaunchScreen.storyboard */,
 				2380FB2D2AB9E6B400B31754 /* Info.plist */,
 				237B04692AE2CE54006C40CA /* GoogleService-Info.plist */,
@@ -499,7 +496,6 @@
 				23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */,
 				237B046A2AE2CE54006C40CA /* GoogleService-Info.plist in Resources */,
 				2380FB292AB9E6B400B31754 /* Assets.xcassets in Resources */,
-				23DD9AAF2AD59EA500D6BBB5 /* LaunchScreen.png in Resources */,
 				23DD9A492AC6AC1500D6BBB5 /* NanumSquareNeoOTF-Bd.otf in Resources */,
 				23DD9A472AC6A87800D6BBB5 /* NanumSquareNeoOTF-Rg.otf in Resources */,
 				237B047D2AE3C4EA006C40CA /* InfoPlist.strings in Resources */,
@@ -764,7 +760,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dory.GoorumMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -796,7 +792,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dory.GoorumMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
