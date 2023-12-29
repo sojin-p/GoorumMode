@@ -80,6 +80,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2318AE162B3ED6EB002508B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		2318AE172B3ED6EB002508B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		2318AE182B3ED6EB002508B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Utility/Constants/DateManager.swift; sourceTree = SOURCE_ROOT; };
 		234A722B2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		234A722C2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -466,6 +469,7 @@
 				Base,
 				ko,
 				ja,
+				"zh-Hans",
 			);
 			mainGroup = 2380FB132AB9E6B100B31754;
 			packageReferences = (
@@ -596,6 +600,7 @@
 				237B047E2AE3C4EA006C40CA /* en */,
 				237B04802AE3C4EC006C40CA /* ko */,
 				234A722C2B10CFBD00B8E60B /* ja */,
+				2318AE172B3ED6EB002508B3 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 				2380FB2B2AB9E6B400B31754 /* Base */,
 				23DD9A152AC2DFB600D6BBB5 /* ko */,
 				234A722B2B10CFBD00B8E60B /* ja */,
+				2318AE162B3ED6EB002508B3 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -616,6 +622,7 @@
 				23DD9A192AC2E01300D6BBB5 /* en */,
 				23DD9A1B2AC2E01600D6BBB5 /* ko */,
 				234A722D2B10CFBD00B8E60B /* ja */,
+				2318AE182B3ED6EB002508B3 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
