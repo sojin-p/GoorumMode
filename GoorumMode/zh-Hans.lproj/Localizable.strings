@@ -65,8 +65,8 @@
 "headerLabel_AccessibilityHint" = "要修改日期，请双击屏幕。";
 
 //MARK: - SelectDateViewController
-"backTodayButton_AccessibilityLabel" = "C移动到今天";
-"backTodayButton_AccessibilityHint" = "P要调整到今天的日期，请双击屏幕。";
+"backTodayButton_AccessibilityLabel" = "移动到今天";
+"backTodayButton_AccessibilityHint" = "要调整到今天的日期，请双击屏幕。";
 "doneButton_Title" = "选择";
 "doneButton_AccessibilityHint" = "双击屏幕后，点击后退按钮，即可在该日期添加记录。";
 
