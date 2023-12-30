@@ -125,7 +125,7 @@
 "dateForChart" = "M월 d일 (EE)";
 "timeForAccessibility" = "a hh시 mm분";
 "detailedDate" = "yy/MM/dd a hh:mm";
-"dateForAccessibility" = "yy년 M월 dd일 a hh시 mm분";
+"dateForAccessibility" = "yy년 M월 d일 a hh시 mm분";
 "basicDate" = "yyyy년 M월 d일";
 
 //MARK: - CustomView_CalendarHeaderView
