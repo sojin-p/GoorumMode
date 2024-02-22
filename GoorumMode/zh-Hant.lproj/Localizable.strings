@@ -1,0 +1,152 @@
+/* 
+  Localizable.strings
+  GoorumMode
+
+  Created by 박소진 on 2023/09/26.
+  
+*/
+
+//MARK: - TabBarController
+"record" = "記錄";
+"chart" = "榜單";
+"setting" = "設置";
+
+//MARK: - MoodCollectionViewCell
+//MoodVC
+"modify_AccessibilityHint" = "要修改的話，請點擊兩次屏幕。";
+//SearchVC
+"search_AccessibilityHint" = "要移動到相應日期，請雙擊屏幕。";
+
+//MARK: - MoodViewController
+"cellRegistration_AccessibilityLabel" = "記錄於%@。%@的表情包。一條情緒,%@。記錄的內容,%@。";
+"cellRegistration_AccessibilityLabel_isEmpty" = "無";
+"calendarBarButton_AccessibilityLabel" = "日曆";
+"calendarBarButton_AccessibilityHint" = "如果您想查看前幾天的記錄，請點擊兩次。";
+"settingBarButton_AccessibilityLabel" = "設置";
+"settingBarButton.accessibilityHint" = "如果您想設置語言、主題等,請點按兩次。";
+"searchBarButton_AccessibilityLabel" = "搜索";
+"searchBarButton.accessibilityHint" = "如果您想搜索您的記錄，請點擊兩次。";
+
+//MARK: - MoodView
+"addMoodButton_AccessibilityLabel" = "添加記錄";
+"addMoodButton_AccessibilityHint" = "要記錄新的心情，請打兩次。";
+
+//MARK: - AddView
+"detailTextView_Placeholder" = "請記錄詳細內容。";
+
+"pickMoodImageView_AccessibilityLabel" = "心情";
+"pickMoodImageView_AccessibilityHint" = "要選擇表情符號，請雙擊屏幕。";
+
+"oneLineTextField_Placeholder" = "請簡單寫下你的心情。";
+
+"extendButton_AccessibilityLabel" = "添加內容";
+"extendButton_AccessibilityHint" = "要填寫詳細內容後向右移動。";
+
+"doneBarButton_AccessibilityLabel" = "保存";
+"doneBarButton_AccessibilityHint" = "要保存內容，請雙擊屏幕。";
+
+"removeBarButton_AccessibilityLabel" = "去除";
+"removeBarButton_AccessibilityHint" = "要刪除內容，請雙擊屏幕";
+
+"closeBarButton_AccessibilityLabel" = "關閉";
+
+//MARK: - PickMoodViewController
+"showDateButton_Title" = "查看日期";
+"showDateButton_isSelected_Title" = "查看錶情";
+
+//MARK: - PickMoodCollectionViewCell
+"moodImageView_accessibilityHint" = "要選擇心情，請雙擊屏幕。";
+
+//MARK: - PickMoodView
+"pickMoodView_TitleLabel" = "你現在的心情怎麼樣？";
+
+//MARK: - CalendarViewController @@@@@@@
+"mostMood_AccessibilityLabel" = "%@, 記錄最多的心情是, %@";
+"headerLabel_AccessibilityHint" = "要修改日期，請雙擊屏幕。";
+
+//MARK: - SelectDateViewController
+"backTodayButton_AccessibilityLabel" = "移動到今天";
+"backTodayButton_AccessibilityHint" = "要調整到今天的日期，請雙擊屏幕。";
+"doneButton_Title" = "選擇";
+"doneButton_AccessibilityHint" = "雙擊屏幕後，點擊後退按鈕，即可在該日期添加記錄。";
+
+//MARK: - SettingViewController
+"settingVC_Title" = "設置";
+"setting_PrivacyPolicy" = "個人信息政策";
+"setting_Inquiry" = "查詢";
+
+//MARK: - SearchViewController
+"search_placeholder" = "請搜索一下記錄的內容。";
+
+//MARK: - ChartViewController
+"pieChartDataLabel_Etc" = "其他";
+
+//MARK: - ChartView
+"dailyButton_Title" = "日";
+"weeklyButton_Title" = "周";
+"monthlyButton_Title" = "月";
+
+"dailyButton_AccessibilityLabel" = "日排行榜";
+"dailyButton_AccessibilityHint" = "要查日排行榜請雙擊屏幕";
+
+"weeklyButton_AccessibilityLabel" = "周排行榜";
+"weeklyButton_AccessibilityHint" = "要查周排行榜請雙擊屏幕";
+
+"monthlyButton_AccessibilityLabel" = "月排行榜";
+"monthlyButton_AccessibilityHint" = "要查月排行榜請雙擊屏幕";
+
+"dateRangeLabel_AccessibilityHint" = "已設置爲相應期間。";
+
+//MARK: - ChartTableViewCell
+"pickChartView_noDataText" = "還沒有記錄的內容。";
+
+//MARK: - ChartListTableViewCell
+"setChartCellAccessibility_AccessibilityLabel" = "%@ 的表情包。百分之%@。%@個。";
+"moodCount" = "%@個";
+
+//MARK: - MoodEmojis+Enum
+"smiling" = "微笑";
+"neutral" = "無表情";
+"surprised" = "驚嚇";
+"happy" = "幸福";
+"tired" = "疲倦";
+"angry" = "憤怒";
+"lol" = "高興";
+"embarrassed" = "驚慌";
+"sad" = "傷心";
+"smirking" = "滿意";
+"lovely" = "可愛";
+"passionate" = "熱情";
+
+//MARK: - DateFormatType+Enum
+"timeWithoutSecond" = "a hh:mm";
+"yearAndMouth" = "yyyy年，MM月";
+"dateForTitle" = "M月 d號 EEEE";
+"dateForChart" = "M月 d號（EEEE）";
+"timeForAccessibility" = "a hh點 mm分";
+"detailedDate" = "yy/MM/dd a hh:mm";
+"dateForAccessibility" = "yy年 M月 d號 a hh點 mm分";
+"basicDate" = "yyyy年 M月 d號";
+
+//MARK: - CustomView_CalendarHeaderView
+"backTodayButton_Title" = "今天";
+
+//MARK: - CustomView_PlaceholderView
+"moodCollectionView_PlaceholderLabel" = "請記錄你的心情。";
+
+//MARK: - Alert
+//BaseVC
+"alert_OKButtonTitle" = "確認";
+"alert_CancelButtonTitle" = "取消";
+//AddVC
+"alert_DoneButtonClicked_Title" = "請選擇你的心情。";
+"alert_RemoveButtonClicked_Title" = "此記錄將被刪除。";
+"alert_RemoveButtonTitle" = "刪除";
+"alert_OneLineTextField_isEmpty_Title" = "請輸入不超過15個字符。";
+"alert_MoveSelectedDate" = "移動到相應日期。";
+"alert_searchTextIsEmpty" = "請輸入搜索詞。";
+"alert_searchResultsIsEmpty" = "沒有搜索結果。";
+
+//MARK: - NavigationBarButton_Accessbility
+//BaseVC
+"backBarButton" = "返回";

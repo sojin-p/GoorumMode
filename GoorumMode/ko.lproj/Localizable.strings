@@ -1,0 +1,152 @@
+/* 
+  Localizable.strings
+  GoorumMode
+
+  Created by 박소진 on 2023/09/26.
+  
+*/
+
+//MARK: - TabBarController
+"record" = "기록";
+"chart" = "차트";
+"setting" = "설정";
+
+//MARK: - MoodCollectionViewCell
+//MoodVC
+"modify_AccessibilityHint" = "수정하려면 두 번 탭 하세요";
+//SearchVC
+"search_AccessibilityHint" = "해당 날짜로 이동하려면 두 번 탭 하세요.";
+
+//MARK: - MoodViewController
+"cellRegistration_AccessibilityLabel" = "%@ 기록됨. %@ 이미지. 한 줄 내용, %@. 자세한 내용, %@.";
+"cellRegistration_AccessibilityLabel_isEmpty" = "없음";
+"calendarBarButton_AccessibilityLabel" = "달력";
+"calendarBarButton_AccessibilityHint" = "다른 날의 기록을 보려면 두 번 탭 하세요.";
+"settingBarButton_AccessibilityLabel" = "설정";
+"settingBarButton.accessibilityHint" = "언어, 테마 등을 설정하려면 두 번 탭 하세요.";
+"searchBarButton_AccessibilityLabel" = "검색";
+"searchBarButton.accessibilityHint" = "기록 내용을 검색하려면 두 번 탭 하세요.";
+
+//MARK: - MoodView
+"addMoodButton_AccessibilityLabel" = "기록 추가";
+"addMoodButton_AccessibilityHint" = "새로운 기분을 기록하려면 두 번 탭 하세요.";
+
+//MARK: - AddView
+"detailTextView_Placeholder" = "자세한 내용을 기록해 보세요.";
+
+"pickMoodImageView_AccessibilityLabel" = "기분 선택";
+"pickMoodImageView_AccessibilityHint" = "기분을 선택하려면 두 번 탭 하세요.";
+
+"oneLineTextField_Placeholder" = "[선택] 이유는 무엇인가요?";
+
+"extendButton_AccessibilityLabel" = "내용 추가";
+"extendButton_AccessibilityHint" = "자세한 내용을 작성하려면 두 번 탭 한 후 오른쪽으로 이동하세요.";
+
+"doneBarButton_AccessibilityLabel" = "저장";
+"doneBarButton_AccessibilityHint" = "내용을 저장하려면 두 번 탭 하세요.";
+
+"removeBarButton_AccessibilityLabel" = "삭제";
+"removeBarButton_AccessibilityHint" = "내용을 삭제하려면 두 번 탭 하세요.";
+
+"closeBarButton_AccessibilityLabel" = "닫기";
+
+//MARK: - PickMoodViewController
+"showDateButton_Title" = "날짜 보기";
+"showDateButton_isSelected_Title" = "기분 보기";
+
+//MARK: - PickMoodCollectionViewCell
+"moodImageView_accessibilityHint" = "기분을 선택하려면 두 번 탭 하세요.";
+
+//MARK: - PickMoodView
+"pickMoodView_TitleLabel" = "지금 기분이 어떤가요?";
+
+//MARK: - CalendarViewController
+"mostMood_AccessibilityLabel" = "%@, 가장 많이 기록된 기분,  %@";
+"headerLabel_AccessibilityHint" = "날짜를 변경하려면 두번 탭 하세요.";
+
+//MARK: - SelectDateViewController
+"backTodayButton_AccessibilityLabel" = "오늘로 이동";
+"backTodayButton_AccessibilityHint" = "피커 항목을 오늘 날짜로 조절하려면 두 번 탭 하세요.";
+"doneButton_Title" = "선택";
+"doneButton_AccessibilityHint" = "두 번 탭 후, 뒤로 버튼을 누르면 해당 날짜에 기록을 추가할 수 있습니다.";
+
+//MARK: - SettingViewController
+"settingVC_Title" = "설정";
+"setting_PrivacyPolicy" = "개인정보 정책";
+"setting_Inquiry" = "문의하기";
+
+//MARK: - SearchViewController
+"search_placeholder" = "기록한 내용을 검색해 보세요.";
+
+//MARK: - ChartViewController
+"pieChartDataLabel_Etc" = "기타";
+
+//MARK: - ChartView
+"dailyButton_Title" = "일간";
+"weeklyButton_Title" = "주간";
+"monthlyButton_Title" = "월간";
+
+"dailyButton_AccessibilityLabel" = "일간 차트";
+"dailyButton_AccessibilityHint" = "일간 차트를 확인하려면 두 번 탭 하세요.";
+
+"weeklyButton_AccessibilityLabel" = "주간 차트";
+"weeklyButton_AccessibilityHint" = "주간 차트를 확인하려면 두 번 탭 하세요.";
+
+"monthlyButton_AccessibilityLabel" = "월간 차트";
+"monthlyButton_AccessibilityHint" = "월간 차트를 확인하려면 두 번 탭 하세요.";
+
+"dateRangeLabel_AccessibilityHint" = "해당 날짜 범위로 설정되었습니다.";
+
+//MARK: - ChartTableViewCell
+"pickChartView_noDataText" = "작성된 기록이 없습니다.";
+
+//MARK: - ChartListTableViewCell
+"setChartCellAccessibility_AccessibilityLabel" = "%@ 이미지. %@ 퍼센트. %@ 개.";
+"moodCount" = "%@개";
+
+//MARK: - MoodEmojis+Enum
+"smiling" = "미소 짓는";
+"neutral" = "무표정";
+"surprised" = "놀란";
+"happy" = "행복한";
+"tired" = "피곤한";
+"angry" = "화난";
+"lol" = "매우 신난";
+"embarrassed" = "당황스러운";
+"sad" = "슬픈";
+"smirking" = "능글맞은";
+"lovely" = "사랑스러운";
+"passionate" = "열정적인";
+
+//MARK: - DateFormatType+Enum
+"timeWithoutSecond" = "a hh:mm";
+"yearAndMouth" = "yyyy년 M월";
+"dateForTitle" = "M월 d일 EEEE";
+"dateForChart" = "M월 d일 (EE)";
+"timeForAccessibility" = "a hh시 mm분";
+"detailedDate" = "yy/MM/dd a hh:mm";
+"dateForAccessibility" = "yy년 M월 d일 a hh시 mm분";
+"basicDate" = "yyyy년 M월 d일";
+
+//MARK: - CustomView_CalendarHeaderView
+"backTodayButton_Title" = "오늘";
+
+//MARK: - CustomView_PlaceholderView
+"moodCollectionView_PlaceholderLabel" = "기분을 기록해 보세요.";
+
+//MARK: - Alert
+//BaseVC
+"alert_OKButtonTitle" = "확인";
+"alert_CancelButtonTitle" = "취소";
+//AddVC
+"alert_DoneButtonClicked_Title" = "기분을 선택하세요.";
+"alert_RemoveButtonClicked_Title" = "일기가 삭제됩니다.";
+"alert_RemoveButtonTitle" = "삭제";
+"alert_OneLineTextField_isEmpty_Title" = "15자 이하로 입력해 주세요.";
+"alert_MoveSelectedDate" = "해당 날짜로 이동합니다.";
+"alert_searchTextIsEmpty" = "검색어를 입력해 주세요.";
+"alert_searchResultsIsEmpty" = "검색 결과가 없습니다.";
+
+//MARK: - NavigationBarButton_Accessbility
+//BaseVC
+"backBarButton" = "뒤로";
