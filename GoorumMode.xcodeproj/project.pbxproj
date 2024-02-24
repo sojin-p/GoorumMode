@@ -13,7 +13,6 @@
 		234A72342B10DF5A00B8E60B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 234A72332B10DF5A00B8E60B /* FirebaseMessaging */; };
 		237B04592AE21315006C40CA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04582AE21315006C40CA /* SettingView.swift */; };
 		237B04642AE261B9006C40CA /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04632AE261B9006C40CA /* SelectDateViewController.swift */; };
-		237B04682AE2CC57006C40CA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 237B04672AE2CC57006C40CA /* .gitignore */; };
 		237B046A2AE2CE54006C40CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 237B04692AE2CE54006C40CA /* GoogleService-Info.plist */; };
 		237B046D2AE2CF36006C40CA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 237B046C2AE2CF36006C40CA /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		237B046F2AE2CF36006C40CA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 237B046E2AE2CF36006C40CA /* FirebaseCrashlytics */; };
@@ -93,7 +92,6 @@
 		234A722E2B10DCAE00B8E60B /* GoorumMode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoorumMode.entitlements; sourceTree = "<group>"; };
 		237B04582AE21315006C40CA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		237B04632AE261B9006C40CA /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
-		237B04672AE2CC57006C40CA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		237B04692AE2CE54006C40CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		237B04792AE3B06B006C40CA /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		237B047E2AE3C4EA006C40CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 				2380FB2A2AB9E6B400B31754 /* LaunchScreen.storyboard */,
 				2380FB2D2AB9E6B400B31754 /* Info.plist */,
 				237B04692AE2CE54006C40CA /* GoogleService-Info.plist */,
-				237B04672AE2CC57006C40CA /* .gitignore */,
 				237B047F2AE3C4EA006C40CA /* InfoPlist.strings */,
 				23DD9A1A2AC2E01300D6BBB5 /* Localizable.strings */,
 			);
@@ -498,7 +495,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				237B04682AE2CC57006C40CA /* .gitignore in Resources */,
 				23DD9A4B2AC6AEE100D6BBB5 /* NanumSquareNeoOTF-Eb.otf in Resources */,
 				2380FB2C2AB9E6B400B31754 /* LaunchScreen.storyboard in Resources */,
 				23DD9A182AC2E01300D6BBB5 /* Localizable.strings in Resources */,
@@ -774,7 +770,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dory.GoorumMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -806,7 +802,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dory.GoorumMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
