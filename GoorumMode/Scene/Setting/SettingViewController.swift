@@ -13,6 +13,8 @@ final class SettingViewController: BaseViewController, UIGestureRecognizerDelega
     private let mainView = SettingView()
     private let settingList = ["setting_PrivacyPolicy".localized, "setting_Inquiry".localized]
     
+    let sections = Setting.Section.allCases
+    
     override func loadView() {
         view = mainView
     }
@@ -22,32 +24,40 @@ final class SettingViewController: BaseViewController, UIGestureRecognizerDelega
         title = "settingVC_Title".localized
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
-        
-        setNavigationBackBarButton()
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-    }
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return navigationController?.viewControllers.count ?? 0 > 1
     }
     
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingList.count
+        return sections[section].item.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = settingList[indexPath.row]
+        
+        let section = sections[indexPath.section]
+        let row = section.item[indexPath.row]
+        
+        cell.textLabel?.text = row.title
+        cell.imageView?.image = row.mainIcon
+        cell.imageView?.contentMode = .scaleAspectFill
+        cell.imageView?.tintColor = Constants.Color.iconTint.basicBlack
         cell.backgroundColor = Constants.Color.Background.basic
-        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.font = Constants.Font.bold(size: 15)
         cell.textLabel?.textColor = Constants.Color.Text.basicTitle
         cell.selectionStyle = .none
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
