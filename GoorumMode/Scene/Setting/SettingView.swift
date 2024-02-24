@@ -11,11 +11,10 @@ final class SettingView: BaseView {
     
     let tableView = {
         let view = UITableView()
-        view.separatorColor = Constants.Color.Text.basicPlaceholder
-        view.separatorInset = .init(top: 0, left: 15, bottom: 0, right: 15)
+        view.separatorStyle = .none
         view.backgroundColor = Constants.Color.Background.basic
         view.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        view.rowHeight = 50
+        view.rowHeight = 45
         return view
     }()
     
