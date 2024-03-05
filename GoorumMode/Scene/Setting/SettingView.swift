@@ -13,7 +13,7 @@ final class SettingView: BaseView {
         let view = UITableView()
         view.separatorStyle = .none
         view.backgroundColor = Constants.Color.Background.basic
-        view.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        view.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.reuseIdentifier)
         view.rowHeight = 45
         return view
     }()

@@ -39,19 +39,12 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseIdentifier) as? SettingTableViewCell else {  return UITableViewCell() }
         
         let section = sections[indexPath.section]
         let row = section.item[indexPath.row]
         
-        cell.textLabel?.text = row.title
-        cell.imageView?.image = row.mainIcon
-        cell.imageView?.contentMode = .scaleAspectFill
-        cell.imageView?.tintColor = Constants.Color.iconTint.basicBlack
-        cell.backgroundColor = Constants.Color.Background.basic
-        cell.textLabel?.font = Constants.Font.bold(size: 15)
-        cell.textLabel?.textColor = Constants.Color.Text.basicTitle
-        cell.selectionStyle = .none
+        cell.configureCell(row)
         
         return cell
     }
@@ -61,12 +54,23 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let url = NSURL(string: "https://goorumode.notion.site/3c6efe5be9ac4707b29689852505caf0?pvs=4")
-            let safariView: SFSafariViewController = SFSafariViewController(url: url! as URL)
-            self.present(safariView, animated: true, completion: nil)
+        
+        switch sections[indexPath.section] {
+        case .basic:
             
-        } else if indexPath.row == 1 {
+            switch indexPath.row {
+            case 0:
+                let vc = NotificationViewController()
+                navigationController?.pushViewController(vc, animated: true)
+                
+            case 1:
+                let vc = InfoViewController()
+                navigationController?.pushViewController(vc, animated: true)
+                
+            default: print("default")
+            }
+            
+        case .other:
             let instaUrl = NSURL(string: "https://instagram.com/goorumode?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr")
             let instaSafariView: SFSafariViewController = SFSafariViewController(url: instaUrl! as URL)
             self.present(instaSafariView, animated: true, completion: nil)
