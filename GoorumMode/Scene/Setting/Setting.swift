@@ -7,27 +7,44 @@
 
 import UIKit
 
-struct Setting {
+//MARK: - UserSettingSection
+struct UserSettingSection<T> {
+    let title: SectionTitle?
+    var items: [T]
     
-    let title: String
-    let mainIcon: UIImage?
-    
-    enum Section: Int, CaseIterable {
+    enum SectionTitle: String {
         case basic
         case other
+    }
+
+}
+
+//MARK: - Setting
+struct Setting {
+    let title: SettingTitle
+    let mainIcon: UIImage?
+    let detailText: String?
+    
+    var hasSwitch: Bool {
+        return title == .noti
+    }
+    
+    var isSwitchOn: Bool = false
+    
+    var isHidden: Bool {
+        return title == .notiTime && !isSwitchOn
+    }
+    
+    //SettingTitle+Enum
+    enum SettingTitle: String {
+        case noti = "알림"
+        case notiTime = "알림 시간"
+        case info = "정보"
+        case inquiry = "setting_Inquiry"
         
-        var item: [Setting] {
-            switch self {
-            case .basic:
-                return [
-                    Setting(title: "알림", mainIcon: Constants.IconImage.noti),
-                    Setting(title: "정보", mainIcon: Constants.IconImage.info)
-                ]
-            case .other:
-                return [
-                    Setting(title: "문의하기", mainIcon: nil)
-                ]
-            }
+        func localized() -> String {
+            return self.rawValue.localized
         }
     }
 }
+
