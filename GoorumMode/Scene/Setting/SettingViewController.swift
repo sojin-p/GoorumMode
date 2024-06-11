@@ -11,9 +11,10 @@ import SafariServices
 final class SettingViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     private let mainView = SettingView()
-    private let settingList = ["setting_PrivacyPolicy".localized, "setting_Inquiry".localized]
     
-    let sections = Setting.Section.allCases
+    let viewModel = SettingViewModel()
+    
+    let testt = false
     
     override func loadView() {
         view = mainView
@@ -24,6 +25,17 @@ final class SettingViewController: BaseViewController, UIGestureRecognizerDelega
         title = "settingVC_Title".localized
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
+        setBind()
+    }
+    
+    func setBind() {
+        viewModel.settings.bind { [weak self] data in
+            print("========>>> test bind")
+            DispatchQueue.main.async {
+                self?.mainView.tableView.reloadData()
+            }
+            
+        }
     }
     
 }
@@ -31,20 +43,30 @@ final class SettingViewController: BaseViewController, UIGestureRecognizerDelega
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return viewModel.settings.value.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].item.count
+        return viewModel.getNumberOfRows(section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseIdentifier) as? SettingTableViewCell else {  return UITableViewCell() }
         
-        let section = sections[indexPath.section]
-        let row = section.item[indexPath.row]
+        let filteredData = viewModel.filteredData(indexPath.section)
+        
+        let row = filteredData[indexPath.row]
+        
+        let originData = viewModel.settings.value[indexPath.section].items
         
         cell.configureCell(row)
+        
+        cell.notiSwitch.setOn(originData[0].isSwitchOn, animated: true)
+        
+        cell.switchValueChangedHandler = { [weak self] isOn in
+            self?.viewModel.updateSwitchValue(indexPath, isOn: isOn)
+        }
         
         return cell
     }
@@ -55,26 +77,32 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch sections[indexPath.section] {
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        switch viewModel.settings.value[indexPath.section].title {
         case .basic:
+            print("clicked")
             
-            switch indexPath.row {
-            case 0:
-                let vc = NotificationViewController()
-                navigationController?.pushViewController(vc, animated: true)
-                
-            case 1:
-                let vc = InfoViewController()
-                navigationController?.pushViewController(vc, animated: true)
-                
-            default: print("default")
-            }
+//            switch indexPath.row {
+//            case 0:
+//                let vc = NotificationViewController()
+//                navigationController?.pushViewController(vc, animated: true)
+//            case 2:
+//                let vc = InfoViewController()
+//                navigationController?.pushViewController(vc, animated: true)
+//                
+//            default: print("default")
+//            }
             
         case .other:
             let instaUrl = NSURL(string: "https://instagram.com/goorumode?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr")
             let instaSafariView: SFSafariViewController = SFSafariViewController(url: instaUrl! as URL)
             self.present(instaSafariView, animated: true, completion: nil)
+            
+        case .none:
+            print("none")
         }
         
     }
+    
 }
