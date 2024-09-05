@@ -6,18 +6,49 @@
 //
 
 import UIKit
+import Foundation
 
 //MARK: - UserSettingSection
-struct UserSettingSection<T> {
+struct UserSettingSection<T>: Identifiable {
+    var id = UUID()
+    
     let title: SectionTitle?
     var items: [T]
-    
-    enum SectionTitle: String {
-        case basic
-        case other
-    }
-
 }
+
+enum SectionTitle: String {
+    case basic
+    case other
+}
+
+//MARK: - SettingType
+enum SettingType {
+    case toggle(isOn: Bool)
+    case detailText(value: String)
+    case none
+}
+
+//MARK: - SettingUI
+struct SettingUI: Identifiable {
+    let id = UUID()
+    let title: SettingTitle
+    let iconName: String?
+    let type: SettingType
+    
+    enum SettingTitle: String {
+        case noti = "알림"
+        case notiTime = "알림 시간"
+        case info = "정보"
+        case inquiry = "setting_Inquiry"
+        
+        case version = "버전"
+        
+        func localized() -> String {
+            return self.rawValue.localized
+        }
+    }
+}
+
 
 //MARK: - Setting
 struct Setting {
