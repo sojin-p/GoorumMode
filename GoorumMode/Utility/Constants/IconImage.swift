@@ -53,6 +53,11 @@ extension Constants {
         static let noti = UIImage(resource: .iconNotification)
             .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let notiClock = "iconClock"
+        
+        static let inquiry = "iconInquiry"
+        
     }
     
 }
