@@ -6,6 +6,8 @@
   
 */
 
+"CloudMode" = "雲の日記です";
+
 //MARK: - TabBarController
 "record" = "記録";
 "chart" = "チャート";
@@ -73,7 +75,15 @@
 //MARK: - SettingViewController
 "settingVC_Title" = "設定";
 "setting_PrivacyPolicy" = "個人情報ポリシー";
+
+"setting_Noti" = "お知らせ";
+"setting_NotiTime" = "じかん";
+"setting_Info" = "じょうほう";
 "setting_Inquiry" = "問い合わせ";
+
+"setting_Version" = "バージョン";
+
+"setting_NotificationBody" = "今日はどうでしたか？日記を書いてください！";
 
 //MARK: - SearchViewController
 "search_placeholder" = "記録した内容を検索してみてください。";

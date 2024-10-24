@@ -6,6 +6,8 @@
   
 */
 
+"CloudMode" = "云朵日子";
+
 //MARK: - TabBarController
 "record" = "记录";
 "chart" = "榜单";
@@ -73,7 +75,15 @@
 //MARK: - SettingViewController
 "settingVC_Title" = "设置";
 "setting_PrivacyPolicy" = "个人信息政策";
+
+"setting_Noti" = "通知";
+"setting_NotiTime" = "时间";
+"setting_Info" = "资讯";
 "setting_Inquiry" = "查询";
+
+"setting_Version" = "版本";
+
+"setting_NotificationBody" = "今天过得怎么样？请写下日记！";
 
 //MARK: - SearchViewController
 "search_placeholder" = "请搜索一下记录的内容。";
