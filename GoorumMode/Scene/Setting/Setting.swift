@@ -24,8 +24,8 @@ enum SectionTitle: String {
 //MARK: - SettingType
 enum SettingType {
     case toggle(isOn: Bool)
-    case detailText(value: String)
-    case none
+    case detailText(value: String, showPopUp: Bool)
+    case none(isMail: Bool)
 }
 
 //MARK: - SettingUI
@@ -36,12 +36,12 @@ struct SettingUI: Identifiable {
     let type: SettingType
     
     enum SettingTitle: String {
-        case noti = "알림"
-        case notiTime = "알림 시간"
-        case info = "정보"
+        case noti = "setting_Noti"
+        case notiTime = "setting_NotiTime"
+        case info = "setting_Info"
         case inquiry = "setting_Inquiry"
         
-        case version = "버전"
+        case version = "setting_Version"
         
         func localized() -> String {
             return self.rawValue.localized
