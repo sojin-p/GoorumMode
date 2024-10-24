@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct NavigationLazyView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct NavigationLazyView<T: View>: View {
+    
+    let build: () -> T
+    
+    init(_ build: @autoclosure @escaping () -> T) {
+        self.build = build
     }
-}
-
-#Preview {
-    NavigationLazyView()
+    
+    var body: some View {
+        build()
+    }
+    
 }
