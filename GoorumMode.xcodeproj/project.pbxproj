@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231CF4F62CC8D8D000A41C32 /* BlackToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF4F52CC8D8D000A41C32 /* BlackToggleStyle.swift */; };
+		231CF4F82CC8E76F00A41C32 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF4F72CC8E76F00A41C32 /* Font+Extension.swift */; };
+		231CF4FE2CC92AFA00A41C32 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF4FD2CC92AFA00A41C32 /* InfoView.swift */; };
+		231CF5032CC94E4800A41C32 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF5022CC94E4800A41C32 /* NavigationLazyView.swift */; };
 		2346ACBF2B89E80B0058FDB4 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346ACBE2B89E80B0058FDB4 /* Setting.swift */; };
+		2346ACC12B8A19130058FDB4 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346ACC02B8A19130058FDB4 /* SettingTableViewCell.swift */; };
 		234A72262B0F7E9A00B8E60B /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A72252B0F7E9A00B8E60B /* DateManager.swift */; };
 		234A72302B10DF5A00B8E60B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 234A722F2B10DF5A00B8E60B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		234A72322B10DF5A00B8E60B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 234A72312B10DF5A00B8E60B /* FirebaseCrashlytics */; };
 		234A72342B10DF5A00B8E60B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 234A72332B10DF5A00B8E60B /* FirebaseMessaging */; };
+		235012E52BF74FC300EB5AFE /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235012E42BF74FC300EB5AFE /* SettingViewModel.swift */; };
 		237B04592AE21315006C40CA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04582AE21315006C40CA /* SettingView.swift */; };
 		237B04642AE261B9006C40CA /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04632AE261B9006C40CA /* SelectDateViewController.swift */; };
 		237B046A2AE2CE54006C40CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 237B04692AE2CE54006C40CA /* GoogleService-Info.plist */; };
@@ -25,8 +31,13 @@
 		2380FB242AB9E6B200B31754 /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2380FB232AB9E6B200B31754 /* MoodViewController.swift */; };
 		2380FB292AB9E6B400B31754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2380FB282AB9E6B400B31754 /* Assets.xcassets */; };
 		2380FB2C2AB9E6B400B31754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2380FB2A2AB9E6B400B31754 /* LaunchScreen.storyboard */; };
+		23910D912B8A3D7900B17E26 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23910D902B8A3D7900B17E26 /* InfoViewController.swift */; };
 		2391863D2AE027060053A315 /* AnimationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2391863C2AE027060053A315 /* AnimationButton.swift */; };
 		239186422AE036760053A315 /* Animation+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239186412AE036760053A315 /* Animation+Enum.swift */; };
+		23ACC07C2B96F5AD00AAA5D8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ACC07B2B96F5AD00AAA5D8 /* NotificationViewController.swift */; };
+		23AF91A42C85F9C800F332E0 /* SettingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF91A32C85F9C800F332E0 /* SettingUIView.swift */; };
+		23AF91A62C89EB5E00F332E0 /* SettingUIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF91A52C89EB5E00F332E0 /* SettingUIViewModel.swift */; };
+		23AF91A82C89FF1800F332E0 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF91A72C89FF1800F332E0 /* SettingListView.swift */; };
 		23B860FC2AE7FCFE007DA341 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B860FB2AE7FCFE007DA341 /* SearchViewController.swift */; };
 		23BDAD472AD9668B007F5768 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD462AD9668B007F5768 /* ChartView.swift */; };
 		23BDAD492AD97A12007F5768 /* CapsulePaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */; };
@@ -73,7 +84,6 @@
 		23DD9AA02AD18CB000D6BBB5 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 23DD9A9F2AD18CB000D6BBB5 /* FSCalendar */; };
 		23DD9AA42AD308E300D6BBB5 /* FSCalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */; };
 		23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */; };
-		23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */; };
 		23E7665B2AD819B3008AC3A4 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */; };
 		23E7665D2AD819ED008AC3A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665C2AD819ED008AC3A4 /* TabBarController.swift */; };
 		23E766612AD81F58008AC3A4 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 23E766602AD81F58008AC3A4 /* DGCharts */; };
@@ -86,12 +96,18 @@
 		2318AE192B400C7F002508B3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2318AE1A2B400C7F002508B3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2318AE1B2B400C7F002508B3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		231CF4F52CC8D8D000A41C32 /* BlackToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackToggleStyle.swift; sourceTree = "<group>"; };
+		231CF4F72CC8E76F00A41C32 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		231CF4FD2CC92AFA00A41C32 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		231CF5022CC94E4800A41C32 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		2346ACBE2B89E80B0058FDB4 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		2346ACC02B8A19130058FDB4 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Utility/Constants/DateManager.swift; sourceTree = SOURCE_ROOT; };
 		234A722B2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		234A722C2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		234A722D2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		234A722E2B10DCAE00B8E60B /* GoorumMode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoorumMode.entitlements; sourceTree = "<group>"; };
+		235012E42BF74FC300EB5AFE /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		237B04582AE21315006C40CA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		237B04632AE261B9006C40CA /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		237B04692AE2CE54006C40CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -106,8 +122,13 @@
 		2380FB282AB9E6B400B31754 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2380FB2B2AB9E6B400B31754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2380FB2D2AB9E6B400B31754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23910D902B8A3D7900B17E26 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		2391863C2AE027060053A315 /* AnimationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationButton.swift; sourceTree = "<group>"; };
 		239186412AE036760053A315 /* Animation+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Enum.swift"; sourceTree = "<group>"; };
+		23ACC07B2B96F5AD00AAA5D8 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		23AF91A32C85F9C800F332E0 /* SettingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIView.swift; sourceTree = "<group>"; };
+		23AF91A52C89EB5E00F332E0 /* SettingUIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIViewModel.swift; sourceTree = "<group>"; };
+		23AF91A72C89FF1800F332E0 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
 		23B860FB2AE7FCFE007DA341 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		23BDAD462AD9668B007F5768 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChartView.swift; path = GoorumMode/Scene/Calendar/ChartView.swift; sourceTree = SOURCE_ROOT; };
 		23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePaddingButton.swift; sourceTree = "<group>"; };
@@ -151,7 +172,6 @@
 		23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 		23DD9AA32AD308E300D6BBB5 /* FSCalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarCustomCell.swift; sourceTree = "<group>"; };
 		23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFSCalendar.swift; sourceTree = "<group>"; };
-		23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		23E7665C2AD819ED008AC3A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,9 +201,12 @@
 		237B04552AE20CE1006C40CA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				237B04582AE21315006C40CA /* SettingView.swift */,
-				23DD9AB32AD5B0C600D6BBB5 /* SettingViewController.swift */,
 				2346ACBE2B89E80B0058FDB4 /* Setting.swift */,
+				23AF91A92C89FF3800F332E0 /* SwiftUI */,
+				237B04582AE21315006C40CA /* SettingView.swift */,
+				235012E42BF74FC300EB5AFE /* SettingViewModel.swift */,
+				23910D932B8A3D9B00B17E26 /* Notification */,
+				23910D922B8A3D7E00B17E26 /* Info */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -224,6 +247,7 @@
 				23DD9A5A2AC7F85B00D6BBB5 /* Date+Extension.swift */,
 				23DD9A3E2AC5A5D300D6BBB5 /* UIViewController+Extension.swift */,
 				23C798212AE10FC100121D6A /* LocalizedString+Extension.swift */,
+				231CF4F72CC8E76F00A41C32 /* Font+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -273,6 +297,33 @@
 			path = GoorumMode;
 			sourceTree = "<group>";
 		};
+		23910D922B8A3D7E00B17E26 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				23910D902B8A3D7900B17E26 /* InfoViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		23910D932B8A3D9B00B17E26 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				23ACC07B2B96F5AD00AAA5D8 /* NotificationViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		23AF91A92C89FF3800F332E0 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				23AF91A32C85F9C800F332E0 /* SettingUIView.swift */,
+				23AF91A72C89FF1800F332E0 /* SettingListView.swift */,
+				23AF91A52C89EB5E00F332E0 /* SettingUIViewModel.swift */,
+				231CF4FD2CC92AFA00A41C32 /* InfoView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		23B860F82AE7FBFC007DA341 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +369,7 @@
 				23BDAD4F2ADA482D007F5768 /* BaseTableViewCell.swift */,
 				23E7665C2AD819ED008AC3A4 /* TabBarController.swift */,
 				23DD9A952ACECB1900D6BBB5 /* Observable.swift */,
+				231CF5022CC94E4800A41C32 /* NavigationLazyView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -341,6 +393,7 @@
 				23BDAD4A2ADA4728007F5768 /* ChartTableViewCell.swift */,
 				23CACBFE2AFFA02C008AC1DD /* ChartListTableViewCell.swift */,
 				23CACBFC2AFF9FF2008AC1DD /* ChartListCollectionViewCell.swift */,
+				2346ACC02B8A19130058FDB4 /* SettingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -401,6 +454,7 @@
 				2391863C2AE027060053A315 /* AnimationButton.swift */,
 				23C7981F2AE0EB4E00121D6A /* PaddingLabel.swift */,
 				237B04812AE3E991006C40CA /* ExtendButton.swift */,
+				231CF4F52CC8D8D000A41C32 /* BlackToggleStyle.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -555,6 +609,7 @@
 				23DD9A3D2AC54A1400D6BBB5 /* AddView.swift in Sources */,
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,
 				23DD9A542AC6C87700D6BBB5 /* MoodEmojis+Enum.swift in Sources */,
+				23910D912B8A3D7900B17E26 /* InfoViewController.swift in Sources */,
 				23DD9A992AD160EC00D6BBB5 /* CalendarViewController.swift in Sources */,
 				23DD9A9D2AD1882200D6BBB5 /* IconImage.swift in Sources */,
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
@@ -570,25 +625,34 @@
 				23BDAD4B2ADA4729007F5768 /* ChartTableViewCell.swift in Sources */,
 				23C798222AE10FC100121D6A /* LocalizedString+Extension.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
+				235012E52BF74FC300EB5AFE /* SettingViewModel.swift in Sources */,
 				23BDAD5E2ADD6180007F5768 /* CalendarHeaderView.swift in Sources */,
+				231CF4F62CC8D8D000A41C32 /* BlackToggleStyle.swift in Sources */,
 				23BDAD522ADA4C3C007F5768 /* ReusableViewProtocol.swift in Sources */,
 				23DD9A502AC6B81400D6BBB5 /* PickMoodCollectionViewCell.swift in Sources */,
 				2346ACBF2B89E80B0058FDB4 /* Setting.swift in Sources */,
 				23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */,
+				2346ACC12B8A19130058FDB4 /* SettingTableViewCell.swift in Sources */,
 				23BDAD602ADD7724007F5768 /* PlaceholderView.swift in Sources */,
+				231CF4FE2CC92AFA00A41C32 /* InfoView.swift in Sources */,
 				23DD9A4E2AC6B33D00D6BBB5 /* PickMoodViewController.swift in Sources */,
 				23DD9A262AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift in Sources */,
+				23AF91A62C89EB5E00F332E0 /* SettingUIViewModel.swift in Sources */,
 				23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */,
+				231CF4F82CC8E76F00A41C32 /* Font+Extension.swift in Sources */,
 				23DD9A212AC2EBDA00D6BBB5 /* MoodView.swift in Sources */,
+				23AF91A82C89FF1800F332E0 /* SettingListView.swift in Sources */,
 				23DD9A522AC6C10100D6BBB5 /* PickMoodView.swift in Sources */,
-				23DD9AB42AD5B0C600D6BBB5 /* SettingViewController.swift in Sources */,
 				23DD9A5D2ACA80C900D6BBB5 /* MoodRepository.swift in Sources */,
+				23AF91A42C85F9C800F332E0 /* SettingUIView.swift in Sources */,
 				23BDAD492AD97A12007F5768 /* CapsulePaddingButton.swift in Sources */,
 				23C798202AE0EB4F00121D6A /* PaddingLabel.swift in Sources */,
 				23BDAD472AD9668B007F5768 /* ChartView.swift in Sources */,
 				23B860FC2AE7FCFE007DA341 /* SearchViewController.swift in Sources */,
 				237B04822AE3E991006C40CA /* ExtendButton.swift in Sources */,
 				23DD9A592AC7F6AE00D6BBB5 /* DateFormatType+Enum.swift in Sources */,
+				23ACC07C2B96F5AD00AAA5D8 /* NotificationViewController.swift in Sources */,
+				231CF5032CC94E4800A41C32 /* NavigationLazyView.swift in Sources */,
 				23DD9A392AC52C7600D6BBB5 /* AddViewController.swift in Sources */,
 				239186422AE036760053A315 /* Animation+Enum.swift in Sources */,
 				23DD9A1F2AC2EB6E00D6BBB5 /* BaseView.swift in Sources */,
