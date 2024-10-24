@@ -18,7 +18,7 @@ struct SettingUIView: View {
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    VStack(alignment: .leading) { //접근성
+                    VStack(alignment: .leading) {
                         
                         ForEach(viewModel.settings, id: \.id) { section in
                             ForEach(section.items, id: \.id) { item in
@@ -33,9 +33,6 @@ struct SettingUIView: View {
                             
                         }
                     }
-                    .font(Font.init(uiFont: Constants.Font.bold(size: 16)))
-                    .foregroundStyle(Color(uiColor: Constants.Color.Text.basicTitle)) //폰트 색상
-                    .frame(maxWidth: .infinity, alignment: .topLeading)
                     .padding(.horizontal, 20)
                     .animation(.easeInOut(duration: 0.15), value: viewModel.isNotificationOn)
                     Spacer()
