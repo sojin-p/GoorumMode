@@ -6,6 +6,8 @@
   
 */
 
+"CloudMode" = "구름모드";
+
 //MARK: - TabBarController
 "record" = "기록";
 "chart" = "차트";
@@ -73,7 +75,15 @@
 //MARK: - SettingViewController
 "settingVC_Title" = "설정";
 "setting_PrivacyPolicy" = "개인정보 정책";
+
+"setting_Noti" = "알림";
+"setting_NotiTime" = "알림 시간";
+"setting_Info" = "정보";
 "setting_Inquiry" = "문의하기";
+
+"setting_Version" = "버전";
+
+"setting_NotificationBody" = "오늘 하루는 어땠나요? 일기를 작성해 주세요!";
 
 //MARK: - SearchViewController
 "search_placeholder" = "기록한 내용을 검색해 보세요.";

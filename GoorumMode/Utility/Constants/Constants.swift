@@ -31,4 +31,8 @@ enum Constants {
         }
     }
     
+    static func getVersion() -> String {
+        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+    }
+    
 }

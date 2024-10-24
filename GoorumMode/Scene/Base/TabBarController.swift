@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class TabBarController: UITabBarController {
     
@@ -23,10 +24,10 @@ final class TabBarController: UITabBarController {
     }()
 
     private let settingVC = {
-        let vc = SettingViewController()
-        let nav = UINavigationController(rootViewController: vc)
+        let view = SettingUIView()
+        let vc = UIHostingController(rootView: view)
         vc.tabBarItem = UITabBarItem(title: "setting".localized, image: Constants.IconImage.setting, tag: 2)
-        return nav
+        return vc
     }()
 
     override func viewDidLoad() {

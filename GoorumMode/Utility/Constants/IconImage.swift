@@ -45,6 +45,19 @@ extension Constants {
         static let edit = UIImage(resource: .iconEdit)
             .withRenderingMode(.alwaysTemplate)
             .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let info = UIImage(resource: .iconInfo)
+            .withRenderingMode(.alwaysTemplate)
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let noti = UIImage(resource: .iconNotification)
+            .withRenderingMode(.alwaysTemplate)
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+        
+        static let notiClock = "iconClock"
+        
+        static let inquiry = "iconInquiry"
+        
     }
     
 }
