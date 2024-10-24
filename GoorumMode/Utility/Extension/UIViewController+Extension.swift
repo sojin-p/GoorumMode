@@ -85,4 +85,11 @@ extension UIImage {
         let newImage = UIImage(cgImage: downSampledImage)
         return newImage
     }
+    
+    static func templateImage(named name: String) -> UIImage? {
+        return UIImage(named: name)?
+            .withRenderingMode(.alwaysTemplate)
+            .withTintColor(Constants.Color.iconTint.basicBlack)
+    }
+    
 }
