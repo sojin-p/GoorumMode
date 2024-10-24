@@ -40,7 +40,6 @@ final class SearchViewController: BaseViewController {
         searchBar.delegate = self
 
         setNavigationBackBarButton()
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         configureDataSource()
         updateSnapshot()
@@ -61,10 +60,6 @@ final class SearchViewController: BaseViewController {
 }
 
 extension SearchViewController: UISearchBarDelegate, UIGestureRecognizerDelegate {
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return navigationController?.viewControllers.count ?? 0 > 1
-    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text, text.isEmpty {

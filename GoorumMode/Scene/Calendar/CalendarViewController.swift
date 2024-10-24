@@ -169,7 +169,6 @@ extension CalendarViewController: UIGestureRecognizerDelegate {
         headerView.headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showMonthButtonClicked)))
         
         calendar.calendarHeaderView.accessibilityElementsHidden = true
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
         
     private func setbind() {
