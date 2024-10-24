@@ -11,6 +11,7 @@ struct BlackToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
+                .font(Font.init(uiFont: Constants.Font.bold(size: 16)))
             Spacer()
             ZStack {
                 //Toggle 배경 색

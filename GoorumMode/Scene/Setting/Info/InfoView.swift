@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfoView: View {
     
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss //뒤로 제스처
     
     var title: String
     
@@ -21,7 +21,7 @@ struct InfoView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("setting_PrivacyPolicy".localized)
+                        CellTextView(text: "setting_PrivacyPolicy".localized)
                         Spacer()
                     }
                     .frame(height: 40)
@@ -29,9 +29,6 @@ struct InfoView: View {
                         openURL("https://goorumode.notion.site/3c6efe5be9ac4707b29689852505caf0?pvs=4")
                     }
                 }
-                .font(Font.init(uiFont: Constants.Font.bold(size: 16)))
-                .foregroundStyle(Color(uiColor: Constants.Color.Text.basicTitle))
-                .frame(maxWidth: .infinity, alignment: .topLeading)
                 .padding(.horizontal, 20)
             }
             .navigationTitle(title)
