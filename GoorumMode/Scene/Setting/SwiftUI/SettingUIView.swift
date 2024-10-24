@@ -13,31 +13,39 @@ struct SettingUIView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading) { //접근성, 언어, 폰트변경
-                    
-                    ForEach(viewModel.settings, id: \.id) { section in
-                        ForEach(section.items, id: \.id) { item in
-                            SettingList(viewModel: viewModel, item: item)
-                        }
+            ZStack {
+                Color(uiColor: Constants.Color.Background.basic)
+                    .ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(alignment: .leading) { //접근성
                         
-                        //섹션마다 구분선
-                        if section.id != viewModel.settings.last?.id {
-                            Divider()
-                                .padding(.vertical, 10)
+                        ForEach(viewModel.settings, id: \.id) { section in
+                            ForEach(section.items, id: \.id) { item in
+                                SettingList(viewModel: viewModel, item: item)
+                            }
+                            
+                            //섹션마다 구분선
+                            if section.id != viewModel.settings.last?.id {
+                                Divider()
+                                    .padding(.vertical, 10)
+                            }
+                            
                         }
-                        
                     }
+                    .font(Font.init(uiFont: Constants.Font.bold(size: 16)))
+                    .foregroundStyle(Color(uiColor: Constants.Color.Text.basicTitle)) //폰트 색상
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                    .padding(.horizontal, 20)
+                    .animation(.easeInOut(duration: 0.15), value: viewModel.isNotificationOn)
+                    Spacer()
                 }
-                .frame(maxWidth: .infinity, alignment: .topLeading)
-                .padding(.horizontal, 20)
-                .animation(.easeInOut(duration: 0.15), value: viewModel.isNotificationOn)
-                Spacer()
-            }
-            .navigationTitle("설정")
-            .navigationBarTitleDisplayMode(.inline)
-            .clipped()
-        }
+                .navigationTitle("settingVC_Title".localized)
+                .navigationBarTitleDisplayMode(.inline)
+                .clipped()
+            } //ZStack
+            
+        } //NavigationStack
         
-    }
+    } //View
 }
