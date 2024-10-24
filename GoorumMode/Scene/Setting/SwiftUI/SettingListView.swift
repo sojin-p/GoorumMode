@@ -18,26 +18,49 @@ struct SettingList: View {
         HStack {
             
             if let iconName = item.iconName {
-                Image(iconName)
+                Image(uiImage: UIImage.templateImage(named: iconName) ?? UIImage())
             }
             
             switch item.type {
                 
             case .toggle(_):
-                Toggle(item.title.rawValue, isOn: $viewModel.isNotificationOn)
-                    .tint(.black) //색 변경
+                Toggle(item.title.localized(), isOn: $viewModel.isNotificationOn)
+                    .toggleStyle(BlackToggleStyle())
                 
-            case .detailText(let value):
-                Text(item.title.rawValue)
+            case .detailText(let value, let showPopUp):
+                Text(item.title.localized())
                 Spacer()
-                Text(value)
-                    .foregroundStyle(.gray) //색 변경, 터치시 팝업창
-                //버전 디테일 크기 or 색 조정
+                if showPopUp {
+                    DatePicker("", selection: $viewModel.time, displayedComponents: .hourAndMinute)
+                        .labelsHidden()
+                        .onChange(of: viewModel.time) { newValue in
+                            if viewModel.isNotificationOn {
+                                viewModel.scheduleNotification(at: newValue)
+                            }
+                        }
+                } else {
+                    Text(value)
+                        .foregroundStyle(Color(uiColor: Constants.Color.Text.basicSubTitle))
+                        .font(Font.init(
+                            uiFont: Constants.Font.bold(size: showPopUp ? 16 : 13))
+                        )
+                }
                 
-            case .none:
-                Text(item.title.rawValue)
-                //정보 클릭시 다음페이지 (개인정보 정책, 오픈소스 등)
-                //문의 클릭시 이메일 연결
+            case .none(let isMail):
+                if isMail {
+                    Text(item.title.localized())
+                        .onTapGesture {
+                            viewModel.sendEmail()
+                        }
+                } else {
+                    NavigationLink {
+                        NavigationLazyView(InfoView(title: item.title.localized()))
+                    } label: {
+                        Text(item.title.localized())
+                    }
+
+                }
+                
             }
             
         }
