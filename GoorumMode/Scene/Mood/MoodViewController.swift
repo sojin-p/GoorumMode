@@ -54,10 +54,10 @@ final class MoodViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    @objc private func settingBarbuttonClicked() {
-        let vc = SettingViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    @objc private func settingBarbuttonClicked() {
+//        let vc = SettingViewController()
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
     
     @objc private func calendarBarbuttonClicked() {
         let vc = CalendarViewController()
