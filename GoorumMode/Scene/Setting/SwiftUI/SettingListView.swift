@@ -19,16 +19,21 @@ struct SettingList: View {
             
             if let iconName = item.iconName {
                 Image(uiImage: UIImage.templateImage(named: iconName) ?? UIImage())
+                    .accessibilityHidden(true)
             }
             
             switch item.type {
                 
             case .toggle(_):
-                Toggle(item.title.localized(), isOn: $viewModel.isNotificationOn)
-                    .toggleStyle(BlackToggleStyle())
+                Toggle(
+                    item.title.localized(),
+                    isOn: $viewModel.isNotificationOn
+                )
+                .toggleStyle(BlackToggleStyle())
                 
             case .detailText(let value, let showPopUp):
-                Text(item.title.localized())
+                CellTextView(title: item.title.localized())
+//                    .accessibilityHint(item.title.accessibilityHint)
                 Spacer()
                 if showPopUp {
                     DatePicker("", selection: $viewModel.time, displayedComponents: .hourAndMinute)
@@ -48,7 +53,8 @@ struct SettingList: View {
                 
             case .none(let isMail):
                 if isMail {
-                    Text(item.title.localized())
+                    CellTextView(title: item.title.localized())
+//                        .accessibilityHint(item.title.accessibilityHint)
                         .onTapGesture {
                             viewModel.sendEmail()
                         }
@@ -56,7 +62,8 @@ struct SettingList: View {
                     NavigationLink {
                         NavigationLazyView(InfoView(title: item.title.localized()))
                     } label: {
-                        Text(item.title.localized())
+                        CellTextView(title: item.title.localized())
+//                            .accessibilityHint(item.title.accessibilityHint)
                     }
 
                 }
