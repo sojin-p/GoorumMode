@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PopupView
 
 struct SettingUIView: View {
     
@@ -41,6 +42,15 @@ struct SettingUIView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .clipped()
             } //ZStack
+            .popup(isPresented: $viewModel.showingPopup) {
+                ToastView(message: "setting_NotificationToast".localized)
+            } customize: {
+                $0
+                    .type(.floater())
+                    .position(.top)
+                    .animation(.spring)
+                    .autohideIn(1.5)
+            }
             
         } //NavigationStack
         

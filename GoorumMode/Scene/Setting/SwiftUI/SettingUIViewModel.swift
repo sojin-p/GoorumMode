@@ -58,6 +58,8 @@ final class SettingUIViewModel: ObservableObject {
     
     @Published var time = Date()
     
+    @Published var showingPopup = false
+    
     init() {
         //UserDefaults에서 시간 불러오기
         if let savedTime = loadNotificationFromUserDefaults() {
@@ -116,12 +118,6 @@ final class SettingUIViewModel: ObservableObject {
         
         let center = UNUserNotificationCenter.current()
         
-        center.getPendingNotificationRequests { [weak self] requests in //requests = 알림 배열
-            if !requests.isEmpty && !(self?.isNotificationOn ?? true) {
-                self?.cancelNotification()
-            }
-        }
-        
         //알림 내용
         let content = UNMutableNotificationContent()
         content.title = "CloudMode".localized
@@ -136,7 +132,7 @@ final class SettingUIViewModel: ObservableObject {
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         //request 만들기
-        let identifier = UUID().uuidString
+        let identifier = "moodNotification"
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         
         center.add(request) { [weak self] error in
@@ -147,6 +143,8 @@ final class SettingUIViewModel: ObservableObject {
 
                 //UserDefaults에 저장
                 self?.saveNotificationToUserDefaults(time)
+                
+                //토스트 알림
             }
         }
     }

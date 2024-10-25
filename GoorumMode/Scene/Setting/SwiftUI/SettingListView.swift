@@ -41,6 +41,7 @@ struct SettingList: View {
                         .onChange(of: viewModel.time) { newValue in
                             if viewModel.isNotificationOn {
                                 viewModel.scheduleNotification(at: newValue)
+                                viewModel.showingPopup = true
                             }
                         }
                 } else {
