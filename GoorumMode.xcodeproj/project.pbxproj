@@ -13,14 +13,13 @@
 		231CF5032CC94E4800A41C32 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF5022CC94E4800A41C32 /* NavigationLazyView.swift */; };
 		231CF5052CCA777E00A41C32 /* CellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF5042CCA777E00A41C32 /* CellTextView.swift */; };
 		231CF5072CCA7CED00A41C32 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF5062CCA7CED00A41C32 /* UINavigationController+Extension.swift */; };
+		231CF50C2CCBDAAA00A41C32 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF50B2CCBDAAA00A41C32 /* ToastView.swift */; };
+		231CF50F2CCBDEF300A41C32 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 231CF50E2CCBDEF300A41C32 /* PopupView */; };
 		2346ACBF2B89E80B0058FDB4 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346ACBE2B89E80B0058FDB4 /* Setting.swift */; };
-		2346ACC12B8A19130058FDB4 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346ACC02B8A19130058FDB4 /* SettingTableViewCell.swift */; };
 		234A72262B0F7E9A00B8E60B /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A72252B0F7E9A00B8E60B /* DateManager.swift */; };
 		234A72302B10DF5A00B8E60B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 234A722F2B10DF5A00B8E60B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		234A72322B10DF5A00B8E60B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 234A72312B10DF5A00B8E60B /* FirebaseCrashlytics */; };
 		234A72342B10DF5A00B8E60B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 234A72332B10DF5A00B8E60B /* FirebaseMessaging */; };
-		235012E52BF74FC300EB5AFE /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235012E42BF74FC300EB5AFE /* SettingViewModel.swift */; };
-		237B04592AE21315006C40CA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04582AE21315006C40CA /* SettingView.swift */; };
 		237B04642AE261B9006C40CA /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B04632AE261B9006C40CA /* SelectDateViewController.swift */; };
 		237B046A2AE2CE54006C40CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 237B04692AE2CE54006C40CA /* GoogleService-Info.plist */; };
 		237B046D2AE2CF36006C40CA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 237B046C2AE2CF36006C40CA /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -102,15 +101,13 @@
 		231CF5022CC94E4800A41C32 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		231CF5042CCA777E00A41C32 /* CellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTextView.swift; sourceTree = "<group>"; };
 		231CF5062CCA7CED00A41C32 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		231CF50B2CCBDAAA00A41C32 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		2346ACBE2B89E80B0058FDB4 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		2346ACC02B8A19130058FDB4 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Utility/Constants/DateManager.swift; sourceTree = SOURCE_ROOT; };
 		234A722B2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		234A722C2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		234A722D2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		234A722E2B10DCAE00B8E60B /* GoorumMode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoorumMode.entitlements; sourceTree = "<group>"; };
-		235012E42BF74FC300EB5AFE /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		237B04582AE21315006C40CA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		237B04632AE261B9006C40CA /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		237B04692AE2CE54006C40CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		237B04792AE3B06B006C40CA /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -181,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231CF50F2CCBDEF300A41C32 /* PopupView in Frameworks */,
 				23C6E4302ADFFB6E000EC0BF /* Toast in Frameworks */,
 				23DD9A332AC4721000D6BBB5 /* RealmSwift in Frameworks */,
 				23DD9AA02AD18CB000D6BBB5 /* FSCalendar in Frameworks */,
@@ -203,8 +201,6 @@
 			children = (
 				2346ACBE2B89E80B0058FDB4 /* Setting.swift */,
 				23AF91A92C89FF3800F332E0 /* SwiftUI */,
-				237B04582AE21315006C40CA /* SettingView.swift */,
-				235012E42BF74FC300EB5AFE /* SettingViewModel.swift */,
 				23910D922B8A3D7E00B17E26 /* Info */,
 			);
 			path = Setting;
@@ -384,7 +380,6 @@
 				23BDAD4A2ADA4728007F5768 /* ChartTableViewCell.swift */,
 				23CACBFE2AFFA02C008AC1DD /* ChartListTableViewCell.swift */,
 				23CACBFC2AFF9FF2008AC1DD /* ChartListCollectionViewCell.swift */,
-				2346ACC02B8A19130058FDB4 /* SettingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -447,6 +442,7 @@
 				237B04812AE3E991006C40CA /* ExtendButton.swift */,
 				231CF4F52CC8D8D000A41C32 /* BlackToggleStyle.swift */,
 				231CF5042CCA777E00A41C32 /* CellTextView.swift */,
+				231CF50B2CCBDAAA00A41C32 /* ToastView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -489,6 +485,7 @@
 				234A722F2B10DF5A00B8E60B /* FirebaseAnalyticsWithoutAdIdSupport */,
 				234A72312B10DF5A00B8E60B /* FirebaseCrashlytics */,
 				234A72332B10DF5A00B8E60B /* FirebaseMessaging */,
+				231CF50E2CCBDEF300A41C32 /* PopupView */,
 			);
 			productName = GoorumMode;
 			productReference = 2380FB1C2AB9E6B100B31754 /* GoorumMode.app */;
@@ -529,6 +526,7 @@
 				23E7665F2AD81F58008AC3A4 /* XCRemoteSwiftPackageReference "Charts" */,
 				23C6E42E2ADFFB6E000EC0BF /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				237B046B2AE2CF36006C40CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				231CF50D2CCBDEF300A41C32 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 2380FB1D2AB9E6B100B31754 /* Products */;
 			projectDirPath = "";
@@ -589,6 +587,7 @@
 			files = (
 				23DD9AA82AD3FC5300D6BBB5 /* BasicFSCalendar.swift in Sources */,
 				23E7665D2AD819ED008AC3A4 /* TabBarController.swift in Sources */,
+				231CF50C2CCBDAAA00A41C32 /* ToastView.swift in Sources */,
 				23DD9A3F2AC5A5D300D6BBB5 /* UIViewController+Extension.swift in Sources */,
 				23E7665B2AD819B3008AC3A4 /* ChartViewController.swift in Sources */,
 				2391863D2AE027060053A315 /* AnimationButton.swift in Sources */,
@@ -611,19 +610,16 @@
 				234A72262B0F7E9A00B8E60B /* DateManager.swift in Sources */,
 				23CACBFF2AFFA02C008AC1DD /* ChartListTableViewCell.swift in Sources */,
 				2380FB222AB9E6B200B31754 /* SceneDelegate.swift in Sources */,
-				237B04592AE21315006C40CA /* SettingView.swift in Sources */,
 				237B047A2AE3B06B006C40CA /* CalendarViewModel.swift in Sources */,
 				23BDAD4B2ADA4729007F5768 /* ChartTableViewCell.swift in Sources */,
 				23C798222AE10FC100121D6A /* LocalizedString+Extension.swift in Sources */,
 				23DD9A122AC168B200D6BBB5 /* Color.swift in Sources */,
-				235012E52BF74FC300EB5AFE /* SettingViewModel.swift in Sources */,
 				23BDAD5E2ADD6180007F5768 /* CalendarHeaderView.swift in Sources */,
 				231CF4F62CC8D8D000A41C32 /* BlackToggleStyle.swift in Sources */,
 				23BDAD522ADA4C3C007F5768 /* ReusableViewProtocol.swift in Sources */,
 				23DD9A502AC6B81400D6BBB5 /* PickMoodCollectionViewCell.swift in Sources */,
 				2346ACBF2B89E80B0058FDB4 /* Setting.swift in Sources */,
 				23DD9A102AC1640A00D6BBB5 /* Constants.swift in Sources */,
-				2346ACC12B8A19130058FDB4 /* SettingTableViewCell.swift in Sources */,
 				23BDAD602ADD7724007F5768 /* PlaceholderView.swift in Sources */,
 				231CF4FE2CC92AFA00A41C32 /* InfoView.swift in Sources */,
 				23DD9A4E2AC6B33D00D6BBB5 /* PickMoodViewController.swift in Sources */,
@@ -898,6 +894,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		231CF50D2CCBDEF300A41C32 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		237B046B2AE2CF36006C40CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -949,6 +953,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		231CF50E2CCBDEF300A41C32 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 231CF50D2CCBDEF300A41C32 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
 		234A722F2B10DF5A00B8E60B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 237B046B2AE2CF36006C40CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
