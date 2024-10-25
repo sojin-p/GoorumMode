@@ -43,39 +43,18 @@ struct SettingUI: Identifiable {
         
         case version = "setting_Version"
         
-        func localized() -> String {
-            return self.rawValue.localized
-        }
-    }
-}
-
-
-//MARK: - Setting
-struct Setting {
-    let title: SettingTitle
-    let mainIcon: UIImage?
-    let detailText: String?
-    
-    var hasSwitch: Bool {
-        return title == .noti
-    }
-    
-    var isSwitchOn: Bool = false
-    
-    var isHidden: Bool {
-        return title == .notiTime && !isSwitchOn
-    }
-    
-    //SettingTitle+Enum
-    enum SettingTitle: String {
-        case noti = "알림"
-        case notiTime = "알림 시간"
-        case info = "정보"
-        case inquiry = "setting_Inquiry"
+//        var accessibilityHint: String {
+//            switch self {
+//            case .noti: "알림을 설정하려면 스위치를 켜세요."
+//            case .notiTime: "알림 시간을 설정하려면 두 번 탭 하세요."
+//            case .info: "정책 등의 정보를 확인하려면 두 번 탭 하세요."
+//            case .inquiry: "개발자에게 문의 메일을 보내려면 두 번 탭 하세요 메일 화면이 켜집니다."
+//            case .version: "앱 버전 정보는 ~입니다."
+//            }
+//        }
         
         func localized() -> String {
             return self.rawValue.localized
         }
     }
 }
-
