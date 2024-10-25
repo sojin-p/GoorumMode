@@ -85,6 +85,8 @@
 
 "setting_NotificationBody" = "今日はどうでしたか？日記を書いてください！";
 
+"setting_NotificationToast" = "通知が設定されました。";
+
 //MARK: - SearchViewController
 "search_placeholder" = "記録した内容を検索してみてください。";
 

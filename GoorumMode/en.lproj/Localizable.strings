@@ -85,6 +85,8 @@
 
 "setting_NotificationBody" = "How was your day today? Please write a diary!";
 
+"setting_NotificationToast" = "Notification has been set up.";
+
 //MARK: - SearchViewController
 "search_placeholder" = "Search your records.";
 

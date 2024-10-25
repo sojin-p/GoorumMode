@@ -85,6 +85,8 @@
 
 "setting_NotificationBody" = "今天过得怎么样？请写下日记！";
 
+"setting_NotificationToast" = "通知已设定。";
+
 //MARK: - SearchViewController
 "search_placeholder" = "请搜索一下记录的内容。";
 
