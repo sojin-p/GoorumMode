@@ -14,17 +14,17 @@ final class SettingUIViewModel: ObservableObject {
         UserSettingSection(
             title: .basic,
             items: [
-                SettingUI(
+                Setting(
                     title: .noti,
                     iconName: "iconNotification",
                     type: .toggle(isOn: true)
                 ),
-                SettingUI(
+                Setting(
                     title: .info,
                     iconName: "iconInfo",
                     type: .none(isMail: false)
                 ),
-                SettingUI(
+                Setting(
                     title: .inquiry,
                     iconName: Constants.IconImage.inquiry,
                     type: .none(isMail: true)
@@ -34,7 +34,7 @@ final class SettingUIViewModel: ObservableObject {
         UserSettingSection(
             title: .other,
             items: [
-                SettingUI(
+                Setting(
                     title: .version,
                     iconName: nil,
                     type: .detailText(value: Constants.getVersion(), showPopUp: false)
@@ -143,8 +143,6 @@ final class SettingUIViewModel: ObservableObject {
 
                 //UserDefaults에 저장
                 self?.saveNotificationToUserDefaults(time)
-                
-                //토스트 알림
             }
         }
     }
@@ -204,7 +202,7 @@ final class SettingUIViewModel: ObservableObject {
         
         guard let basicSectionIndex = settings.firstIndex(where: { $0.title == .basic }) else { return }
         
-        let notiTime = SettingUI(
+        let notiTime = Setting(
             title: .notiTime,
             iconName: Constants.IconImage.notiClock,
             type: .detailText(value: "", showPopUp: true)
