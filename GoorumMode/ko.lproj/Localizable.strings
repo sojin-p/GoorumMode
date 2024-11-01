@@ -75,11 +75,18 @@
 //MARK: - SettingViewController
 "settingVC_Title" = "설정";
 "setting_PrivacyPolicy" = "개인정보 정책";
+"setting_PrivacyPolicy_AccessibilityHint" = "개인정보 처리방침을 확인하려면 두 번 탭 하세요.";
 
 "setting_Noti" = "알림";
+
 "setting_NotiTime" = "알림 시간";
+"setting_NotiTime_AccessibilityHint" = "알림 시간을 설정하려면 두 번 탭 하세요.";
+
 "setting_Info" = "정보";
+"setting_Info_AccessibilityHint" = "정책 등의 정보를 확인하려면 두 번 탭 하세요.";
+
 "setting_Inquiry" = "문의하기";
+"setting_Inquiry_AccessibilityHint" = "개발자에게 문의 메일을 보내려면 두 번 탭 하세요.";
 
 "setting_Version" = "버전";
 

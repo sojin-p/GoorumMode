@@ -22,7 +22,7 @@ struct InfoView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         CellTextView(title: "setting_PrivacyPolicy".localized)
-                            .accessibilityHint("개인정보 처리방침을 확인하려면 두 번 탭 하세요.")
+                            .accessibilityHint("setting_PrivacyPolicy_AccessibilityHint".localized)
                         Spacer()
                     }
                     .frame(height: 40)

@@ -75,11 +75,18 @@
 //MARK: - SettingViewController
 "settingVC_Title" = "設置";
 "setting_PrivacyPolicy" = "個人資訊政策";
+"setting_PrivacyPolicy_AccessibilityHint" = "如果您想查看隱私政策，請點擊兩次。";
 
 "setting_Noti" = "通知";
+
 "setting_NotiTime" = "時間";
+"setting_NotiTime_AccessibilityHint" = "如果您想設置通知時間，請點擊兩次。";
+
 "setting_Info" = "資訊";
+"setting_Info_AccessibilityHint" = "如果您想查看信息，請點擊兩次。";
+
 "setting_Inquiry" = "諮詢";
+"setting_Inquiry_AccessibilityHint" = "如果您想向開發人員發送詢問郵件,請點擊兩次。";
 
 "setting_Version" = "版本";
 

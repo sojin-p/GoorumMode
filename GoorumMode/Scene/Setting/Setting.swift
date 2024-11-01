@@ -47,9 +47,9 @@ struct Setting: Identifiable {
         
         var accessibilityHint: String {
             switch self {
-            case .notiTime: "알림 시간을 설정하려면 두 번 탭 하세요."
-            case .info: "정책 등의 정보를 확인하려면 두 번 탭 하세요."
-            case .inquiry: "개발자에게 문의 메일을 보내려면 두 번 탭 하세요."
+            case .notiTime: "setting_NotiTime_AccessibilityHint".localized
+            case .info: "setting_Info_AccessibilityHint".localized
+            case .inquiry: "setting_Inquiry_AccessibilityHint".localized
             default: ""
             }
         }

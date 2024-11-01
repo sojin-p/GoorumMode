@@ -75,11 +75,18 @@
 //MARK: - SettingViewController
 "settingVC_Title" = "设置";
 "setting_PrivacyPolicy" = "个人信息政策";
+"setting_PrivacyPolicy_AccessibilityHint" = "如果您想查看隐私政策，请点击两次。";
 
 "setting_Noti" = "通知";
+
 "setting_NotiTime" = "时间";
+"setting_NotiTime_AccessibilityHint" = "如果您想设置通知时间，请点击两次。";
+
 "setting_Info" = "资讯";
+"setting_Info_AccessibilityHint" = "如果您想查看信息，请点击两次。";
+
 "setting_Inquiry" = "查询";
+"setting_Inquiry_AccessibilityHint" = "如果您想向开发人员发送询问邮件,请点击两次。";
 
 "setting_Version" = "版本";
 

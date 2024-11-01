@@ -75,11 +75,18 @@
 //MARK: - SettingViewController
 "settingVC_Title" = "設定";
 "setting_PrivacyPolicy" = "個人情報ポリシー";
+"setting_PrivacyPolicy_AccessibilityHint" = "プライバシーポリシーを確認したい場合は、2回タップしてください。";
 
 "setting_Noti" = "お知らせ";
+
 "setting_NotiTime" = "じかん";
+"setting_NotiTime_AccessibilityHint" = "通知時間を設定する場合は、2回タップしてください。";
+
 "setting_Info" = "じょうほう";
+"setting_Info_AccessibilityHint" = "プライバシーポリシーとして情報を確認したい場合は、2回タップしてください。";
+
 "setting_Inquiry" = "問い合わせ";
+"setting_Inquiry_AccessibilityHint" = "開発者に問い合わせメールを送信する場合は、2回タップしてください。";
 
 "setting_Version" = "バージョン";
 

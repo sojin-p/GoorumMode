@@ -75,11 +75,18 @@
 //MARK: - SettingViewController
 "settingVC_Title" = "Setting";
 "setting_PrivacyPolicy" = "Privacy Policy";
+"setting_PrivacyPolicy_AccessibilityHint" = "Please tap it twice, if you want to check the privacy policy.";
 
 "setting_Noti" = "Notification";
+
 "setting_NotiTime" = "Time";
+"setting_NotiTime_AccessibilityHint" = "Please tap it twice, if you want to set the notification time.";
+
 "setting_Info" = "Information";
+"setting_Info_AccessibilityHint" = "Please tap it twice, if you want to check information as the privacy policy.";
+
 "setting_Inquiry" = "Inquiry";
+"setting_Inquiry_AccessibilityHint" = "Please tap it twice, if you want to send an inquiry email to the developer.";
 
 "setting_Version" = "Version";
 
