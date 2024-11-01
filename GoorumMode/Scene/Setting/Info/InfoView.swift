@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfoView: View {
     
-    @Environment(\.dismiss) var dismiss //뒤로 제스처
+    @Environment(\.dismiss) var dismiss
     
     var title: String
     
@@ -21,7 +21,8 @@ struct InfoView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
-                        CellTextView(text: "setting_PrivacyPolicy".localized)
+                        CellTextView(title: "setting_PrivacyPolicy".localized)
+                            .accessibilityHint("개인정보 처리방침을 확인하려면 두 번 탭 하세요.")
                         Spacer()
                     }
                     .frame(height: 40)
