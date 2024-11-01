@@ -17,7 +17,6 @@ struct CellTextView: View {
             .foregroundColor(Color(uiColor: Constants.Color.Text.basicTitle))
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             .contentShape(Rectangle())
-            .accessibilityLabel(title)
     }
     
 }
