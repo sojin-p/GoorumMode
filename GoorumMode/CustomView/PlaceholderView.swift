@@ -32,13 +32,13 @@ final class PlaceholderView: BaseView {
         
         imageView.snp.makeConstraints { make in
             make.size.equalTo(150)
-            make.centerX.equalToSuperview().offset(-5)
+            make.centerX.equalToSuperview().offset(-3)
             make.centerY.equalToSuperview().offset(-25)
         }
         
         placehoderLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(imageView)
-            make.top.equalTo(imageView.snp.bottom).offset(15)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(imageView.snp.bottom).offset(-8)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(25)
         }
