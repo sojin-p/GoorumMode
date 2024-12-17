@@ -63,9 +63,9 @@ extension SearchViewController: UISearchBarDelegate, UIGestureRecognizerDelegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text, text.isEmpty {
-            showAlert(title: "alert_searchTextIsEmpty".localized, massage: nil)
+            AlertManager.shared.showAlert(on: self, title: "alert_searchTextIsEmpty".localized)
         } else if results.isEmpty {
-            showAlert(title: "alert_searchResultsIsEmpty".localized, massage: nil)
+            AlertManager.shared.showAlert(on: self, title: "alert_searchResultsIsEmpty".localized)
         }
         searchBar.resignFirstResponder()
     }
@@ -81,14 +81,16 @@ extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedData = dataSource.itemIdentifier(for: indexPath) else { return }
         
-        showAlertWithAction(
-            title: "alert_MoveSelectedDate".localized, message: nil,
+        AlertManager.shared.showAlertWithAction(
+            on: self,
+            title: "alert_MoveSelectedDate".localized,
             buttonName: "alert_OKButtonTitle".localized,
-            buttonStyle: .default) {
+            buttonStyle: .default) { [weak self] in
                 DateManager.shared.selectedDate.value = selectedData.date
-                self.completionHandler?(selectedData)
-                self.navigationController?.popViewController(animated: true)
-            }
+                self?.completionHandler?(selectedData)
+                self?.navigationController?.popViewController(animated: true)
+        }
+        
     }
 }
 

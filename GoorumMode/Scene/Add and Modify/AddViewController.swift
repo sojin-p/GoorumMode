@@ -98,11 +98,12 @@ final class AddViewController: BaseViewController {
     private func doneButtonClicked() {
         
         guard let image = mainView.pickMoodImageView.image, image != mainView.pickMoodPlaceholder else {
-            showAlert(title: "alert_DoneButtonClicked_Title".localized, massage: nil)
+            
+            AlertManager.shared.showAlert(on: self,title: "alert_DoneButtonClicked_Title".localized)
+            
             return
         }
         
-        let unselectedTime = mainView.timePicker.date
         let onelineText = mainView.oneLineTextField.text?.trimmingCharacters(in: .whitespaces)
         var detailText = mainView.detailTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -136,16 +137,14 @@ final class AddViewController: BaseViewController {
     
     private func removeButtonClicked() {
         
-        showAlertWithAction(
-            title: "alert_RemoveButtonClicked_Title".localized, message: nil,
+        AlertManager.shared.showAlertWithAction(
+            on: self,
+            title: "alert_RemoveButtonClicked_Title".localized,
             buttonName: "alert_RemoveButtonTitle".localized,
             buttonStyle: .destructive) { [weak self] in
                 guard let moods = self?.moods else { return }
-
                 self?.removeData?()
-                
                 self?.moodRepository.deleteItem(moods._id)
-           
                 self?.dismiss(animated: true)
             }
     }
@@ -214,7 +213,7 @@ extension AddViewController: UITextFieldDelegate {
         
         guard newString.count < 16 else {
             textField.resignFirstResponder()
-            showAlert(title: "alert_OneLineTextField_isEmpty_Title".localized, massage: nil)
+            AlertManager.shared.showAlert(on: self, title: "alert_OneLineTextField_isEmpty_Title".localized)
             return false
         }
         

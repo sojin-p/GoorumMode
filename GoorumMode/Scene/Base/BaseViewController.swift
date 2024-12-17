@@ -30,27 +30,6 @@ class BaseViewController: UIViewController {
     
     func setConstraints() { }
     
-    func showAlert(title: String, massage: String?) {
-        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "alert_OKButtonTitle".localized, style: .default)
-        alert.addAction(ok)
-        present(alert, animated: true)
-    }
-    
-    func showAlertWithAction(title: String, message: String?, buttonName: String, buttonStyle: UIAlertAction.Style, completion: @escaping () -> Void) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let button = UIAlertAction(title: buttonName, style: buttonStyle) { action in
-            completion()
-        }
-        let cancel = UIAlertAction(title: "alert_CancelButtonTitle".localized, style: .cancel)
-        
-        alert.addAction(button)
-        alert.addAction(cancel)
-        
-        self.present(alert, animated: true)
-        
-    }
-    
     func setupSheet(_ detentsID: [UISheetPresentationController.Detent], isModal: Bool) {
         isModalInPresentation = isModal
         
