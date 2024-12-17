@@ -122,7 +122,7 @@ final class AddViewController: BaseViewController {
             
         } else if transtion == .modify {
             guard let moods else { return }
-            let data = Mood(mood: moodImageName ?? moods.mood, date: selectedDate , onelineText: onelineText, detailText: detailText, images: [])
+            let data = Mood(mood: moodImageName ?? moods.mood, date: mainView.timePicker.date , onelineText: onelineText, detailText: detailText, images: [])
             
             data._id = moods._id
             self.moods = data
