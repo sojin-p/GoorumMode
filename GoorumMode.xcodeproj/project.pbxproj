@@ -15,6 +15,8 @@
 		231CF5072CCA7CED00A41C32 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF5062CCA7CED00A41C32 /* UINavigationController+Extension.swift */; };
 		231CF50C2CCBDAAA00A41C32 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CF50B2CCBDAAA00A41C32 /* ToastView.swift */; };
 		231CF50F2CCBDEF300A41C32 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 231CF50E2CCBDEF300A41C32 /* PopupView */; };
+		2338FB692CD5F41000E3FB6F /* Alertable+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338FB682CD5F41000E3FB6F /* Alertable+Protocol.swift */; };
+		2338FB6B2CD5F43400E3FB6F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338FB6A2CD5F43400E3FB6F /* AlertManager.swift */; };
 		2346ACBF2B89E80B0058FDB4 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346ACBE2B89E80B0058FDB4 /* Setting.swift */; };
 		234A72262B0F7E9A00B8E60B /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A72252B0F7E9A00B8E60B /* DateManager.swift */; };
 		234A72302B10DF5A00B8E60B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 234A722F2B10DF5A00B8E60B /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -102,8 +104,10 @@
 		231CF5042CCA777E00A41C32 /* CellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTextView.swift; sourceTree = "<group>"; };
 		231CF5062CCA7CED00A41C32 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		231CF50B2CCBDAAA00A41C32 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		2338FB682CD5F41000E3FB6F /* Alertable+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alertable+Protocol.swift"; sourceTree = "<group>"; };
+		2338FB6A2CD5F43400E3FB6F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		2346ACBE2B89E80B0058FDB4 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Utility/Constants/DateManager.swift; sourceTree = SOURCE_ROOT; };
+		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Utility/Managers/DateManager.swift; sourceTree = SOURCE_ROOT; };
 		234A722B2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		234A722C2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		234A722D2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -196,6 +200,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2338FB672CD5F21D00E3FB6F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				234A72252B0F7E9A00B8E60B /* DateManager.swift */,
+				2338FB6A2CD5F43400E3FB6F /* AlertManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		237B04552AE20CE1006C40CA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +233,6 @@
 				23DD9A0F2AC1640A00D6BBB5 /* Constants.swift */,
 				23DD9A112AC168B200D6BBB5 /* Color.swift */,
 				23DD9A9C2AD1882100D6BBB5 /* IconImage.swift */,
-				234A72252B0F7E9A00B8E60B /* DateManager.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -252,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				23BDAD512ADA4C3C007F5768 /* ReusableViewProtocol.swift */,
+				2338FB682CD5F41000E3FB6F /* Alertable+Protocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -326,6 +339,7 @@
 				237B04762AE3A524006C40CA /* Enum */,
 				237B04772AE3A53B006C40CA /* Extension */,
 				237B04782AE3A552006C40CA /* Protocol */,
+				2338FB672CD5F21D00E3FB6F /* Managers */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -601,6 +615,7 @@
 				2380FB202AB9E6B200B31754 /* AppDelegate.swift in Sources */,
 				23DD9A542AC6C87700D6BBB5 /* MoodEmojis+Enum.swift in Sources */,
 				23DD9A992AD160EC00D6BBB5 /* CalendarViewController.swift in Sources */,
+				2338FB692CD5F41000E3FB6F /* Alertable+Protocol.swift in Sources */,
 				23DD9A9D2AD1882200D6BBB5 /* IconImage.swift in Sources */,
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
 				23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */,
@@ -623,6 +638,7 @@
 				23BDAD602ADD7724007F5768 /* PlaceholderView.swift in Sources */,
 				231CF4FE2CC92AFA00A41C32 /* InfoView.swift in Sources */,
 				23DD9A4E2AC6B33D00D6BBB5 /* PickMoodViewController.swift in Sources */,
+				2338FB6B2CD5F43400E3FB6F /* AlertManager.swift in Sources */,
 				23DD9A262AC2FDD200D6BBB5 /* MoodCollectionViewCell.swift in Sources */,
 				23AF91A62C89EB5E00F332E0 /* SettingUIViewModel.swift in Sources */,
 				23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */,
@@ -826,7 +842,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dory.GoorumMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -858,7 +874,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dory.GoorumMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
