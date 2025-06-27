@@ -143,7 +143,9 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date()
+        let today = DateManager.shared.selectedDate.value
+        print("=====maximumDate : ", today)
+        return today
     }
 }
 
@@ -186,9 +188,9 @@ extension CalendarViewController: UIGestureRecognizerDelegate {
         DateManager.shared.selectedDate.bind { [weak self] date in
             print("===datemanager bind: ", date)
             DispatchQueue.main.async {
+                self?.calendar.reloadData()
                 self?.headerView.headerLabel.text = date.toString(of: .yearAndMouth)
                 self?.calendar.select(date)
-                self?.calendar.reloadData()
             }
         }
     }
