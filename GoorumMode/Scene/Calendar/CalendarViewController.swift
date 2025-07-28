@@ -143,7 +143,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        let today = DateManager.shared.selectedDate.value
+        let today = Date()
         print("=====maximumDate : ", today)
         return today
     }
