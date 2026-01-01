@@ -58,6 +58,8 @@ extension Constants {
         
         static let inquiry = "iconInquiry"
         
+        static let export = "iconExport"
+        
     }
     
 }
