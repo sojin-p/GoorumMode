@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -88,6 +88,9 @@
 		23E7665B2AD819B3008AC3A4 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */; };
 		23E7665D2AD819ED008AC3A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7665C2AD819ED008AC3A4 /* TabBarController.swift */; };
 		23E766612AD81F58008AC3A4 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 23E766602AD81F58008AC3A4 /* DGCharts */; };
+		23F1A1302F0672570010863A /* DiaryExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1A12F2F0672570010863A /* DiaryExportView.swift */; };
+		23F1A1332F067C930010863A /* DiaryExportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1A1322F067C930010863A /* DiaryExportViewModel.swift */; };
+		23F1A1372F067E6C0010863A /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1A1362F067E6C0010863A /* PDFGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,7 +110,7 @@
 		2338FB682CD5F41000E3FB6F /* Alertable+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alertable+Protocol.swift"; sourceTree = "<group>"; };
 		2338FB6A2CD5F43400E3FB6F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		2346ACBE2B89E80B0058FDB4 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Utility/Managers/DateManager.swift; sourceTree = SOURCE_ROOT; };
+		234A72252B0F7E9A00B8E60B /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = GoorumMode/Managers/DateManager.swift; sourceTree = SOURCE_ROOT; };
 		234A722B2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		234A722C2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		234A722D2B10CFBD00B8E60B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -175,11 +178,10 @@
 		23DD9AA72AD3FC5300D6BBB5 /* BasicFSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFSCalendar.swift; sourceTree = "<group>"; };
 		23E7665A2AD819B3008AC3A4 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		23E7665C2AD819ED008AC3A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		23F1A12F2F0672570010863A /* DiaryExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryExportView.swift; sourceTree = "<group>"; };
+		23F1A1322F067C930010863A /* DiaryExportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryExportViewModel.swift; sourceTree = "<group>"; };
+		23F1A1362F067E6C0010863A /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		230AC6322F03E3FA0008336F /* DiaryExport */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DiaryExport; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2380FB192AB9E6B100B31754 /* Frameworks */ = {
@@ -218,7 +220,7 @@
 			children = (
 				2346ACBE2B89E80B0058FDB4 /* Setting.swift */,
 				23AF91A92C89FF3800F332E0 /* SwiftUI */,
-				230AC6322F03E3FA0008336F /* DiaryExport */,
+				23F1A1312F067A010010863A /* DiaryExport */,
 				23910D922B8A3D7E00B17E26 /* Info */,
 			);
 			path = Setting;
@@ -296,9 +298,11 @@
 				234A722E2B10DCAE00B8E60B /* GoorumMode.entitlements */,
 				2380FB1F2AB9E6B200B31754 /* AppDelegate.swift */,
 				2380FB212AB9E6B200B31754 /* SceneDelegate.swift */,
+				23F1A1352F067E010010863A /* Resources */,
 				23DD9A0E2AC15E3900D6BBB5 /* Utility */,
-				23DD9A432AC6A7C500D6BBB5 /* Font */,
 				23DD9A342AC4723800D6BBB5 /* Realm */,
+				2338FB672CD5F21D00E3FB6F /* Managers */,
+				23F1A1342F067D2C0010863A /* Services */,
 				23DD9AA92AD3FF8300D6BBB5 /* CustomView */,
 				23DD9A1C2AC2EB1F00D6BBB5 /* Scene */,
 				2380FB282AB9E6B400B31754 /* Assets.xcassets */,
@@ -344,7 +348,6 @@
 				237B04762AE3A524006C40CA /* Enum */,
 				237B04772AE3A53B006C40CA /* Extension */,
 				237B04782AE3A552006C40CA /* Protocol */,
-				2338FB672CD5F21D00E3FB6F /* Managers */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -421,14 +424,14 @@
 			path = "Add and Modify";
 			sourceTree = "<group>";
 		};
-		23DD9A432AC6A7C500D6BBB5 /* Font */ = {
+		23DD9A432AC6A7C500D6BBB5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				23DD9A452AC6A87700D6BBB5 /* NanumSquareNeoOTF-Rg.otf */,
 				23DD9A482AC6AC1500D6BBB5 /* NanumSquareNeoOTF-Bd.otf */,
 				23DD9A4A2AC6AEE100D6BBB5 /* NanumSquareNeoOTF-Eb.otf */,
 			);
-			path = Font;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		23DD9A4C2AC6B2A900D6BBB5 /* PickMood */ = {
@@ -475,6 +478,31 @@
 			path = Chart;
 			sourceTree = "<group>";
 		};
+		23F1A1312F067A010010863A /* DiaryExport */ = {
+			isa = PBXGroup;
+			children = (
+				23F1A12F2F0672570010863A /* DiaryExportView.swift */,
+				23F1A1322F067C930010863A /* DiaryExportViewModel.swift */,
+			);
+			path = DiaryExport;
+			sourceTree = "<group>";
+		};
+		23F1A1342F067D2C0010863A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				23F1A1362F067E6C0010863A /* PDFGenerator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		23F1A1352F067E010010863A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				23DD9A432AC6A7C500D6BBB5 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -490,9 +518,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				230AC6322F03E3FA0008336F /* DiaryExport */,
 			);
 			name = GoorumMode;
 			packageProductDependencies = (
@@ -626,6 +651,7 @@
 				2338FB692CD5F41000E3FB6F /* Alertable+Protocol.swift in Sources */,
 				23DD9A9D2AD1882200D6BBB5 /* IconImage.swift in Sources */,
 				23DD9A282AC2FFF500D6BBB5 /* BaseCollectionViewCell.swift in Sources */,
+				23F1A1332F067C930010863A /* DiaryExportViewModel.swift in Sources */,
 				23DD9A362AC4724C00D6BBB5 /* Mood.swift in Sources */,
 				23DD9A3B2AC52CB200D6BBB5 /* BaseViewController.swift in Sources */,
 				23CACBFD2AFF9FF2008AC1DD /* ChartListCollectionViewCell.swift in Sources */,
@@ -651,6 +677,8 @@
 				23AF91A62C89EB5E00F332E0 /* SettingUIViewModel.swift in Sources */,
 				23DD9A2C2AC449E700D6BBB5 /* MoodSection+Enum.swift in Sources */,
 				231CF4F82CC8E76F00A41C32 /* Font+Extension.swift in Sources */,
+				23F1A1302F0672570010863A /* DiaryExportView.swift in Sources */,
+				23F1A1372F067E6C0010863A /* PDFGenerator.swift in Sources */,
 				23DD9A212AC2EBDA00D6BBB5 /* MoodView.swift in Sources */,
 				23AF91A82C89FF1800F332E0 /* SettingListView.swift in Sources */,
 				23DD9A522AC6C10100D6BBB5 /* PickMoodView.swift in Sources */,

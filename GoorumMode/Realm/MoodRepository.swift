@@ -36,6 +36,14 @@ class MoodRepository {
         return moodCounts
     }
     
+    //모든 데이터 오래된 순으로 불러오기
+    func fetchAllMoods() -> [Mood] {
+        let allMoods = realm.objects(Mood.self)
+            .sorted(byKeyPath: "date", ascending: true)  //오래된 순
+        print("전체 Mood 개수: \(allMoods.count)")  //디버깅
+        return allMoods.toArray()
+    }
+    
     func fetchAllDate() -> [Date] {
         let data = realm.objects(Mood.self).toArray()
         let date = data.map { $0.date }.map { date in
