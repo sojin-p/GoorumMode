@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -177,6 +177,10 @@
 		23E7665C2AD819ED008AC3A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		230AC6322F03E3FA0008336F /* DiaryExport */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DiaryExport; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		2380FB192AB9E6B100B31754 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -214,6 +218,7 @@
 			children = (
 				2346ACBE2B89E80B0058FDB4 /* Setting.swift */,
 				23AF91A92C89FF3800F332E0 /* SwiftUI */,
+				230AC6322F03E3FA0008336F /* DiaryExport */,
 				23910D922B8A3D7E00B17E26 /* Info */,
 			);
 			path = Setting;
@@ -485,6 +490,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				230AC6322F03E3FA0008336F /* DiaryExport */,
 			);
 			name = GoorumMode;
 			packageProductDependencies = (
@@ -842,7 +850,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.10;
+				MARKETING_VERSION = 1.2.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dory.GoorumMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -875,7 +883,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.10;
+				MARKETING_VERSION = 1.2.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dory.GoorumMode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

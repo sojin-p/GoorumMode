@@ -77,7 +77,7 @@
 "setting_PrivacyPolicy" = "개인정보 정책";
 "setting_PrivacyPolicy_AccessibilityHint" = "개인정보 처리방침을 확인하려면 두 번 탭 하세요.";
 
-"setting_Noti" = "알림";
+"setting_Noti" = "일기 알림";
 
 "setting_NotiTime" = "알림 시간";
 "setting_NotiTime_AccessibilityHint" = "알림 시간을 설정하려면 두 번 탭 하세요.";
