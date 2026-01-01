@@ -28,9 +28,12 @@ struct SettingList: View {
                 
             case .detailText(let value, let showPopUp):
                 detailTextView(value, showPopUp: showPopUp)
+//                
+//            case .none(let isMail):
+//                noneView(isMail)
                 
-            case .none(let isMail):
-                noneView(isMail)
+            case .action(let action):
+                actionView(action)
             }
             
         }
@@ -94,5 +97,25 @@ struct SettingList: View {
             )
         }
     }
+    
+    @ViewBuilder
+    private func actionView(_ action: SettingAction) -> some View {
+        switch action {
+        case .email:
+            CellTextView(title: item.title.localized())
+                .onTapGesture { viewModel.sendEmail() }
+        case .diaryExport:
+            NavigationLink(destination: NavigationLazyView(DiaryExportView())) {
+                CellTextView(title: item.title.localized())
+            }
+        case .info:
+            NavigationLink(destination: NavigationLazyView(InfoView(title: item.title.localized()))) {
+                CellTextView(title: item.title.localized())
+            }
+        case .version:
+            CellTextView(title: item.title.localized())
+        }
+    }
+
     
 }

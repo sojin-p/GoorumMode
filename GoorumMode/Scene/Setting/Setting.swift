@@ -24,7 +24,16 @@ enum SectionTitle: String {
 enum SettingType {
     case toggle(isOn: Bool)
     case detailText(value: String, showPopUp: Bool)
-    case none(isMail: Bool)
+//    case none(isMail: Bool)
+    case action(SettingAction)
+}
+
+//MARK: - SettingAction
+enum SettingAction {
+    case email
+    case diaryExport
+    case info
+    case version
 }
 
 //MARK: - Setting
@@ -39,6 +48,7 @@ struct Setting: Identifiable {
         //section1
         case noti = "setting_Noti"
         case notiTime = "setting_NotiTime"
+        case diaryExport = "pdf 내보내기" //수정
         case info = "setting_Info"
         case inquiry = "setting_Inquiry"
         
@@ -64,7 +74,7 @@ struct Setting: Identifiable {
         
         var accessibilityHint: String {
             switch self {
-            case .privacyPolicy: "개인정보 정책을 확인하려면 두 번 탭 하세요."
+            case .privacyPolicy: "개인정보 정책을 확인하려면 두 번 탭 하세요." //수정
             }
         }
         

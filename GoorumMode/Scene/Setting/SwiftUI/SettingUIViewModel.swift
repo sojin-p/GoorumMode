@@ -20,14 +20,19 @@ final class SettingUIViewModel: ObservableObject {
                     type: .toggle(isOn: true)
                 ),
                 Setting(
+                    title: .diaryExport,
+                    iconName: Constants.IconImage.export,
+                    type: .action(.diaryExport)
+                ),
+                Setting(
                     title: .info,
                     iconName: "iconInfo",
-                    type: .none(isMail: false)
+                    type: .action(.info)//.none(isMail: false)
                 ),
                 Setting(
                     title: .inquiry,
                     iconName: Constants.IconImage.inquiry,
-                    type: .none(isMail: true)
+                    type: .action(.email)
                 )
             ]
         ), //basic
