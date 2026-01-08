@@ -105,7 +105,7 @@ struct SettingList: View {
             CellTextView(title: item.title.localized())
                 .onTapGesture { viewModel.sendEmail() }
         case .diaryExport:
-            NavigationLink(destination: NavigationLazyView(DiaryExportView())) {
+            NavigationLink(destination: NavigationLazyView(DiaryExportView(title: item.title.localized()))) {
                 CellTextView(title: item.title.localized())
             }
         case .info:
