@@ -31,7 +31,8 @@ class DiaryExportViewModel: ObservableObject {
         }
         
         let moods = repository.fetchAllMoods()
-        print("📄 PDF용 Mood: \(moods.count)개")
+        
         pdfData = pdfGenerator.generate(from: moods)
+        
     }
 }
