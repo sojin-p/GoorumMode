@@ -21,9 +21,9 @@ struct PDFGenerator {
     private var maxY: CGFloat { pageRect.height - bottomMargin }
     
     // MARK: - Fonts
-    private let dateFont = UIFont.boldSystemFont(ofSize: 14)
-    private let oneLineFont = UIFont.systemFont(ofSize: 14)
-    private let bodyFont = UIFont.systemFont(ofSize: 14)
+    private let dateFont = Constants.Font.extraBold(size: 14)
+    private let oneLineFont = Constants.Font.bold(size: 14)
+    private let bodyFont = Constants.Font.bold(size: 14)
     
     // MARK: - Spacing
     private let blockTopPadding: CGFloat = 12      //한 기록 시작 전 여백
@@ -40,9 +40,7 @@ struct PDFGenerator {
         return renderer.pdfData { context in
             let calendar = Calendar(identifier: .gregorian)
             
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: Bundle.main.preferredLocalizations.first ?? "ko_KR") 
-            formatter.dateFormat = DateFormatType.detailedDate.description
+            let formatter = createDateFormatter()
             
             //날짜순 정렬
             let sorted = moods.sorted { $0.date < $1.date }
@@ -86,16 +84,14 @@ struct PDFGenerator {
                         string: oneLine,
                         attributes: [.font: oneLineFont]
                     ).draw(in: CGRect(x: leftMargin, y: y, width: contentWidth, height: 18))
+                    y += 18 + spaceAfterOneLine
                 }
-                y += 18 + spaceAfterOneLine
                 
                 //상세 내용
                 if let detail = mood.detailText, !detail.isEmpty {
                     let paragraph = NSMutableParagraphStyle()
                     paragraph.lineBreakMode = .byWordWrapping
                     paragraph.lineSpacing = 3 //줄 사이 간격
-//                    paragraph.paragraphSpacing = 6 // 문단 간 간격(텍스트 내부)
-//                    paragraph.paragraphSpacingBefore = 2 //문단 시작 전 간격(텍스트 내부)
                     
                     let detailAttr = NSAttributedString(
                         string: detail,
@@ -113,6 +109,14 @@ struct PDFGenerator {
     }
     
     // MARK: - Page helpers
+    
+    private func createDateFormatter() -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: Bundle.main.preferredLocalizations.first ?? "ko_KR")
+        formatter.dateFormat = DateFormatType.detailedDate.description
+        return formatter
+    }
+    
     private func ensureSpace(minHeight: CGFloat, y: CGFloat, context: UIGraphicsPDFRendererContext) -> CGFloat {
         if y + minHeight > maxY {
             context.beginPage()
@@ -133,7 +137,6 @@ struct PDFGenerator {
     }
     
     // MARK: - CoreText paging
-    
     //NSAttributedString을 잘린 곳부터 이어서 여러 페이지에 걸쳐 출력
     private func drawAttributedTextPaged(_ attr: NSAttributedString, startY: CGFloat, context: UIGraphicsPDFRendererContext) -> CGFloat {
         
