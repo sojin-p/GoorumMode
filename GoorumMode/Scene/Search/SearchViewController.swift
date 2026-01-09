@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class SearchViewController: BaseViewController {
     
@@ -20,10 +21,11 @@ final class SearchViewController: BaseViewController {
     private let moodView = MoodView()
     private let moodRepository = MoodRepository()
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Mood>!
-    private var snapshot: NSDiffableDataSourceSnapshot<Section, Mood>!
+    private typealias MoodID = ObjectId
+    private var dataSource: UICollectionViewDiffableDataSource<Section, MoodID>!
+    private var snapshot: NSDiffableDataSourceSnapshot<Section, MoodID>!
     
-    private var results: [Mood] = []
+    private var results: [MoodID] = []
     var completionHandler: ((Mood) -> Void)?
     
     override func viewDidLoad() {
@@ -35,11 +37,11 @@ final class SearchViewController: BaseViewController {
         moodView.collectionView.keyboardDismissMode = .onDrag
         moodView.collectionView.delegate = self
         
+        setNavigationBackBarButton()
+        
         navigationItem.titleView = searchBar
         searchBar.becomeFirstResponder()
         searchBar.delegate = self
-
-        setNavigationBackBarButton()
         
         configureDataSource()
         updateSnapshot()
@@ -71,23 +73,27 @@ extension SearchViewController: UISearchBarDelegate, UIGestureRecognizerDelegate
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        results = moodRepository.search(text: searchText)
+        let moods = moodRepository.search(text: searchText)
+        results = moods.map { $0._id }
         updateSnapshot()
     }
    
 }
 
 extension SearchViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selectedData = dataSource.itemIdentifier(for: indexPath) else { return }
+        
+        guard let selectedId = dataSource.itemIdentifier(for: indexPath) else { return }
+        guard let selectedMood = fetchMood(by: selectedId) else { return }
         
         AlertManager.shared.showAlertWithAction(
             on: self,
             title: "alert_MoveSelectedDate".localized,
             buttonName: "alert_OKButtonTitle".localized,
             buttonStyle: .default) { [weak self] in
-                DateManager.shared.selectedDate.value = selectedData.date
-                self?.completionHandler?(selectedData)
+                DateManager.shared.selectedDate.value = selectedMood.date
+                self?.completionHandler?(selectedMood)
                 self?.navigationController?.popViewController(animated: true)
         }
         
@@ -97,7 +103,7 @@ extension SearchViewController: UICollectionViewDelegate {
 extension SearchViewController {
     
     private func updateSnapshot() {
-        snapshot = NSDiffableDataSourceSnapshot<Section, Mood>()
+        snapshot = NSDiffableDataSourceSnapshot<Section, MoodID>()
         snapshot.appendSections([.today])
         snapshot.appendItems(results)
         
@@ -107,9 +113,15 @@ extension SearchViewController {
     
     private func configureDataSource() {
         
-        let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, Mood>(handler: { cell, indexPath, itemIdentifier in
-            cell.configureCell(itemIdentifier, dateType: .detailedDate)
-            cell.setCellAccessibility(itemIdentifier, accessibilityDateType: .dateForAccessibility)
+        let cellRegistration = UICollectionView.CellRegistration<MoodCollectionViewCell, MoodID>(
+            handler: { [weak self] cell, indexPath, itemIdentifier in
+                guard
+                    let self,
+                    let mood = self.fetchMood(by: itemIdentifier) //MoodId -> Mood 변환
+                else { return }
+
+            cell.configureCell(mood, dateType: .detailedDate)
+            cell.setCellAccessibility(mood, accessibilityDateType: .dateForAccessibility)
             cell.accessibilityHint = "search_AccessibilityHint".localized
         })
         
@@ -118,5 +130,14 @@ extension SearchViewController {
             return cell
         })
         
+    }
+    
+    private func fetchMood(by id: ObjectId) -> Mood? {
+        do {
+            let realm = try Realm()
+            return realm.object(ofType: Mood.self, forPrimaryKey: id)
+        } catch {
+            return nil
+        }
     }
 }
