@@ -62,6 +62,15 @@ struct DiaryExportView: View {
             .padding()
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
+            .popup(isPresented: $viewModel.showingPopup) {
+                ToastView(message: "저장된 기록이 없습니다.") //수정 다국어
+            } customize: {
+                $0
+                    .type(.floater())
+                    .position(.top)
+                    .animation(.spring)
+                    .autohideIn(1.5)
+            }
             .fileExporter(
                 isPresented: $showExporter,
                 document: viewModel.pdfData.map { PDFDataDocument(data: $0) } ?? PDFDataDocument(data: Data()),

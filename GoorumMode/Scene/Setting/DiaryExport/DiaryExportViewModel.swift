@@ -15,6 +15,7 @@ class DiaryExportViewModel: ObservableObject {
     
     @Published var isGenerating = false
     @Published var pdfData: Data?
+    @Published var showingPopup = false
     
     init(repository: MoodRepository = MoodRepository(), pdfGenerator: PDFGenerator = PDFGenerator()) {
         self.repository = repository
@@ -31,6 +32,11 @@ class DiaryExportViewModel: ObservableObject {
         }
         
         let moods = repository.fetchAllMoods()
+
+        guard !moods.isEmpty else {
+            showingPopup = true
+            return
+        }
         
         pdfData = pdfGenerator.generate(from: moods)
         
