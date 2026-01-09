@@ -10,6 +10,7 @@ import UniformTypeIdentifiers
 
 struct DiaryExportView: View {
     
+    @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = DiaryExportViewModel()
     @State private var showExporter = false
     
@@ -62,6 +63,18 @@ struct DiaryExportView: View {
             .padding()
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(Color(uiColor: Constants.Color.iconTint.basicBlack))
+                    }
+                }
+            }
+            .clipped()
             .popup(isPresented: $viewModel.showingPopup) {
                 ToastView(message: "diaryExport_Toast_Message".localized)
             } customize: {
