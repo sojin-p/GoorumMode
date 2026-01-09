@@ -164,7 +164,7 @@ final class ChartView: BaseView {
         
         chartTableView.snp.makeConstraints { make in
             make.top.equalTo(dateRangeLabel.snp.bottom).offset(25)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
 
     }
