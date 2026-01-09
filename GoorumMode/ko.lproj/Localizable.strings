@@ -72,7 +72,7 @@
 "doneButton_Title" = "선택";
 "doneButton_AccessibilityHint" = "두 번 탭 후, 뒤로 버튼을 누르면 해당 날짜에 기록을 추가할 수 있습니다.";
 
-//MARK: - SettingViewController
+//MARK: - Setting
 "settingVC_Title" = "설정";
 "setting_PrivacyPolicy" = "개인정보 정책";
 "setting_PrivacyPolicy_AccessibilityHint" = "개인정보 처리방침을 확인하려면 두 번 탭 하세요.";
@@ -81,6 +81,9 @@
 
 "setting_NotiTime" = "알림 시간";
 "setting_NotiTime_AccessibilityHint" = "알림 시간을 설정하려면 두 번 탭 하세요.";
+
+"setting_DiaryExport" = "PDF 파일로 저장";
+"setting_DiaryExport_AccessibilityHint" = "저장된 기록을 pdf 파일로 저장하려면 두 번 탭 하세요.";
 
 "setting_Info" = "정보";
 "setting_Info_AccessibilityHint" = "정책 등의 정보를 확인하려면 두 번 탭 하세요.";
@@ -93,6 +96,15 @@
 "setting_NotificationBody" = "오늘 하루는 어땠나요? 일기를 작성해 주세요!";
 
 "setting_NotificationToast" = "알림이 설정되었습니다.";
+
+//MARK: - DiaryExportView
+"diaryExport_Placeholder" = "모든 기록을 PDF 파일로 저장해요.";
+"diaryExport_ExportButton_Title" = "내려받기";
+
+"diaryExport_Progress_Text" = "저장 중...";
+"diaryExport_Toast_Message" = "저장된 기록이 없습니다.";
+
+"diaryExport_Filename_Prefix" = "구름모드_%@.pdf";
 
 //MARK: - SearchViewController
 "search_placeholder" = "기록한 내용을 검색해 보세요.";

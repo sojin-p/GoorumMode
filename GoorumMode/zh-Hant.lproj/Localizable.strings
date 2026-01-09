@@ -72,7 +72,7 @@
 "doneButton_Title" = "選擇";
 "doneButton_AccessibilityHint" = "雙擊屏幕後，點擊後退按鈕，即可在該日期添加記錄。";
 
-//MARK: - SettingViewController
+//MARK: - Setting
 "settingVC_Title" = "設置";
 "setting_PrivacyPolicy" = "個人資訊政策";
 "setting_PrivacyPolicy_AccessibilityHint" = "如果您想查看隱私政策，請點擊兩次。";
@@ -81,6 +81,9 @@
 
 "setting_NotiTime" = "時間";
 "setting_NotiTime_AccessibilityHint" = "如果您想設置通知時間，請點擊兩次。";
+
+"setting_DiaryExport" = "另存為 PDF";
+"setting_DiaryExport_AccessibilityHint" = "雙擊以將記錄另存為 PDF 檔案。";
 
 "setting_Info" = "資訊";
 "setting_Info_AccessibilityHint" = "如果您想查看信息，請點擊兩次。";
@@ -93,6 +96,15 @@
 "setting_NotificationBody" = "今天過得怎麼樣？請寫下日記！";
 
 "setting_NotificationToast" = "通知已設定。";
+
+//MARK: - DiaryExportView
+"diaryExport_Placeholder" = "將所有記錄儲存為 PDF 檔案。";
+"diaryExport_ExportButton_Title" = "儲存";
+
+"diaryExport_Progress_Text" = "儲存中…";
+"diaryExport_Toast_Message" = "沒有可儲存的記錄。";
+
+"diaryExport_Filename_Prefix" = "雲朵日子_%@.pdf";
 
 //MARK: - SearchViewController
 "search_placeholder" = "請搜索一下記錄的內容。";

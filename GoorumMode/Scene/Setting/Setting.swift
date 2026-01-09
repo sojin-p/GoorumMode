@@ -48,7 +48,7 @@ struct Setting: Identifiable {
         //section1
         case noti = "setting_Noti"
         case notiTime = "setting_NotiTime"
-        case diaryExport = "pdf 내보내기" //수정
+        case diaryExport = "setting_DiaryExport"
         case info = "setting_Info"
         case inquiry = "setting_Inquiry"
         
@@ -58,6 +58,8 @@ struct Setting: Identifiable {
         var accessibilityHint: String {
             switch self {
             case .notiTime: "setting_NotiTime_AccessibilityHint".localized
+            case .diaryExport:
+                "setting_DiaryExport_AccessibilityHint".localized
             case .info: "setting_Info_AccessibilityHint".localized
             case .inquiry: "setting_Inquiry_AccessibilityHint".localized
             default: ""
@@ -74,7 +76,7 @@ struct Setting: Identifiable {
         
         var accessibilityHint: String {
             switch self {
-            case .privacyPolicy: "개인정보 정책을 확인하려면 두 번 탭 하세요." //수정
+            case .privacyPolicy: "setting_PrivacyPolicy_AccessibilityHint".localized
             }
         }
         

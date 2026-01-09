@@ -23,13 +23,13 @@ struct DiaryExportView: View {
             ZStack {
                 VStack(spacing: 24) {
                     VStack(spacing: 8) {
-                        Text("모든 일기를 pdf 파일로 만들어요.") //수정 다국어
+                        Text("diaryExport_Placeholder".localized)
                             .font(Font(uiFont: Constants.Font.bold(size: 16)))
                             .foregroundStyle(Color(uiColor: Constants.Color.Text.basicSubTitle))
                         
                     }//Vstack(spacing: 8)
                     
-                    Button("내보내기") { //수정 다국어
+                    Button("diaryExport_ExportButton_Title".localized) {
                         Task { await viewModel.generatePDF() }
                     }
                     .buttonStyle(.borderedProminent)
@@ -49,7 +49,7 @@ struct DiaryExportView: View {
                             .padding(.vertical, 8)
                         
                         VStack(spacing: 4) {
-                            Text("내보내는 중...") //수정 다국어
+                            Text("diaryExport_Progress_Text".localized)
                                 .font(Font(uiFont: Constants.Font.bold(size: 15)))
                                 .foregroundStyle(Color(uiColor: Constants.Color.Text.basicSubTitle))
                         }
@@ -63,7 +63,7 @@ struct DiaryExportView: View {
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
             .popup(isPresented: $viewModel.showingPopup) {
-                ToastView(message: "저장된 기록이 없습니다.") //수정 다국어
+                ToastView(message: "diaryExport_Toast_Message".localized)
             } customize: {
                 $0
                     .type(.floater())
@@ -75,7 +75,8 @@ struct DiaryExportView: View {
                 isPresented: $showExporter,
                 document: viewModel.pdfData.map { PDFDataDocument(data: $0) } ?? PDFDataDocument(data: Data()),
                 contentType: .pdf,
-                defaultFilename: "감정일기_\(Date().formatted(date: .abbreviated, time: .omitted)).pdf" //수정 다국어
+                defaultFilename: String(format: "diaryExport_Filename_Prefix".localized,  Date().formatted(date: .abbreviated, time: .omitted))
+                    //"감정일기_\(Date().formatted(date: .abbreviated, time: .omitted)).pdf"
             ) { _ in }
                 .onReceive(viewModel.$pdfData) { pdfData in
                     if pdfData != nil {

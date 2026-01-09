@@ -72,7 +72,7 @@
 "doneButton_Title" = "Select";
 "doneButton_AccessibilityHint" = "Please tap it twice, if you want to select that date. And then double tap the back button, you can add a record to that date.";
 
-//MARK: - SettingViewController
+//MARK: - Setting
 "settingVC_Title" = "Setting";
 "setting_PrivacyPolicy" = "Privacy Policy";
 "setting_PrivacyPolicy_AccessibilityHint" = "Please tap it twice, if you want to check the privacy policy.";
@@ -81,6 +81,9 @@
 
 "setting_NotiTime" = "Time";
 "setting_NotiTime_AccessibilityHint" = "Please tap it twice, if you want to set the notification time.";
+
+"setting_DiaryExport" = "Save as PDF";
+"setting_DiaryExport_AccessibilityHint" = "Please tap it twice, if you want to save entries as PDF file.";
 
 "setting_Info" = "Information";
 "setting_Info_AccessibilityHint" = "Please tap it twice, if you want to check information as the privacy policy.";
@@ -93,6 +96,15 @@
 "setting_NotificationBody" = "How was your day today? Please write a diary!";
 
 "setting_NotificationToast" = "Notification has been set up.";
+
+//MARK: - DiaryExportView
+"diaryExport_Placeholder" = "Save all entries as PDF file.";
+"diaryExport_ExportButton_Title" = "Save";
+
+"diaryExport_Progress_Text" = "Saving...";
+"diaryExport_Toast_Message" = "No entries to save.";
+
+"diaryExport_Filename_Prefix" = "CloudMode_%@.pdf";
 
 //MARK: - SearchViewController
 "search_placeholder" = "Search your records.";

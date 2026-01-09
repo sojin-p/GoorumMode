@@ -72,7 +72,7 @@
 "doneButton_Title" = "选择";
 "doneButton_AccessibilityHint" = "双击屏幕后，点击后退按钮，即可在该日期添加记录。";
 
-//MARK: - SettingViewController
+//MARK: - Setting
 "settingVC_Title" = "设置";
 "setting_PrivacyPolicy" = "个人信息政策";
 "setting_PrivacyPolicy_AccessibilityHint" = "如果您想查看隐私政策，请点击两次。";
@@ -81,6 +81,9 @@
 
 "setting_NotiTime" = "时间";
 "setting_NotiTime_AccessibilityHint" = "如果您想设置通知时间，请点击两次。";
+
+"setting_DiaryExport" = "另存为 PDF";
+"setting_DiaryExport_AccessibilityHint" = "双击将记录另存为 PDF 文件。";
 
 "setting_Info" = "资讯";
 "setting_Info_AccessibilityHint" = "如果您想查看信息，请点击两次。";
@@ -93,6 +96,15 @@
 "setting_NotificationBody" = "今天过得怎么样？请写下日记！";
 
 "setting_NotificationToast" = "通知已设定。";
+
+//MARK: - DiaryExportView
+"diaryExport_Placeholder" = "将所有记录保存为 PDF 文件。";
+"diaryExport_ExportButton_Title" = "保存";
+
+"diaryExport_Progress_Text" = "保存中…";
+"diaryExport_Toast_Message" = "没有可保存的记录。";
+
+"diaryExport_Filename_Prefix" = "云朵日子_%@.pdf";
 
 //MARK: - SearchViewController
 "search_placeholder" = "请搜索一下记录的内容。";
