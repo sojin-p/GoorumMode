@@ -91,6 +91,8 @@ final class ChartView: BaseView {
         return view
     }()
     
+    private var isSmallPhone: Bool { UIScreen.main.bounds.height <= 812 }
+    
     //MARK: - @objc func
     @objc private func swipedUpAndDown(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == .up {
@@ -164,7 +166,7 @@ final class ChartView: BaseView {
         
         chartTableView.snp.makeConstraints { make in
             make.top.equalTo(dateRangeLabel.snp.bottom).offset(25)
-            make.horizontalEdges.bottom.equalToSuperview()
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
 
     }
