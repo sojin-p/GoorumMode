@@ -15,16 +15,7 @@ final class ChartListTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    let progressView = {
-        let view = UIProgressView()
-        view.trackTintColor = Constants.Color.Background.progressTrack
-        view.layer.cornerRadius = 5
-        view.clipsToBounds = true
-        view.layer.sublayers?[1].cornerRadius = 5
-        view.subviews[1].clipsToBounds = true
-        view.accessibilityElementsHidden = true
-        return view
-    }()
+    let progressView = RoundedProgressView()
     
     let label = {
         let view = UILabel()
@@ -63,6 +54,7 @@ final class ChartListTableViewCell: BaseTableViewCell {
         super.prepareForReuse()
         iconImageView.image = nil
         label.text = nil
+        progressView.progress = 0
     }
     
     override func configure() {
@@ -89,5 +81,43 @@ final class ChartListTableViewCell: BaseTableViewCell {
             make.height.equalTo(10)
             make.center.equalToSuperview()
         }
+    }
+}
+
+// MARK: - RoundedProgressView
+class RoundedProgressView: UIProgressView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    convenience init() {
+        self.init(frame: .zero)
+    }
+    
+    private func commonInit() {
+        trackTintColor = Constants.Color.Background.progressTrack
+        clipsToBounds = true
+        accessibilityElementsHidden = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.mask = CAShapeLayer.roundedRectMask(for: bounds, cornerRadius: 5)
+    }
+}
+
+extension CAShapeLayer {
+    static func roundedRectMask(for rect: CGRect, cornerRadius: CGFloat) -> CAShapeLayer {
+        let mask = CAShapeLayer()
+        if rect.width > 0 && rect.height > 0 {
+            mask.path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).cgPath
+        }
+        return mask
     }
 }

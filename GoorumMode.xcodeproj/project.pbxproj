@@ -134,7 +134,7 @@
 		23AF91A52C89EB5E00F332E0 /* SettingUIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIViewModel.swift; sourceTree = "<group>"; };
 		23AF91A72C89FF1800F332E0 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
 		23B860FB2AE7FCFE007DA341 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		23BDAD462AD9668B007F5768 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChartView.swift; path = GoorumMode/Scene/Calendar/ChartView.swift; sourceTree = SOURCE_ROOT; };
+		23BDAD462AD9668B007F5768 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChartView.swift; path = GoorumMode/Scene/Chart/ChartView.swift; sourceTree = SOURCE_ROOT; };
 		23BDAD482AD97A12007F5768 /* CapsulePaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePaddingButton.swift; sourceTree = "<group>"; };
 		23BDAD4A2ADA4728007F5768 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		23BDAD4F2ADA482D007F5768 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
