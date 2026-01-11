@@ -78,6 +78,12 @@ final class ChartView: BaseView {
         return view
     }()
     
+    var bottomTabbarBackgroundView = {
+        let view = UIView()
+        view.backgroundColor = Constants.Color.Background.white
+        return view
+    }()
+    
     //MARK: - Calendar Swipe
     private lazy var swipeUp = {
         let view = UISwipeGestureRecognizer(target: self, action: #selector(swipedUpAndDown))
@@ -121,7 +127,7 @@ final class ChartView: BaseView {
         
         chartButtons.forEach { $0.addTarget(self, action: #selector(setChartButtons), for: .touchUpInside) }
 
-        [calendar, headerView, backView, dailyButton, weeklyButton, monthlyButton, dateRangeLabel, chartTableView].forEach { addSubview($0) }
+        [calendar, headerView, backView, dailyButton, weeklyButton, monthlyButton, dateRangeLabel, chartTableView, bottomTabbarBackgroundView].forEach { addSubview($0) }
         [swipeUp, swipeDown].forEach { calendar.addGestureRecognizer($0) }
     }
     
@@ -167,6 +173,11 @@ final class ChartView: BaseView {
         chartTableView.snp.makeConstraints { make in
             make.top.equalTo(dateRangeLabel.snp.bottom).offset(25)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        bottomTabbarBackgroundView.snp.makeConstraints { make in
+            make.top.equalTo(chartTableView.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
 
     }
