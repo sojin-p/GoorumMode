@@ -200,6 +200,7 @@ extension ChartViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: - extension ChartViewController: FSCalendarDelegate
 extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
@@ -258,6 +259,11 @@ extension ChartViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalen
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
         [Constants.Color.iconTint.unselected]
+    }
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        let today = Date()
+        return today
     }
 }
 
